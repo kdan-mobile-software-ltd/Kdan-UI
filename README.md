@@ -20,7 +20,12 @@ $ npm install kdan-ui
 ## Usage
 ```js
 import React from 'react';
+import { LanguageBar } from 'kdan-ui';
+
+const App = ({ options, value }) => {
+  return <LanguageBar options={options} value={value} />
+}
 ```
 
 ## License
-MIT © Kdan Mobile
+MIT © Kdan Mobile Software
