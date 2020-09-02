@@ -5,8 +5,15 @@ import { BarWrapper, Menu } from './styled';
 
 import LanguageBarBlock from './LanguageBarBlock';
 
-const LanguageBar = ({ options, value, onChange }) => {
+const LanguageBar = ({ options, value: defaultValue, onChange, ...otherProps }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState(defaultValue);
+
+  const onChangeHandle = (option) => {
+    onChange(option);
+    setValue(option.value);
+  }
+
   return (
     <BarWrapper onClick={() => setIsOpen(!isOpen)}>
       <Menu isOpen={isOpen}>
@@ -15,11 +22,11 @@ const LanguageBar = ({ options, value, onChange }) => {
             isItem
             key={`${index}-${option.key}`}
             value={option.value}
-            onChange={() => onChange(option)}
+            onChange={() => onChangeHandle(option)}
           />
         ))}
       </Menu>
-      <LanguageBarBlock value={value} />
+      <LanguageBarBlock value={value} {...otherProps} />
     </BarWrapper>
   );
 };

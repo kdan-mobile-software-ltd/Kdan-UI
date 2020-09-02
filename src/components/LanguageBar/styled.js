@@ -1,4 +1,7 @@
 import styled, { css } from 'styled-components';
+import { layout, space } from 'styled-system'
+import propTypes from '@styled-system/prop-types';
+
 import { colors } from '@themes';
 
 export const BarWrapper = styled.div`
@@ -36,6 +39,7 @@ export const BlockWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 120px;
   padding: 5px 10px;
   margin: auto;
@@ -45,7 +49,14 @@ export const BlockWrapper = styled.div`
   cursor: pointer;
 
   ${BlockStyle};
+  ${layout}
+  ${space}
 `;
+
+BlockWrapper.propTypes = {
+  ...propTypes.layout,
+  ...propTypes.space,
+}
 
 export const BarIcon = styled.span`
   width: 0;

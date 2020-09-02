@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { BlockWrapper, BarIcon } from './styled';
 
-const LanguageBarBlock = ({ value, isItem, onChange }) => {
+const LanguageBarBlock = ({ value, isItem, onChange, ...otherProps }) => {
   return (
-    <BlockWrapper isItem={isItem} onClick={onChange}>
+    <BlockWrapper isItem={isItem} onClick={onChange} {...otherProps}>
       {value}
       {!isItem && <BarIcon />}
     </BlockWrapper>
