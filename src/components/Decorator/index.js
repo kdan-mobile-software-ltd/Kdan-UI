@@ -8,7 +8,7 @@ const styleType = {
     align-items: center;
     height: 100vh;
   `
-}
+};
 
 export const Container = styled.div`
   background: #ecf0f1;
@@ -18,8 +18,8 @@ export const Container = styled.div`
 
 Container.defaultProps = {
   styleType: 'middle'
-}
+};
 
 Container.propTypes = {
-  styleType: PropTypes.oneOf(['middle']),
-}
+  styleType: PropTypes.oneOf(['middle'])
+};

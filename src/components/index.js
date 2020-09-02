@@ -1,1 +1,1 @@
-export * from './LanguageBar'
+export * from './LanguageBar';

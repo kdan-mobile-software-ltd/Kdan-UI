@@ -1,5 +1,3 @@
 import colors from './colors';
 
-export {
-  colors
-}
+export { colors };

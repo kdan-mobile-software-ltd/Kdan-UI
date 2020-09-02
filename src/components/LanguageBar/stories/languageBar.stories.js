@@ -7,37 +7,37 @@ import { Container } from '@components/Decorator';
 const langLabels = [
   {
     key: 'en',
-    value: 'English',
+    value: 'English'
   },
   {
     key: 'ja',
-    value: '日本語',
+    value: '日本語'
   },
   {
     key: 'zh-tw',
-    value: '中文（繁體）',
+    value: '中文（繁體）'
   },
   {
     key: 'zh-cn',
-    value: '中文（简体）',
-  },
+    value: '中文（简体）'
+  }
 ];
 
 export default {
   component: LanguageBar,
   title: 'LanguageBar',
-  decorators: [(story) => <Container styleType="middle">{story()}</Container>],
+  decorators: [(story) => <Container styleType='middle'>{story()}</Container>]
 };
 
-const Template = (args) => <LanguageBar {...args} />
+const Template = (args) => <LanguageBar {...args} />;
 
 const actionsData = {
-  onChange: action('onChange'),
+  onChange: action('onChange')
 };
 
 export const demo = Template.bind({});
 demo.args = {
   value: 'English',
   options: langLabels,
-  ...actionsData,
+  ...actionsData
 };

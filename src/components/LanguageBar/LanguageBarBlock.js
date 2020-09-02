@@ -10,7 +10,7 @@ const LanguageBarBlock = ({ value, isItem, onChange, ...otherProps }) => {
       {!isItem && <BarIcon />}
     </BlockWrapper>
   );
-}
+};
 
 LanguageBarBlock.defaultProps = {
   isItem: false,
@@ -20,7 +20,7 @@ LanguageBarBlock.defaultProps = {
 LanguageBarBlock.prototype = {
   value: PropTypes.string.isRequired,
   isItem: PropTypes.bool,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default LanguageBarBlock;

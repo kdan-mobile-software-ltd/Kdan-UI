@@ -13,26 +13,29 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
-      sourcemap: true,
+      sourcemap: true
     },
     {
       file: pkg.module,
       format: 'es',
-      sourcemap: true,
-    },
+      sourcemap: true
+    }
   ],
-  external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
+  external: [
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.peerDependencies || {})
+  ],
   plugins: [
     external(),
     postcss(),
     babel({
-      exclude: 'node_modules/**',
+      exclude: 'node_modules/**'
     }),
     resolve(),
     commonjs({
-      include: ['node_modules/**'],
+      include: ['node_modules/**']
     }),
     image(),
-    visualizer(),
-  ],
+    visualizer()
+  ]
 };

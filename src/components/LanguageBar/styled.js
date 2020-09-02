@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { layout, space } from 'styled-system'
+import { layout, space } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
 
 import { colors } from '@themes';
@@ -33,7 +33,7 @@ const BlockStyle = ({ isItem }) => {
       border-radius: 4px;
     `;
   }
-}
+};
 
 export const BlockWrapper = styled.div`
   display: flex;
@@ -55,8 +55,8 @@ export const BlockWrapper = styled.div`
 
 BlockWrapper.propTypes = {
   ...propTypes.layout,
-  ...propTypes.space,
-}
+  ...propTypes.space
+};
 
 export const BarIcon = styled.span`
   width: 0;
