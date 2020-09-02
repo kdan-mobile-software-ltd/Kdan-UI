@@ -9,7 +9,8 @@
     "lint:fix": "eslint --fix --ext .js,.jsx .",
     "test": "react-scripts test",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "scaffold": "node ./tools/scaffold-component.js"
   },
   "husky": {
     "hooks": {

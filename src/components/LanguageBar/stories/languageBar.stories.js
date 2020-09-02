@@ -35,8 +35,8 @@ const actionsData = {
   onChange: action('onChange')
 };
 
-export const demo = Template.bind({});
-demo.args = {
+export const basic = Template.bind({});
+basic.args = {
   value: 'English',
   options: langLabels,
   ...actionsData
