@@ -10,10 +10,10 @@ const LanguageBar = ({ options, value, onChange }) => {
   return (
     <BarWrapper onClick={() => setIsOpen(!isOpen)}>
       <Menu isOpen={isOpen}>
-        {options.map(option => (
+        {options.map((option, index) => (
           <LanguageBarBlock
             isItem
-            key={option.key}
+            key={`${index}-${option.key}`}
             value={option.value}
             onChange={() => onChange(option)}
           />
