@@ -2,7 +2,7 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import { LanguageBar } from '@components/LanguageBar';
-import { Container } from '@components/Layout';
+import { Container } from '@components/Decorator';
 
 const langLabels = [
   {
@@ -26,7 +26,7 @@ const langLabels = [
 export default {
   component: LanguageBar,
   title: 'LanguageBar',
-  decorators: [(story) => <Container>{story()}</Container>],
+  decorators: [(story) => <Container styleType="middle">{story()}</Container>],
 };
 
 const Template = (args) => <LanguageBar {...args} />
