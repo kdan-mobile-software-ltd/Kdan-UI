@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { colors } from '@themes';
 
 export const BarWrapper = styled.div`
   position: relative;
@@ -40,7 +41,7 @@ export const BlockWrapper = styled.div`
   margin: auto;
   font-size: 14px;
   color: rgb(64, 64, 64);
-  background-color: #fff;
+  background-color: ${colors.white};
   cursor: pointer;
 
   ${BlockStyle};
@@ -61,7 +62,7 @@ export const Menu = styled.div`
   bottom: calc(100% + 3px);
   left: 50%;
   transform: translateX(-50%);
-  background: #ffffff;
+  background: ${colors.white};
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 `;
