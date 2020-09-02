@@ -34,4 +34,4 @@ LanguageBar.propTypes = {
   onChange: PropTypes.func,
 };
 
-export default LanguageBar;
+export { LanguageBar };
