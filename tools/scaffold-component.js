@@ -14,13 +14,15 @@ if (!componentName) {
   );
   process.exit();
 }
+
 // Once validated, confirm the component doesn't already exist
 const componentPath = path.join('src/components', componentName);
 if (fs.existsSync(componentPath)) {
   camelMessages.error(`Component already exists, at '${componentPath}'.`);
   process.exit();
 }
-// Now lets generate!
+
+// generate
 (async () => {
   try {
     generateCodeScaffold(componentName, componentPath);
