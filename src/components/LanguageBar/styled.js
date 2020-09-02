@@ -17,6 +17,9 @@ const BlockStyle = ({ isItem }) => {
       &:last-child {
         border-radius: 0 0 4px 4px;
       }
+      &:only-child {
+        border-radius: 4px;
+      }
       &:hover {
         background-color: #e6e6e6;
       }
