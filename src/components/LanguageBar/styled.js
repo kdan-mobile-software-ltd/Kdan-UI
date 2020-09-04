@@ -1,8 +1,26 @@
 import styled, { css } from 'styled-components';
-import { layout, space } from 'styled-system';
-import propTypes from '@styled-system/prop-types';
-
 import { colors } from '../../themes';
+
+const themeHub = {
+  default: {
+    borderTop: `5px solid ${colors.black}`,
+    color: 'rgb(64, 64, 64)',
+    backgroundColor: colors.white,
+    hover: {
+      color: 'rgb(64, 64, 64)',
+      backgroundColor: '#e6e6e6'
+    }
+  },
+  dark: {
+    borderTop: `5px solid ${colors.white}`,
+    color: colors.white,
+    backgroundColor: colors.bunting,
+    hover: {
+      color: colors.bunting,
+      backgroundColor: 'rgba(0, 0, 0, 0.1)'
+    }
+  }
+};
 
 export const BarWrapper = styled.div`
   position: relative;
@@ -12,20 +30,23 @@ export const BarWrapper = styled.div`
   font-size: 0.8125rem;
 `;
 
-const BlockStyle = ({ isItem }) => {
+const BlockStyle = ({ isItem, theme }) => {
   if (isItem) {
     return css`
       &:first-child {
-        border-radius: 4px 4px 0 0;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
       }
       &:last-child {
-        border-radius: 0 0 4px 4px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
       }
       &:only-child {
         border-radius: 4px;
       }
       &:hover {
-        background-color: #e6e6e6;
+        color: ${themeHub[theme].hover.color};
+        background-color: ${themeHub[theme].hover.backgroundColor};
       }
     `;
   } else {
@@ -34,6 +55,24 @@ const BlockStyle = ({ isItem }) => {
     `;
   }
 };
+
+export const Arrow = styled.span`
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  margin: auto 0;
+
+  ${(props) =>
+    props.isOpen &&
+    css`
+      -moz-transform: rotate(-180deg);
+      -webkit-transform: rotate(-180deg);
+      -o-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+      transform: rotate(-180deg);
+    `};
+`;
 
 export const BlockWrapper = styled.div`
   display: flex;
@@ -44,27 +83,16 @@ export const BlockWrapper = styled.div`
   padding: 5px 10px;
   margin: auto;
   font-size: 14px;
-  color: rgb(64, 64, 64);
-  background-color: ${colors.white};
   cursor: pointer;
 
+  color: ${({ theme }) => themeHub[theme].color};
+  background-color: ${({ theme }) => themeHub[theme].backgroundColor};
+
   ${BlockStyle};
-  ${layout}
-  ${space}
-`;
 
-BlockWrapper.propTypes = {
-  ...propTypes.layout,
-  ...propTypes.space
-};
-
-export const BarIcon = styled.span`
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #000;
-  margin: auto 0;
+  ${Arrow} {
+    border-top: ${({ theme }) => themeHub[theme].borderTop};
+  }
 `;
 
 export const Menu = styled.div`

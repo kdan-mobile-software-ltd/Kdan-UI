@@ -5,12 +5,7 @@ import { BarWrapper, Menu } from './styled';
 
 import LanguageBarBlock from './LanguageBarBlock';
 
-const LanguageBar = ({
-  options,
-  value: defaultValue,
-  onChange,
-  ...otherProps
-}) => {
+const LanguageBar = ({ options, value: defaultValue, onChange, theme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(defaultValue);
 
@@ -24,6 +19,7 @@ const LanguageBar = ({
       <Menu isOpen={isOpen}>
         {options.map((option, index) => (
           <LanguageBarBlock
+            theme={theme}
             isItem
             key={`${index}-${option.key}`}
             value={option.value}
@@ -31,19 +27,21 @@ const LanguageBar = ({
           />
         ))}
       </Menu>
-      <LanguageBarBlock value={value} {...otherProps} />
+      <LanguageBarBlock value={value} theme={theme} isOpen={isOpen} />
     </BarWrapper>
   );
 };
 
 LanguageBar.defaultProps = {
-  onChange: () => {}
+  onChange: () => {},
+  theme: 'default'
 };
 
 LanguageBar.propTypes = {
   options: PropTypes.array.isRequired,
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  theme: PropTypes.oneOf(['default', 'dark'])
 };
 
 export { LanguageBar };
