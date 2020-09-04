@@ -2,13 +2,20 @@ module.exports = (name) => {
   return `import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { ${name} } from '@components/${name}';
-import { Container } from '@components/Decorator';
+import { ${name} } from './${name}';
+import { Container } from '../Decorator';
 
 export default {
   component: ${name},
   title: '${name}',
-  decorators: [(story) => <Container styleType='middle'>{story()}</Container>]
+  decorators: [(story) => <Container styleType='middle'>{story()}</Container>],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Start description.'
+      }
+    }
+  }
 };
 
 const actionsData = {
@@ -17,8 +24,8 @@ const actionsData = {
 
 const Template = (args) => <${name} {...args} />;
 
-export const basic = Template.bind({});
-basic.args = {
+export const base = Template.bind({});
+base.args = {
   ...actionsData
 };
 `;

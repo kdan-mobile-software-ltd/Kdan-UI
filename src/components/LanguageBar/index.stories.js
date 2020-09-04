@@ -1,8 +1,8 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { LanguageBar } from '../LanguageBar';
-import { Container } from '../../Decorator';
+import { LanguageBar } from './LanguageBar';
+import { Container } from '../Decorator';
 
 const langLabels = [
   {
