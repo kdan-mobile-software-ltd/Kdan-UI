@@ -17,6 +17,8 @@ if (!componentName) {
 
 // Once validated, confirm the component doesn't already exist
 const componentPath = path.join('src/components', componentName);
+const testPath = 'src/__test__';
+
 if (fs.existsSync(componentPath)) {
   camelMessages.error(`Component already exists, at '${componentPath}'.`);
   process.exit();
@@ -25,7 +27,7 @@ if (fs.existsSync(componentPath)) {
 // generate
 (async () => {
   try {
-    generateCodeScaffold(componentName, componentPath);
+    generateCodeScaffold(componentName, { componentPath, testPath });
     camelMessages.success(`The ${componentName} component has been created!`);
   } catch (e) {
     camelMessages.error(e);

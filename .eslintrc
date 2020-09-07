@@ -5,13 +5,16 @@
     "standard-react",
     "plugin:prettier/recommended",
     "prettier/standard",
-    "prettier/react"
+    "prettier/react",
+    "plugin:testing-library/react"
   ],
   "env": {
-    "node": true
+    "node": true,
+    "jest": true
   },
   "plugins": [
-    "prettier"
+    "prettier",
+    "testing-library"
   ],
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -31,6 +34,9 @@
     "react/jsx-handler-names": 0,
     "react/jsx-fragments": 0,
     "react/no-unused-prop-types": 0,
-    "import/export": 0
+    "import/export": 0,
+    "testing-library/await-async-query": "error",
+    "testing-library/no-await-sync-query": "error",
+    "testing-library/no-debug": "warn"
   }
 }

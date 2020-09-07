@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LanguageBar basic 1`] = `
+.c0 {
+  position: relative;
+  display: block;
+  margin: 15px auto 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 0.8125rem;
+}
+
+.c5 {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  margin: auto 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 120px;
+  padding: 5px 10px;
+  margin: auto;
+  font-size: 14px;
+  cursor: pointer;
+  color: rgb(64,64,64);
+  background-color: #ffffff;
+}
+
+.c2:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.c2:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.c2:only-child {
+  border-radius: 4px;
+}
+
+.c2:hover {
+  color: rgb(64,64,64);
+  background-color: #e6e6e6;
+}
+
+.c2 .c4 {
+  border-top: 5px solid #000000;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 120px;
+  padding: 5px 10px;
+  margin: auto;
+  font-size: 14px;
+  cursor: pointer;
+  color: rgb(64,64,64);
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.c3 .c4 {
+  border-top: 5px solid #000000;
+}
+
+.c1 {
+  position: absolute;
+  display: none;
+  bottom: calc(100% + 3px);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        中文
+      </div>
+      <div
+        class="c2"
+      >
+        英文
+      </div>
+    </div>
+    <div
+      class="c3"
+    >
+      zh-tw
+      <span
+        class="c4 c5"
+      />
+    </div>
+  </div>
+</div>
+`;
