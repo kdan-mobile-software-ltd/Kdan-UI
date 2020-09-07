@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 
 import { ${name} } from '../components/${name}';
 
-describe('<${name} />', () => {
+describe('${name}', () => {
   test('basic', () => {
     const { container } = render(<${name} />);
     expect(container).toMatchSnapshot();

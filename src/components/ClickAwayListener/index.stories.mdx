@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title='Utils/ ClickAwayListener' />
+
+# Click Away Listener
+
+監聽發生在 document 某處元素本身之外的單擊事件。  
+可以參考 LanguageBar，打開 LanguageBar 後再點擊它以外其他地方，它會收回，因為觸發 ClickAwayListener 事件。
+
+## Import
+
+```js
+import { ClickAwayListener } from 'kdan-ui';
+
+const App = () => (
+  <ClickAwayListener onClick={handleClickAway}>
+    <div />
+  </ClickAwayListener>
+);
+```
+
+## Props
+
+|   Props    | Type     | Default  |
+| :--------: | :------- | :------- |
+|  onClick   | `fn`     | -        |
+| mouseEvent | `string` | touchend |
+| touchEvent | `string` | click    |

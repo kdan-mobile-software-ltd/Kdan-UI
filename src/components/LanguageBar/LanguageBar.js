@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { BarWrapper, Menu } from './styled';
 
 import LanguageBarBlock from './LanguageBarBlock';
+import { ClickAwayListener } from '../ClickAwayListener';
 
 const LanguageBar = ({ options, value: defaultValue, onChange, theme }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,21 +15,29 @@ const LanguageBar = ({ options, value: defaultValue, onChange, theme }) => {
     setValue(option.value);
   };
 
+  const handleClickAway = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <BarWrapper onClick={() => setIsOpen(!isOpen)}>
-      <Menu isOpen={isOpen}>
-        {options.map((option, index) => (
-          <LanguageBarBlock
-            theme={theme}
-            isItem
-            key={`${index}-${option.key}`}
-            value={option.value}
-            onChange={() => onChangeHandle(option)}
-          />
-        ))}
-      </Menu>
-      <LanguageBarBlock value={value} theme={theme} isOpen={isOpen} />
-    </BarWrapper>
+    <ClickAwayListener onClick={handleClickAway}>
+      <BarWrapper onClick={() => setIsOpen(!isOpen)}>
+        <Menu isOpen={isOpen}>
+          {options.map((option, index) => (
+            <LanguageBarBlock
+              theme={theme}
+              isItem
+              key={`${index}-${option.key}`}
+              value={option.value}
+              onChange={() => onChangeHandle(option)}
+            />
+          ))}
+        </Menu>
+        <LanguageBarBlock value={value} theme={theme} isOpen={isOpen} />
+      </BarWrapper>
+    </ClickAwayListener>
   );
 };
 
