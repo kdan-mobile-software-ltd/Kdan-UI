@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { BlockWrapper, Arrow } from './styled';
 
-const LanguageBarBlock = ({ value, isItem, onChange, isOpen, theme }) => {
+const Block = ({ value, isItem, onChange, isOpen, theme }) => {
   return (
     <BlockWrapper isItem={isItem} onClick={onChange} theme={theme}>
       {value}
@@ -12,17 +12,17 @@ const LanguageBarBlock = ({ value, isItem, onChange, isOpen, theme }) => {
   );
 };
 
-LanguageBarBlock.defaultProps = {
+Block.defaultProps = {
   isItem: false,
   onChange: () => {},
   isOpen: false
 };
 
-LanguageBarBlock.prototype = {
+Block.prototype = {
   value: PropTypes.string.isRequired,
   isItem: PropTypes.bool,
   onChange: PropTypes.func,
   isOpen: PropTypes.bool
 };
 
-export default LanguageBarBlock;
+export default Block;

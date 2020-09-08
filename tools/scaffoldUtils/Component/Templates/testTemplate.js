@@ -4,7 +4,7 @@ import { render, cleanup, fireEvent, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import '@testing-library/jest-dom';
 
-import { ${name} } from '../components/${name}';
+import ${name} from '../components/${name}';
 
 describe('${name}', () => {
   afterEach(cleanup);

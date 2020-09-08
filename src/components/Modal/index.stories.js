@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { ContentStyle } from '../Decorator';
-import { Modal } from './Modal';
+import Modal from './';
 
 export default {
   component: Modal,

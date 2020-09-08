@@ -3,7 +3,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 import 'jest-styled-components';
 import '@testing-library/jest-dom';
 
-import { LanguageBar } from '../components/LanguageBar';
+import LanguageBar from '../components/LanguageBar';
 
 describe('LanguageBar', () => {
   afterEach(cleanup);

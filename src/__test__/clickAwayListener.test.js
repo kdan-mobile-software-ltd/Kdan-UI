@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import 'jest-styled-components';
 import '@testing-library/jest-dom';
 
-import { ClickAwayListener } from '../components/ClickAwayListener';
+import ClickAwayListener from '../components/ClickAwayListener';
 
 describe('ClickAwayListener', () => {
   test('should trigger onClick outside', () => {

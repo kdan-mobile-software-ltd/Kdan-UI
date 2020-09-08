@@ -2,7 +2,7 @@ module.exports = (name) => {
   return `import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { ${name} } from './${name}';
+import ${name} from './';
 import { Container } from '../Decorator';
 
 export default {
