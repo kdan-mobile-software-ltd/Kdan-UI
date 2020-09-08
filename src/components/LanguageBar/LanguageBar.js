@@ -48,7 +48,13 @@ LanguageBar.defaultProps = {
 
 LanguageBar.propTypes = {
   options: PropTypes.array.isRequired,
+  /**
+    select 目前的值
+  */
   value: PropTypes.string.isRequired,
+  /**
+    選擇後觸發事件，會回傳所選那個物件。
+  */
   onChange: PropTypes.func,
   theme: PropTypes.oneOf(['default', 'dark'])
 };
