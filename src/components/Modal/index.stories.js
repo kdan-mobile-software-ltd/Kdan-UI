@@ -9,7 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Start description.'
+        component: '可以透過顯示提示視窗，自定義內容。'
       }
     }
   }

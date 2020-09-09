@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { CSSTransition } from 'react-transition-group';
 import { Portal } from 'react-portal';
 import { Container } from './styled';
+
+import './transition.css';
 
 const lockScroll = (state) => {
   if (typeof document === 'undefined') {
@@ -66,11 +69,11 @@ const Modal = ({
 
   return (
     <Portal ref={defaultPortal}>
-      {open && (
+      <CSSTransition in={open} timeout={200} classNames='modal' unmountOnExit>
         <Container onClick={handleClick} {...otherProps}>
           {children}
         </Container>
-      )}
+      </CSSTransition>
     </Portal>
   );
 };
@@ -101,6 +104,9 @@ Modal.propTypes = {
     document 上 portal 的預設樣式
   */
   defaultPortalStyles: PropTypes.object,
+  /**
+    參數 closeOnClick 和 closeOnEsc 如果為 true，則必須設定此參數來關閉 modal。
+  */
   onClose: PropTypes.func,
   /**
     modal 開啟後會觸發此 function

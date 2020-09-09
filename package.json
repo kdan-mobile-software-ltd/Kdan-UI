@@ -55,6 +55,7 @@
     "react-dom": "^16.13.1",
     "react-portal": "^4.2.1",
     "react-scripts": "3.4.3",
+    "react-transition-group": "^4.4.1",
     "styled-components": "^5.1.1",
     "styled-system": "^5.1.5"
   },
