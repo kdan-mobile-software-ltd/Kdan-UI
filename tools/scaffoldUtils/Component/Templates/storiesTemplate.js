@@ -22,10 +22,8 @@ const actionsData = {
   onClick: action('onClick')
 };
 
-const Template = (args) => <${name} {...args} />;
-
-export const base = Template.bind({});
-base.args = {
+export const Base = (args) => <${name} {...args} />
+Base.args = {
   ...actionsData
 };
 `;

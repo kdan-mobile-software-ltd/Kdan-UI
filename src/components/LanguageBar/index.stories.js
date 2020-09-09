@@ -48,14 +48,12 @@ export default {
   }
 };
 
-const Template = (args) => <LanguageBar {...args} />;
-
 const actionsData = {
   onChange: action('onChange')
 };
 
-export const base = Template.bind({});
-base.args = {
+export const Base = (args) => <LanguageBar {...args} />;
+Base.args = {
   theme: 'default',
   value: 'English',
   options: langLabels,
