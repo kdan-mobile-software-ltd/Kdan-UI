@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeatureBanner basic 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c1 {
+  -webkit-transition: background 1.2s;
+  transition: background 1.2s;
+  background: #000;
+  height: 100vh;
+}
+
+<div>
+  <section
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div>
+        Apple
+      </div>
+    </div>
+    <div
+      class="c1"
+    >
+      <div>
+        Banana
+      </div>
+    </div>
+  </section>
+</div>
+`;

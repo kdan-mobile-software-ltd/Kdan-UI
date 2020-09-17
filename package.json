@@ -9,7 +9,7 @@
     "storybook": "build-storybook -o storybook-build",
     "build": "rm -rf ./dist && rollup -c",
     "lint:fix": "eslint --fix --ext .js,.jsx .",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "scaffold": "node ./tools/scaffold-component.js"
   },
   "husky": {
@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "@styled-system/prop-types": "^5.1.5",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-portal": "^4.2.1",
