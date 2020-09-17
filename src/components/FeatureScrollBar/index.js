@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { BarOuter, Bar } from './styled';
 
 const FeatureScrollBar = ({ max, now, isFixed, top, left, right }) => {
-  const [value, setValue] = useState(0);
+  const [height, setHeight] = useState(0);
   useEffect(() => {
     if (now <= max && now >= 0) {
-      setValue((now / max) * 100);
+      setHeight((now / max) * 100);
     }
   }, [now]);
 
   return (
     <BarOuter isFixed={isFixed} top={top} left={left} right={right}>
-      <Bar value={value} />
+      <Bar data-testid='bar' barHeight={height} />
     </BarOuter>
   );
 };

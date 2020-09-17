@@ -25,7 +25,7 @@ export const BarOuter = styled.div`
 
 export const Bar = styled.div`
   width: 6px;
-  height: ${({ value }) => value + '%'};
+  height: ${({ barHeight }) => barHeight + '%'};
   transition: height 0.8s;
   border: 0 solid ${colors.white};
   border-radius: 10px;

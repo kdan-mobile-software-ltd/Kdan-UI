@@ -25,7 +25,7 @@ exports[`FeatureScrollBar basic 1`] = `
   >
     <div
       class="c1"
-      value="33.33333333333333"
+      data-testid="bar"
     />
   </div>
 </div>
