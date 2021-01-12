@@ -1,34 +1,8 @@
-# Kdan UI
+<p align="center">
+  <img src="https://uploaddeimagens.com.br/images/002/705/273/full/rts.png?1592061852" height="150" alt="rts" />
 
-凱鈿前端 UI components.
+# Kdan UI Storybook with ReactJS TypeScript
 
-[![NPM](https://img.shields.io/npm/v/kdan-ui.svg)](https://www.npmjs.com/package/kdan-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+## About
 
-## Install
-
-Yarn
-
-```bash
-$ yarn add kdan-ui
-```
-
-Npm
-
-```bash
-$ npm install kdan-ui
-```
-
-## Usage
-
-```js
-import React from 'react';
-import { LanguageBar } from 'kdan-ui';
-
-const App = ({ options, value }) => {
-  return <LanguageBar options={options} value={value} />;
-};
-```
-
-## License
-
-MIT © Kdan Mobile Software
+## Start
