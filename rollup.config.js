@@ -1,41 +1,48 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import external from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
-import resolve from '@rollup/plugin-node-resolve';
+import typescript from "rollup-plugin-typescript2";
+import nodeResolve from "@rollup/plugin-node-resolve";
 import image from '@rollup/plugin-image';
-import { terser } from 'rollup-plugin-terser';
-import pkg from './package.json';
+import { terser } from "rollup-plugin-terser";
 
-export default {
-  input: './src/index.js',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: true
-    },
-    {
+import pkg from "./package.json";
+
+const extensions = [".js", ".jsx", ".ts", ".tsx"];
+const input = "src/index.ts";
+const external = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {}),
+];
+
+const plugins = [
+  typescript({
+    typescript: require("typescript"),
+  }),
+  nodeResolve({
+    extensions,
+    modulesOnly: true,
+  }),
+  image(),
+  terser(),
+];
+
+export default [
+  {
+    input,
+    output: {
       file: pkg.module,
-      format: 'es',
-      sourcemap: true
-    }
-  ],
-  external: [
-    ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {})
-  ],
-  plugins: [
-    external(),
-    postcss(),
-    babel({
-      exclude: 'node_modules/**'
-    }),
-    resolve(),
-    commonjs({
-      include: ['node_modules/**']
-    }),
-    image(),
-    terser()
-  ]
-};
+      format: "esm",
+      sourcemap: true,
+    },
+    plugins,
+    external,
+  },
+  {
+    input,
+    output: {
+      file: pkg.main,
+      format: "cjs",
+      sourcemap: true,
+    },
+    plugins,
+    external,
+  },
+];

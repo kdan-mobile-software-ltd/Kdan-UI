@@ -1,12 +1,12 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "extends": [
-    "standard",
-    "standard-react",
+    "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
     "prettier/standard",
     "prettier/react",
-    "plugin:testing-library/react"
+    "prettier/@typescript-eslint"
   ],
   "env": {
     "node": true,
@@ -14,7 +14,7 @@
   },
   "plugins": [
     "prettier",
-    "testing-library"
+    "@typescript-eslint"
   ],
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -27,16 +27,5 @@
     "react": {
       "version": "16"
     }
-  },
-  "rules": {
-    "space-before-function-paren": 0,
-    "react/prop-types": 0,
-    "react/jsx-handler-names": 0,
-    "react/jsx-fragments": 0,
-    "react/no-unused-prop-types": 0,
-    "import/export": 0,
-    "testing-library/await-async-query": "error",
-    "testing-library/no-await-sync-query": "error",
-    "testing-library/no-debug": "warn"
   }
 }
