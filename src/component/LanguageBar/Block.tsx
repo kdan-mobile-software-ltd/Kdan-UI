@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-import { BlockWrapper, Arrow } from './styled';
+import { BlockWrapper, Arrow } from "./styled";
 
 type Props = {
   value: React.ReactNode;
@@ -14,10 +13,12 @@ type Props = {
 const Block: React.FC<Props> = ({
   value,
   isItem = false,
-  onChange = () => {},
+  onChange = () => {
+    // do something
+  },
   isOpen = false,
   theme,
-}) => {
+}: Props) => {
   return (
     <BlockWrapper isItem={isItem} onClick={onChange} theme={theme}>
       {value}

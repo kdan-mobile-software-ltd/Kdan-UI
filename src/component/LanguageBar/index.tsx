@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { BarWrapper, Menu } from './styled';
+import { BarWrapper, Menu } from "./styled";
 
-import Block from './Block';
-import ClickAwayListener from '../ClickAwayListener';
+import Block from "./Block";
+import ClickAwayListener from "../ClickAwayListener";
 
 type OptionType = {
   key: string | number;
@@ -14,7 +14,7 @@ type Props = {
   options: OptionType[];
   value: React.ReactNode;
   onChange?: (value: OptionType) => void;
-  theme?: 'default' | 'dark';
+  theme?: "default" | "dark";
 };
 
 const LanguageBar: React.FC<Props> = ({
@@ -23,7 +23,7 @@ const LanguageBar: React.FC<Props> = ({
   onChange = () => {
     // do something;
   },
-  theme = 'default'
+  theme = "default",
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(defaultValue);
@@ -53,11 +53,7 @@ const LanguageBar: React.FC<Props> = ({
             />
           ))}
         </Menu>
-        <Block
-          value={value}
-          theme={theme}
-          isOpen={isOpen}
-        />
+        <Block value={value} theme={theme} isOpen={isOpen} />
       </BarWrapper>
     </ClickAwayListener>
   );
