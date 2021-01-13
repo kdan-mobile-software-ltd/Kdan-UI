@@ -1,6 +1,6 @@
 import typescript from "rollup-plugin-typescript2";
 import nodeResolve from "@rollup/plugin-node-resolve";
-import image from '@rollup/plugin-image';
+import image from "@rollup/plugin-image";
 import { terser } from "rollup-plugin-terser";
 
 import pkg from "./package.json";

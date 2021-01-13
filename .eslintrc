@@ -12,10 +12,7 @@
     "node": true,
     "jest": true
   },
-  "plugins": [
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "plugins": ["prettier", "@typescript-eslint"],
   "parserOptions": {
     "ecmaVersion": 2020,
     "ecmaFeatures": {
@@ -27,5 +24,15 @@
     "react": {
       "version": "16"
     }
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": false,
+        "jsxSingleQuote": false,
+        "trailingComma": "all"
+      }
+    ]
   }
 }

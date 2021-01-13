@@ -1,3 +1,3 @@
 export default {
-  bar_height: 168
+  bar_height: 168,
 };

@@ -1,0 +1,12 @@
+dist/
+coverage/
+node_modules/
+build/
+.snapshots/
+*.min.js
+rollup.config.js
+prettier.config.js
+package.json
+tsconfig.json
+yarn.lock
+.*

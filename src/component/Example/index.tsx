@@ -5,7 +5,7 @@ type Props = {
   title: string;
 };
 
-const Component: React.FC<Props> = ({ children, title }) => {
+const Component: React.FC<Props> = ({ children, title }: Props) => {
   return (
     <div>
       <div>{title}</div>
