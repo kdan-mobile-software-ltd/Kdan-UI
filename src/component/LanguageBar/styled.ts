@@ -1,25 +1,39 @@
-import styled, { css } from 'styled-components';
-import { colors } from '../../themes';
+import styled, { css, CSSObject } from "styled-components";
+import { colors } from "../../themes";
 
-const themeHub: Record<string, any> = {
+type Theme = "default" | "dark";
+
+type StyleType = {
+  borderTop: string;
+  color: string;
+  backgroundColor: string;
+  hover: CSSObject;
+};
+
+type ThemeHubType = {
+  default: StyleType;
+  dark: StyleType;
+};
+
+const themeHub: ThemeHubType = {
   default: {
-    borderTop: `5px solid ${colors.black}`,
-    color: 'rgb(64, 64, 64)',
-    backgroundColor: colors.white,
+    borderTop: `5px solid ${colors.N100}`,
+    color: "rgb(64, 64, 64)",
+    backgroundColor: colors.N0,
     hover: {
-      color: 'rgb(64, 64, 64)',
-      backgroundColor: '#e6e6e6'
-    }
+      color: "rgb(64, 64, 64)",
+      backgroundColor: "#e6e6e6",
+    },
   },
   dark: {
-    borderTop: `5px solid ${colors.white}`,
-    color: colors.white,
-    backgroundColor: colors.bunting,
+    borderTop: `5px solid ${colors.N0}`,
+    color: colors.N0,
+    backgroundColor: colors.N85,
     hover: {
-      color: colors.bunting,
-      backgroundColor: 'rgba(0, 0, 0, 0.1)'
-    }
-  }
+      color: colors.N85,
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
+    },
+  },
 };
 
 export const BarWrapper = styled.div`
@@ -30,7 +44,7 @@ export const BarWrapper = styled.div`
   font-size: 0.8125rem;
 `;
 
-const BlockStyle = ({ isItem, theme }: { isItem: boolean, theme: string }) => {
+const BlockStyle = ({ isItem, theme }: { isItem: boolean; theme: Theme }) => {
   if (isItem) {
     return css`
       &:first-child {
@@ -85,23 +99,24 @@ export const BlockWrapper = styled.div`
   font-size: 14px;
   cursor: pointer;
 
-  color: ${({ theme }) => themeHub[theme].color};
-  background-color: ${({ theme }) => themeHub[theme].backgroundColor};
+  color: ${({ theme }: { theme: Theme }) => themeHub[theme].color};
+  background-color: ${({ theme }: { theme: Theme }) =>
+    themeHub[theme].backgroundColor};
 
   ${BlockStyle};
 
   ${Arrow} {
-    border-top: ${({ theme }) => themeHub[theme].borderTop};
+    border-top: ${({ theme }: { theme: Theme }) => themeHub[theme].borderTop};
   }
 `;
 
 export const Menu = styled.div<{ isOpen: boolean }>`
   position: absolute;
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   bottom: calc(100% + 3px);
   left: 50%;
   transform: translateX(-50%);
-  background: ${colors.white};
+  background: ${colors.N0};
   border-radius: 4px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 `;

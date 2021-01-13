@@ -43,15 +43,16 @@ const LanguageBar: React.FC<Props> = ({
     <ClickAwayListener onClick={handleClickAway}>
       <BarWrapper onClick={() => setIsOpen(!isOpen)} data-testid="languageBar">
         <Menu isOpen={isOpen}>
-          {options.map((option, index) => (
-            <Block
-              theme={theme}
-              isItem
-              key={`${index}-${option.key}`}
-              value={option.value}
-              onChange={() => onChangeHandle(option)}
-            />
-          ))}
+          {options &&
+            options.map((option, index) => (
+              <Block
+                theme={theme}
+                isItem
+                key={`${index}-${option.key}`}
+                value={option.value}
+                onChange={() => onChangeHandle(option)}
+              />
+            ))}
         </Menu>
         <Block value={value} theme={theme} isOpen={isOpen} />
       </BarWrapper>

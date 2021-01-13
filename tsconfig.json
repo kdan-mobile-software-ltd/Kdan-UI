@@ -63,5 +63,7 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["src/**/*", ".storybook/*"]
+  "files": ["custom.d.ts"],
+  "include": ["src/**/*", ".storybook/*"],
+  "exclude": ["node_modules"]
 }

@@ -57,18 +57,11 @@ export default {
   },
 };
 
-type Args = {
-  theme: "default" | "dark" | undefined;
-  value: string;
-  options: OptionType[];
-  onChange: () => void;
-};
-
-export const Base = (
-  args: Args = {
-    theme: "default",
-    value: "English",
-    options: langLabels,
-    onChange: action("onChange"),
-  }
-): React.ReactNode => <LanguageBar {...args} />;
+export const Base = (): React.ReactNode => (
+  <LanguageBar
+    theme="default"
+    value="English"
+    options={langLabels}
+    onChange={action("onChange")}
+  />
+);

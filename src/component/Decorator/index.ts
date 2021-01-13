@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { colors } from '../../themes';
+import styled, { css } from "styled-components";
+import { colors } from "../../themes";
 
-type sizeType = 'middle';
+type sizeType = "middle";
 
 const styleType = {
   middle: css`
@@ -9,7 +9,7 @@ const styleType = {
     justify-content: center;
     align-items: center;
     height: 100vh;
-  `
+  `,
 };
 
 export const Container = styled.div`
@@ -20,6 +20,6 @@ export const Container = styled.div`
 
 export const ContentStyle = styled.div`
   width: 60%;
-  background: ${colors.white};
+  background: ${colors.N0};
   padding: 2rem 1.5rem;
 `;
