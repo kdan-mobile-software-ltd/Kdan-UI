@@ -1,5 +1,5 @@
 import styled, { css, CSSObject } from "styled-components";
-import { colors } from "../../themes";
+import { colors } from "../themes";
 
 type Theme = "default" | "dark";
 

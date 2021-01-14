@@ -1,11 +1,11 @@
 import React from "react";
 
-type Props = {
+export type ExampleProps = {
   children: React.ReactNode;
   title: string;
 };
 
-const Component: React.FC<Props> = ({ children, title }: Props) => {
+const Example: React.FC<ExampleProps> = ({ children, title }: ExampleProps) => {
   return (
     <div>
       <div>{title}</div>
@@ -14,4 +14,4 @@ const Component: React.FC<Props> = ({ children, title }: Props) => {
   );
 };
 
-export default Component;
+export default Example;

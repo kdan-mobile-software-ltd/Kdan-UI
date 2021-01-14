@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from "react";
 
-type Props = {
+export type ClickAwayListenerProps = {
   onClick: (event: MouseEvent | TouchEvent) => void;
   mouseEvent?: "click" | "mousedown" | "mouseup" | false;
   touchEvent?: "touchend" | "touchstart" | false;
   children: React.ReactNode;
 };
 
-const ClickAwayListener: React.FC<Props> = ({
+const ClickAwayListener: React.FC<ClickAwayListenerProps> = ({
   onClick,
   mouseEvent = "click",
   touchEvent = "touchend",
   children,
   ...props
-}: Props) => {
+}: ClickAwayListenerProps) => {
   const node = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

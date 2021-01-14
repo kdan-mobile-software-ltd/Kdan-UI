@@ -5,26 +5,26 @@ import { BarWrapper, Menu } from "./styled";
 import Block from "./Block";
 import ClickAwayListener from "../ClickAwayListener";
 
-type OptionType = {
+export type OptionType = {
   key: string | number;
   value: React.ReactNode;
 };
 
-type Props = {
+export type LanguageBarProps = {
   options: OptionType[];
   value: React.ReactNode;
   onChange?: (value: OptionType) => void;
   theme?: "default" | "dark";
 };
 
-const LanguageBar: React.FC<Props> = ({
+const LanguageBar: React.FC<LanguageBarProps> = ({
   options,
   value: defaultValue,
   onChange = () => {
     // do something;
   },
   theme = "default",
-}: Props) => {
+}: LanguageBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(defaultValue);
 

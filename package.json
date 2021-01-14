@@ -1,11 +1,14 @@
 {
-  "name": "Kdan-UI",
+  "name": "@kdanmobile/kdan-ui",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "npm run build:clean && npm run build:ts",
+    "build": "yarn build:clean && yarn build:ts",
     "build:ts": "npx rollup -c",
     "build:clean": "rm -rf ./dist/*",
     "test": "jest --coverage",
@@ -32,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-image": "^2.0.6",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "@storybook/addon-actions": "^6.1.11",
@@ -64,7 +68,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
-    "rollup": "^2.2.0",
+    "rollup": "2.36.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.27.0",
     "styled-components": "^5.2.1",
@@ -72,7 +77,9 @@
     "typescript": "4.1.2"
   },
   "peerDependencies": {
-    "react": "^16.13.1"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.2.1"
   },
   "jest": {
     "transform": {

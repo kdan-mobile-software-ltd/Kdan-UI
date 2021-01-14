@@ -16,19 +16,46 @@ Kdan mobile UI Storybook with ReactJS TypeScript.
 
 ---
 
-## Start
+### installation
+
+```
+npm install @kdanmobile/kdan-ui
+or
+yarn add @kdanmobile/kdan-ui
+```
+
+## How to use
+
+```
+<!-- Normal -->
+import { Example } from '@kdanmobile/kdan-ui';
+```
+
+```
+<!-- Code splitting -->
+import Example from '@kdanmobile/kdan-ui/dist/Example';
+```
+
+## Start dev
 
 Watch
 
-> yarn storybook
+```
+yarn storybook
+```
 
 Build
 
-> yarn build
+```
+yarn build
+```
 
 Test
 
-> yarn test
+```
+yarn test
+```
+
 ---
 
 ## Deployment
@@ -37,10 +64,16 @@ Uses Chromatic, a free publishing service made by the Storybook maintainers. It 
 
 Now that our project is hosted in a GitHub repository, we can use a continuous integration(CI) service to deploy our Storybook automatically.
 
-> git add .
+```
+git add .
+```
 
-> git commit -m "GitHub action setup"
+```
+git commit -m "GitHub action setup"
+```
 
-> git push origin master
+```
+git push origin master
+```
 
 Once you’ve set up the GitHub action. Your Storybook will be deployed to Chromatic whenever you push code.
