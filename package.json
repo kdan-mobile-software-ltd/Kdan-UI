@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "type-check": "tsc --pretty --noEmit",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token 2oo11ukn9io"
   },
   "author": "Kdanmobile",
   "license": "MIT",
@@ -48,6 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "@typescript-eslint/parser": "^4.13.0",
     "babel-loader": "^8.1.0",
+    "chromatic": "^5.6.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",

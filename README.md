@@ -6,9 +6,15 @@
 
 # Kdan UI Kit
 
+[online preview](https://5ffed3d9e0d3f0002185cee9-zgehbdsrnz.chromatic.com/?path=/story/welcome--page)
+
+---
+
 ## About
 
 Kdan mobile UI Storybook with ReactJS TypeScript.
+
+---
 
 ## Start
 
@@ -23,3 +29,18 @@ Build
 Test
 
 > yarn test
+---
+
+## Deployment
+
+Uses Chromatic, a free publishing service made by the Storybook maintainers. It allows us to deploy and host our Storybook safely and securely in the cloud.
+
+Now that our project is hosted in a GitHub repository, we can use a continuous integration(CI) service to deploy our Storybook automatically.
+
+> git add .
+
+> git commit -m "GitHub action setup"
+
+> git push origin master
+
+Once you’ve set up the GitHub action. Your Storybook will be deployed to Chromatic whenever you push code.
