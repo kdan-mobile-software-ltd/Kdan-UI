@@ -5,10 +5,10 @@ type sizeType = "middle";
 
 const styleType = {
   middle: css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 3rem;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
   `,
 };
 

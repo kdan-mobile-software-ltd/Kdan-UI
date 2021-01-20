@@ -1,30 +1,34 @@
 import commonjs from "@rollup/plugin-commonjs";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from "rollup-plugin-typescript2";
-// import nodeResolve from "@rollup/plugin-node-resolve";
+import nodeResolve from "@rollup/plugin-node-resolve";
 import image from "@rollup/plugin-image";
-import { terser } from "rollup-plugin-terser";
+import { uglify } from "rollup-plugin-uglify";
+import copy from "rollup-plugin-copy";
+
 
 import pkg from "./package.json";
 
-// const extensions = [".js", ".jsx", ".ts", ".tsx"];
 const input = [
   "src/index.ts",
-  "src/Example/index.tsx",
   "src/ClickAwayListener/index.tsx",
-  "src/LanguageBar/index.tsx"
+  "src/LanguageBar/index.tsx",
+  "src/Typography/index.tsx"
 ];
 
 const plugins = [
   peerDepsExternal(),
-  // nodeResolve({
-  //   extensions,
-  //   modulesOnly: true,
-  // }),
+  copy({
+    targets: [
+      { src: './src/assets/fonts/dist/*', dest: './dist/fonts' },
+      { src: './src/assets/images/*', dest: './dist/images' }
+    ]
+  }),
+  nodeResolve(),
   image(),
   commonjs(),
   typescript({ useTsconfigDeclarationDir: true }),
-  terser(),
+  uglify(),
 ];
 
 export default {
@@ -32,7 +36,6 @@ export default {
   output: [
     {
       dir: 'dist',
-      // file: pkg.main,
       format: "cjs",
       sourcemap: true,
       exports: 'auto',

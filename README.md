@@ -19,24 +19,14 @@ Kdan mobile UI Storybook with ReactJS TypeScript.
 ### installation
 
 ```
-npm install @kdanmobile/kdan-ui
+npm install @kdanmobile/kdan-ui styled-components
 or
-yarn add @kdanmobile/kdan-ui
+yarn add @kdanmobile/kdan-ui styled-components
 ```
 
-## How to use
+---
 
-```
-<!-- Normal -->
-import { Example } from '@kdanmobile/kdan-ui';
-```
-
-```
-<!-- Code splitting -->
-import Example from '@kdanmobile/kdan-ui/dist/Example';
-```
-
-## Start dev
+## Quick Start
 
 Watch
 
@@ -54,6 +44,26 @@ Test
 
 ```
 yarn test
+```
+
+---
+
+## How to use
+
+in pages/_app.js
+```
+<!-- import fonts css -->
+import '@kdanmobile/kdan-ui/dist/fonts/clear-sans.css';
+```
+
+```
+<!-- Normal -->
+import { Example } from '@kdanmobile/kdan-ui';
+```
+
+```
+<!-- Code splitting -->
+import Example from '@kdanmobile/kdan-ui/dist/Example';
 ```
 
 ---

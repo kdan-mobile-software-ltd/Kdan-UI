@@ -1,12 +1,19 @@
 {
   "name": "@kdanmobile/kdan-ui",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "version": "1.0.1",
+  "description": "UI components for kdan modern web",
+  "keywords": [
+    "react",
+    "styled-components",
+    "components"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "browser": "dist/index.cjs.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "yarn build:clean && yarn build:ts",
     "build:ts": "npx rollup -c",
@@ -65,20 +72,21 @@
     "jest-styled-components": "^7.0.3",
     "lint-staged": "^10.5.3",
     "prettier": "^2.0.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-is": "^16.13.1",
     "rollup": "2.36.1",
+    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.27.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "styled-components": "^5.2.1",
     "ts-jest": "26.4.4",
     "typescript": "4.1.2"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "styled-components": "^5.2.1"
   },
   "jest": {

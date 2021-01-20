@@ -1,17 +1,18 @@
-import Example from "./Example";
-import { ExampleProps } from "./Example";
+import ClickAwayListener, { ClickAwayListenerProps } from "./ClickAwayListener";
 
-import ClickAwayListener from "./ClickAwayListener";
-import { ClickAwayListenerProps } from "./ClickAwayListener";
+import LanguageBar, { LanguageBarProps } from "./LanguageBar";
 
-import LanguageBar from "./LanguageBar";
-import { LanguageBarProps } from "./LanguageBar";
+import Typography, { TypographyProps } from "./Typography";
+
+// import Button, { ButtonProps } from "./Button";
 
 export {
-  Example,
-  ExampleProps,
   ClickAwayListener,
   ClickAwayListenerProps,
   LanguageBar,
   LanguageBarProps,
+  Typography,
+  TypographyProps,
+  // Button,
+  // ButtonProps,
 };

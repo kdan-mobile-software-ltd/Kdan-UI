@@ -112,7 +112,9 @@ exports[`Language Bar basic 1`] = `
 }
 
 <div>
-  <div>
+  <div
+    style="display: inline-block;"
+  >
     <div
       class="c0"
       data-testid="languageBar"

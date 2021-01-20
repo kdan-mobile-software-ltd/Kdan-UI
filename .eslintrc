@@ -33,6 +33,7 @@
         "jsxSingleQuote": false,
         "trailingComma": "all"
       }
-    ]
+    ],
+    "react/display-name": "off"
   }
 }
