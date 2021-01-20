@@ -5,6 +5,8 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import image from "@rollup/plugin-image";
 import { uglify } from "rollup-plugin-uglify";
 import copy from "rollup-plugin-copy";
+import svgr from "@svgr/rollup";
+import url from "@rollup/plugin-url";
 
 
 import pkg from "./package.json";
@@ -13,7 +15,9 @@ const input = [
   "src/index.ts",
   "src/ClickAwayListener/index.tsx",
   "src/LanguageBar/index.tsx",
-  "src/Typography/index.tsx"
+  "src/Typography/index.tsx",
+  "src/Button/index.tsx",
+  "src/Logo/index.tsx"
 ];
 
 const plugins = [
@@ -28,6 +32,8 @@ const plugins = [
   image(),
   commonjs(),
   typescript({ useTsconfigDeclarationDir: true }),
+  url(),
+  svgr(),
   uglify(),
 ];
 

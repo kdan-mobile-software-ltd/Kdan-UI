@@ -6,7 +6,7 @@
 
 # Kdan UI Kit
 
-[online preview](https://5ffed3d9e0d3f0002185cee9-zgehbdsrnz.chromatic.com/?path=/story/welcome--page)
+[online preview](https://www.chromatic.com/builds?appId=5ffed3d9e0d3f0002185cee9)
 
 ---
 
@@ -50,7 +50,8 @@ yarn test
 
 ## How to use
 
-in pages/_app.js
+in pages/\_app.js
+
 ```
 <!-- import fonts css -->
 import '@kdanmobile/kdan-ui/dist/fonts/clear-sans.css';

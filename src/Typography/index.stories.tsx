@@ -48,6 +48,7 @@ export const Basic = (): React.ReactNode => (
     <Typography variant="body2">Body 2</Typography>
   </>
 );
+
 export const CustomContent = (args: Args): React.ReactNode => (
   <Typography {...args} />
 );

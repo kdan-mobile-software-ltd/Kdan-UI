@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="40" viewBox="0 0 36 40">
+    <defs>
+        <path id="gppb7vvvta" d="M0.062 0.431L4.137 0.431 4.137 4.5 0.062 4.5z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <path fill="#00A89B" d="M17.207 35.547c.464-.576 1.135-.978 1.9-1.094V1.173C19.106.44 18.503 0 17.921 0c-.214 0-.53.06-.816.345L.344 17.062c-.222.221-.344.515-.344.828 0 .313.122.607.343.828l16.763 16.738c.033.034.067.064.101.091" transform="translate(-16 -15) translate(16 15)"/>
+                <g transform="translate(-16 -15) translate(16 15) translate(17.462 34.964)">
+                    <mask id="bgy42pymjb" fill="#fff">
+                        <use xlink:href="#gppb7vvvta"/>
+                    </mask>
+                    <path fill="#878787" d="M2.1.431C.976.431.062 1.344.062 2.466.062 3.587.976 4.5 2.1 4.5c1.123 0 2.037-.913 2.037-2.034C4.137 1.344 3.223.43 2.1.43" mask="url(#bgy42pymjb)"/>
+                </g>
+                <path fill="#96D200" d="M35.76 18.72c-.145-.35-.505-.723-1.082-.723h-14.59v16.139l15.419-14.142c.407-.408.398-.925.253-1.275" transform="translate(-16 -15) translate(16 15)"/>
+            </g>
+        </g>
+    </g>
+</svg>

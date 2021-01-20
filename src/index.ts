@@ -4,7 +4,9 @@ import LanguageBar, { LanguageBarProps } from "./LanguageBar";
 
 import Typography, { TypographyProps } from "./Typography";
 
-// import Button, { ButtonProps } from "./Button";
+import Button, { ButtonProps } from "./Button";
+
+import Logo, { LogoProps } from "./Logo";
 
 export {
   ClickAwayListener,
@@ -13,6 +15,8 @@ export {
   LanguageBarProps,
   Typography,
   TypographyProps,
-  // Button,
-  // ButtonProps,
+  Button,
+  ButtonProps,
+  Logo,
+  LogoProps,
 };

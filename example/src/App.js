@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import Example from '@kdanmobile/kdan-ui/dist/Example';
+import { Logo } from '@kdanmobile/kdan-ui';
 
 const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Example title="example">description</Example>
+        <Logo variant="combine" />
       </header>
     </div>
   );

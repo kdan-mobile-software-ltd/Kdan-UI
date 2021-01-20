@@ -39,4 +39,6 @@ export default {
   B50: "#0077e9",
   B80: "#284a7d",
   B90: "#01396f",
+
+  Y50: "#ffcb31",
 } as { [key: string]: string };
