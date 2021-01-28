@@ -1,19 +1,19 @@
 import commonjs from "@rollup/plugin-commonjs";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from "rollup-plugin-typescript2";
-import nodeResolve from "@rollup/plugin-node-resolve";
+// import nodeResolve from "@rollup/plugin-node-resolve";
 import image from "@rollup/plugin-image";
 import { uglify } from "rollup-plugin-uglify";
 import copy from "rollup-plugin-copy";
 import svgr from "@svgr/rollup";
 import url from "@rollup/plugin-url";
 
-
 import pkg from "./package.json";
 
 const input = [
   "src/index.ts",
   "src/ClickAwayListener/index.tsx",
+  "src/Portal/index.tsx",
   "src/LanguageBar/index.tsx",
   "src/Typography/index.tsx",
   "src/Button/index.tsx",
@@ -28,7 +28,7 @@ const plugins = [
       { src: './src/assets/images/*', dest: './dist/images' }
     ]
   }),
-  nodeResolve(),
+  // nodeResolve(),
   image(),
   commonjs(),
   typescript({ useTsconfigDeclarationDir: true }),

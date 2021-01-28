@@ -6,3 +6,14 @@ declare module "*.svg" {
   const src: string;
   export default src;
 }
+
+type CoordinatesType = {
+  top?: number;
+  left?: number;
+  bottom?: number;
+  right?: number;
+};
+
+type CoordNameType = "left" | "right" | "top" | "bottom";
+
+type PositionType = "bottom left" | "bottom right" | "bottom center";

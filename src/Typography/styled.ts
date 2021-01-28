@@ -54,63 +54,75 @@ const buildVariant = (
 
 const variants: { [key: string]: string } = {
   h1: buildVariant(
-    fontWeight.medium,
-    { laptop: 56, tablet: 42, mobileS: 28 },
-    1.167,
+    fontWeight.bold,
+    { laptop: 56, tablet: 48, mobileS: 28 },
+    1.1,
     -1.5
   ),
   h2: buildVariant(
-    fontWeight.medium,
-    { laptop: 42, tablet: 34, mobileS: 24 },
-    1.2,
+    fontWeight.bold,
+    { laptop: 48, tablet: 32, mobileS: 26 },
+    1.1,
     -0.5
   ),
   h3: buildVariant(
-    fontWeight.medium,
-    { laptop: 32, tablet: 28, mobileS: 20 },
-    1.167,
+    fontWeight.bold,
+    { laptop: 32, tablet: 28, mobileS: 22 },
+    1.1,
     0
   ),
   h4: buildVariant(
-    fontWeight.medium,
-    { laptop: 32, tablet: 28, mobileS: 20 },
-    1.235,
+    fontWeight.bold,
+    { laptop: 28, tablet: 22, mobileS: 18 },
+    1.2,
     0.25
   ),
   h5: buildVariant(
-    fontWeight.regular,
-    { laptop: 30, tablet: 26, mobileS: 20 },
-    1.334,
+    fontWeight.bold,
+    { laptop: 22, tablet: 18, mobileS: 18 },
+    1.2,
     0
   ),
   h6: buildVariant(
-    fontWeight.regular,
-    { laptop: 28, tablet: 24, mobileS: 20 },
-    1.6,
+    fontWeight.bold,
+    { laptop: 18, tablet: 18, mobileS: 18 },
+    1.2,
     0.15
   ),
   subtitle1: buildVariant(
-    fontWeight.regular,
-    { tablet: 18, mobileS: 16 },
-    1.75,
+    fontWeight.bold,
+    { laptop: 20, tablet: 20, mobileS: 20 },
+    1.2,
     0.15
   ),
-  subtitle2: buildVariant(
-    fontWeight.medium,
-    { tablet: 16, mobileS: 14 },
-    1.57,
-    0.1
-  ),
-  body1: buildVariant(
+  b1: buildVariant(
     fontWeight.regular,
-    { tablet: 16, mobileS: 14 },
+    { laptop: 24, tablet: 18, mobileS: 16 },
+    1.4,
+    0.15
+  ),
+  b2: buildVariant(
+    fontWeight.regular,
+    { laptop: 18, tablet: 16, mobileS: 16 },
+    1.4,
+    0.15
+  ),
+  b3: buildVariant(
+    fontWeight.regular,
+    { laptop: 16, tablet: 14, mobileS: 14 },
+    1.4,
+    0.15
+  ),
+  b4: buildVariant(
+    fontWeight.regular,
+    { laptop: 14, tablet: 14, mobileS: 14 },
+    1.4,
+    0.15
+  ),
+  caption: buildVariant(
+    fontWeight.regular,
+    { laptop: 12, tablet: 12, mobileS: 12 },
     1.5,
-    0.15
-  ),
-  body2: buildVariant(
-    fontWeight.regular,
-    { tablet: 14, mobileS: 12 },
-    1.43,
     0.15
   ),
 };
@@ -125,9 +137,11 @@ const TypographyRoot = styled.div`
     variant,
   }: TypographyProps) => `
     text-align: ${align};
-    color: ${color && color !== "inherit" ? colors[color] : "inherit"};
+    color: ${(color && colors[color]) || color};
     margin-bottom: ${paragraph ? "16px" : ""};
     display: ${display};
+    margin: 0;
+
     ${
       noWrap
         ? `

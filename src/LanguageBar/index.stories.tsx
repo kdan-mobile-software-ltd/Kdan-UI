@@ -45,7 +45,7 @@ export default {
   component: LanguageBar,
   decorators: [
     (story: () => React.ReactNode): React.ReactNode => (
-      <Container size="middle">{story()}</Container>
+      <Container padding>{story()}</Container>
     ),
   ],
   parameters: {

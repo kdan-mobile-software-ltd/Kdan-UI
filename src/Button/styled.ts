@@ -1,9 +1,10 @@
 import styled, { keyframes } from "styled-components";
+import { rgba } from "polished";
 
 import { ButtonProps } from "./index";
 import fonts from "../themes/fonts";
 import colors from "../themes/colors";
-import { pxToRem, hexToRGBA } from "../helpers/utility";
+import { pxToRem } from "../helpers/utility";
 
 const buildTheme = (color = "default", variant = "contained") => {
   if (color === "default" && variant === "contained") {
@@ -13,7 +14,7 @@ const buildTheme = (color = "default", variant = "contained") => {
 
       :hover {
         color: ${colors.N0};
-        background-color: ${hexToRGBA(colors.N100, 0.7)};
+        background-color: ${rgba(colors.N100, 0.7)};
       }
     `;
   } else if (color === "light" && variant === "contained") {
@@ -23,7 +24,7 @@ const buildTheme = (color = "default", variant = "contained") => {
 
       :hover {
         color: ${colors.N100};
-        background-color: ${hexToRGBA(colors.N100, 0.1)};
+        background-color: ${rgba(colors.N100, 0.1)};
       }
     `;
   } else if (color === "default" && variant === "outlined") {
@@ -42,7 +43,7 @@ const buildTheme = (color = "default", variant = "contained") => {
       background-color: inherit;
 
       :hover {
-        color: ${hexToRGBA(colors.N100, 0.7)};
+        color: ${rgba(colors.N100, 0.7)};
       }
     `;
   } else if (color === "brand" && variant === "text") {
@@ -51,7 +52,7 @@ const buildTheme = (color = "default", variant = "contained") => {
       background-color: inherit;
 
       :hover {
-        color: ${hexToRGBA(colors.brand, 0.7)};
+        color: ${rgba(colors.brand, 0.7)};
       }
     `;
   } else if (color === "cheese" && variant === "contained") {
@@ -60,8 +61,12 @@ const buildTheme = (color = "default", variant = "contained") => {
       background-color: ${colors.Y50};
       
       :hover {
-        background-color: ${hexToRGBA(colors.Y50, 0.7)};
+        background-color: ${rgba(colors.Y50, 0.7)};
       }
+    `;
+  } else if (color && !colors[color]) {
+    return `
+      background-color: ${color};
     `;
   }
 };
@@ -70,17 +75,14 @@ const buildSize = (size = "medium") => {
   if (size === "small") {
     return `
       font-size: ${pxToRem(14)};
-      padding: 4px 10px;
     `;
   } else if (size === "medium") {
     return `
       font-size: ${pxToRem(15)};
-      padding: 6px 16px;
     `;
   } else {
     return `
       font-size: ${pxToRem(16)};
-      padding: 8px 22px;
     `;
   }
 };
@@ -160,13 +162,24 @@ export const ButtonRoot = styled.div`
   overflow: hidden;
   display: inline-block;
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
+  height: fit-content;
 
-  ${({ size, variant, color, disabled }: ButtonProps) =>
+  ${({ size, variant, color, disabled, href }: ButtonProps) =>
     `
     ${buildSize(size)}
     ${buildVariant(size, variant)}
     ${!disabled ? buildTheme(color, variant) : ""}
     ${buildDisabled(disabled)}
+    ${
+      href
+        ? `
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      `
+        : ""
+    }
   `}
 
   :focus:not(:active) span::after {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.span`
-  display: inline-block;
+export const Wrapper = styled.a`
+  display: inline-flex;
 `;
