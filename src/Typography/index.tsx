@@ -10,16 +10,20 @@ const variantMapping = {
   h5: "h5",
   h6: "h6",
   subtitle1: "h6",
-  subtitle2: "h6",
-  body1: "p",
-  body2: "p",
+  b1: "p",
+  b2: "p",
+  b3: "p",
+  b4: "p",
+  caption: "p",
   inherit: "p",
 };
 
 export type TypographyProps = {
   variant:
-    | "body1"
-    | "body2"
+    | "b1"
+    | "b2"
+    | "b3"
+    | "b4"
     | "h1"
     | "h2"
     | "h3"
@@ -28,7 +32,8 @@ export type TypographyProps = {
     | "h6"
     | "inherit"
     | "subtitle1"
-    | "subtitle2";
+    | "caption";
+  component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   paragraph?: boolean;
   color?: "inherit" | "brand" | "primary" | "secondary" | string;
   align?: "center" | "inherit" | "justify" | "left" | "right";
@@ -43,7 +48,8 @@ export type RefType = HTMLDivElement;
 const Typography = React.forwardRef<RefType, TypographyProps>(
   (
     {
-      variant = "body1",
+      component,
+      variant = "b1",
       color = "inherit",
       align = "inherit",
       children,
@@ -54,7 +60,8 @@ const Typography = React.forwardRef<RefType, TypographyProps>(
     }: TypographyProps,
     ref
   ) => {
-    const component = (paragraph ? "p" : variantMapping[variant]) || "span";
+    const htmlElement =
+      component || (paragraph ? "p" : variantMapping[variant]) || "span";
 
     const styleProps = {
       variant,
@@ -66,7 +73,7 @@ const Typography = React.forwardRef<RefType, TypographyProps>(
     };
 
     return (
-      <TypographyRoot as={component as never} ref={ref} {...styleProps}>
+      <TypographyRoot as={htmlElement as never} ref={ref} {...styleProps}>
         {children}
       </TypographyRoot>
     );

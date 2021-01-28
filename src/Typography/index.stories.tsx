@@ -8,7 +8,7 @@ export default {
   component: Typography,
   decorators: [
     (story: () => React.ReactNode): React.ReactNode => (
-      <Container size="middle">{story()}</Container>
+      <Container padding>{story()}</Container>
     ),
   ],
   parameters: {
@@ -21,7 +21,7 @@ export default {
 };
 
 type Args = {
-  variant: "h1" | "body1";
+  variant: "h1" | "b1";
   children: React.ReactNode;
 };
 
@@ -41,11 +41,15 @@ export const Basic = (): React.ReactNode => (
     <hr />
     <Typography variant="subtitle1">Subtitle 1</Typography>
     <hr />
-    <Typography variant="subtitle2">Subtitle 2</Typography>
+    <Typography variant="b1">Body 1</Typography>
     <hr />
-    <Typography variant="body1">Body 1</Typography>
+    <Typography variant="b2">Body 2</Typography>
     <hr />
-    <Typography variant="body2">Body 2</Typography>
+    <Typography variant="b3">Body 3</Typography>
+    <hr />
+    <Typography variant="b4">Body 4</Typography>
+    <hr />
+    <Typography variant="caption">caption</Typography>
   </>
 );
 

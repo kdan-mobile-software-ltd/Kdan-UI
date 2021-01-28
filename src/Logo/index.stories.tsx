@@ -8,7 +8,7 @@ export default {
   component: Logo,
   decorators: [
     (story: () => React.ReactNode): React.ReactNode => (
-      <Container size="middle">{story()}</Container>
+      <Container padding>{story()}</Container>
     ),
   ],
   parameters: {
@@ -27,5 +27,9 @@ export const Basic = (): React.ReactNode => (
     <Logo variant="wordmark" />
     <hr />
     <Logo variant="combine" />
+    <hr />
+    <Logo variant="kc-logomark" />
+    <hr />
+    <Logo variant="kc-combine" />
   </>
 );

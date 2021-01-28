@@ -1,13 +1,13 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import Typography from "@kdanmobile/kdan-ui/dist/Typography";
 
-import { Logo } from '@kdanmobile/kdan-ui';
+import "./App.css";
 
 const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Logo variant="combine" />
+        <Typography variant="h1">123</Typography>
       </header>
     </div>
   );

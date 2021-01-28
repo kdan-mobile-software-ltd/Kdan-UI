@@ -25,12 +25,12 @@ describe("Typography", () => {
       "text-align",
       "inherit"
     );
-    expect(container.querySelector("h1")).toHaveStyleRule("font-weight", "500");
+    expect(container.querySelector("h1")).toHaveStyleRule("font-weight", "700");
   });
 
   test("set color and align, display", () => {
     const { container } = render(
-      <Typography variant="body1" display="block" align="center" color="brand">
+      <Typography variant="b1" display="block" align="center" color="brand">
         body1
       </Typography>
     );

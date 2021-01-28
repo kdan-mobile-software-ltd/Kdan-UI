@@ -1,21 +1,14 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { colors } from "../../themes";
-
-type sizeType = "middle";
-
-const styleType = {
-  middle: css`
-    padding: 3rem;
-    width: 100%;
-    min-height: 100vh;
-    height: 100%;
-  `,
-};
 
 export const Container = styled.div`
   background: #ecf0f1;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
 
-  ${({ size }: { size: sizeType }) => styleType[size]};
+  ${({ padding }: { padding?: boolean }) =>
+    padding ? "padding: 3rem;" : "margin: -1rem;"};
 `;
 
 export const ContentStyle = styled.div`

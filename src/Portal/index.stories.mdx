@@ -1,0 +1,26 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Utils/Portal" />
+
+# Portal
+
+The portal component renders its children into a new "subtree" outside of current DOM hierarchy.
+
+## Import
+
+```js
+import { Portal } from "@kdanmobile/kdan-ui";
+
+const App = () => (
+  <Portal>
+    <div />
+  </Portal>
+);
+```
+
+## Props
+
+|   Props   | Type                  | Default |
+| :-------: | :-------------------- | :------ |
+| children  | `React.ReactNode`     |         |
+| container | `Element or Function` |         |

@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@kdanmobile/kdan-ui": "file:../",
-    "react": "^17.0.1",
+    "@kdanmobile/kdan-ui": "link:../",
+    "react": "link:../node_modules/react",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
