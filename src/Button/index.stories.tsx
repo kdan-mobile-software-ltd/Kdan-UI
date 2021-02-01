@@ -1,7 +1,8 @@
 import React from "react";
 
-import Button, { ButtonProps } from ".";
 import { Container } from "../component/Decorator";
+import Button, { ButtonProps } from ".";
+import Icon from "../Icon";
 
 export default {
   title: "Button",
@@ -78,6 +79,8 @@ Link.args = {
   variant: "text",
   children: "Link",
   href: "https://github.com/",
+  color: "brand",
+  endIcon: <Icon glyph="link-arrow" />,
   target: "_blank",
 } as ButtonProps;
 
@@ -98,4 +101,14 @@ export const FullWidth = (args: ButtonProps): React.ReactNode => (
 FullWidth.args = {
   children: "Full Width",
   fullWidth: true,
+} as ButtonProps;
+
+export const ButtonWithIcon = (args: ButtonProps): React.ReactNode => (
+  <Button {...args} />
+);
+
+ButtonWithIcon.args = {
+  variant: "text",
+  children: "Products",
+  endIcon: <Icon glyph="triangle-down" />,
 } as ButtonProps;
