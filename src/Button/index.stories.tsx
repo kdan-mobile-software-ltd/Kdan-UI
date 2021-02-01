@@ -58,6 +58,8 @@ export const Basic = (): React.ReactNode => (
   </>
 );
 
+Basic.args = {} as ButtonProps;
+
 export const CustomContent = (args: ButtonProps): React.ReactNode => (
   <Button {...args} />
 );

@@ -10,7 +10,7 @@ import {
 } from "./styled";
 
 export type NavbarProps = {
-  isFixed: boolean;
+  isFixed?: boolean;
   brand?: React.ReactNode;
   children?: React.ReactNode;
 };
@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   return (
-    <Container isFixed={positionY >= 80}>
+    <Container isFixed={positionY >= 70}>
       <Wrapper>
         {brand}
         <Menu isCollapse={isCollapse}>

@@ -19,6 +19,7 @@ export type TextfieldProps = {
   error?: boolean;
   value?: string | number;
   placeholder?: string;
+  autoFocus?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
@@ -46,6 +47,7 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
       onChange,
       onBlur,
       placeholder,
+      autoFocus,
     }: TextfieldProps,
     ref
   ) => {
@@ -62,6 +64,7 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
       placeholder,
       error,
       required,
+      autoFocus,
     };
 
     return (
@@ -77,7 +80,11 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
             {label} {required ? "*" : ""}
           </InputLabel>
         )}
-        <InputElement as={multiline ? "textarea" : "input"} {...InputProps} />
+        <InputElement
+          as={multiline ? "textarea" : "input"}
+          aria-label="input"
+          {...InputProps}
+        />
         {helperText && <HelpText>{helperText}</HelpText>}
       </FormControl>
     );

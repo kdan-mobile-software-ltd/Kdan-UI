@@ -1,6 +1,6 @@
 import React from "react";
 
-import Typography from ".";
+import Typography, { TypographyProps } from ".";
 import { Container } from "../component/Decorator";
 
 export default {
@@ -18,11 +18,6 @@ export default {
       },
     },
   },
-};
-
-type Args = {
-  variant: "h1" | "b1";
-  children: React.ReactNode;
 };
 
 export const Basic = (): React.ReactNode => (
@@ -53,11 +48,13 @@ export const Basic = (): React.ReactNode => (
   </>
 );
 
-export const CustomContent = (args: Args): React.ReactNode => (
+Basic.args = {} as TypographyProps;
+
+export const CustomContent = (args: TypographyProps): React.ReactNode => (
   <Typography {...args} />
 );
 
 CustomContent.args = {
   variant: "h1",
   children: "Test H1",
-} as Args;
+} as TypographyProps;

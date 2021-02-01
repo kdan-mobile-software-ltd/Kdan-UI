@@ -37,7 +37,7 @@ const ClickAwayListener: React.FC<ClickAwayListenerProps> = ({
   }, [mouseEvent, onClick, touchEvent]);
 
   return (
-    <div ref={node} style={{ display: "inline-block" }} {...props}>
+    <div ref={node} {...props}>
       {children}
     </div>
   );

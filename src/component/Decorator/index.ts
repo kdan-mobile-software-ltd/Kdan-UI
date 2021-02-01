@@ -4,7 +4,7 @@ import { colors } from "../../themes";
 export const Container = styled.div`
   background: #ecf0f1;
   width: 100%;
-  min-height: 100vh;
+  min-height: 50vh;
   height: 100%;
 
   ${({ padding }: { padding?: boolean }) =>

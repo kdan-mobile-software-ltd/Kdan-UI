@@ -14,10 +14,19 @@ const input = [
   "src/index.ts",
   "src/ClickAwayListener/index.tsx",
   "src/Portal/index.tsx",
-  "src/LanguageBar/index.tsx",
   "src/Typography/index.tsx",
   "src/Button/index.tsx",
-  "src/Logo/index.tsx"
+  "src/Logo/index.tsx",
+  "src/Navbar/index.tsx",
+  "src/Dropdown/index.tsx",
+  "src/Collapse/index.tsx",
+  "src/Carousel/index.tsx",
+  "src/Box/index.tsx",
+  "src/Card/index.tsx",
+  "src/Textfield/index.tsx",
+  "src/Select/index.tsx",
+  "src/themes/breakpoints.ts",
+  "src/themes/colors.ts"
 ];
 
 const plugins = [
