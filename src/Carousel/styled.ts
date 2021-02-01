@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { rgba } from "polished";
 
+import { hexToRGBA } from "../helpers/utility";
 import colors from "../themes/colors";
-import { device } from "../themes/breakpoint";
+import breakpoints from "../themes/breakpoints";
 
 export const Wrapper = styled.div`
   margin: auto;
@@ -19,7 +19,7 @@ export const ArrowBtn = styled.span`
   cursor: pointer;
   margin: 0 14px;
 
-  @media ${device.tablet} {
+  @media ${breakpoints.up("md")} {
     display: none;
   }
 `;
@@ -40,7 +40,7 @@ export const IconButton = styled.button`
   ${({ isDisabled, mode }: { isDisabled?: boolean; mode: string }) =>
     isDisabled
       ? `
-      background-color: ${colors.N10};
+      background-color: ${colors.N15};
       cursor: default;
     `
       : `
@@ -49,13 +49,16 @@ export const IconButton = styled.button`
 
       :hover {
         background-color: ${
-          mode === "dark" ? rgba(colors.N100, 0.8) : rgba(colors.P50, 0.8)
+          mode === "dark"
+            ? hexToRGBA(colors.N100, 0.8)
+            : hexToRGBA(colors.P50, 0.8)
         };
       }
     `}
 
   display: none;
-  @media ${device.tablet} {
+
+  @media ${breakpoints.up("md")} {
     display: block;
   }
 `;
@@ -107,5 +110,5 @@ export const Dot = styled.span`
   margin: 5px;
 
   background-color: ${({ isActive }: { isActive?: boolean }) =>
-    isActive ? colors.N100 : colors.N10};
+    isActive ? colors.N100 : colors.N15};
 `;

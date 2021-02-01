@@ -1,0 +1,42 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Design System/Breakpoints" />
+
+# Breakpoints
+
+Breakpoints are the triggers in Kdan for how your layout responsive changes across device or viewport sizes.
+
+<br />
+
+## Available breakpoints
+
+|   key    | value     |
+| :--------: | :-------: |
+| xs | 0px |
+| sm | 425px |
+| md | 768px |
+| lg | 1024px |
+| xl | 1440px |
+| xxl | 1920px |
+
+## CSS Media Queries
+CSS media queries are the idiomatic approach to make your UI responsive.
+The theme provides four styles helpers to do so:
+
+* breakpoints.up(key): it's effectively `(min-width: [value]px)`.
+* breakpoints.down(key): it's effectively `(max-width: [value]px)`.
+* breakpoints.only(key): it's effectively `(min-width: [value]px) and (max-width: [value]px)`.
+* breakpoints.between(key1, key2): it's effectively `(min-width: [value1]px) and (max-width: [value2]px)`.
+
+
+## How to use?  
+
+```styled.js
+import { breakpoints } from "@kdanmobile/kdan-ui";
+
+export const Wrapper = styled.div`
+  @media ${breakpoints.down("md")} {
+    // some styles...
+  }
+`;
+```

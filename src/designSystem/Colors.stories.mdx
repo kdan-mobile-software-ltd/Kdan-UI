@@ -6,11 +6,11 @@ import colors from "../themes/colors";
 
 # Color
 
-## The Kdan official branding palette
+The Kdan official branding palette
 
 <br />
 
-### Primary palette
+## Primary palette
 
 Primary colour are the base colors of the UI
 
@@ -20,7 +20,7 @@ Primary colour are the base colors of the UI
   <Color name="secondary" hex={colors.secondary} />
 </Preview>
 
-### Product palette
+## Product palette
 
 Kdan all products main colour.
 
@@ -34,9 +34,9 @@ Kdan all products main colour.
   <Color name="PS" hex={colors.PS} />
 </Preview>
 
-### Extended palette
+## Extended palette
 
-#### Neutrals
+### Neutrals
 
 Neutral colours are used for non-interactive elements, backgrounds, borders and texts.
 
@@ -46,7 +46,7 @@ Neutral colours are used for non-interactive elements, backgrounds, borders and 
     .map((key) => (colors[key] ? <Color name={key} hex={colors[key]} /> : ""))}
 </Preview>
 
-#### Others
+### Others
 
 <Preview withToolbar>
   {Object.keys(colors)
@@ -54,7 +54,7 @@ Neutral colours are used for non-interactive elements, backgrounds, borders and 
     .map((key) => (colors[key] ? <Color name={key} hex={colors[key]} /> : ""))}
 </Preview>
 
-#### Status
+### Status
 
 <Preview withToolbar>
   <Color name="error" hex={colors.error} />
@@ -62,3 +62,13 @@ Neutral colours are used for non-interactive elements, backgrounds, borders and 
   <Color name="info" hex={colors.info} />
   <Color name="success" hex={colors.success} />
 </Preview>
+
+## How to use?
+
+```styled.js
+import { colors } from "@kdanmobile/kdan-ui";
+
+export const Wrapper = styled.div`
+  color: ${colors.N0};
+`;
+```

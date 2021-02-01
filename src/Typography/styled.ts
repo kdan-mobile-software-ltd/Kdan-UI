@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { TypographyProps } from "./index";
 import colors from "../themes/colors";
-import { device } from "../themes/breakpoint";
+import breakpoints from "../themes/breakpoints";
 import fonts from "../themes/fonts";
 import { pxToRem, round } from "../helpers/utility";
 
@@ -24,104 +24,54 @@ const buildVariant = (
   line-height: ${lineHeight};
 
   ${
-    size.mobileS &&
+    size.lg &&
     `
-      @media ${device.mobileS} {
-        font-size: ${pxToRem(size.mobileS)};
-        letter-spacing: ${`${round(letterSpacing / size.mobileS)}em`};
+      @media ${breakpoints.up("lg")} {
+        font-size: ${pxToRem(size.lg)};
+        letter-spacing: ${`${round(letterSpacing / size.lg)}em`};
       }
     `
   }
   ${
-    size.tablet &&
+    size.md &&
     `
-      @media ${device.tablet} {
-        font-size: ${pxToRem(size.tablet)};
-        letter-spacing: ${`${round(letterSpacing / size.tablet)}em`};
+      @media ${breakpoints.down("lg")} {
+        font-size: ${pxToRem(size.md)};
+        letter-spacing: ${`${round(letterSpacing / size.md)}em`};
       }
     `
   }
   ${
-    size.laptop &&
+    size.sm &&
     `
-      @media ${device.laptop} {
-        font-size: ${pxToRem(size.laptop)};
-        letter-spacing: ${`${round(letterSpacing / size.laptop)}em`};
+      @media ${breakpoints.down("md")} {
+        font-size: ${pxToRem(size.sm)};
+        letter-spacing: ${`${round(letterSpacing / size.sm)}em`};
       }
     `
   }
 `;
 
 const variants: { [key: string]: string } = {
-  h1: buildVariant(
-    fontWeight.bold,
-    { laptop: 56, tablet: 48, mobileS: 28 },
-    1.1,
-    -1.5
-  ),
-  h2: buildVariant(
-    fontWeight.bold,
-    { laptop: 48, tablet: 32, mobileS: 26 },
-    1.1,
-    -0.5
-  ),
-  h3: buildVariant(
-    fontWeight.bold,
-    { laptop: 32, tablet: 28, mobileS: 22 },
-    1.1,
-    0
-  ),
-  h4: buildVariant(
-    fontWeight.bold,
-    { laptop: 28, tablet: 22, mobileS: 18 },
-    1.2,
-    0.25
-  ),
-  h5: buildVariant(
-    fontWeight.bold,
-    { laptop: 22, tablet: 18, mobileS: 18 },
-    1.2,
-    0
-  ),
-  h6: buildVariant(
-    fontWeight.bold,
-    { laptop: 18, tablet: 18, mobileS: 18 },
-    1.2,
-    0.15
-  ),
+  h1: buildVariant(fontWeight.bold, { lg: 56, md: 48, sm: 28 }, 1.1, -1.5),
+  h2: buildVariant(fontWeight.bold, { lg: 48, md: 32, sm: 26 }, 1.1, -0.5),
+  h3: buildVariant(fontWeight.bold, { lg: 32, md: 28, sm: 22 }, 1.1, 0),
+  h4: buildVariant(fontWeight.bold, { lg: 28, md: 22, sm: 18 }, 1.2, 0.25),
+  h5: buildVariant(fontWeight.bold, { lg: 22, md: 18, sm: 18 }, 1.2, 0),
+  h6: buildVariant(fontWeight.bold, { lg: 18, md: 18, sm: 18 }, 1.2, 0.15),
   subtitle1: buildVariant(
     fontWeight.bold,
-    { laptop: 20, tablet: 20, mobileS: 20 },
+    { lg: 20, md: 20, sm: 20 },
     1.2,
     0.15
   ),
-  b1: buildVariant(
-    fontWeight.regular,
-    { laptop: 24, tablet: 18, mobileS: 16 },
-    1.4,
-    0.15
-  ),
-  b2: buildVariant(
-    fontWeight.regular,
-    { laptop: 18, tablet: 16, mobileS: 16 },
-    1.4,
-    0.15
-  ),
-  b3: buildVariant(
-    fontWeight.regular,
-    { laptop: 16, tablet: 14, mobileS: 14 },
-    1.4,
-    0.15
-  ),
-  b4: buildVariant(
-    fontWeight.regular,
-    { laptop: 14, tablet: 14, mobileS: 14 },
-    1.4,
-    0.15
-  ),
+  b1: buildVariant(fontWeight.regular, { lg: 24, md: 18, sm: 16 }, 1.4, 0.15),
+  b2: buildVariant(fontWeight.regular, { lg: 18, md: 16, sm: 16 }, 1.4, 0.15),
+  b3: buildVariant(fontWeight.regular, { lg: 16, md: 14, sm: 14 }, 1.4, 0.15),
+  b4: buildVariant(fontWeight.regular, { lg: 14, md: 14, sm: 14 }, 1.4, 0.15),
   caption: buildVariant(
     fontWeight.regular,
-    { laptop: 12, tablet: 12, mobileS: 12 },
+    { lg: 12, md: 12, sm: 12 },
     1.5,
     0.15
   ),

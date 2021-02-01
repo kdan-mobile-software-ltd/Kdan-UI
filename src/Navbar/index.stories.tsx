@@ -22,11 +22,6 @@ export default {
   },
 };
 
-// type Args = {
-//   variant: "h1" | "body1";
-//   children: React.ReactNode;
-// };
-
 export const Basic = (): React.ReactNode => (
   <>
     <Navbar

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Wrapper } from "./styled";
 import { ReactComponent as Lockup } from "../assets/images/kdan-logo.svg";
-import { ReactComponent as Logo } from "../assets/images/kdan-logo-01.svg";
+import { ReactComponent as LogoMark } from "../assets/images/kdan-logo-01.svg";
 import { ReactComponent as Word } from "../assets/images/kdan-logo-02.svg";
 import { ReactComponent as KCLockup } from "../assets/images/kdan-cloud-logo.svg";
 import { ReactComponent as KCLogo } from "../assets/images/kdan-cloud-logo-01.svg";
@@ -12,13 +12,13 @@ export type LogoProps = {
   href?: string;
 };
 
-const index: React.FC<LogoProps> = ({
+const Logo: React.FC<LogoProps> = ({
   variant = "combine",
   href,
 }: LogoProps) => {
   const setComponent = () => {
     if (variant === "logomark") {
-      return <Logo />;
+      return <LogoMark />;
     } else if (variant === "wordmark") {
       return <Word />;
     } else if (variant === "combine") {
@@ -33,4 +33,4 @@ const index: React.FC<LogoProps> = ({
   return <Wrapper href={href}>{setComponent()}</Wrapper>;
 };
 
-export default index;
+export default Logo;

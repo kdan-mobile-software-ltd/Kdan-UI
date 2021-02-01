@@ -24,7 +24,7 @@ export const Bun = styled.span`
   ${({ sequence, isActive }: { sequence: string; isActive: boolean }) => {
     if (sequence === "top") {
       return css`
-        transform: ${isActive ? "rotate(45deg) translate(6px, 6px)" : ""};
+        transform: ${isActive ? "rotate(45deg) translate(7px, 6px)" : ""};
         top: 4px;
       `;
     } else if (sequence === "middle") {
@@ -35,7 +35,7 @@ export const Bun = styled.span`
     } else {
       return css`
         top: 14px;
-        transform: ${isActive ? "rotate(-45deg) translate(6px, -6px)" : ""};
+        transform: ${isActive ? "rotate(-45deg) translate(7px, -5px)" : ""};
       `;
     }
   }}

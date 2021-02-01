@@ -1,10 +1,9 @@
 import styled, { keyframes } from "styled-components";
-import { rgba } from "polished";
 
 import { ButtonProps } from "./index";
 import fonts from "../themes/fonts";
 import colors from "../themes/colors";
-import { pxToRem } from "../helpers/utility";
+import { pxToRem, hexToRGBA } from "../helpers/utility";
 
 const buildTheme = (color = "default", variant = "contained") => {
   if (color === "default" && variant === "contained") {
@@ -14,7 +13,7 @@ const buildTheme = (color = "default", variant = "contained") => {
 
       :hover {
         color: ${colors.N0};
-        background-color: ${rgba(colors.N100, 0.7)};
+        background-color: ${hexToRGBA(colors.N100, 0.7)};
       }
     `;
   } else if (color === "light" && variant === "contained") {
@@ -24,7 +23,7 @@ const buildTheme = (color = "default", variant = "contained") => {
 
       :hover {
         color: ${colors.N100};
-        background-color: ${rgba(colors.N100, 0.1)};
+        background-color: ${hexToRGBA(colors.N100, 0.1)};
       }
     `;
   } else if (color === "default" && variant === "outlined") {
@@ -43,7 +42,7 @@ const buildTheme = (color = "default", variant = "contained") => {
       background-color: inherit;
 
       :hover {
-        color: ${rgba(colors.N100, 0.7)};
+        color: ${hexToRGBA(colors.N100, 0.7)};
       }
     `;
   } else if (color === "brand" && variant === "text") {
@@ -52,7 +51,7 @@ const buildTheme = (color = "default", variant = "contained") => {
       background-color: inherit;
 
       :hover {
-        color: ${rgba(colors.brand, 0.7)};
+        color: ${hexToRGBA(colors.brand, 0.7)};
       }
     `;
   } else if (color === "cheese" && variant === "contained") {
@@ -61,7 +60,7 @@ const buildTheme = (color = "default", variant = "contained") => {
       background-color: ${colors.Y50};
       
       :hover {
-        background-color: ${rgba(colors.Y50, 0.7)};
+        background-color: ${hexToRGBA(colors.Y50, 0.7)};
       }
     `;
   } else if (color && !colors[color]) {
@@ -74,15 +73,15 @@ const buildTheme = (color = "default", variant = "contained") => {
 const buildSize = (size = "medium") => {
   if (size === "small") {
     return `
-      font-size: ${pxToRem(14)};
+      font-size: ${pxToRem(16)};
     `;
   } else if (size === "medium") {
     return `
-      font-size: ${pxToRem(15)};
+      font-size: ${pxToRem(17)};
     `;
   } else {
     return `
-      font-size: ${pxToRem(16)};
+      font-size: ${pxToRem(18)};
     `;
   }
 };

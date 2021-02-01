@@ -31,7 +31,7 @@ export type ButtonProps = {
 
 export type RefType = HTMLButtonElement;
 
-const index = React.forwardRef<RefType, ButtonProps>(
+const Button = React.forwardRef<RefType, ButtonProps>(
   (
     {
       className,
@@ -84,4 +84,4 @@ const index = React.forwardRef<RefType, ButtonProps>(
   }
 );
 
-export default index;
+export default Button;

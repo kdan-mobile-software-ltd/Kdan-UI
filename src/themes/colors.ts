@@ -19,7 +19,8 @@ export default {
 
   N0: "#ffffff",
   N05: "#fafafa",
-  N10: "#d2d2d2",
+  N10: "#e8e8e8",
+  N15: "#d2d2d2",
   N30: "#929292",
   N40: "#7b7b7b",
   N70: "#414141",

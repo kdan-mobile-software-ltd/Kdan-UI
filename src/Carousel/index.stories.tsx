@@ -20,52 +20,52 @@ export default {
   },
 };
 
-export const Basic = (): React.ReactNode => (
-  <Carousel
-    mode="light"
-    showCount={1}
-    items={[
-      {
-        id: "news-1",
-        element: (
-          <p
-            style={{
-              height: "100px",
-              width: "500px",
-              backgroundColor: "yellow",
-            }}>
-            123
-          </p>
-        ),
-      },
-      {
-        id: "news-2",
-        element: (
-          <p
-            style={{
-              height: "100px",
-              width: "500px",
-              backgroundColor: "yellow",
-            }}>
-            456
-          </p>
-        ),
-      },
-      {
-        id: "news-3",
-        element: (
-          <p
-            style={{
-              height: "100px",
-              width: "500px",
-              backgroundColor: "yellow",
-            }}>
-            789
-          </p>
-        ),
-      },
-    ]}
-  />
+export const Basic = (props: CarouselProps): React.ReactNode => (
+  <Carousel {...props} />
 );
 
-Basic.args = {} as CarouselProps;
+Basic.args = {
+  mode: "light",
+  showCount: 1,
+  items: [
+    {
+      id: "news-1",
+      element: (
+        <p
+          style={{
+            height: "100px",
+            width: "500px",
+            backgroundColor: "yellow",
+          }}>
+          123
+        </p>
+      ),
+    },
+    {
+      id: "news-2",
+      element: (
+        <p
+          style={{
+            height: "100px",
+            width: "500px",
+            backgroundColor: "yellow",
+          }}>
+          456
+        </p>
+      ),
+    },
+    {
+      id: "news-3",
+      element: (
+        <p
+          style={{
+            height: "100px",
+            width: "500px",
+            backgroundColor: "yellow",
+          }}>
+          789
+        </p>
+      ),
+    },
+  ],
+} as CarouselProps;

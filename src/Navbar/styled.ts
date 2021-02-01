@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import colors from "../themes/colors";
-import { device } from "../themes/breakpoint";
+import breakpoints from "../themes/breakpoints";
 
 export const Container = styled.nav`
   background: ${colors.N0};
@@ -14,6 +14,7 @@ export const Container = styled.nav`
         top: 0;
         left: 0;
         right: 0;
+        z-index: 9999;
         box-shadow:         
         0px 5px 7px 0px rgba(0, 0, 0, 0.15);      `
       : ""}
@@ -30,7 +31,7 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   margin: auto;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.up("md")} {
     height: 80px;
   }
 `;
@@ -54,7 +55,7 @@ export const Menu = styled.div`
       height: 100vh;
     `}
 
-  @media ${device.laptop} {
+  @media ${breakpoints.up("md")} {
     position: relative;
     height: auto;
     padding: 0;
@@ -66,7 +67,7 @@ export const MenuWrapper = styled.div`
   margin: 16px;
   width: 100%;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.up("md")} {
     margin: 0;
   }
 `;
@@ -74,7 +75,7 @@ export const MenuWrapper = styled.div`
 export const MenuBtnWrapper = styled.span`
   display: inline-flex;
 
-  @media ${device.laptop} {
+  @media ${breakpoints.up("md")} {
     display: none;
   }
 `;

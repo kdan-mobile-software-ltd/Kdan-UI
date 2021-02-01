@@ -21,7 +21,13 @@ export default {
 };
 
 export const Basic = (): React.ReactNode => (
-  <Textfield id="test-input" label="Title" required />
+  <Textfield label="Basic" required />
 );
 
 Basic.args = {} as TextfieldProps;
+
+export const CustomContent = (props: TextfieldProps): React.ReactNode => (
+  <Textfield {...props} />
+);
+
+CustomContent.args = {} as TextfieldProps;
