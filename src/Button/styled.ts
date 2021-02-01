@@ -205,8 +205,15 @@ export const Ripple = styled.span`
   }
 `;
 
-export const ButtonLabel = styled.span``;
+export const ButtonLabel = styled.span`
+  display: inline-flex;
+  align-items: center;
+`;
 
-export const ButtonStartIcon = styled.span``;
+export const ButtonStartIcon = styled.span`
+  margin-right: 8px;
+`;
 
-export const ButtonEndIcon = styled.span``;
+export const ButtonEndIcon = styled.span`
+  margin-left: 8px;
+`;

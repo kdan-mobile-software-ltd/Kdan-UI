@@ -63,7 +63,7 @@ const Button = React.forwardRef<RefType, ButtonProps>(
     const startIcon = startIconProp && (
       <ButtonStartIcon {...styleProps}>{startIconProp}</ButtonStartIcon>
     );
-    const endIcon = startIconProp && (
+    const endIcon = endIconProp && (
       <ButtonEndIcon {...styleProps}>{endIconProp}</ButtonEndIcon>
     );
 
