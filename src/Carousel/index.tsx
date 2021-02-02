@@ -75,11 +75,12 @@ const Carousel: React.FC<CarouselProps> = ({
               ? elementRef.current.clientWidth * activeIndex
               : 0
           }>
-          {children.map((item, index) => (
-            <ElementWrapper key={`element_${index}`} ref={elementRef}>
-              {item}
-            </ElementWrapper>
-          ))}
+          {Array.isArray(children) &&
+            children.map((item, index) => (
+              <ElementWrapper key={`element_${index}`} ref={elementRef}>
+                {item}
+              </ElementWrapper>
+            ))}
         </ElementsOuter>
       </ElementsContainer>
       <RightBtn
