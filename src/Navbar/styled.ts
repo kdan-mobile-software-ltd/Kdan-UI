@@ -21,45 +21,48 @@ export const Container = styled.nav`
 `;
 
 export const Wrapper = styled.div`
-  height: 70px;
-  max-width: 1140px;
+  height: 80px;
+  max-width: 1160px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px;
+  padding: 0 40px;
   box-sizing: border-box;
   margin: auto;
 
-  @media ${breakpoints.up("md")} {
-    height: 80px;
+  @media ${breakpoints.down("md")} {
+    padding: 0 16px;
+    height: 70px;
   }
 `;
 
 export const Menu = styled.div`
   display: inline-flex;
-  overflow: hidden;
-  position: fixed;
-  top: 70px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+  top: 0;
   left: 0;
   right: 0;
+  height: auto;
   background-color: ${colors.N0};
   transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  z-index: 9999;
 
-  ${({ isCollapse }: { isCollapse: boolean }) =>
-    isCollapse
-      ? `
+  @media ${breakpoints.down("md")} {
+    ${({ isCollapse }: { isCollapse: boolean }) =>
+      isCollapse
+        ? `
       height: 0;
     `
-      : `
+        : `
       height: 100vh;
     `}
 
-  @media ${breakpoints.up("md")} {
-    position: relative;
-    height: auto;
+    position: fixed;
     padding: 0;
-    top: 0;
+    top: 70px;
   }
 `;
 

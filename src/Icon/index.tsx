@@ -10,6 +10,7 @@ type glyphType = "triangle-up" | "triangle-down" | "link-arrow";
 
 export type IconProps = {
   glyph: glyphType;
+  color: string;
 };
 
 const iconCollection = {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Button from "../Button";
 import Collapse, { CollapseProps } from "./";
@@ -22,18 +22,22 @@ export default {
 };
 
 export const Basic = ({}: CollapseProps): React.ReactNode => {
-  const [open, setOpen] = useState(false);
-  const handleClick = () => {
-    setOpen((current) => !current);
-  };
-
   return (
-    <Collapse
-      trigger={<Button onClick={handleClick}>Click</Button>}
-      open={open}>
+    <Collapse trigger={<Button>Click</Button>}>
       <p style={{ backgroundColor: "white", height: "200px" }}>content</p>
     </Collapse>
   );
 };
 
 Basic.args = {} as CollapseProps;
+
+export const PassFunctionToTrigger = ({}: CollapseProps): React.ReactNode => (
+  <Collapse
+    trigger={(open: boolean) => (
+      <Button>Click {open ? "open" : "close"}</Button>
+    )}>
+    <p style={{ backgroundColor: "white", height: "200px" }}>content</p>
+  </Collapse>
+);
+
+PassFunctionToTrigger.args = {} as CollapseProps;

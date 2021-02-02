@@ -3,7 +3,7 @@ type BreakpointsType = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 export const BREAKPOINTS = {
   xs: 0,
   sm: 425,
-  md: 768,
+  md: 767,
   lg: 1024,
   xl: 1440,
   xxl: 1920,

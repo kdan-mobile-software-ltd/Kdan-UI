@@ -8,13 +8,14 @@ import {
   Ripple,
 } from "./styled";
 
-export type ButtonProps = {
+export type ButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   size?: "small" | "medium" | "large";
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  isAnchor?: boolean;
   href?: string;
   color?:
     | "inherit"
@@ -44,11 +45,12 @@ const Button = React.forwardRef<RefType, ButtonProps>(
       endIcon: endIconProp,
       size = "medium",
       variant = "contained",
+      isAnchor,
       ...rest
     }: ButtonProps,
     ref
   ) => {
-    const component = href ? "a" : "button";
+    const component = isAnchor ? "a" : "button";
 
     const styleProps = {
       color,
@@ -57,15 +59,14 @@ const Button = React.forwardRef<RefType, ButtonProps>(
       fullWidth,
       size,
       href,
+      isAnchor,
       ...rest,
     };
 
     const startIcon = startIconProp && (
-      <ButtonStartIcon {...styleProps}>{startIconProp}</ButtonStartIcon>
+      <ButtonStartIcon>{startIconProp}</ButtonStartIcon>
     );
-    const endIcon = endIconProp && (
-      <ButtonEndIcon {...styleProps}>{endIconProp}</ButtonEndIcon>
-    );
+    const endIcon = endIconProp && <ButtonEndIcon>{endIconProp}</ButtonEndIcon>;
 
     return (
       <ButtonRoot

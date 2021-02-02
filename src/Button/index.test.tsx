@@ -17,7 +17,9 @@ describe("Button", () => {
 
   test("is anchor", () => {
     const { container } = render(
-      <Button href="http://github.com">Link</Button>
+      <Button href="http://github.com" isAnchor>
+        Link
+      </Button>
     );
 
     expect(container.querySelector("a")).toBeInTheDocument();

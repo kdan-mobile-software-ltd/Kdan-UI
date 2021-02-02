@@ -43,6 +43,14 @@ const Navbar: React.FC<NavbarProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (!isCollapse) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "scroll";
+    }
+  }, [isCollapse]);
+
   return (
     <Container isFixed={positionY >= 70}>
       <Wrapper>

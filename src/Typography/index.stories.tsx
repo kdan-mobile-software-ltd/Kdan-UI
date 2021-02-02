@@ -58,3 +58,23 @@ CustomContent.args = {
   variant: "h1",
   children: "Test H1",
 } as TypographyProps;
+
+export const CustomColor = (args: TypographyProps): React.ReactNode => (
+  <Typography {...args} />
+);
+
+CustomColor.args = {
+  variant: "h1",
+  children: "Color H1",
+  color: "brand",
+} as TypographyProps;
+
+export const CustomHoverColor = (args: TypographyProps): React.ReactNode => (
+  <Typography {...args} />
+);
+
+CustomHoverColor.args = {
+  variant: "h1",
+  children: "Hover H1",
+  hoverColor: "brand",
+} as TypographyProps;

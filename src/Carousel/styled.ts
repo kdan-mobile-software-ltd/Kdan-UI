@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   margin: auto;
   position: relative;
   max-width: 1080px;
+  width: 100%;
   min-width: 275px;
   padding: 36px;
   display: inline-block;

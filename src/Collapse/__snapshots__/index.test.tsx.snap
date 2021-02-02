@@ -2,6 +2,10 @@
 
 exports[`Collapse open collapse 1`] = `
 .c0 {
+  display: inline-block;
+}
+
+.c1 {
   color: inherit;
   overflow: hidden;
   -webkit-transition: height 300ms cubic-bezier(0.4,0,0.2,1) 0ms;
@@ -13,11 +17,16 @@ exports[`Collapse open collapse 1`] = `
   <div
     class=""
   >
-    <button>
-      click
-    </button>
     <div
       class="c0"
+    >
+      <button>
+        click
+      </button>
+    </div>
+    <div
+      class="c1"
+      style="height: 0px;"
     >
       <div
         class=""

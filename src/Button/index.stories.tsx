@@ -23,7 +23,9 @@ export default {
 
 export const Basic = (): React.ReactNode => (
   <>
-    <Button size="small">Click</Button>
+    <Button id="test" size="small">
+      Click
+    </Button>
     &nbsp;
     <Button size="medium" color="light">
       Click
@@ -71,17 +73,32 @@ CustomContent.args = {
   size: "large",
 } as ButtonProps;
 
-export const Link = (args: ButtonProps): React.ReactNode => (
+export const AnchorLink = (args: ButtonProps): React.ReactNode => (
   <Button {...args} />
 );
 
-Link.args = {
+AnchorLink.args = {
   variant: "text",
   children: "Link",
+  isAnchor: true,
   href: "https://github.com/",
+  target: "_blank",
   color: "brand",
   endIcon: <Icon glyph="link-arrow" />,
+} as ButtonProps;
+
+export const ButtonLink = (args: ButtonProps): React.ReactNode => (
+  <Button {...args} />
+);
+
+ButtonLink.args = {
+  variant: "contained",
+  children: "Link",
+  isAnchor: true,
+  href: "https://github.com/",
   target: "_blank",
+  color: "default",
+  endIcon: <Icon glyph="link-arrow" />,
 } as ButtonProps;
 
 export const Disabled = (args: ButtonProps): React.ReactNode => (

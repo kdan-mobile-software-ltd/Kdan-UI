@@ -21,7 +21,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   position = "bottom left",
   fullWidth,
 }: DropdownProps) => {
-  const [isOpen, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const targetRef = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
@@ -51,9 +51,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   return (
     <Wrapper>
       <TriggerWrapper ref={targetRef} onClick={handleClick}>
-        {trigger}
+        {typeof trigger === "function" ? trigger(open) : trigger}
       </TriggerWrapper>
-      {isOpen && (
+      {open && (
         <Portal>
           <Position position={position} target={targetRef}>
             {(ref, positionStyle) => (

@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div``;
 
+export const TriggerWrapper = styled.div`
+  display: inline-block;
+`;
+
 export const ContentWrapper = styled.div`
   color: inherit;
   overflow: hidden;
