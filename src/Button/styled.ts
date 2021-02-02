@@ -118,7 +118,11 @@ const buildVariant = (size = "medium", variant = "contained") => {
       padding: 7px 20px;
     `;
   } else if (variant === "text") {
-    return `padding: 1px;`;
+    return `
+      border-radius: 0;
+      padding: 1px;
+      line-height: 1.1;
+    `;
   }
 };
 
@@ -163,18 +167,19 @@ export const ButtonRoot = styled.div`
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
   height: fit-content;
 
-  ${({ size, variant, color, disabled, href }: ButtonProps) =>
+  ${({ size, variant, color, disabled, isAnchor }: ButtonProps) =>
     `
     ${buildSize(size)}
     ${buildVariant(size, variant)}
     ${!disabled ? buildTheme(color, variant) : ""}
     ${buildDisabled(disabled)}
     ${
-      href
+      isAnchor
         ? `
         text-decoration: none;
+
         &:hover {
-          text-decoration: underline;
+          border-bottom: 1px solid ${(color && colors[color]) || color};
         }
       `
         : ""
@@ -197,7 +202,7 @@ export const Ripple = styled.span`
     z-index: -1;
     top: calc(50% - 35px);
     left: calc(50% - 25px);
-    background: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
     width: 50px;
     height: 50px;
     border-radius: 100%;

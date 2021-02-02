@@ -48,3 +48,33 @@ Basic.args = {
   fullWidth: false,
   defaultOpen: false,
 } as DropdownProps;
+
+export const PassFunctionToTrigger = ({
+  position,
+  fullWidth,
+  defaultOpen,
+}: DropdownProps): React.ReactNode => (
+  <Dropdown
+    trigger={(open: boolean) => (
+      <Button>Click {open ? "open" : "close"}</Button>
+    )}
+    position={position}
+    fullWidth={fullWidth}
+    defaultOpen={defaultOpen}>
+    <p
+      style={{
+        width: "200px",
+        height: "100px",
+        backgroundColor: "gray",
+        margin: 0,
+      }}>
+      content
+    </p>
+  </Dropdown>
+);
+
+PassFunctionToTrigger.args = {
+  position: "bottom right",
+  fullWidth: false,
+  defaultOpen: false,
+} as DropdownProps;

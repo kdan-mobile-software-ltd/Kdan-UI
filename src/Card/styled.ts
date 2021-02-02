@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   overflow: hidden;
   display: inline-block;
   box-sizing: border-box;
-  min-width: 275px;
+  min-width: 100px;
   border-radius: 4px;
   border: solid 1px ${colors.N15};
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;

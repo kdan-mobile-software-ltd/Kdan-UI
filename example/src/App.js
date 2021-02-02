@@ -5,6 +5,7 @@ import Button from "@kdanmobile/kdan-ui/dist/Button";
 import Navbar from "@kdanmobile/kdan-ui/dist/Navbar";
 import Logo from "@kdanmobile/kdan-ui/dist/Logo";
 import Select from "@kdanmobile/kdan-ui/dist/Select";
+import Box from "@kdanmobile/kdan-ui/dist/Box";
 
 import "./App.css";
 
@@ -16,12 +17,14 @@ const App = () => {
       </Navbar>
       <header className="App-header">
         <Typography variant="h1">123</Typography>
-        <Select
-          options={[
-            { key: "1", value: "1" },
-            { key: "2", value: "2" },
-          ]}
-        />
+        <Box m={2}>
+          <Select
+            options={[
+              { key: "1", value: "1" },
+              { key: "2", value: "2" },
+            ]}
+          />
+        </Box>
       </header>
     </div>
   );

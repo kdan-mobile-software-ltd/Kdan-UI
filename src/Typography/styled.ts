@@ -53,17 +53,17 @@ const buildVariant = (
 `;
 
 const variants: { [key: string]: string } = {
-  h1: buildVariant(fontWeight.bold, { lg: 56, md: 48, sm: 28 }, 1.1, -1.5),
-  h2: buildVariant(fontWeight.bold, { lg: 48, md: 32, sm: 26 }, 1.1, -0.5),
-  h3: buildVariant(fontWeight.bold, { lg: 32, md: 28, sm: 22 }, 1.1, 0),
+  h1: buildVariant(fontWeight.bold, { lg: 56, md: 48, sm: 28 }, 1.1, 0),
+  h2: buildVariant(fontWeight.bold, { lg: 48, md: 32, sm: 26 }, 1.1, 0.1),
+  h3: buildVariant(fontWeight.bold, { lg: 32, md: 28, sm: 22 }, 1.1, 0.15),
   h4: buildVariant(fontWeight.bold, { lg: 28, md: 22, sm: 18 }, 1.2, 0.25),
-  h5: buildVariant(fontWeight.bold, { lg: 22, md: 18, sm: 18 }, 1.2, 0),
-  h6: buildVariant(fontWeight.bold, { lg: 18, md: 18, sm: 18 }, 1.2, 0.15),
+  h5: buildVariant(fontWeight.bold, { lg: 22, md: 18, sm: 18 }, 1.2, 0.3),
+  h6: buildVariant(fontWeight.bold, { lg: 18, md: 18, sm: 18 }, 1.2, 0.4),
   subtitle1: buildVariant(
     fontWeight.bold,
     { lg: 20, md: 20, sm: 20 },
     1.2,
-    0.15
+    0.3
   ),
   b1: buildVariant(fontWeight.regular, { lg: 24, md: 18, sm: 16 }, 1.4, 0.15),
   b2: buildVariant(fontWeight.regular, { lg: 18, md: 16, sm: 16 }, 1.4, 0.15),
@@ -81,13 +81,16 @@ const TypographyRoot = styled.div`
   ${({
     align,
     color,
+    hoverColor,
     paragraph,
     display,
     noWrap,
     variant,
   }: TypographyProps) => `
     text-align: ${align};
-    color: ${(color && colors[color]) || color};
+    color: ${
+      color === "default" ? colors.N100 : (color && colors[color]) || color
+    };
     margin-bottom: ${paragraph ? "16px" : ""};
     display: ${display};
     margin: 0;
@@ -103,6 +106,17 @@ const TypographyRoot = styled.div`
     }
 
     ${variants[variant]}
+
+    ${
+      hoverColor &&
+      `
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+        :hover {
+          color: ${colors[hoverColor] || hoverColor}
+        }
+      `
+    }
   `}
 `;
 

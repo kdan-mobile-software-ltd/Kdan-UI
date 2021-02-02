@@ -19,14 +19,14 @@ import {
 } from "./styled";
 
 export type CarouselProps = {
-  items: { id: string; element: React.ReactNode }[];
+  children: React.ReactNode[];
   mode?: "dark" | "light";
   showDot?: boolean;
   showCount?: number;
 };
 
 const Carousel: React.FC<CarouselProps> = ({
-  items,
+  children,
   mode = "dark",
   showDot = true,
   showCount = 1,
@@ -37,7 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({
 
   const handleNext = () => {
     setActiveIndex((current) =>
-      current < items.length - 1 ? current + 1 : current
+      current < children.length - 1 ? current + 1 : current
     );
   };
 
@@ -50,9 +50,9 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   const bind = useDrag(({ active, direction: [xDir], distance }) => {
-    if (!active && xDir < 0 && distance > 100) {
+    if (!active && xDir < 0 && distance > 80) {
       handleNext();
-    } else if (!active && xDir > 0 && distance > 100) {
+    } else if (!active && xDir > 0 && distance > 80) {
       handlePrev();
     }
   });
@@ -75,16 +75,16 @@ const Carousel: React.FC<CarouselProps> = ({
               ? elementRef.current.clientWidth * activeIndex
               : 0
           }>
-          {items.map((item) => (
-            <ElementWrapper ref={elementRef} key={item.id}>
-              {item.element}
+          {children.map((item, index) => (
+            <ElementWrapper key={`element_${index}`} ref={elementRef}>
+              {item}
             </ElementWrapper>
           ))}
         </ElementsOuter>
       </ElementsContainer>
       <RightBtn
         mode={mode}
-        isDisabled={activeIndex === items.length - 1}
+        isDisabled={activeIndex === children.length - 1}
         onClick={handleNext}>
         <RightArrow />
       </RightBtn>
@@ -93,10 +93,11 @@ const Carousel: React.FC<CarouselProps> = ({
           <LeftArrow768 />
         </ArrowBtn>
         {showDot &&
-          items.map((item, index) => (
+          Array.isArray(children) &&
+          children.map((_, index) => (
             <Dot
               isActive={activeIndex === index}
-              key={`dot_${item.id}`}
+              key={`dot_${index}`}
               onClick={() => handleDotClick(index)}
             />
           ))}

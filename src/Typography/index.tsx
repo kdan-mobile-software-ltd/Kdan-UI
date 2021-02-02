@@ -35,7 +35,8 @@ export type TypographyProps = {
     | "caption";
   component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
   paragraph?: boolean;
-  color?: "inherit" | "brand" | "primary" | "secondary" | string;
+  color?: "default" | "brand" | "primary" | "secondary" | string;
+  hoverColor?: "default" | "brand" | "primary" | "secondary" | string;
   align?: "center" | "inherit" | "justify" | "left" | "right";
   children: React.ReactNode;
   className?: string;
@@ -50,7 +51,8 @@ const Typography = React.forwardRef<RefType, TypographyProps>(
     {
       component,
       variant = "b1",
-      color = "inherit",
+      color = "default",
+      hoverColor = "default",
       align = "inherit",
       children,
       className = "",
@@ -70,6 +72,7 @@ const Typography = React.forwardRef<RefType, TypographyProps>(
       className,
       display,
       noWrap,
+      hoverColor,
     };
 
     return (
