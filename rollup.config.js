@@ -1,3 +1,4 @@
+import path from "path";
 import commonjs from "@rollup/plugin-commonjs";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from "rollup-plugin-typescript2";
@@ -33,15 +34,17 @@ const plugins = [
   peerDepsExternal(),
   copy({
     targets: [
-      { src: './src/assets/fonts/dist/*', dest: './dist/fonts' },
-      { src: './src/assets/images/*', dest: './dist/images' }
+      { src: './src/assets/fonts/dist/*', dest: './dist/fonts' }
     ]
   }),
   // nodeResolve(),
   image(),
   commonjs(),
   typescript({ useTsconfigDeclarationDir: true }),
-  url(),
+  url({
+    fileName: '[dirname][hash][extname]',
+    sourceDir: path.join(__dirname, 'src')
+  }),
   svgr(),
   uglify(),
 ];

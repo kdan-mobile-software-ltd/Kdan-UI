@@ -5,6 +5,7 @@ import { ReactComponent as LeftArrow } from "../assets/icons/left-arrow.svg";
 import { ReactComponent as RightArrow } from "../assets/icons/right-arrow.svg";
 import { ReactComponent as LeftArrow768 } from "../assets/icons/left-arrow-768.svg";
 import { ReactComponent as RightArrow768 } from "../assets/icons/right-arrow-768.svg";
+import useWindowResize from "../hooks/useWindowResize";
 
 import {
   Wrapper,
@@ -34,6 +35,7 @@ const Carousel: React.FC<CarouselProps> = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
   const elementRef = useRef<HTMLDivElement>(null);
+  const windowWidth = useWindowResize();
 
   const handleNext = () => {
     setActiveIndex((current) =>
@@ -61,15 +63,16 @@ const Carousel: React.FC<CarouselProps> = ({
     if (elementRef.current) {
       setContainerWidth(elementRef.current.clientWidth);
     }
-  }, [elementRef]);
+  }, [elementRef, windowWidth]);
 
   return (
     <Wrapper>
       <LeftBtn mode={mode} isDisabled={activeIndex === 0} onClick={handlePrev}>
         <LeftArrow />
       </LeftBtn>
-      <ElementsContainer {...bind()} width={containerWidth * showCount}>
+      <ElementsContainer {...bind()} ref={elementRef}>
         <ElementsOuter
+          width={`${100 * children.length || 1}%`}
           move={
             elementRef.current
               ? elementRef.current.clientWidth * activeIndex
@@ -77,9 +80,7 @@ const Carousel: React.FC<CarouselProps> = ({
           }>
           {Array.isArray(children) &&
             children.map((item, index) => (
-              <ElementWrapper key={`element_${index}`} ref={elementRef}>
-                {item}
-              </ElementWrapper>
+              <ElementWrapper key={`element_${index}`}>{item}</ElementWrapper>
             ))}
         </ElementsOuter>
       </ElementsContainer>
