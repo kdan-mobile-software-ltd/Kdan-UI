@@ -74,7 +74,9 @@ CustomContent.args = {
 } as ButtonProps;
 
 export const AnchorLink = (args: ButtonProps): React.ReactNode => (
-  <Button {...args} />
+  <div style={{ marginLeft: "10px" }}>
+    <Button {...args} />
+  </div>
 );
 
 AnchorLink.args = {

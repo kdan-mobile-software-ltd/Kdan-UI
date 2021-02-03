@@ -179,7 +179,18 @@ export const ButtonRoot = styled.div`
         text-decoration: none;
 
         &:hover {
-          border-bottom: 1px solid ${(color && colors[color]) || color};
+          :after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: ${(color && colors[color]) || color};
+          }
+        }
+        &:visited {
+          color: none;
         }
       `
         : ""

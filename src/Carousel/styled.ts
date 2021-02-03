@@ -7,9 +7,9 @@ import breakpoints from "../themes/breakpoints";
 export const Wrapper = styled.div`
   margin: auto;
   position: relative;
-  max-width: 1080px;
   width: 100%;
   min-width: 275px;
+  max-width: 1080px;
   padding: 36px;
   display: inline-block;
 `;
@@ -37,6 +37,9 @@ export const IconButton = styled.button`
   position: absolute;
   top: calc(50% - 36px);
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${({ isDisabled, mode }: { isDisabled?: boolean; mode: string }) =>
     isDisabled
@@ -74,18 +77,21 @@ export const RightBtn = styled(IconButton)`
 
 export const ElementsContainer = styled.div`
   overflow: hidden;
-  width: auto;
+  width: 100%;
   height: 100%;
-  max-width: ${({ width }: { width: number }) => width}px;
   margin: auto;
+  border: 1px solid ${colors.N15};
+  border-radius: 4px;
 `;
 
 export const ElementsOuter = styled.div`
   display: flex;
-  width: fit-content;
-  transform: ${({ move }: { move: number }) =>
-    move ? `translateX(-${move}px)` : 0};
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  ${({ move, width }: { move: number; width: string }) => `
+    width: ${width};
+    transform: ${move ? `translateX(-${move}px)` : 0};
+  `}
 `;
 
 export const ElementWrapper = styled.div`
@@ -97,18 +103,18 @@ export const DotWrapper = styled.div`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -20px;
   justify-content: center;
   align-items: center;
 `;
 
 export const Dot = styled.span`
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
   display: block;
   cursor: pointer;
-  margin: 5px;
+  margin: 6px;
 
   background-color: ${({ isActive }: { isActive?: boolean }) =>
     isActive ? colors.N100 : colors.N15};

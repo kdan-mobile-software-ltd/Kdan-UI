@@ -16,6 +16,7 @@ const App = () => {
         <Button>Click</Button>
       </Navbar>
       <header className="App-header">
+        <Logo variant="pdf-reader" />
         <Typography variant="h1">123</Typography>
         <Box m={2}>
           <Carousel>

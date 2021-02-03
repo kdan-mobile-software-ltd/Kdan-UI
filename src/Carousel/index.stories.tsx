@@ -36,6 +36,7 @@ export const Basic = (props: CarouselProps): React.ReactNode => (
           height: "250px",
           textAlign: "center",
           backgroundColor: "gray",
+          margin: 0,
         }}>
         {item.content}
       </p>
