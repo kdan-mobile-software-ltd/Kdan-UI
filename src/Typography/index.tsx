@@ -38,10 +38,11 @@ export type TypographyProps = {
   color?: "default" | "brand" | "primary" | "secondary" | string;
   hoverColor?: "default" | "brand" | "primary" | "secondary" | string;
   align?: "center" | "inherit" | "justify" | "left" | "right";
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   display?: "block" | "initial" | "inline";
   noWrap?: boolean;
+  dangerouslySetInnerHTML?: { __html: string };
 };
 
 export type RefType = HTMLDivElement;
@@ -59,6 +60,7 @@ const Typography = React.forwardRef<RefType, TypographyProps>(
       paragraph = false,
       display = "initial",
       noWrap = false,
+      dangerouslySetInnerHTML,
     }: TypographyProps,
     ref
   ) => {
@@ -73,6 +75,7 @@ const Typography = React.forwardRef<RefType, TypographyProps>(
       display,
       noWrap,
       hoverColor,
+      dangerouslySetInnerHTML,
     };
 
     return (

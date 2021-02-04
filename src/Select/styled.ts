@@ -31,7 +31,7 @@ export const MenuList = styled.div`
   border: solid 1px ${colors.N15};
   padding: 8px 0;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  max-height: 300px;
+  max-height: 360px;
   overflow-y: auto;
 
   ${({ position }: { position: string }) =>
@@ -98,7 +98,7 @@ export const Selected = styled.div`
   padding: 8px;
   border-radius: 2px;
   width: 100%;
-  min-width: 164px;
+  min-width: 136px;
   box-sizing: border-box;
   border: solid 1px ${colors.N15};
   cursor: pointer;

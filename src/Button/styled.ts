@@ -90,15 +90,15 @@ const buildTheme = (color = "default", variant = "contained") => {
 const buildSize = (size = "medium") => {
   if (size === "small") {
     return `
-      font-size: ${pxToRem(16)};
+      font-size: ${pxToRem(14)};
     `;
   } else if (size === "medium") {
     return `
-      font-size: ${pxToRem(17)};
+      font-size: ${pxToRem(16)};
     `;
   } else {
     return `
-      font-size: ${pxToRem(18)};
+      font-size: ${pxToRem(21)};
     `;
   }
 };

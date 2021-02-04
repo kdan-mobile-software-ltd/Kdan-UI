@@ -1,13 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import { Wrapper, TriggerWrapper, ContentWrapper, Inner } from "./styled";
 
 export type CollapseProps = {
+  defaultOpen?: boolean;
   trigger: React.ReactNode;
   children: React.ReactNode;
 };
 
 const Collapse: React.FC<CollapseProps> = ({
+  defaultOpen = false,
   trigger,
   children,
 }: CollapseProps) => {
@@ -17,6 +19,10 @@ const Collapse: React.FC<CollapseProps> = ({
   const handleClick = () => {
     setOpen((current) => !current);
   };
+
+  useEffect(() => {
+    setOpen(defaultOpen);
+  }, [defaultOpen]);
 
   return (
     <Wrapper>
