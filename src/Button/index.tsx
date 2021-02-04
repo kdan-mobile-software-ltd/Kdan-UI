@@ -24,7 +24,8 @@ export type ButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
     | "primary"
     | "secondary"
     | "light"
-    | "cheese";
+    | "cheese"
+    | string;
   fullWidth?: boolean;
   variant?: "contained" | "outlined" | "text";
   onClick?: (e: React.MouseEvent | React.TouchEvent) => void;

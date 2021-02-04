@@ -39,7 +39,7 @@ export const Basic = (): React.ReactNode => (
       Click
     </Button>
     &nbsp;
-    <Button variant="outlined" size="medium">
+    <Button size="medium" color="B80">
       Click
     </Button>
     &nbsp;

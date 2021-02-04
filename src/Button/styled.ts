@@ -64,10 +64,25 @@ const buildTheme = (color = "default", variant = "contained") => {
         background-color: ${hexToRGBA(colors.Y50, 0.7)};
       }
     `;
-  } else if (color && !colors[color]) {
+  } else if (color && colors[color]) {
+    return `
+      color: ${colors[color]};
+      background-color: ${colors.N0};
+
+      :hover {
+        color: ${colors.N0};
+        background-color: ${colors[color]};
+      }
+    `;
+  } else {
     return `
       color: ${color};
-      background-color: ${color};
+      background-color: ${colors.N0};
+
+      :hover {
+        color: ${colors.N0};
+        background-color: ${color};
+      }
     `;
   }
 };
