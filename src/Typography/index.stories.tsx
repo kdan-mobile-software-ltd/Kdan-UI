@@ -78,3 +78,12 @@ CustomHoverColor.args = {
   children: "Hover H1",
   hoverColor: "brand",
 } as TypographyProps;
+
+export const SetInnerHTML = (args: TypographyProps): React.ReactNode => (
+  <Typography {...args} />
+);
+
+SetInnerHTML.args = {
+  variant: "b1",
+  dangerouslySetInnerHTML: { __html: "Hello <strong>World</strong>!" },
+} as TypographyProps;
