@@ -14,6 +14,7 @@ import Carousel, { CarouselProps } from "./Carousel";
 import Card, { CardProps } from "./Card";
 import Textfield, { TextfieldProps } from "./Textfield";
 import Select, { SelectProps } from "./Select";
+import Icon, { IconProps } from "./Icon";
 
 export {
   ClickAwayListener,
@@ -43,4 +44,6 @@ export {
   SelectProps,
   breakpoints,
   colors,
+  Icon,
+  IconProps,
 };

@@ -43,11 +43,13 @@ export const WithMedia = (): React.ReactNode => (
     media={<img src="https://i.imgur.com/WG5ObiT.png" />}
     actions={<Button>Link</Button>}>
     <Typography variant="h5" display="block">
-      Card
+      Creativity 365
     </Typography>
     <Box mt={2}>
       <Typography variant="b3" display="block">
-        Content
+        Make information gathering and content creation simple and efficient
+        with the Creativity 365 series, featuring Animation Desk, Write-on
+        Video, NoteLedge, and Markup.
       </Typography>
     </Box>
   </Card>

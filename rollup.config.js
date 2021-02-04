@@ -27,7 +27,8 @@ const input = [
   "src/Textfield/index.tsx",
   "src/Select/index.tsx",
   "src/themes/breakpoints.ts",
-  "src/themes/colors.ts"
+  "src/themes/colors.ts",
+  "src/Icon/index.tsx"
 ];
 
 const plugins = [
