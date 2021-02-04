@@ -28,6 +28,7 @@ const buildTheme = (color = "default", variant = "contained") => {
     `;
   } else if (color === "default" && variant === "outlined") {
     return `
+      color: ${colors.N100};
       border-color: ${colors.N100};
       background-color: inherit;
 
@@ -65,6 +66,7 @@ const buildTheme = (color = "default", variant = "contained") => {
     `;
   } else if (color && !colors[color]) {
     return `
+      color: ${color};
       background-color: ${color};
     `;
   }

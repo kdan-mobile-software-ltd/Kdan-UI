@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { typography, space, color } from "styled-system";
+import { typography, space, color, Theme, SpaceProps } from "styled-system";
 
-const Box = styled.div(typography, space, color);
+const Box = styled.div<Theme & SpaceProps>(typography, space, color);
 
 export default Box;

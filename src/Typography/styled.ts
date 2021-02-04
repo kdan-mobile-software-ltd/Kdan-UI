@@ -35,7 +35,7 @@ const buildVariant = (
   ${
     size.md &&
     `
-      @media ${breakpoints.down("lg")} {
+      @media ${breakpoints.up("md")} {
         font-size: ${pxToRem(size.md)};
         letter-spacing: ${`${round(letterSpacing / size.md)}em`};
       }

@@ -12,16 +12,20 @@ export const Wrapper = styled.div`
   max-width: 1080px;
   padding: 36px;
   display: inline-block;
+
+  @media ${breakpoints.down("md")} {
+    padding: 0 0 32px;
+  }
 `;
 
 export const ArrowBtn = styled.span`
   padding: 0 6px;
-  display: inline-flex;
+  display: none;
   cursor: pointer;
   margin: 0 14px;
 
-  @media ${breakpoints.up("md")} {
-    display: none;
+  @media ${breakpoints.down("lg")} {
+    display: inline-flex;
   }
 `;
 
@@ -60,10 +64,8 @@ export const IconButton = styled.button`
       }
     `}
 
-  display: none;
-
-  @media ${breakpoints.up("md")} {
-    display: block;
+  @media ${breakpoints.down("lg")} {
+    display: none;
   }
 `;
 

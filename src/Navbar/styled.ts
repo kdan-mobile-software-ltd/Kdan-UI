@@ -31,9 +31,11 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   margin: auto;
 
+  @media ${breakpoints.down("lg")} {
+    height: 70px;
+  }
   @media ${breakpoints.down("md")} {
     padding: 0 16px;
-    height: 70px;
   }
 `;
 
@@ -50,35 +52,37 @@ export const Menu = styled.div`
   transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   z-index: 9999;
 
-  @media ${breakpoints.down("md")} {
+  @media ${breakpoints.down("lg")} {
     ${({ isCollapse }: { isCollapse: boolean }) =>
       isCollapse
         ? `
       height: 0;
     `
         : `
-      height: 100vh;
+      height: calc(100vh - 70px);
     `}
 
     position: fixed;
-    padding: 0;
     top: 70px;
   }
 `;
 
 export const MenuWrapper = styled.div`
-  margin: 16px;
   width: 100%;
+  margin: 0;
 
-  @media ${breakpoints.up("md")} {
-    margin: 0;
+  @media ${breakpoints.down("lg")} {
+    margin: 40px;
+  }
+  @media ${breakpoints.down("md")} {
+    margin: 16px;
   }
 `;
 
 export const MenuBtnWrapper = styled.span`
-  display: inline-flex;
+  display: none;
 
-  @media ${breakpoints.up("md")} {
-    display: none;
+  @media ${breakpoints.down("lg")} {
+    display: inline-flex;
   }
 `;

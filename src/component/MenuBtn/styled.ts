@@ -4,9 +4,8 @@ import colors from "../../themes/colors";
 export const Wrapper = styled.div`
   display: inline-block;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
-  padding: 4px;
+  width: 40px;
+  height: 40px;
 `;
 
 export const Bun = styled.span`
@@ -25,16 +24,16 @@ export const Bun = styled.span`
     if (sequence === "top") {
       return css`
         transform: ${isActive ? "rotate(45deg)" : ""};
-        top: ${isActive ? "13px" : "4px"};
+        top: ${isActive ? "16px" : "8px"};
       `;
     } else if (sequence === "middle") {
       return css`
-        top: 9px;
+        top: 13px;
         opacity: ${isActive ? 0 : 1};
       `;
     } else {
       return css`
-        top: ${isActive ? "5px" : "14px"};
+        top: ${isActive ? "8px" : "19px"};
         transform: ${isActive ? "rotate(-45deg)" : ""};
       `;
     }
