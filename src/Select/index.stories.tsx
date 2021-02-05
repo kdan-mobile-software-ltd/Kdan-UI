@@ -1,6 +1,7 @@
 import React from "react";
 
 import Select, { SelectProps } from "./";
+import Textfield from "../Textfield";
 import { Container } from "../component/Decorator";
 
 export default {
@@ -56,6 +57,24 @@ LanguageBar.args = {
   value: "English",
   position: "top",
   disabledInput: true,
+  options: [
+    { value: "English", key: "en" },
+    { value: "日本語", key: "ja" },
+    { value: "中文（繁體）", key: "zh-tw" },
+    { value: "中文（简体）", key: "zh-cn" },
+    { value: "Español", key: "es" },
+  ],
+} as SelectProps;
+
+export const Group = (props: SelectProps): React.ReactNode => (
+  <>
+    <Textfield />
+    <Select {...props} />
+  </>
+);
+
+Group.args = {
+  value: "English",
   options: [
     { value: "English", key: "en" },
     { value: "日本語", key: "ja" },

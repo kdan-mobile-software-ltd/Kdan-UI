@@ -21,9 +21,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const MediaWrapper = styled.div`
-  display: inline-flex;
-`;
+export const MediaWrapper = styled.div``;
 
 export const ContentWrapper = styled.div`
   padding: 30px;

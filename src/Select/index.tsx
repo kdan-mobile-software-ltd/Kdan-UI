@@ -99,7 +99,6 @@ const Select = React.forwardRef<RefType, SelectProps>(
               disabled={disabled}
               placeholder={placeholder}
               error={error}
-              fullWidth
               autoFocus
               {...rest}
             />

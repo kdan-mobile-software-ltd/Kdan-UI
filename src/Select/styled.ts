@@ -95,10 +95,10 @@ export const Selected = styled.div`
   font-size: 14px;
   color: ${colors.N100};
   min-height: 36px;
-  padding: 8px;
+  padding: 9px 8px;
   border-radius: 2px;
   width: 100%;
-  min-width: 136px;
+  min-width: 164px;
   box-sizing: border-box;
   border: solid 1px ${colors.N15};
   cursor: pointer;

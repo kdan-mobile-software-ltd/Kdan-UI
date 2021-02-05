@@ -63,7 +63,7 @@ export const Menu = styled.div`
     `}
 
     position: fixed;
-    top: 70px;
+    top: 69px;
   }
 `;
 
