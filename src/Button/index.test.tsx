@@ -29,7 +29,7 @@ describe("Button", () => {
     const { container } = render(<Button>Button</Button>);
 
     expect(container.querySelector("button")).toHaveStyle(`
-      padding: 7px 17px;
+      padding: 8px 18px;
       color: ${colors.N0};
       background-color: ${colors.N100};
     `);
