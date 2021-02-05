@@ -13,7 +13,7 @@ const buildTheme = (color = "default", variant = "contained") => {
 
       :hover {
         color: ${colors.N0};
-        background-color: ${hexToRGBA(colors.N100, 0.7)};
+        background-color: ${colors.N70};
       }
     `;
   } else if (color === "light" && variant === "contained") {
@@ -23,7 +23,7 @@ const buildTheme = (color = "default", variant = "contained") => {
 
       :hover {
         color: ${colors.N100};
-        background-color: ${hexToRGBA(colors.N100, 0.1)};
+        background-color: ${colors.N10};
       }
     `;
   } else if (color === "default" && variant === "outlined") {
@@ -43,7 +43,7 @@ const buildTheme = (color = "default", variant = "contained") => {
       background-color: inherit;
 
       :hover {
-        color: ${hexToRGBA(colors.N100, 0.7)};
+        color: ${colors.N70};
       }
     `;
   } else if (color === "brand" && variant === "text") {
@@ -107,17 +107,17 @@ const buildVariant = (size = "medium", variant = "contained") => {
   if (size === "small" && variant === "contained") {
     return `
       box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.13), 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 5px 0px rgba(0,0,0,0.05);
-      padding: 4px 10px;
+      padding: 5px 11px;
     `;
   } else if (size === "small" && variant === "outlined") {
     return `
       border: 2px solid;
-      padding: 2px 8px;
+      padding: 3px 9px;
     `;
   } else if (size === "medium" && variant === "contained") {
     return `
       box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.13), 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 5px 0px rgba(0,0,0,0.05);
-      padding: 7px 17px;
+      padding: 8px 18px;
     `;
   } else if (size === "medium" && variant === "outlined") {
     return `
@@ -137,7 +137,7 @@ const buildVariant = (size = "medium", variant = "contained") => {
   } else if (variant === "text") {
     return `
       border-radius: 0;
-      padding: 1px;
+      padding: 2px;
       line-height: 1.1;
     `;
   }
