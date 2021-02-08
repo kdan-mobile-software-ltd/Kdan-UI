@@ -33,8 +33,8 @@ export const Basic = ({
     defaultOpen={defaultOpen}>
     <p
       style={{
-        width: "200px",
-        height: "100px",
+        width: "400px",
+        height: "300px",
         backgroundColor: "gray",
         margin: 0,
       }}>

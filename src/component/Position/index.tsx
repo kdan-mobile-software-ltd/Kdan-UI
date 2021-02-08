@@ -9,9 +9,15 @@ type PositionProps = {
   ) => React.ReactElement;
   position: PositionType;
   target: React.MutableRefObject<HTMLDivElement | null>;
+  forceUpdate?: boolean;
 };
 
-const Position = ({ children, position, target }: PositionProps): any => {
+const Position = ({
+  children,
+  position,
+  target,
+  forceUpdate = false,
+}: PositionProps): any => {
   const childrenRef = useRef<HTMLDivElement>(null);
   const [coordinates, setCoordinates] = useState({});
 
@@ -25,7 +31,7 @@ const Position = ({ children, position, target }: PositionProps): any => {
 
       setCoordinates(coords);
     }
-  }, [childrenRef]);
+  }, [childrenRef, forceUpdate]);
 
   return children(childrenRef, coordinates);
 };

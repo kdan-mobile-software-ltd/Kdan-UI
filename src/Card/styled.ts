@@ -5,11 +5,9 @@ import breakpoints from "../themes/breakpoints";
 
 export const Wrapper = styled.div`
   overflow: hidden;
-  display: inline-block;
   box-sizing: border-box;
   min-width: 100px;
-  max-width: 520px;
-  width: 100%;
+  height: 100%;
   border-radius: 4px;
   border: solid 1px ${colors.N15};
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -28,7 +26,7 @@ export const ContentWrapper = styled.div`
   background-color: inherit;
 
   @media ${breakpoints.down("xl")} {
-    padding: 20px;
+    padding: 16px;
   }
 `;
 

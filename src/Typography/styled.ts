@@ -86,6 +86,7 @@ const TypographyRoot = styled.div`
     display,
     noWrap,
     variant,
+    breakAll,
   }: TypographyProps) => `
     text-align: ${align};
     color: ${
@@ -102,6 +103,14 @@ const TypographyRoot = styled.div`
           textOverflow: ellipsis;
           whiteSpace: nowrap;
         `
+        : ""
+    }
+
+    ${
+      breakAll
+        ? `
+        word-break: break-all;
+      `
         : ""
     }
 
