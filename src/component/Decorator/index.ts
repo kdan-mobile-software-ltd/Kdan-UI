@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../themes";
 
 export const Container = styled.div`
   background: #ecf0f1;
@@ -11,8 +10,7 @@ export const Container = styled.div`
     padding ? "padding: 3rem;" : "margin: -1rem;"};
 `;
 
-export const ContentStyle = styled.div`
-  width: 60%;
-  background: ${colors.N0};
-  padding: 2rem 1.5rem;
+export const Paper = styled.div`
+  display: flex;
+  margin: auto;
 `;

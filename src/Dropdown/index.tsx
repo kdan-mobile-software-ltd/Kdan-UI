@@ -4,7 +4,7 @@ import Portal from "../Portal";
 import ClickAwayListener from "../ClickAwayListener";
 import Position from "../component/Position";
 
-import { Wrapper, TriggerWrapper, DropdownWrapper } from "./styled";
+import { Wrapper, TriggerWrapper, Outer, DropdownWrapper } from "./styled";
 
 export type DropdownProps = {
   defaultOpen?: boolean;
@@ -23,9 +23,12 @@ const Dropdown: React.FC<DropdownProps> = ({
 }: DropdownProps) => {
   const [open, setOpen] = useState(false);
   const targetRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
-    setOpen((current) => !current);
+    setTimeout(() => {
+      setOpen((current) => !current);
+    }, 0);
   };
 
   const handleBlur = () => {
@@ -50,25 +53,28 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <Wrapper>
-      <TriggerWrapper ref={targetRef} onClick={handleClick}>
+      <TriggerWrapper ref={targetRef} onClick={!open ? handleClick : undefined}>
         {typeof trigger === "function" ? trigger(open) : trigger}
       </TriggerWrapper>
-      {open && (
-        <Portal>
-          <Position position={position} target={targetRef}>
-            {(ref, positionStyle) => (
-              <ClickAwayListener onClick={handleBlur}>
-                <DropdownWrapper
-                  ref={ref}
-                  fullWidth={!!fullWidth}
-                  {...positionStyle}>
-                  {children}
-                </DropdownWrapper>
-              </ClickAwayListener>
-            )}
-          </Position>
-        </Portal>
-      )}
+      <Portal>
+        <Position position={position} target={targetRef} forceUpdate={open}>
+          {(ref, positionStyle) => (
+            <ClickAwayListener onClick={open ? handleBlur : undefined}>
+              <DropdownWrapper
+                ref={ref}
+                open={open}
+                style={{
+                  height: open ? `${outerRef.current?.clientHeight}px` : 0,
+                  opacity: open ? 1 : 0,
+                }}
+                fullWidth={!!fullWidth}
+                {...positionStyle}>
+                <Outer ref={outerRef}>{children}</Outer>
+              </DropdownWrapper>
+            </ClickAwayListener>
+          )}
+        </Position>
+      </Portal>
     </Wrapper>
   );
 };

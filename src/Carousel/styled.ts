@@ -13,6 +13,9 @@ export const Wrapper = styled.div`
   padding: 36px;
   display: inline-block;
 
+  @media ${breakpoints.down("lg")} {
+    padding: 0 0 36px;
+  }
   @media ${breakpoints.down("md")} {
     padding: 0 0 32px;
   }
@@ -82,7 +85,8 @@ export const ElementsContainer = styled.div`
   width: 100%;
   height: 100%;
   margin: auto;
-  border: 1px solid ${colors.N15};
+  border: ${({ showBorder }: { showBorder: boolean }) =>
+    showBorder ? `1px solid ${colors.N15}` : "none"};
   border-radius: 4px;
 `;
 

@@ -42,6 +42,7 @@ export type TypographyProps = {
   className?: string;
   display?: "block" | "initial" | "inline";
   noWrap?: boolean;
+  breakAll?: boolean;
   dangerouslySetInnerHTML?: { __html: string };
 };
 
@@ -60,6 +61,7 @@ const Typography = React.forwardRef<RefType, TypographyProps>(
       paragraph = false,
       display = "initial",
       noWrap = false,
+      breakAll = false,
       dangerouslySetInnerHTML,
     }: TypographyProps,
     ref
@@ -75,6 +77,7 @@ const Typography = React.forwardRef<RefType, TypographyProps>(
       display,
       noWrap,
       hoverColor,
+      breakAll,
       dangerouslySetInnerHTML,
     };
 
