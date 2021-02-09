@@ -1,15 +1,11 @@
 import React from "react";
 
-import {
-  LinkArrowIcon,
-  TriangleUpIcon,
-  TriangleDownIcon,
-  CheckedIcon,
-} from "./index";
+import Checkbox, { CheckboxProps } from ".";
 import { Container } from "../component/Decorator";
 
 export default {
-  title: "Icon",
+  title: "Checkbox",
+  component: Checkbox,
   decorators: [
     (story: () => React.ReactNode): React.ReactNode => (
       <Container padding>{story()}</Container>
@@ -18,19 +14,16 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Icon",
+        component: "復選框",
       },
     },
   },
 };
 
-export const Basic = (): React.ReactNode => (
-  <>
-    <LinkArrowIcon />
-    <TriangleUpIcon />
-    <TriangleDownIcon />
-    <CheckedIcon />
-  </>
+export const Basic = (props: CheckboxProps): React.ReactNode => (
+  <Checkbox {...props} />
 );
 
-Basic.args = {};
+Basic.args = {
+  label: "test 123",
+} as CheckboxProps;

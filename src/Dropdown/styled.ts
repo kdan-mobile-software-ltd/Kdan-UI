@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import zIndex from "../themes/zIndex";
+
 export const Wrapper = styled.div``;
 
 export const TriggerWrapper = styled.div`
@@ -9,7 +11,7 @@ export const TriggerWrapper = styled.div`
 export const Outer = styled.div``;
 
 export const DropdownWrapper = styled.div`
-  z-index: 1000;
+  z-index: ${zIndex[4]};
   position: fixed;
   overflow: hidden;
   opacity: 0;

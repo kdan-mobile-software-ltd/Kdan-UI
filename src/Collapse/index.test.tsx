@@ -10,7 +10,7 @@ describe("Collapse", () => {
 
   test("open collapse", () => {
     const { container, getByText } = render(
-      <Collapse trigger={<button>click</button>} open>
+      <Collapse trigger={<button>click</button>} defaultOpen>
         content
       </Collapse>
     );

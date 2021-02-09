@@ -2,7 +2,6 @@ import path from "path";
 import commonjs from "@rollup/plugin-commonjs";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from "rollup-plugin-typescript2";
-// import nodeResolve from "@rollup/plugin-node-resolve";
 import image from "@rollup/plugin-image";
 import { uglify } from "rollup-plugin-uglify";
 import copy from "rollup-plugin-copy";
@@ -38,7 +37,6 @@ const plugins = [
       { src: './src/assets/fonts/dist/*', dest: './dist/fonts' }
     ]
   }),
-  // nodeResolve(),
   image(),
   commonjs(),
   typescript({ useTsconfigDeclarationDir: true }),

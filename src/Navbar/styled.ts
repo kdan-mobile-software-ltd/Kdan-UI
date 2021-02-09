@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import colors from "../themes/colors";
 import breakpoints from "../themes/breakpoints";
+import zIndex from "../themes/zIndex";
 
 export const Container = styled.nav`
   background: ${colors.N0};
@@ -14,7 +15,7 @@ export const Container = styled.nav`
         top: 0;
         left: 0;
         right: 0;
-        z-index: 9999;
+        z-index: ${zIndex[5]};
         box-shadow:         
         0px 5px 7px 0px rgba(0, 0, 0, 0.15);      `
       : ""}
@@ -50,7 +51,7 @@ export const Menu = styled.div`
   height: auto;
   background-color: ${colors.N0};
   transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  z-index: 9999;
+  z-index: ${zIndex[5]};
 
   @media ${breakpoints.down("lg")} {
     ${({ isCollapse }: { isCollapse: boolean }) =>

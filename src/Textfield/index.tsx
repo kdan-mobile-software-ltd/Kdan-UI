@@ -1,6 +1,8 @@
 import React from "react";
 
-import { FormControl, InputElement, InputLabel, HelpText } from "./styled";
+import { FormControl, InputElement } from "./styled";
+
+import { InputLabel, HelpText, Required } from "../component/styled";
 
 export type TextfieldProps = {
   autoComplete?: "on" | "off";
@@ -76,8 +78,9 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
         error={error}
         color={color}>
         {label && (
-          <InputLabel htmlFor={id}>
-            {label} {required ? "*" : ""}
+          <InputLabel error={!!error} htmlFor={id}>
+            {label}
+            {required ? <Required>*</Required> : ""}
           </InputLabel>
         )}
         <InputElement

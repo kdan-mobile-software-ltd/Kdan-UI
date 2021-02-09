@@ -2,8 +2,6 @@ module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-controls",
     "@storybook/addon-storysource",
     {
       name: "@storybook/addon-docs",
@@ -14,6 +12,8 @@ module.exports = {
         },
       },
     },
+    "@storybook/addon-essentials",
+    "@storybook/addon-controls",
   ],
   webpackFinal: async (config) => { 
     const fileLoaderRule = config.module.rules.find(rule => RegExp(rule.test).test('.svg'));

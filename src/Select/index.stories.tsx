@@ -24,7 +24,6 @@ export default {
 export const Basic = (): React.ReactNode => (
   <Select
     placeholder="Test"
-    value="12"
     options={[
       { value: "12", key: 12 },
       { value: "23", key: 23 },
@@ -41,6 +40,7 @@ export const CustomContent = (props: SelectProps): React.ReactNode => (
 
 CustomContent.args = {
   placeholder: "Choose a Fruit",
+  enabledInput: true,
   options: [
     { value: "Apple", key: "Apple" },
     { value: "Banana", key: "Banana" },
@@ -54,9 +54,8 @@ export const LanguageBar = (props: SelectProps): React.ReactNode => (
 );
 
 LanguageBar.args = {
-  value: "English",
+  defaultValue: "English",
   position: "top",
-  disabledInput: true,
   options: [
     { value: "English", key: "en" },
     { value: "日本語", key: "ja" },
@@ -74,7 +73,7 @@ export const Group = (props: SelectProps): React.ReactNode => (
 );
 
 Group.args = {
-  value: "English",
+  defaultValue: "English",
   options: [
     { value: "English", key: "en" },
     { value: "日本語", key: "ja" },

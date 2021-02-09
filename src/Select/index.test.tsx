@@ -14,7 +14,9 @@ describe("Select", () => {
   afterEach(cleanup);
 
   test("set default value", () => {
-    const { getByTestId } = render(<Select options={options} value="1" />);
+    const { getByTestId } = render(
+      <Select options={options} defaultValue="1" />
+    );
 
     expect(getByTestId("selected").innerHTML).toBe("1");
   });
@@ -36,13 +38,13 @@ describe("Select", () => {
     expect(getByTestId("selected").innerHTML).toBe("2");
   });
 
-  test("disable input", () => {
+  test("enable input", () => {
     const { container, getByTestId } = render(
-      <Select options={options} disabledInput />
+      <Select options={options} enabledInput />
     );
 
     fireEvent.click(getByTestId("selected"));
 
-    expect(container.querySelector("input")).toBeNull();
+    expect(container.querySelector("input")).toBeInTheDocument();
   });
 });

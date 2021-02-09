@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import colors from "../themes/colors";
-import font from "../themes/fonts";
+import zIndex from "../themes/zIndex";
 import { hexToRGBA } from "../helpers/utility";
 
 export const Wrapper = styled.div`
@@ -33,6 +33,7 @@ export const MenuList = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   max-height: 360px;
   overflow-y: auto;
+  z-index: ${zIndex.maximum};
 
   ${({ position }: { position: string }) =>
     position === "top"
@@ -114,7 +115,7 @@ export const Selected = styled.div`
     error: boolean;
   }) => `
     border-color: ${isActive ? colors.B50 : colors.N15};
-    background-color: ${disabled ? colors.N10 : colors.N0};
+    background-color: ${disabled ? colors.N15 : colors.N0};
 
     ${
       error
@@ -128,19 +129,4 @@ export const Selected = styled.div`
   :hover {
     background-color: ${colors.N10};
   }
-`;
-
-export const InputLabel = styled.label`
-  font-size: 14px;
-  font-family: ${font.typography};
-  font-weight: 500;
-  margin-bottom: 6px;
-  display: inherit;
-  color: ${({ error }: { error: boolean }) =>
-    error ? colors.error : colors.N100};
-`;
-
-export const HelpText = styled.span`
-  font-size: 12px;
-  color: ${colors.N40};
 `;

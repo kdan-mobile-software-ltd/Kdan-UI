@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { hexToRGBA } from "../helpers/utility";
 import colors from "../themes/colors";
 import breakpoints from "../themes/breakpoints";
+import zIndex from "../themes/zIndex";
 
 export const Wrapper = styled.div`
   margin: auto;
@@ -43,7 +44,7 @@ export const IconButton = styled.button`
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   position: absolute;
   top: calc(50% - 36px);
-  z-index: 10;
+  z-index: ${zIndex[2]};
   display: flex;
   justify-content: center;
   align-items: center;
