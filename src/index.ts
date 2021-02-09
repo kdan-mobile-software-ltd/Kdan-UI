@@ -14,6 +14,7 @@ import Carousel, { CarouselProps } from "./Carousel";
 import Card, { CardProps } from "./Card";
 import Textfield, { TextfieldProps } from "./Textfield";
 import Select, { SelectProps } from "./Select";
+import Checkbox, { CheckboxProps } from "./Checkbox";
 import * as Icons from "./Icon";
 
 export {
@@ -44,5 +45,7 @@ export {
   SelectProps,
   breakpoints,
   colors,
+  Checkbox,
+  CheckboxProps,
   Icons,
 };
