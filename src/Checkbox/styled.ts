@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import colors from "../themes/colors";
-import { hexToRGBA } from "../helpers/utility";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -10,7 +9,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Box = styled.div<{
-  isChecked: boolean;
   error: boolean;
   isDisabled: boolean;
 }>`
@@ -22,17 +20,15 @@ export const Box = styled.div<{
   box-sizing: border-box;
   padding: 2px;
   overflow: hidden;
+  position: relative;
+  display: flex;
 
-  background-color: ${({ isChecked, isDisabled }) =>
-    (isDisabled && colors.N15) ||
-    (isChecked && hexToRGBA(colors.B50, 0.4)) ||
-    "inherit"};
+  background-color: ${({ isDisabled }) =>
+    isDisabled ? colors.N15 : "inherit"};
 
   :hover {
-    background-color: ${({ isChecked, isDisabled }) =>
-      (!isDisabled && isChecked && hexToRGBA(colors.B50, 0.7)) ||
-      (!isDisabled && colors.N10) ||
-      colors.N15};
+    background-color: ${({ isDisabled }) =>
+      isDisabled ? colors.N15 : colors.N10};
   }
 `;
 

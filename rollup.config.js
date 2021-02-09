@@ -27,7 +27,8 @@ const input = [
   "src/Select/index.tsx",
   "src/themes/breakpoints.ts",
   "src/themes/colors.ts",
-  "src/Icon/index.tsx"
+  "src/Icon/index.tsx",
+  "src/Checkbox/index.tsx"
 ];
 
 const plugins = [

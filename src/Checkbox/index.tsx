@@ -43,7 +43,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
   return (
     <Wrapper className={className}>
-      <Box isChecked={isChecked} isDisabled={disabled} error={error}>
+      <Box isDisabled={disabled} error={error}>
         <Input
           id={id || defaultId}
           type="checkbox"
