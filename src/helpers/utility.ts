@@ -17,3 +17,14 @@ export const hexToRGBA = (hex: string, alpha?: number): string => {
     return "rgb(" + r + ", " + g + ", " + b + ")";
   }
 };
+
+export const getRandomInt = (max: number): number => {
+  return Math.floor(Math.random() * Math.floor(max));
+};
+
+export const delay = (ms: number): Promise<void> =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });

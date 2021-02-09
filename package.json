@@ -1,6 +1,6 @@
 {
   "name": "@kdanmobile/kdan-ui",
-  "version": "1.0.17",
+  "version": "1.0.19",
   "description": "UI components for kdan modern web",
   "keywords": [
     "react",
@@ -45,12 +45,11 @@
     "@babel/core": "^7.11.6",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-image": "^2.0.6",
-    "@rollup/plugin-node-resolve": "^11.0.1",
     "@rollup/plugin-url": "^6.0.0",
     "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-controls": "^6.1.12",
     "@storybook/addon-docs": "^6.1.12",
-    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-essentials": "^6.1.17",
     "@storybook/addon-links": "^6.1.11",
     "@storybook/addon-storysource": "^6.1.12",
     "@storybook/react": "^6.1.11",
@@ -76,6 +75,7 @@
     "husky": "^4.3.7",
     "jest": "^26.6.3",
     "jest-styled-components": "^7.0.3",
+    "jest-svg-transformer": "^1.0.0",
     "lint-staged": "^10.5.3",
     "prettier": "^2.0.2",
     "react": "^17.0.1",
@@ -98,6 +98,7 @@
   },
   "jest": {
     "transform": {
+      ".svg": "jest-svg-transformer",
       ".(ts|tsx)": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",

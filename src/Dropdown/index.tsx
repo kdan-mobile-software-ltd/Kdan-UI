@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Portal from "../Portal";
 import ClickAwayListener from "../ClickAwayListener";
 import Position from "../component/Position";
+import { delay } from "../helpers/utility";
 
 import { Wrapper, TriggerWrapper, Outer, DropdownWrapper } from "./styled";
 
@@ -25,10 +26,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   const targetRef = useRef<HTMLDivElement>(null);
   const outerRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = () => {
-    setTimeout(() => {
-      setOpen((current) => !current);
-    }, 0);
+  const handleClick = async () => {
+    await delay(10);
+    setOpen((current) => !current);
   };
 
   const handleBlur = () => {

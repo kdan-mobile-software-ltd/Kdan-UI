@@ -3,6 +3,8 @@ import styled, { keyframes } from "styled-components";
 import { ButtonProps } from "./index";
 import fonts from "../themes/fonts";
 import colors from "../themes/colors";
+import zIndex from "../themes/zIndex";
+
 import { pxToRem, hexToRGBA } from "../helpers/utility";
 
 const buildTheme = (color = "default", variant = "contained") => {
@@ -146,9 +148,9 @@ const buildVariant = (size = "medium", variant = "contained") => {
 const buildDisabled = (isDisabled = false) =>
   isDisabled
     ? `
-  color: rgba(0, 0, 0, 0.7);
+  color: ${colors.N10};
   box-shadow: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${colors.N30};
   cursor: default;
 `
     : "";
@@ -222,12 +224,12 @@ export const ButtonRoot = styled.div`
 export const Ripple = styled.span`
   display: block;
   position: relative;
-  z-index: 1;
+  z-index: ${zIndex[1]};
 
   &::after {
     content: "";
     position: absolute;
-    z-index: -1;
+    z-index: ${zIndex.minimum};
     top: calc(50% - 35px);
     left: calc(50% - 25px);
     background-color: rgba(255, 255, 255, 0.2);
@@ -245,8 +247,10 @@ export const ButtonLabel = styled.span`
 
 export const ButtonStartIcon = styled.span`
   margin-right: 8px;
+  display: flex;
 `;
 
 export const ButtonEndIcon = styled.span`
   margin-left: 8px;
+  display: flex;
 `;

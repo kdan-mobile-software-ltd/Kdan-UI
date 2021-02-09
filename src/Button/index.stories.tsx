@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container } from "../component/Decorator";
 import Button, { ButtonProps } from ".";
-import Icon from "../Icon";
+import { LinkArrowIcon, TriangleDownIcon } from "../Icon";
 
 export default {
   title: "Button",
@@ -86,7 +86,7 @@ AnchorLink.args = {
   href: "https://github.com/",
   target: "_blank",
   color: "brand",
-  endIcon: <Icon glyph="link-arrow" />,
+  endIcon: <LinkArrowIcon />,
 } as ButtonProps;
 
 export const ButtonLink = (args: ButtonProps): React.ReactNode => (
@@ -100,7 +100,7 @@ ButtonLink.args = {
   href: "https://github.com/",
   target: "_blank",
   color: "default",
-  endIcon: <Icon glyph="link-arrow" />,
+  endIcon: <LinkArrowIcon />,
 } as ButtonProps;
 
 export const Disabled = (args: ButtonProps): React.ReactNode => (
@@ -129,5 +129,5 @@ export const ButtonWithIcon = (args: ButtonProps): React.ReactNode => (
 ButtonWithIcon.args = {
   variant: "text",
   children: "Products",
-  endIcon: <Icon glyph="triangle-down" />,
+  endIcon: <TriangleDownIcon />,
 } as ButtonProps;

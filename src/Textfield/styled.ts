@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { TextfieldProps } from "./index";
 import colors from "../themes/colors";
-import font from "../themes/fonts";
 
 export const FormControl = styled.div`
   display: inline-block;
@@ -42,19 +41,5 @@ export const InputElement = styled.input`
     `};
 
   color: ${({ color }) => colors[color as string] || color};
-  background-color: ${({ disabled }) => (disabled ? colors.N10 : colors.N0)};
-`;
-
-export const InputLabel = styled.label`
-  font-size: 14px;
-  font-family: ${font.typography};
-  font-weight: 500;
-  margin-bottom: 6px;
-  display: inherit;
-  color: inherit;
-`;
-
-export const HelpText = styled.span`
-  font-size: 12px;
-  color: ${colors.N40};
+  background-color: ${({ disabled }) => (disabled ? colors.N15 : colors.N0)};
 `;
