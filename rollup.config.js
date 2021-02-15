@@ -28,7 +28,8 @@ const input = [
   "src/themes/breakpoints.ts",
   "src/themes/colors.ts",
   "src/Icon/index.tsx",
-  "src/Checkbox/index.tsx"
+  "src/Checkbox/index.tsx",
+  "src/Avatar/index.tsx"
 ];
 
 const plugins = [

@@ -24,11 +24,11 @@ const buildVariant = (
   line-height: ${lineHeight};
 
   ${
-    size.lg &&
+    size.sm &&
     `
-      @media ${breakpoints.up("lg")} {
-        font-size: ${pxToRem(size.lg)};
-        letter-spacing: ${`${round(letterSpacing / size.lg)}em`};
+      @media ${breakpoints.up("xs")} {
+        font-size: ${pxToRem(size.sm)};
+        letter-spacing: ${`${round(letterSpacing / size.sm)}em`};
       }
     `
   }
@@ -42,11 +42,11 @@ const buildVariant = (
     `
   }
   ${
-    size.sm &&
+    size.lg &&
     `
-      @media ${breakpoints.down("md")} {
-        font-size: ${pxToRem(size.sm)};
-        letter-spacing: ${`${round(letterSpacing / size.sm)}em`};
+      @media ${breakpoints.up("lg")} {
+        font-size: ${pxToRem(size.lg)};
+        letter-spacing: ${`${round(letterSpacing / size.lg)}em`};
       }
     `
   }

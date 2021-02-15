@@ -15,6 +15,7 @@ import Card, { CardProps } from "./Card";
 import Textfield, { TextfieldProps } from "./Textfield";
 import Select, { SelectProps } from "./Select";
 import Checkbox, { CheckboxProps } from "./Checkbox";
+import Avatar, { AvatarProps } from "./Avatar";
 import * as Icons from "./Icon";
 
 export {
@@ -47,5 +48,7 @@ export {
   colors,
   Checkbox,
   CheckboxProps,
+  Avatar,
+  AvatarProps,
   Icons,
 };
