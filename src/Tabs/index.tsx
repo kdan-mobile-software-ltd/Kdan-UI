@@ -16,20 +16,23 @@ type Tab = {
 
 export type TabsProps = {
   tabs: Tab[];
-  onChange: (index: number) => void;
-  defaultIndex: number;
+  onChange?: (index: number) => void;
+  defaultIndex?: number;
 };
 
 const Tabs: React.FC<TabsProps> = ({
   tabs,
   onChange,
-  defaultIndex,
+  defaultIndex = 0,
 }: TabsProps) => {
   const [selected, onSelect] = useState(0);
 
   const handleClick = (index: number) => {
     onSelect(index);
-    onChange(index);
+
+    if (onChange) {
+      onChange(index);
+    }
   };
 
   useEffect(() => {

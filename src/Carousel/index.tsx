@@ -60,9 +60,14 @@ const Carousel: React.FC<CarouselProps> = ({
 
   return (
     <Wrapper>
-      <LeftBtn mode={mode} isDisabled={activeIndex === 0} onClick={handlePrev}>
-        <LeftArrow />
-      </LeftBtn>
+      {children.length > 1 && (
+        <LeftBtn
+          mode={mode}
+          isDisabled={activeIndex === 0}
+          onClick={handlePrev}>
+          <LeftArrow />
+        </LeftBtn>
+      )}
       <ElementsContainer {...bind()} ref={elementRef} showBorder={showBorder}>
         <ElementsOuter
           width={`${(100 * children.length || 1) / showCount}%`}
@@ -77,29 +82,33 @@ const Carousel: React.FC<CarouselProps> = ({
             ))}
         </ElementsOuter>
       </ElementsContainer>
-      <RightBtn
-        mode={mode}
-        isDisabled={activeIndex === children.length - 1}
-        onClick={handleNext}>
-        <RightArrow />
-      </RightBtn>
-      <DotWrapper>
-        <ArrowBtn onClick={handlePrev}>
-          <LeftArrow768 />
-        </ArrowBtn>
-        {showDot &&
-          Array.isArray(children) &&
-          children.map((_, index) => (
-            <Dot
-              isActive={activeIndex === index}
-              key={`dot_${index}`}
-              onClick={() => handleDotClick(index)}
-            />
-          ))}
-        <ArrowBtn onClick={handleNext}>
-          <RightArrow768 />
-        </ArrowBtn>
-      </DotWrapper>
+      {children.length > 1 && (
+        <RightBtn
+          mode={mode}
+          isDisabled={activeIndex === children.length - 1}
+          onClick={handleNext}>
+          <RightArrow />
+        </RightBtn>
+      )}
+      {children.length > 1 && (
+        <DotWrapper>
+          <ArrowBtn onClick={handlePrev}>
+            <LeftArrow768 />
+          </ArrowBtn>
+          {showDot &&
+            Array.isArray(children) &&
+            children.map((_, index) => (
+              <Dot
+                isActive={activeIndex === index}
+                key={`dot_${index}`}
+                onClick={() => handleDotClick(index)}
+              />
+            ))}
+          <ArrowBtn onClick={handleNext}>
+            <RightArrow768 />
+          </ArrowBtn>
+        </DotWrapper>
+      )}
     </Wrapper>
   );
 };

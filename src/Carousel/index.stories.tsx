@@ -76,3 +76,27 @@ ShowTwoItems.args = {
   showDot: true,
   showCount: 2,
 } as CarouselProps;
+
+export const OnlyOne = (props: CarouselProps): React.ReactNode => (
+  <Carousel {...props}>
+    {[
+      <p
+        key="one"
+        style={{
+          minWidth: "275px",
+          width: "100%",
+          height: "250px",
+          textAlign: "center",
+          backgroundColor: "gray",
+          margin: 0,
+        }}>
+        only one
+      </p>,
+    ]}
+  </Carousel>
+);
+
+OnlyOne.args = {
+  mode: "light",
+  showDot: true,
+} as CarouselProps;
