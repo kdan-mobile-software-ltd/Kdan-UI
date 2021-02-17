@@ -29,7 +29,8 @@ const input = [
   "src/themes/colors.ts",
   "src/Icon/index.tsx",
   "src/Checkbox/index.tsx",
-  "src/Avatar/index.tsx"
+  "src/Avatar/index.tsx",
+  "src/Tabs/index.tsx"
 ];
 
 const plugins = [
