@@ -37,8 +37,4 @@ Basic.args = {
       content: "content 3",
     },
   ],
-  onChange: () => {
-    // something
-  },
-  defaultIndex: 0,
 } as TabsProps;
