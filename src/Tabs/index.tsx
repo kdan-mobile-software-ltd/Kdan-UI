@@ -10,7 +10,7 @@ import {
 } from "./styled";
 
 type Tab = {
-  label: string;
+  label: React.ReactNode;
   content: React.ReactNode;
 };
 
@@ -45,7 +45,7 @@ const Tabs: React.FC<TabsProps> = ({
         <LabelGroup>
           {tabs.map((tab, index) => (
             <Label
-              key={tab.label}
+              key={`label_${index}`}
               isActive={selected === index}
               onClick={() => {
                 handleClick(index);
@@ -57,7 +57,7 @@ const Tabs: React.FC<TabsProps> = ({
       </LabelWrapper>
       <PanelGroup>
         {tabs.map((tab, index) => (
-          <Panel key={tab.label} isActive={selected === index}>
+          <Panel key={`panel_${index}`} isActive={selected === index}>
             {tab.content}
           </Panel>
         ))}

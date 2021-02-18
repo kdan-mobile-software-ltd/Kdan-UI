@@ -89,6 +89,7 @@ export const ElementsContainer = styled.div`
   border: ${({ showBorder }: { showBorder: boolean }) =>
     showBorder ? `1px solid ${colors.N15}` : "none"};
   border-radius: 4px;
+  box-shadow: 0 0 20px 0 rgba(130, 130, 130, 0.25);
 `;
 
 export const ElementsOuter = styled.div`
