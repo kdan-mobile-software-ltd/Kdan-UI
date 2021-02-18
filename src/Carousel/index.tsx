@@ -22,8 +22,9 @@ export type CarouselProps = {
   children: React.ReactNode[];
   mode?: "dark" | "light";
   showDot?: boolean;
-  showCount?: number;
   showBorder?: boolean;
+  showShadow?: boolean;
+  displayCount?: number;
 };
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -31,7 +32,8 @@ const Carousel: React.FC<CarouselProps> = ({
   mode = "dark",
   showBorder = false,
   showDot = false,
-  showCount = 1,
+  showShadow = false,
+  displayCount = 1,
 }: CarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const elementRef = useRef<HTMLDivElement>(null);
@@ -68,12 +70,16 @@ const Carousel: React.FC<CarouselProps> = ({
           <LeftArrow />
         </LeftBtn>
       )}
-      <ElementsContainer {...bind()} ref={elementRef} showBorder={showBorder}>
+      <ElementsContainer
+        {...bind()}
+        ref={elementRef}
+        showBorder={showBorder}
+        showShadow={showShadow}>
         <ElementsOuter
-          width={`${(100 * children.length || 1) / showCount}%`}
+          width={`${(100 * children.length || 1) / displayCount}%`}
           move={
             elementRef.current
-              ? (elementRef.current.clientWidth / showCount) * activeIndex
+              ? (elementRef.current.clientWidth / displayCount) * activeIndex
               : 0
           }>
           {Array.isArray(children) &&

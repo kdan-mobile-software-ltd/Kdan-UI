@@ -16,7 +16,7 @@ const fontWeight = {
 const buildVariant = (
   fontWeight: number,
   size: { [key: string]: number },
-  lineHeight: number,
+  lineHeight: number | string,
   letterSpacing: number
 ) => `
   font-family: ${fonts.typography};
@@ -55,12 +55,22 @@ const buildVariant = (
 const variants: { [key: string]: string } = {
   h1: buildVariant(fontWeight.bold, { lg: 56, md: 48, sm: 28 }, 1.25, 0),
   h2: buildVariant(fontWeight.bold, { lg: 48, md: 32, sm: 26 }, 1.29, 0.1),
-  h3: buildVariant(fontWeight.bold, { lg: 32, md: 28, sm: 22 }, 1, 0.15),
-  h4: buildVariant(fontWeight.bold, { lg: 28, md: 22, sm: 18 }, 1, 0.25),
-  h5: buildVariant(fontWeight.bold, { lg: 22, md: 18, sm: 18 }, 1, 0.3),
-  h6: buildVariant(fontWeight.bold, { lg: 18, md: 18, sm: 18 }, 1, 0.4),
-  subtitle1: buildVariant(fontWeight.bold, { lg: 20, md: 20, sm: 20 }, 1, 0.3),
-  b1: buildVariant(fontWeight.regular, { lg: 24, md: 18, sm: 16 }, 1, 0.15),
+  h3: buildVariant(fontWeight.bold, { lg: 32, md: 28, sm: 22 }, "normal", 0.15),
+  h4: buildVariant(fontWeight.bold, { lg: 28, md: 22, sm: 18 }, "normal", 0.25),
+  h5: buildVariant(fontWeight.bold, { lg: 22, md: 18, sm: 18 }, "normal", 0.3),
+  h6: buildVariant(fontWeight.bold, { lg: 18, md: 18, sm: 18 }, "normal", 0.4),
+  subtitle1: buildVariant(
+    fontWeight.bold,
+    { lg: 20, md: 20, sm: 20 },
+    "normal",
+    0.3
+  ),
+  b1: buildVariant(
+    fontWeight.regular,
+    { lg: 24, md: 18, sm: 16 },
+    "normal",
+    0.15
+  ),
   b2: buildVariant(fontWeight.regular, { lg: 18, md: 16, sm: 16 }, 1.5, 0.15),
   b3: buildVariant(fontWeight.regular, { lg: 16, md: 14, sm: 14 }, 1.5, 0.15),
   b4: buildVariant(fontWeight.regular, { lg: 14, md: 14, sm: 14 }, 1.5, 0.15),
