@@ -4,6 +4,7 @@ import { ButtonProps } from "./index";
 import fonts from "../themes/fonts";
 import colors from "../themes/colors";
 import zIndex from "../themes/zIndex";
+import breakpoints from "../themes/breakpoints";
 
 import { pxToRem, hexToRGBA } from "../helpers/utility";
 
@@ -100,7 +101,11 @@ const buildSize = (size = "medium") => {
     `;
   } else {
     return `
-      font-size: ${pxToRem(21)};
+      font-size: ${pxToRem(22)};
+
+      @media ${breakpoints.down("lg")} {
+        font-size: ${pxToRem(16)};
+      }
     `;
   }
 };
@@ -124,7 +129,7 @@ const buildVariant = (size = "medium", variant = "contained") => {
   } else if (size === "medium" && variant === "outlined") {
     return `
       border: 2px solid;
-      padding: 5px 15px;
+      padding: 5px 16px;
     `;
   } else if (size === "large" && variant === "contained") {
     return `

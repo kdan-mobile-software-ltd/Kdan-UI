@@ -22,29 +22,46 @@ export default {
 
 export const Basic = (): React.ReactNode => (
   <>
-    <Typography variant="h1">Title H1</Typography>
+    <Typography variant="h1">H1 Welcome to Your Mobile Workspace</Typography>
     <hr />
-    <Typography variant="h2">Title H2</Typography>
+    <Typography variant="h2">H2 Welcome to Your Mobile Workspace</Typography>
     <hr />
-    <Typography variant="h3">Title H3</Typography>
+    <Typography variant="h3">H3 Welcome to Your Mobile Workspace</Typography>
     <hr />
-    <Typography variant="h4">Title H4</Typography>
+    <Typography variant="h4">H4 Welcome to Your Mobile Workspace</Typography>
     <hr />
-    <Typography variant="h5">Title H5</Typography>
+    <Typography variant="h5">H5 Welcome to Your Mobile Workspace</Typography>
     <hr />
-    <Typography variant="h6">Title H6</Typography>
+    <Typography variant="h6">H6 Welcome to Your Mobile Workspace</Typography>
     <hr />
-    <Typography variant="subtitle1">Subtitle 1</Typography>
+    <Typography variant="subtitle1">
+      Subtitle1 Welcome to Your Mobile Workspace
+    </Typography>
     <hr />
-    <Typography variant="b1">Body 1</Typography>
+    <Typography variant="b1">
+      B1 Kdan Mobile provides users with digital solutions to boost productivity
+      and unleash creativity.
+    </Typography>
     <hr />
-    <Typography variant="b2">Body 2</Typography>
+    <Typography variant="b2">
+      B2 Kdan Mobile provides users with digital solutions to boost productivity
+      and unleash creativity.
+    </Typography>
     <hr />
-    <Typography variant="b3">Body 3</Typography>
+    <Typography variant="b3">
+      B3 Kdan Mobile provides users with digital solutions to boost productivity
+      and unleash creativity.
+    </Typography>
     <hr />
-    <Typography variant="b4">Body 4</Typography>
+    <Typography variant="b4">
+      B4 Kdan Mobile provides users with digital solutions to boost productivity
+      and unleash creativity.
+    </Typography>
     <hr />
-    <Typography variant="caption">caption</Typography>
+    <Typography variant="caption">
+      Caption Kdan Mobile provides users with digital solutions to boost
+      productivity and unleash creativity.
+    </Typography>
   </>
 );
 
