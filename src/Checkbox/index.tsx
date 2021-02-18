@@ -9,10 +9,11 @@ import { Required } from "../component/styled";
 export type CheckboxProps = {
   checked?: boolean;
   label?: string;
-  onChange?: (checked: boolean) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   required?: boolean;
   id?: string;
+  name?: string;
   className?: string;
   error?: boolean;
 };
@@ -24,15 +25,16 @@ const Checkbox: React.FC<CheckboxProps> = ({
   disabled = false,
   required = false,
   id,
+  name = "",
   className,
   error = false,
 }: CheckboxProps) => {
   const defaultId = `checkbox_${getRandomInt(10000)}`;
   const [isChecked, setChecked] = useState(false);
 
-  const handleChange = () => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked((current) => {
-      onChange && onChange(!current);
+      onChange && onChange(e);
       return !current;
     });
   };
@@ -46,6 +48,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       <Box isDisabled={disabled} error={error}>
         <Input
           id={id || defaultId}
+          name={name}
           type="checkbox"
           checked={isChecked}
           onChange={handleChange}
