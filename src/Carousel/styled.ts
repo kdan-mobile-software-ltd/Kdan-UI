@@ -81,15 +81,19 @@ export const RightBtn = styled(IconButton)`
   right: 0;
 `;
 
-export const ElementsContainer = styled.div`
+export const ElementsContainer = styled.div<{
+  showBorder: boolean;
+  showShadow: boolean;
+}>`
   overflow: hidden;
   width: 100%;
   height: 100%;
   margin: auto;
-  border: ${({ showBorder }: { showBorder: boolean }) =>
+  border: ${({ showBorder }) =>
     showBorder ? `1px solid ${colors.N15}` : "none"};
   border-radius: 4px;
-  box-shadow: 0 0 20px 0 rgba(130, 130, 130, 0.25);
+  box-shadow: ${({ showShadow }) =>
+    showShadow ? "0 0 20px 0 rgba(130, 130, 130, 0.25)" : ""};
 `;
 
 export const ElementsOuter = styled.div`
