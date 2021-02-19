@@ -22,7 +22,7 @@ export const InputElement = styled.input`
   box-sizing: border-box;
   outline: none;
   display: block;
-  box-shadow: none !important;
+  appearance: none;
 
   ${({ error }: TextfieldProps) =>
     error
