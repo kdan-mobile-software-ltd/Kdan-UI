@@ -103,7 +103,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
               onClick={handleClick}
               error={!!error}
               disabled={!!disabled}>
-              {selectValue || placeholder}
+              {selectValue || <span>{placeholder}</span>}
             </Selected>
           ) : null}
           {open && enabledInput ? (

@@ -15,7 +15,7 @@ export const FormControl = styled.div`
 
 export const InputElement = styled.input`
   font-size: 14px;
-  padding: 11px 8px;
+  padding: 10px 8px;
   border-radius: 2px;
   width: 100%;
   min-width: 134px !important;
