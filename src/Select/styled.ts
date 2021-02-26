@@ -95,8 +95,8 @@ export const Block = styled.div`
 export const Selected = styled.div`
   font-size: 14px;
   color: ${colors.N100};
-  min-height: 36px;
-  padding: 9px 8px;
+  min-height: 38px;
+  padding: 8px;
   border-radius: 2px;
   width: 100%;
   min-width: 164px;
@@ -104,6 +104,10 @@ export const Selected = styled.div`
   border: solid 1px ${colors.N15};
   cursor: pointer;
   background-color: ${colors.N0};
+
+  span {
+    color: ${colors.N40};
+  }
 
   ${({
     isActive,

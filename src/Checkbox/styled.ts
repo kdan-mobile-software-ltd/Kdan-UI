@@ -12,6 +12,7 @@ export const Box = styled.div<{
   error: boolean;
   isDisabled: boolean;
 }>`
+  min-width: 20px;
   width: 20px;
   height: 20px;
   border-radius: 2px;
