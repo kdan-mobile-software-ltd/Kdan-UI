@@ -71,8 +71,14 @@ const Logo: React.FC<LogoProps> = ({
     }
   };
 
+  const component = href ? "a" : "div";
+  const props = {
+    href,
+    style: { width, height },
+  };
+
   return (
-    <Wrapper href={href} style={{ width, height }}>
+    <Wrapper as={component} {...props}>
       {setComponent()}
     </Wrapper>
   );

@@ -3,16 +3,16 @@ import styled from "styled-components";
 import colors from "../themes/colors";
 import breakpoints from "../themes/breakpoints";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ bgColor: string; hideBorder: boolean }>`
   overflow: hidden;
   box-sizing: border-box;
   min-width: 100px;
   height: 100%;
   border-radius: 4px;
-  border: solid 1px ${colors.N15};
+  border: ${({ hideBorder }) =>
+    hideBorder ? "unset" : `solid 1px ${colors.N15}`};
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: ${({ bgColor }: { bgColor: string }) =>
-    colors[bgColor] || bgColor};
+  background-color: ${({ bgColor }) => colors[bgColor] || bgColor};
 
   :hover {
     box-shadow: 0 0 30px 0 rgba(65, 65, 65, 0.19);

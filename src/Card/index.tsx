@@ -7,6 +7,7 @@ export type CardProps = {
   children: React.ReactNode;
   actions?: React.ReactNode;
   bgColor?: string;
+  hideBorder?: boolean;
 };
 
 const Card: React.FC<CardProps> = ({
@@ -14,9 +15,10 @@ const Card: React.FC<CardProps> = ({
   children,
   actions,
   bgColor = "inherit",
+  hideBorder = false,
 }: CardProps) => {
   return (
-    <Wrapper bgColor={bgColor}>
+    <Wrapper bgColor={bgColor} hideBorder={hideBorder}>
       {media && <MediaWrapper>{media}</MediaWrapper>}
       <ContentWrapper>{children}</ContentWrapper>
       {actions && <ActionWrapper>{actions}</ActionWrapper>}
