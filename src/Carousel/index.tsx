@@ -25,6 +25,7 @@ export type CarouselProps = {
   showBorder?: boolean;
   showShadow?: boolean;
   displayCount?: number;
+  loop?: boolean;
 };
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -34,18 +35,27 @@ const Carousel: React.FC<CarouselProps> = ({
   showDot = false,
   showShadow = false,
   displayCount = 1,
+  loop = false,
 }: CarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const elementRef = useRef<HTMLDivElement>(null);
 
   const handleNext = () => {
-    setActiveIndex((current) =>
-      current < children.length - 1 ? current + 1 : current
-    );
+    setActiveIndex((current) => {
+      if (loop && current === children.length - 1) {
+        return 0;
+      }
+      return current < children.length - 1 ? current + 1 : current;
+    });
   };
 
   const handlePrev = () => {
-    setActiveIndex((current) => (current > 0 ? current - 1 : 0));
+    setActiveIndex((current) => {
+      if (loop && current === 0) {
+        return children.length - 1;
+      }
+      return current > 0 ? current - 1 : 0;
+    });
   };
 
   const handleDotClick = (index: number) => {
@@ -65,7 +75,7 @@ const Carousel: React.FC<CarouselProps> = ({
       {children.length > 1 && (
         <LeftBtn
           mode={mode}
-          isDisabled={activeIndex === 0}
+          isDisabled={loop ? false : activeIndex === 0}
           onClick={handlePrev}>
           <LeftArrow />
         </LeftBtn>
@@ -91,7 +101,7 @@ const Carousel: React.FC<CarouselProps> = ({
       {children.length > 1 && (
         <RightBtn
           mode={mode}
-          isDisabled={activeIndex === children.length - 1}
+          isDisabled={loop ? false : activeIndex === children.length - 1}
           onClick={handleNext}>
           <RightArrow />
         </RightBtn>

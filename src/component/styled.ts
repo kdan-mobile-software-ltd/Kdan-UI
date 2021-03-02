@@ -14,9 +14,9 @@ export const InputLabel = styled.label`
     error ? colors.error : colors.N100};
 `;
 
-export const HelpText = styled.span`
+export const HelpText = styled.span<{ error: boolean }>`
   font-size: 12px;
-  color: ${colors.N40};
+  color: ${({ error }) => (error ? colors.error : colors.N40)};
 `;
 
 export const Required = styled.span`
