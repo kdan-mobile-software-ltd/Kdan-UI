@@ -88,7 +88,7 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
           aria-label="input"
           {...InputProps}
         />
-        {helperText && <HelpText>{helperText}</HelpText>}
+        {helperText && <HelpText error={!!error}>{helperText}</HelpText>}
       </FormControl>
     );
   }
