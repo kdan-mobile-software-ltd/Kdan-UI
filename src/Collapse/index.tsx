@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 
-import { Wrapper, TriggerWrapper, ContentWrapper, Inner } from "./styled";
+import { ContentWrapper, Inner } from "./styled";
 
 export type CollapseProps = {
   defaultOpen?: boolean;
@@ -25,15 +25,15 @@ const Collapse: React.FC<CollapseProps> = ({
   }, [defaultOpen]);
 
   return (
-    <Wrapper>
-      <TriggerWrapper onClick={handleClick}>
+    <div>
+      <div onClick={handleClick}>
         {typeof trigger === "function" ? trigger(open) : trigger}
-      </TriggerWrapper>
+      </div>
       <ContentWrapper
         style={{ height: open ? `${innerRef.current?.clientHeight}px` : 0 }}>
         <Inner ref={innerRef}>{children}</Inner>
       </ContentWrapper>
-    </Wrapper>
+    </div>
   );
 };
 
