@@ -49,7 +49,7 @@ Basic.args = {
   mode: "light",
   showDot: true,
   showBorder: true,
-  showCount: 1,
+  displayCount: 1,
 } as CarouselProps;
 
 export const ShowTwoItems = (props: CarouselProps): React.ReactNode => (
@@ -74,7 +74,7 @@ export const ShowTwoItems = (props: CarouselProps): React.ReactNode => (
 ShowTwoItems.args = {
   mode: "light",
   showDot: true,
-  showCount: 2,
+  displayCount: 2,
 } as CarouselProps;
 
 export const OnlyOne = (props: CarouselProps): React.ReactNode => (

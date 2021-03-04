@@ -146,7 +146,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
             </ClickAwayListener>
           )}
         </SelectController>
-        {helperText && <HelpText>{helperText}</HelpText>}
+        {helperText && <HelpText error={!!error}>{helperText}</HelpText>}
         {disabled && <Block />}
       </Wrapper>
     );
