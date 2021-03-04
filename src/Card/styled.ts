@@ -15,7 +15,7 @@ export const Wrapper = styled.div<{ bgColor: string; hideBorder: boolean }>`
   background-color: ${({ bgColor }) => colors[bgColor] || bgColor};
 
   :hover {
-    box-shadow: 0 0 30px 0 rgba(65, 65, 65, 0.19);
+    box-shadow: 0 0 24px 0 rgba(65, 65, 65, 0.19);
   }
 `;
 
