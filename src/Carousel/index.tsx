@@ -166,8 +166,8 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   useEffect(() => {
-    slideGenerator(0, 0 + displayCount - 1);
-  }, []);
+    slideGenerator(currentIndex, currentIndex + displayCount - 1);
+  }, [children]);
 
   return (
     <Wrapper>
