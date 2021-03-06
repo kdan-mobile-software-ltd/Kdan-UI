@@ -96,14 +96,16 @@ export const ElementsContainer = styled.div<{
     showShadow ? "0 0 20px 0 rgba(130, 130, 130, 0.25)" : ""};
 `;
 
-export const ElementsOuter = styled.div`
+export const ElementsOuter = styled.div<{
+  width: string;
+  move: number;
+  playing: boolean;
+}>`
   display: flex;
-  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-
-  ${({ move, width }: { move: number; width: string }) => `
-    width: ${width};
-    transform: ${move ? `translateX(-${move}px)` : 0};
-  `}
+  transform: ${({ move }) => `translateX(${move}px)`};
+  transition: ${({ playing }) =>
+    playing ? "transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms" : "unset"};
+  width: ${({ width }) => width};
 `;
 
 export const ElementWrapper = styled.div`

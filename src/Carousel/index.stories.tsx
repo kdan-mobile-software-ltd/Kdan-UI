@@ -21,9 +21,9 @@ export default {
 };
 
 const data = [
-  { key: 1, content: "123" },
-  { key: 2, content: "234" },
-  { key: 3, content: "345" },
+  { key: 1, content: "1" },
+  { key: 2, content: "2" },
+  { key: 3, content: "3" },
 ];
 
 export const Basic = (props: CarouselProps): React.ReactNode => (
@@ -35,8 +35,11 @@ export const Basic = (props: CarouselProps): React.ReactNode => (
           minWidth: "275px",
           width: "100%",
           height: "250px",
-          textAlign: "center",
           backgroundColor: "gray",
+          fontSize: "72px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           margin: 0,
         }}>
         {item.content}
@@ -49,7 +52,8 @@ Basic.args = {
   mode: "light",
   showDot: true,
   showBorder: true,
-  displayCount: 1,
+  displayCount: 2,
+  loop: true,
 } as CarouselProps;
 
 export const ShowTwoItems = (props: CarouselProps): React.ReactNode => (
