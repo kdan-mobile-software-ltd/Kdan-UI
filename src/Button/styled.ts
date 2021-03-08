@@ -90,8 +90,25 @@ const buildTheme = (color = "default", variant = "contained") => {
   }
 };
 
-const buildSize = (size = "medium") => {
-  if (size === "small") {
+const buildSize = (size = "medium", isAnchor = false) => {
+  if (isAnchor) {
+    if (size === "small") {
+      return `
+        font-size: ${pxToRem(12)};
+      `;
+    } else if (size === "medium") {
+      return `
+        font-size: ${pxToRem(16)};
+      `;
+    }
+    return `
+      font-size: ${pxToRem(22)};
+
+      @media ${breakpoints.down("lg")} {
+        font-size: ${pxToRem(16)};
+      }
+    `;
+  } else if (size === "small") {
     return `
       font-size: ${pxToRem(14)};
     `;
@@ -193,7 +210,7 @@ export const ButtonRoot = styled.div`
 
   ${({ size, variant, color, disabled, isAnchor }: ButtonProps) =>
     `
-    ${buildSize(size)}
+    ${buildSize(size, isAnchor)}
     ${buildVariant(size, variant)}
     ${!disabled ? buildTheme(color, variant) : ""}
     ${buildDisabled(disabled)}
