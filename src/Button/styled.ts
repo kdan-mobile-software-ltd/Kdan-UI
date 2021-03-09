@@ -102,7 +102,7 @@ const buildSize = (size = "medium", isAnchor = false) => {
       `;
     }
     return `
-      font-size: ${pxToRem(22)};
+      font-size: ${pxToRem(20)};
 
       @media ${breakpoints.down("lg")} {
         font-size: ${pxToRem(16)};
