@@ -12,7 +12,9 @@
 
 ## About
 
-Kdan mobile UI Storybook with ReactJS TypeScript.
+Kdan mobile UI Storybook with ReactJS and TypeScript.
+
+凱鈿 UI Kit 目前適用於，官網、商城兩個平台。內容包含了 Web design system，UI component。
 
 ---
 

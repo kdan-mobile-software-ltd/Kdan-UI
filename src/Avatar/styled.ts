@@ -20,7 +20,7 @@ const sizeMap = {
     height: 60px;
     font-size: ${pxToRem(32)};
   `,
-  XLarge: `
+  xl: `
     width: 132px;
     height: 132px;
     font-size: ${pxToRem(48)};
@@ -28,7 +28,7 @@ const sizeMap = {
 };
 
 export const Wrapper = styled.div<{
-  size: "small" | "medium" | "large" | "XLarge";
+  size: "small" | "medium" | "large" | "xl";
 }>`
   position: relative;
   display: flex;

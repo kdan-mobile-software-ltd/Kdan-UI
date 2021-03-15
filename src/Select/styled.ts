@@ -22,7 +22,7 @@ export const SelectController = styled.div`
   }
 `;
 
-export const MenuList = styled.div`
+export const MenuList = styled.div<{ position: string }>`
   position: absolute;
   background-color: ${colors.N0};
   left: 0;
@@ -35,7 +35,7 @@ export const MenuList = styled.div`
   overflow-y: auto;
   z-index: ${zIndex.maximum};
 
-  ${({ position }: { position: string }) =>
+  ${({ position }) =>
     position === "top"
       ? `
       bottom: 44px;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Textfield from "../Textfield";
 import ClickAwayListener from "../ClickAwayListener";
+import { delay } from "../helpers/utility";
 
 import {
   Wrapper,
@@ -62,7 +63,8 @@ const Select = React.forwardRef<RefType, SelectProps>(
     const [selectValue, setSelectValue] = useState("");
     const [inputValue, setInputValue] = useState("");
 
-    const handleClick = () => {
+    const handleClick = async () => {
+      await delay(10);
       setOpen((current) => !current);
       setInputValue("");
     };
@@ -100,7 +102,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
             <Selected
               data-testid="selected"
               isActive={open}
-              onClick={handleClick}
+              onClick={!open ? handleClick : undefined}
               error={!!error}
               disabled={!!disabled}>
               {selectValue || <span>{placeholder}</span>}
@@ -120,8 +122,8 @@ const Select = React.forwardRef<RefType, SelectProps>(
           ) : null}
           <Triangle position={position} onClick={handleClick} />
 
-          {open && !disabled && (
-            <ClickAwayListener onClick={handleBlur}>
+          <ClickAwayListener onClick={open ? handleBlur : undefined}>
+            {open && !disabled && (
               <MenuList data-testid="menu-list" position={position}>
                 {options &&
                   options
@@ -143,8 +145,8 @@ const Select = React.forwardRef<RefType, SelectProps>(
                       </MenuItem>
                     ))}
               </MenuList>
-            </ClickAwayListener>
-          )}
+            )}
+          </ClickAwayListener>
         </SelectController>
         {helperText && <HelpText error={!!error}>{helperText}</HelpText>}
         {disabled && <Block />}
