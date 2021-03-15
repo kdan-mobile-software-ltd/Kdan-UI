@@ -50,19 +50,19 @@ const getCoords = (
 ): CoordinatesType => {
   const coords = {
     "bottom left": {
-      top: targetRect.bottom + gutter,
+      top: targetRect.bottom + gutter / 2,
       right: targetRect.left + dropdownRect.width,
       bottom: targetRect.bottom + gutter + dropdownRect.height,
       left: targetRect.left,
     },
     "bottom center": {
-      top: targetRect.bottom + gutter,
+      top: targetRect.bottom + gutter / 2,
       right: targetRect.right - (targetRect.width - dropdownRect.width) / 2,
       bottom: targetRect.bottom + gutter + dropdownRect.height,
       left: targetRect.left + (targetRect.width - dropdownRect.width) / 2,
     },
     "bottom right": {
-      top: targetRect.bottom + gutter,
+      top: targetRect.bottom + gutter / 2,
       right: targetRect.right,
       bottom: targetRect.bottom + gutter + dropdownRect.height,
       left: targetRect.right - dropdownRect.width,
@@ -103,7 +103,7 @@ const getPosition = ({
   target: HTMLDivElement;
   dropdown: HTMLDivElement;
 }): CoordinatesType => {
-  const gutter = 8;
+  const gutter = 16;
 
   const targetRect = target.getBoundingClientRect();
   const dropdownRect = dropdown.getBoundingClientRect();
