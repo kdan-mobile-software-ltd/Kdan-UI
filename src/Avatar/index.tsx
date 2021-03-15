@@ -5,7 +5,7 @@ import { Wrapper, Img } from "./styled";
 export type AvatarProps = {
   alt?: string;
   src?: string;
-  size?: "small" | "medium" | "large" | "XLarge";
+  size?: "small" | "medium" | "large" | "xl";
   children?: string;
   className?: string;
 };

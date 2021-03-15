@@ -27,6 +27,7 @@ export const Basic = (): React.ReactNode => (
     <Avatar size="small" alt="Joly" src={Joly} />
     <Avatar alt="Joly" src={Joly} />
     <Avatar size="large" alt="Joly" src={Joly} />
+    <Avatar size="xl" alt="Joly" src={Joly} />
   </Paper>
 );
 
@@ -37,5 +38,6 @@ export const Letter = (): React.ReactNode => (
     <Avatar size="small">R</Avatar>
     <Avatar>R</Avatar>
     <Avatar size="large">R</Avatar>
+    <Avatar size="xl">R</Avatar>
   </Paper>
 );

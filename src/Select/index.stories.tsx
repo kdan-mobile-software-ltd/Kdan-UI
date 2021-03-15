@@ -2,6 +2,7 @@ import React from "react";
 
 import Select, { SelectProps } from "./";
 import Textfield from "../Textfield";
+import Dropdown from "../Dropdown";
 import { Container } from "../component/Decorator";
 
 export default {

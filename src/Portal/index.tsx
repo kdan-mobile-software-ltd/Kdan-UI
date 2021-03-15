@@ -4,20 +4,27 @@ import * as ReactDom from "react-dom";
 export type PortalProps = {
   children: React.ReactNode;
   container?: HTMLElement | (() => HTMLElement);
+  disablePortal?: boolean;
 };
 
 const getContainer = (container: HTMLElement | React.ReactNode) => {
   return typeof container === "function" ? container() : container;
 };
 
-const index: React.FC<PortalProps> = ({ children, container }: PortalProps) => {
+const Portal: React.FC<PortalProps> = ({
+  children,
+  container,
+  disablePortal = false,
+}: PortalProps) => {
   const [mountNode, setMountNode] = useState<Element | null>(null);
 
   useEffect(() => {
-    setMountNode(getContainer(container || document.body));
+    if (!disablePortal) {
+      setMountNode(getContainer(container || document.body));
+    }
   }, [container]);
 
   return mountNode ? ReactDom.createPortal(children, mountNode) : mountNode;
 };
 
-export default index;
+export default Portal;

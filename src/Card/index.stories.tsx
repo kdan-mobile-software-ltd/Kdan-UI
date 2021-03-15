@@ -40,20 +40,22 @@ Basic.args = {} as CardProps;
 
 export const WithMedia = (): React.ReactNode => (
   <Paper>
-    <Card
-      media={<img src="https://i.imgur.com/WG5ObiT.png" />}
-      actions={<Button>Link</Button>}>
-      <Typography variant="h5" display="block">
-        Creativity 365
-      </Typography>
-      <Box mt={2}>
-        <Typography variant="b3" display="block">
-          Make information gathering and content creation simple and efficient
-          with the Creativity 365 series, featuring Animation Desk, Write-on
-          Video, NoteLedge, and Markup.
+    <Box width="320px">
+      <Card
+        media={<img src="https://i.imgur.com/WG5ObiT.png" />}
+        actions={<Button>Link</Button>}>
+        <Typography variant="h5" display="block">
+          Creativity 365
         </Typography>
-      </Box>
-    </Card>
+        <Box mt={2}>
+          <Typography variant="b3" display="block">
+            Make information gathering and content creation simple and efficient
+            with the Creativity 365 series, featuring Animation Desk, Write-on
+            Video, NoteLedge, and Markup.
+          </Typography>
+        </Box>
+      </Card>
+    </Box>
   </Paper>
 );
 

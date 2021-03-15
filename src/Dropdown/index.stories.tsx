@@ -26,25 +26,28 @@ export const Basic = ({
   fullWidth,
   defaultOpen,
 }: DropdownProps): React.ReactNode => (
-  <Dropdown
-    trigger={<Button>Click</Button>}
-    position={position}
-    fullWidth={fullWidth}
-    defaultOpen={defaultOpen}>
-    <p
-      style={{
-        width: "400px",
-        height: "300px",
-        backgroundColor: "gray",
-        margin: 0,
-      }}>
-      content
-    </p>
-  </Dropdown>
+  <>
+    <Dropdown
+      trigger={<Button>Click</Button>}
+      position={position}
+      fullWidth={fullWidth}
+      defaultOpen={defaultOpen}>
+      <p
+        style={{
+          width: "400px",
+          height: "300px",
+          backgroundColor: "gray",
+          margin: 0,
+        }}>
+        inside content
+      </p>
+    </Dropdown>
+    <p>outside content</p>
+  </>
 );
 
 Basic.args = {
-  position: "bottom right",
+  position: "bottom left",
   fullWidth: false,
   defaultOpen: false,
 } as DropdownProps;
@@ -68,7 +71,7 @@ export const PassFunctionToTrigger = ({
         backgroundColor: "gray",
         margin: 0,
       }}>
-      content
+      inside content
     </p>
   </Dropdown>
 );
