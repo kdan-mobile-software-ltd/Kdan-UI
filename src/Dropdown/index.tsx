@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import Portal from "../Portal";
 import ClickAwayListener from "../ClickAwayListener";
 import Position from "../component/Position";
 import { delay } from "../helpers/utility";
@@ -56,25 +55,23 @@ const Dropdown: React.FC<DropdownProps> = ({
       <TriggerWrapper ref={targetRef} onClick={!open ? handleClick : undefined}>
         {typeof trigger === "function" ? trigger(open) : trigger}
       </TriggerWrapper>
-      <Portal>
-        <Position position={position} target={targetRef} forceUpdate={open}>
-          {(ref, positionStyle) => (
-            <ClickAwayListener onClick={open ? handleBlur : undefined}>
-              <DropdownWrapper
-                ref={ref}
-                open={open}
-                style={{
-                  height: open ? `${outerRef.current?.clientHeight}px` : 0,
-                  opacity: open ? 1 : 0,
-                }}
-                fullWidth={!!fullWidth}
-                {...positionStyle}>
-                <Outer ref={outerRef}>{children}</Outer>
-              </DropdownWrapper>
-            </ClickAwayListener>
-          )}
-        </Position>
-      </Portal>
+      <Position position={position} target={targetRef} forceUpdate={open}>
+        {(ref, positionStyle) => (
+          <ClickAwayListener onClick={open ? handleBlur : undefined}>
+            <DropdownWrapper
+              ref={ref}
+              open={open}
+              style={{
+                height: open ? `${outerRef.current?.clientHeight}px` : 0,
+                opacity: open ? 1 : 0,
+              }}
+              fullWidth={!!fullWidth}
+              {...positionStyle}>
+              <Outer ref={outerRef}>{children}</Outer>
+            </DropdownWrapper>
+          </ClickAwayListener>
+        )}
+      </Position>
     </Wrapper>
   );
 };
