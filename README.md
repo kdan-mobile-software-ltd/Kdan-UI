@@ -14,11 +14,11 @@
 
 Kdan mobile UI Storybook with ReactJS and TypeScript.
 
-凱鈿 UI Kit 目前適用於，官網、商城兩個平台。內容包含了 Web design system，UI component。
+凱鈿 UI Kit 目前適用於，官網、商城兩個平台。內容包含了 Web design system，UI component。這套系統不會是一成不變得，元件樣式和設計系統會依照公司成長和主流風格改變不斷的迭代下去。
 
 ---
 
-### installation
+## Installation
 
 ```
 npm install @kdanmobile/kdan-ui styled-components
@@ -52,12 +52,16 @@ yarn test
 
 ## How to use
 
+### import font style
+
 in pages/\_app.js
 
 ```
 <!-- import fonts css -->
 import '@kdanmobile/kdan-ui/dist/fonts/clear-sans.css';
 ```
+
+### import component
 
 ```
 <!-- Normal -->
@@ -90,3 +94,34 @@ git push origin master
 ```
 
 Once you’ve set up the GitHub action. Your Storybook will be deployed to Chromatic whenever you push code.
+
+---
+
+## Design System
+
+* Typography
+* Spacing
+* Color
+* Breakpoint
+
+## UI Components
+
+* Avatar
+* Button
+* Card
+* Carousel
+* Checkbox
+* Collapse
+* Dropdown
+* Logo
+* Navbar
+* Select
+* Tabs
+* Textfield
+* Typography
+
+## Utils
+
+* ClickAwayListener
+* Portal
+* Box
