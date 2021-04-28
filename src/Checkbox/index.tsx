@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { CheckedIcon } from "../Icon";
-import { getRandomInt } from "../helpers/utility";
+import { CheckedIcon } from '../Icon';
+import { getRandomInt } from '../helpers/utility';
 
-import { Wrapper, Box, Input, Label } from "./styled";
-import { Required } from "../component/styled";
+import { Wrapper, Box, Input, Label } from './styled';
+import { Required } from '../component/styled';
 
 export type CheckboxProps = {
   checked?: boolean;
@@ -25,7 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   disabled = false,
   required = false,
   id,
-  name = "",
+  name = '',
   className,
   error = false,
 }: CheckboxProps) => {
@@ -49,20 +49,15 @@ const Checkbox: React.FC<CheckboxProps> = ({
         <Input
           id={id || defaultId}
           name={name}
-          type="checkbox"
+          type='checkbox'
           checked={isChecked}
           onChange={handleChange}
           disabled={disabled}
-          data-testid="checkbox"
+          data-testid='checkbox'
         />
         {isChecked && CheckedIcon && <CheckedIcon />}
       </Box>
-      {label && (
-        <Label
-          htmlFor={id || defaultId}
-          dangerouslySetInnerHTML={{ __html: label }}
-        />
-      )}
+      {label && <Label htmlFor={id || defaultId} dangerouslySetInnerHTML={{ __html: label }} />}
       {required && <Required>*</Required>}
     </Wrapper>
   );

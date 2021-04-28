@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 
-import { LeftArrow, RightArrow, LeftArrow768, RightArrow768 } from "../Icon";
+import { LeftArrow, RightArrow, LeftArrow768, RightArrow768 } from '../Icon';
 
 import {
   Wrapper,
@@ -12,11 +12,11 @@ import {
   ElementWrapper,
   Dot,
   DotWrapper,
-} from "./styled";
+} from './styled';
 
 export type CarouselProps = {
   children: React.ReactNode[];
-  mode?: "dark" | "light";
+  mode?: 'dark' | 'light';
   showDot?: boolean;
   showBorder?: boolean;
   showShadow?: boolean;
@@ -26,7 +26,7 @@ export type CarouselProps = {
 
 const Carousel: React.FC<CarouselProps> = ({
   children,
-  mode = "dark",
+  mode = 'dark',
   showBorder = false,
   showDot = false,
   showShadow = false,
@@ -173,22 +173,21 @@ const Carousel: React.FC<CarouselProps> = ({
     <Wrapper>
       {children.length > 1 && (
         <LeftBtn
-          data-testid="prev-btn"
+          data-testid='prev-btn'
           mode={mode}
           isDisabled={loop ? false : currentIndex === 0}
           onMouseDown={handlePrevDown}
-          onMouseUp={handlePrevUp}>
+          onMouseUp={handlePrevUp}
+        >
           {LeftArrow && <LeftArrow />}
         </LeftBtn>
       )}
-      <ElementsContainer
-        ref={elementRef}
-        showBorder={showBorder}
-        showShadow={showShadow}>
+      <ElementsContainer ref={elementRef} showBorder={showBorder} showShadow={showShadow}>
         <ElementsOuter
           playing={transitionEnabled}
           width={`${(100 * slides.length) / displayCount}%`}
-          move={moveDistance}>
+          move={moveDistance}
+        >
           {Array.isArray(slides) &&
             slides.map((item: React.ReactNode, index: number) => (
               <ElementWrapper key={`element_${index}`}>{item}</ElementWrapper>
@@ -197,16 +196,17 @@ const Carousel: React.FC<CarouselProps> = ({
       </ElementsContainer>
       {children.length > 1 && (
         <RightBtn
-          data-testid="next-btn"
+          data-testid='next-btn'
           mode={mode}
           isDisabled={loop ? false : currentIndex === children.length - 1}
           onMouseDown={handleNextDown}
-          onMouseUp={handleNextUp}>
+          onMouseUp={handleNextUp}
+        >
           {RightArrow && <RightArrow />}
         </RightBtn>
       )}
       {children.length > 1 && (
-        <DotWrapper data-testid="dots">
+        <DotWrapper data-testid='dots'>
           <ArrowBtn onMouseDown={handlePrevDown} onMouseUp={handlePrevUp}>
             {LeftArrow768 && <LeftArrow768 />}
           </ArrowBtn>

@@ -1,23 +1,18 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from 'react';
 
-import getPosition from "./getPosition";
+import getPosition from './getPosition';
 
 type PositionProps = {
   children: (
     childrenRef: React.MutableRefObject<HTMLDivElement | null>,
-    coordinates: CoordinatesType
+    coordinates: CoordinatesType,
   ) => React.ReactElement;
   position: PositionType;
   target: React.MutableRefObject<HTMLDivElement | null>;
   forceUpdate?: boolean;
 };
 
-const Position = ({
-  children,
-  position,
-  target,
-  forceUpdate = false,
-}: PositionProps): any => {
+const Position = ({ children, position, target, forceUpdate = false }: PositionProps): React.ReactElement => {
   const childrenRef = useRef<HTMLDivElement>(null);
   const [coordinates, setCoordinates] = useState({});
 

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { FormControl, InputElement } from "./styled";
+import { FormControl, InputElement } from './styled';
 
-import { InputLabel, HelpText, Required } from "../component/styled";
+import { InputLabel, HelpText, Required } from '../component/styled';
 
 export type TextfieldProps = {
-  autoComplete?: "on" | "off";
+  autoComplete?: 'on' | 'off';
   id?: string;
   label?: string;
   required?: boolean;
@@ -35,7 +35,7 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
       id,
       label,
       disabled = false,
-      color = "default",
+      color = 'default',
       error,
       required = false,
       type,
@@ -51,7 +51,7 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
       placeholder,
       autoFocus,
     }: TextfieldProps,
-    ref
+    ref,
   ) => {
     const InputProps = {
       autoComplete,
@@ -76,22 +76,21 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
         fullWidth={fullWidth}
         disabled={disabled}
         error={error}
-        color={color}>
+        color={color}
+      >
         {label && (
           <InputLabel error={!!error} htmlFor={id}>
             {label}
-            {required ? <Required>*</Required> : ""}
+            {required ? <Required>*</Required> : ''}
           </InputLabel>
         )}
-        <InputElement
-          as={multiline ? "textarea" : "input"}
-          aria-label="input"
-          {...InputProps}
-        />
+        <InputElement as={multiline ? 'textarea' : 'input'} aria-label='input' {...InputProps} />
         {helperText && <HelpText error={!!error}>{helperText}</HelpText>}
       </FormControl>
     );
-  }
+  },
 );
+
+Textfield.displayName = 'Textfield';
 
 export default Textfield;

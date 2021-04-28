@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import colors from "../themes/colors";
+import styled from 'styled-components';
+import colors from '../themes/colors';
 
 export const Wrapper = styled.div``;
 
@@ -9,8 +9,7 @@ export const Label = styled.span<{ isActive: boolean }>`
   width: 100%;
   text-align: center;
   color: ${colors.N35};
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   padding: 0 8px 20px;
   margin-bottom: 16px;
   border-bottom: 4px solid ${colors.N35};

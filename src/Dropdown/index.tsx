@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 
-import ClickAwayListener from "../ClickAwayListener";
-import Portal from "../Portal";
-import Position from "../component/Position";
-import { delay } from "../helpers/utility";
+import ClickAwayListener from '../ClickAwayListener';
+import Portal from '../Portal';
+import Position from '../component/Position';
+import { delay } from '../helpers/utility';
 
-import { Wrapper, TriggerWrapper, Outer, DropdownWrapper } from "./styled";
+import { Wrapper, TriggerWrapper, Outer, DropdownWrapper } from './styled';
 
 export type DropdownProps = {
   defaultOpen?: boolean;
   trigger: React.ReactNode;
   children: React.ReactNode;
-  position?: "bottom left" | "bottom center" | "bottom right";
+  position?: 'bottom left' | 'bottom center' | 'bottom right';
   fullWidth?: boolean;
 };
 
@@ -19,7 +19,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   defaultOpen = false,
   trigger,
   children,
-  position = "bottom left",
+  position = 'bottom left',
   fullWidth = false,
 }: DropdownProps) => {
   const [open, setOpen] = useState(false);
@@ -44,17 +44,17 @@ const Dropdown: React.FC<DropdownProps> = ({
   }, [defaultOpen]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <Wrapper>
       <TriggerWrapper ref={targetRef} onClick={!open ? handleClick : undefined}>
-        {typeof trigger === "function" ? trigger(open) : trigger}
+        {typeof trigger === 'function' ? trigger(open) : trigger}
       </TriggerWrapper>
 
       <Portal>
@@ -69,7 +69,8 @@ const Dropdown: React.FC<DropdownProps> = ({
                   opacity: open ? 1 : 0,
                 }}
                 fullWidth={fullWidth}
-                {...positionStyle}>
+                {...positionStyle}
+              >
                 <Outer ref={outerRef}>{children}</Outer>
               </DropdownWrapper>
             </ClickAwayListener>

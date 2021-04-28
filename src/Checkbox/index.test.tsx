@@ -1,32 +1,30 @@
-import React from "react";
-import { render, cleanup, fireEvent } from "@testing-library/react";
-import "jest-styled-components";
-import "@testing-library/jest-dom";
+import React from 'react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
+import 'jest-styled-components';
+import '@testing-library/jest-dom';
 
-import Checkbox from "./";
+import Checkbox from './';
 
-describe("Checkbox", () => {
+describe('Checkbox', () => {
   afterEach(cleanup);
 
-  test("unchecked", () => {
+  test('unchecked', () => {
     const { getByTestId } = render(<Checkbox />);
 
-    expect((getByTestId("checkbox") as HTMLInputElement).checked).toEqual(
-      false
-    );
+    expect((getByTestId('checkbox') as HTMLInputElement).checked).toEqual(false);
   });
 
-  test("checked", () => {
+  test('checked', () => {
     const { getByTestId } = render(<Checkbox checked />);
 
-    expect((getByTestId("checkbox") as HTMLInputElement).checked).toEqual(true);
+    expect((getByTestId('checkbox') as HTMLInputElement).checked).toEqual(true);
   });
 
-  test("click checkbox", () => {
+  test('click checkbox', () => {
     const { getByTestId } = render(<Checkbox />);
 
-    fireEvent.click(getByTestId("checkbox"));
+    fireEvent.click(getByTestId('checkbox'));
 
-    expect((getByTestId("checkbox") as HTMLInputElement).checked).toEqual(true);
+    expect((getByTestId('checkbox') as HTMLInputElement).checked).toEqual(true);
   });
 });

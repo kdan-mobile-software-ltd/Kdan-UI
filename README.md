@@ -99,29 +99,29 @@ Once you’ve set up the GitHub action. Your Storybook will be deployed to Chrom
 
 ## Design System
 
-* Typography
-* Spacing
-* Color
-* Breakpoint
+- Typography
+- Spacing
+- Color
+- Breakpoint
 
 ## UI Components
 
-* Avatar
-* Button
-* Card
-* Carousel
-* Checkbox
-* Collapse
-* Dropdown
-* Logo
-* Navbar
-* Select
-* Tabs
-* Textfield
-* Typography
+- Avatar
+- Button
+- Card
+- Carousel
+- Checkbox
+- Collapse
+- Dropdown
+- Logo
+- Navbar
+- Select
+- Tabs
+- Textfield
+- Typography
 
 ## Utils
 
-* ClickAwayListener
-* Portal
-* Box
+- ClickAwayListener
+- Portal
+- Box

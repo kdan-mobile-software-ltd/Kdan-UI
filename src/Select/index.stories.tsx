@@ -1,22 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import Select, { SelectProps } from "./";
-import Textfield from "../Textfield";
-import Dropdown from "../Dropdown";
-import { Container } from "../component/Decorator";
+import Select, { SelectProps } from './';
+import Textfield from '../Textfield';
+import { Container } from '../component/Decorator';
 
 export default {
-  title: "Select",
+  title: 'Select',
   component: Select,
-  decorators: [
-    (story: () => React.ReactNode): React.ReactNode => (
-      <Container padding>{story()}</Container>
-    ),
-  ],
+  decorators: [(story: () => React.ReactNode): React.ReactNode => <Container padding>{story()}</Container>],
   parameters: {
     docs: {
       description: {
-        component: "下拉式選單",
+        component: '下拉式選單',
       },
     },
   },
@@ -24,45 +19,41 @@ export default {
 
 export const Basic = (): React.ReactNode => (
   <Select
-    placeholder="Test"
+    placeholder='Test'
     options={[
-      { value: "12", key: 12 },
-      { value: "23", key: 23 },
-      { value: "34", key: 34 },
-      { value: "45", key: 45 },
-      { value: "56", key: 56 },
+      { value: '12', key: 12 },
+      { value: '23', key: 23 },
+      { value: '34', key: 34 },
+      { value: '45', key: 45 },
+      { value: '56', key: 56 },
     ]}
   />
 );
 
-export const CustomContent = (props: SelectProps): React.ReactNode => (
-  <Select {...props} />
-);
+export const CustomContent = (props: SelectProps): React.ReactNode => <Select {...props} />;
 
 CustomContent.args = {
-  placeholder: "Choose a Fruit",
+  placeholder: 'Choose a Fruit',
   enabledInput: true,
   options: [
-    { value: "Apple", key: "Apple" },
-    { value: "Banana", key: "Banana" },
-    { value: "Lemon", key: "Lemon" },
-    { value: "Watermelon", key: "Watermelon" },
+    { value: 'Apple', key: 'Apple' },
+    { value: 'Banana', key: 'Banana' },
+    { value: 'Lemon', key: 'Lemon' },
+    { value: 'Watermelon', key: 'Watermelon' },
   ],
 } as SelectProps;
 
-export const LanguageBar = (props: SelectProps): React.ReactNode => (
-  <Select {...props} />
-);
+export const LanguageBar = (props: SelectProps): React.ReactNode => <Select {...props} />;
 
 LanguageBar.args = {
-  defaultValue: "English",
-  position: "top",
+  defaultValue: 'English',
+  position: 'top',
   options: [
-    { value: "English", key: "en" },
-    { value: "日本語", key: "ja" },
-    { value: "中文（繁體）", key: "zh-tw" },
-    { value: "中文（简体）", key: "zh-cn" },
-    { value: "Español", key: "es" },
+    { value: 'English', key: 'en' },
+    { value: '日本語', key: 'ja' },
+    { value: '中文（繁體）', key: 'zh-tw' },
+    { value: '中文（简体）', key: 'zh-cn' },
+    { value: 'Español', key: 'es' },
   ],
 } as SelectProps;
 
@@ -74,12 +65,12 @@ export const Group = (props: SelectProps): React.ReactNode => (
 );
 
 Group.args = {
-  defaultValue: "English",
+  defaultValue: 'English',
   options: [
-    { value: "English", key: "en" },
-    { value: "日本語", key: "ja" },
-    { value: "中文（繁體）", key: "zh-tw" },
-    { value: "中文（简体）", key: "zh-cn" },
-    { value: "Español", key: "es" },
+    { value: 'English', key: 'en' },
+    { value: '日本語', key: 'ja' },
+    { value: '中文（繁體）', key: 'zh-tw' },
+    { value: '中文（简体）', key: 'zh-cn' },
+    { value: 'Español', key: 'es' },
   ],
 } as SelectProps;

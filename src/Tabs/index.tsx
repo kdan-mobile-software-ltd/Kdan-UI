@@ -1,13 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import {
-  Wrapper,
-  Label,
-  LabelGroup,
-  LabelWrapper,
-  Panel,
-  PanelGroup,
-} from "./styled";
+import { Wrapper, Label, LabelGroup, LabelWrapper, Panel, PanelGroup } from './styled';
 
 type Tab = {
   label: React.ReactNode;
@@ -20,11 +13,7 @@ export type TabsProps = {
   defaultIndex?: number;
 };
 
-const Tabs: React.FC<TabsProps> = ({
-  tabs,
-  onChange,
-  defaultIndex = 0,
-}: TabsProps) => {
+const Tabs: React.FC<TabsProps> = ({ tabs, onChange, defaultIndex = 0 }: TabsProps) => {
   const [selected, onSelect] = useState(0);
 
   const handleClick = (index: number) => {
@@ -49,7 +38,8 @@ const Tabs: React.FC<TabsProps> = ({
               isActive={selected === index}
               onClick={() => {
                 handleClick(index);
-              }}>
+              }}
+            >
               {tab.label}
             </Label>
           ))}

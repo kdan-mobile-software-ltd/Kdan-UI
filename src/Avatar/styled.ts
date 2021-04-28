@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import colors from "../themes/colors";
-import fonts from "../themes/fonts";
-import { pxToRem } from "../helpers/utility";
+import colors from '../themes/colors';
+import fonts from '../themes/fonts';
+import { pxToRem } from '../helpers/utility';
 
 const sizeMap = {
   small: `
@@ -28,7 +28,7 @@ const sizeMap = {
 };
 
 export const Wrapper = styled.div<{
-  size: "small" | "medium" | "large" | "xl";
+  size: 'small' | 'medium' | 'large' | 'xl';
 }>`
   position: relative;
   display: flex;

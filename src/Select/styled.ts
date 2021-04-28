@@ -1,14 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import colors from "../themes/colors";
-import zIndex from "../themes/zIndex";
-import { hexToRGBA } from "../helpers/utility";
+import colors from '../themes/colors';
+import zIndex from '../themes/zIndex';
+import { hexToRGBA } from '../helpers/utility';
 
 export const Wrapper = styled.div`
   position: relative;
   display: inline-block;
-  width: ${({ fullWidth }: { fullWidth: boolean }) =>
-    fullWidth ? "100%" : "auto"};
+  width: ${({ fullWidth }: { fullWidth: boolean }) => (fullWidth ? '100%' : 'auto')};
 `;
 
 export const SelectController = styled.div`
@@ -36,7 +35,7 @@ export const MenuList = styled.div<{ position: string }>`
   z-index: ${zIndex.maximum};
 
   ${({ position }) =>
-    position === "top"
+    position === 'top'
       ? `
       bottom: 44px;
     `
@@ -71,7 +70,7 @@ export const Triangle = styled.span`
   cursor: pointer;
 
   ${({ position }: { position: string }) =>
-    position === "top"
+    position === 'top'
       ? `
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
@@ -109,15 +108,7 @@ export const Selected = styled.div`
     color: ${colors.N40};
   }
 
-  ${({
-    isActive,
-    disabled,
-    error,
-  }: {
-    isActive: boolean;
-    disabled: boolean;
-    error: boolean;
-  }) => `
+  ${({ isActive, disabled, error }: { isActive: boolean; disabled: boolean; error: boolean }) => `
     border-color: ${isActive ? colors.B50 : colors.N15};
     background-color: ${disabled ? colors.N15 : colors.N0};
 
@@ -126,7 +117,7 @@ export const Selected = styled.div`
         ? `
         border-color: ${colors.error};
       `
-        : ""
+        : ''
     }
   `}
 

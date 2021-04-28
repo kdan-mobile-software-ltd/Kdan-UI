@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
 const useForceUpdate = (): (() => void) => {
   const [, setTick] = useState(0);

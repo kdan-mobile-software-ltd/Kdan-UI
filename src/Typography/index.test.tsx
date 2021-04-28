@@ -1,41 +1,34 @@
-import React from "react";
-import { render, cleanup } from "@testing-library/react";
-import "jest-styled-components";
-import "@testing-library/jest-dom";
+import React from 'react';
+import { render, cleanup } from '@testing-library/react';
+import 'jest-styled-components';
+import '@testing-library/jest-dom';
 
-import Typography from "./";
+import Typography from './';
 
-describe("Typography", () => {
+describe('Typography', () => {
   afterEach(cleanup);
 
-  test("set content", () => {
-    const { container } = render(
-      <Typography variant="h1">H1 Title</Typography>
-    );
+  test('set content', () => {
+    const { container } = render(<Typography variant='h1'>H1 Title</Typography>);
 
-    expect(container.textContent).toBe("H1 Title");
+    expect(container.textContent).toBe('H1 Title');
   });
 
-  test("default h1 style", () => {
-    const { container } = render(
-      <Typography variant="h1">H1 style</Typography>
-    );
+  test('default h1 style', () => {
+    const { container } = render(<Typography variant='h1'>H1 style</Typography>);
 
-    expect(container.querySelector("h1")).toHaveStyleRule(
-      "text-align",
-      "inherit"
-    );
-    expect(container.querySelector("h1")).toHaveStyleRule("font-weight", "700");
+    expect(container.querySelector('h1')).toHaveStyleRule('text-align', 'inherit');
+    expect(container.querySelector('h1')).toHaveStyleRule('font-weight', '700');
   });
 
-  test("set color and align, display", () => {
+  test('set color and align, display', () => {
     const { container } = render(
-      <Typography variant="b1" display="block" align="center" color="brand">
+      <Typography variant='b1' display='block' align='center' color='brand'>
         body1
-      </Typography>
+      </Typography>,
     );
 
-    expect(container.querySelector("p")).toHaveStyle(`
+    expect(container.querySelector('p')).toHaveStyle(`
       text-align: center;
       display: block;
       color: #00a89b;

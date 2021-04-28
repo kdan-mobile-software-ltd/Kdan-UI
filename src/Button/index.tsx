@@ -1,15 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import {
-  ButtonRoot,
-  ButtonLabel,
-  ButtonStartIcon,
-  ButtonEndIcon,
-  Ripple,
-} from "./styled";
+import { ButtonRoot, ButtonLabel, ButtonStartIcon, ButtonEndIcon, Ripple } from './styled';
 
 export type ButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   children: React.ReactNode;
@@ -17,17 +11,9 @@ export type ButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   disabled?: boolean;
   isAnchor?: boolean;
   href?: string;
-  color?:
-    | "inherit"
-    | "default"
-    | "brand"
-    | "primary"
-    | "secondary"
-    | "light"
-    | "cheese"
-    | string;
+  color?: 'inherit' | 'default' | 'brand' | 'primary' | 'secondary' | 'light' | 'cheese' | string;
   fullWidth?: boolean;
-  variant?: "contained" | "outlined" | "text";
+  variant?: 'contained' | 'outlined' | 'text';
   onClick?: (e: React.MouseEvent | React.TouchEvent) => void;
 };
 
@@ -37,21 +23,21 @@ const Button = React.forwardRef<RefType, ButtonProps>(
   (
     {
       className,
-      color = "default",
+      color = 'default',
       children,
       disabled = false,
       fullWidth = false,
       href,
       startIcon: startIconProp,
       endIcon: endIconProp,
-      size = "medium",
-      variant = "contained",
+      size = 'medium',
+      variant = 'contained',
       isAnchor,
       ...rest
     }: ButtonProps,
-    ref
+    ref,
   ) => {
-    const component = isAnchor ? "a" : "button";
+    const component = isAnchor ? 'a' : 'button';
 
     const styleProps = {
       color,
@@ -64,17 +50,11 @@ const Button = React.forwardRef<RefType, ButtonProps>(
       ...rest,
     };
 
-    const startIcon = startIconProp && (
-      <ButtonStartIcon>{startIconProp}</ButtonStartIcon>
-    );
+    const startIcon = startIconProp && <ButtonStartIcon>{startIconProp}</ButtonStartIcon>;
     const endIcon = endIconProp && <ButtonEndIcon>{endIconProp}</ButtonEndIcon>;
 
     return (
-      <ButtonRoot
-        as={component}
-        className={className}
-        ref={ref}
-        {...styleProps}>
+      <ButtonRoot as={component} className={className} ref={ref} {...styleProps}>
         <ButtonLabel>
           {startIcon}
           {children}
@@ -83,7 +63,9 @@ const Button = React.forwardRef<RefType, ButtonProps>(
         <Ripple />
       </ButtonRoot>
     );
-  }
+  },
 );
+
+Button.displayName = 'Button';
 
 export default Button;

@@ -1,15 +1,15 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
-import { ButtonProps } from "./index";
-import fonts from "../themes/fonts";
-import colors from "../themes/colors";
-import zIndex from "../themes/zIndex";
-import breakpoints from "../themes/breakpoints";
+import { ButtonProps } from './index';
+import fonts from '../themes/fonts';
+import colors from '../themes/colors';
+import zIndex from '../themes/zIndex';
+import breakpoints from '../themes/breakpoints';
 
-import { pxToRem, hexToRGBA } from "../helpers/utility";
+import { pxToRem, hexToRGBA } from '../helpers/utility';
 
-const buildTheme = (color = "default", variant = "contained") => {
-  if (color === "default" && variant === "contained") {
+const buildTheme = (color = 'default', variant = 'contained') => {
+  if (color === 'default' && variant === 'contained') {
     return `
       color: ${colors.N0};
       background-color: ${colors.N100};
@@ -19,7 +19,7 @@ const buildTheme = (color = "default", variant = "contained") => {
         background-color: ${colors.N70};
       }
     `;
-  } else if (color === "light" && variant === "contained") {
+  } else if (color === 'light' && variant === 'contained') {
     return `
       color: ${colors.N100};
       background-color: ${colors.N0};
@@ -29,7 +29,7 @@ const buildTheme = (color = "default", variant = "contained") => {
         background-color: ${colors.N10};
       }
     `;
-  } else if (color === "default" && variant === "outlined") {
+  } else if (color === 'default' && variant === 'outlined') {
     return `
       color: ${colors.N100};
       border-color: ${colors.N100};
@@ -40,7 +40,7 @@ const buildTheme = (color = "default", variant = "contained") => {
         background-color: ${colors.N100};
       }
     `;
-  } else if (color === "default" && variant === "text") {
+  } else if (color === 'default' && variant === 'text') {
     return `
       color: ${colors.N100};
       background-color: inherit;
@@ -49,7 +49,7 @@ const buildTheme = (color = "default", variant = "contained") => {
         color: ${colors.N70};
       }
     `;
-  } else if (color === "brand" && variant === "text") {
+  } else if (color === 'brand' && variant === 'text') {
     return `
       color: ${colors.brand};
       background-color: inherit;
@@ -58,7 +58,7 @@ const buildTheme = (color = "default", variant = "contained") => {
         color: ${hexToRGBA(colors.brand, 0.7)};
       }
     `;
-  } else if (color === "cheese" && variant === "contained") {
+  } else if (color === 'cheese' && variant === 'contained') {
     return `
       color: ${colors.N100};
       background-color: ${colors.Y50};
@@ -90,13 +90,13 @@ const buildTheme = (color = "default", variant = "contained") => {
   }
 };
 
-const buildSize = (size = "medium", isAnchor = false) => {
+const buildSize = (size = 'medium', isAnchor = false) => {
   if (isAnchor) {
-    if (size === "small") {
+    if (size === 'small') {
       return `
         font-size: ${pxToRem(12)};
       `;
-    } else if (size === "medium") {
+    } else if (size === 'medium') {
       return `
         font-size: ${pxToRem(16)};
       `;
@@ -104,15 +104,15 @@ const buildSize = (size = "medium", isAnchor = false) => {
     return `
       font-size: ${pxToRem(20)};
 
-      @media ${breakpoints.down("lg")} {
+      @media ${breakpoints.down('lg')} {
         font-size: ${pxToRem(16)};
       }
     `;
-  } else if (size === "small") {
+  } else if (size === 'small') {
     return `
       font-size: ${pxToRem(14)};
     `;
-  } else if (size === "medium") {
+  } else if (size === 'medium') {
     return `
       font-size: ${pxToRem(16)};
     `;
@@ -120,45 +120,45 @@ const buildSize = (size = "medium", isAnchor = false) => {
     return `
       font-size: ${pxToRem(22)};
 
-      @media ${breakpoints.down("lg")} {
+      @media ${breakpoints.down('lg')} {
         font-size: ${pxToRem(16)};
       }
     `;
   }
 };
 
-const buildVariant = (size = "medium", variant = "contained") => {
-  if (size === "small" && variant === "contained") {
+const buildVariant = (size = 'medium', variant = 'contained') => {
+  if (size === 'small' && variant === 'contained') {
     return `
       box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.13), 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 5px 0px rgba(0,0,0,0.05);
       padding: 5px 11px;
     `;
-  } else if (size === "small" && variant === "outlined") {
+  } else if (size === 'small' && variant === 'outlined') {
     return `
       border: 2px solid;
       padding: 3px 9px;
     `;
-  } else if (size === "medium" && variant === "contained") {
+  } else if (size === 'medium' && variant === 'contained') {
     return `
       box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.13), 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 5px 0px rgba(0,0,0,0.05);
       padding: 8px 18px;
     `;
-  } else if (size === "medium" && variant === "outlined") {
+  } else if (size === 'medium' && variant === 'outlined') {
     return `
       border: 2px solid;
       padding: 5px 16px;
     `;
-  } else if (size === "large" && variant === "contained") {
+  } else if (size === 'large' && variant === 'contained') {
     return `
       box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.13), 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 5px 0px rgba(0,0,0,0.05);
       padding: 9px 22px;
     `;
-  } else if (size === "large" && variant === "outlined") {
+  } else if (size === 'large' && variant === 'outlined') {
     return `
       border: 2px solid;
       padding: 7px 20px;
     `;
-  } else if (variant === "text") {
+  } else if (variant === 'text') {
     return `
       border-radius: 0;
       padding: 2px;
@@ -175,7 +175,7 @@ const buildDisabled = (isDisabled = false) =>
   background-color: ${colors.N30};
   cursor: default;
 `
-    : "";
+    : '';
 
 const activeAnimation = keyframes`
   0% {
@@ -198,21 +198,20 @@ export const ButtonRoot = styled.div`
   font-family: ${fonts.button};
   font-weight: 500;
   line-height: 1.5;
-  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   display: inline-block;
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
   height: fit-content;
 
   ${({ size, variant, color, disabled, isAnchor }: ButtonProps) =>
     `
     ${buildSize(size, isAnchor)}
     ${buildVariant(size, variant)}
-    ${!disabled ? buildTheme(color, variant) : ""}
+    ${!disabled ? buildTheme(color, variant) : ''}
     ${buildDisabled(disabled)}
     ${
       isAnchor
@@ -234,7 +233,7 @@ export const ButtonRoot = styled.div`
           color: none;
         }
       `
-        : ""
+        : ''
     }
   `}
 
@@ -249,7 +248,7 @@ export const Ripple = styled.span`
   z-index: ${zIndex[1]};
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: ${zIndex.minimum};
     top: calc(50% - 35px);

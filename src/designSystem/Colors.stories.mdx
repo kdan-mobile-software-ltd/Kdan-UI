@@ -1,8 +1,8 @@
-import { Meta } from "@storybook/addon-docs/blocks";
-import Color from "../component/ColorCard";
-import colors from "../themes/colors";
+import { Meta } from '@storybook/addon-docs/blocks';
+import Color from '../component/ColorCard';
+import colors from '../themes/colors';
 
-<Meta title="Design System/Color" />
+<Meta title='Design System/Color' />
 
 # Color
 
@@ -15,9 +15,9 @@ The Kdan official branding palette
 Primary colour are the base colors of the UI
 
 <Preview withToolbar>
-  <Color name="brand" hex={colors.brand} />
-  <Color name="primary" hex={colors.primary} />
-  <Color name="secondary" hex={colors.secondary} />
+  <Color name='brand' hex={colors.brand} />
+  <Color name='primary' hex={colors.primary} />
+  <Color name='secondary' hex={colors.secondary} />
 </Preview>
 
 ## Product palette
@@ -25,13 +25,13 @@ Primary colour are the base colors of the UI
 Kdan all products main colour.
 
 <Preview withToolbar>
-  <Color name="PDF" hex={colors.PDF} />
-  <Color name="DS" hex={colors.DS} />
-  <Color name="AD" hex={colors.AD} />
-  <Color name="WO" hex={colors.WO} />
-  <Color name="NL" hex={colors.NL} />
-  <Color name="PM" hex={colors.PM} />
-  <Color name="PS" hex={colors.PS} />
+  <Color name='PDF' hex={colors.PDF} />
+  <Color name='DS' hex={colors.DS} />
+  <Color name='AD' hex={colors.AD} />
+  <Color name='WO' hex={colors.WO} />
+  <Color name='NL' hex={colors.NL} />
+  <Color name='PM' hex={colors.PM} />
+  <Color name='PS' hex={colors.PS} />
 </Preview>
 
 ## Extended palette
@@ -43,7 +43,7 @@ Neutral colours are used for non-interactive elements, backgrounds, borders and 
 <Preview withToolbar>
   {Object.keys(colors)
     .filter((ele) => ele.match(/^N\d*\d$/g))
-    .map((key) => (colors[key] ? <Color name={key} hex={colors[key]} /> : ""))}
+    .map((key) => (colors[key] ? <Color name={key} hex={colors[key]} /> : ''))}
 </Preview>
 
 ### Others
@@ -51,16 +51,16 @@ Neutral colours are used for non-interactive elements, backgrounds, borders and 
 <Preview withToolbar>
   {Object.keys(colors)
     .filter((ele) => ele.match(/^[^N]\d+/g))
-    .map((key) => (colors[key] ? <Color name={key} hex={colors[key]} /> : ""))}
+    .map((key) => (colors[key] ? <Color name={key} hex={colors[key]} /> : ''))}
 </Preview>
 
 ### Status
 
 <Preview withToolbar>
-  <Color name="error" hex={colors.error} />
-  <Color name="warning" hex={colors.warning} />
-  <Color name="info" hex={colors.info} />
-  <Color name="success" hex={colors.success} />
+  <Color name='error' hex={colors.error} />
+  <Color name='warning' hex={colors.warning} />
+  <Color name='info' hex={colors.info} />
+  <Color name='success' hex={colors.success} />
 </Preview>
 
 ## How to use?

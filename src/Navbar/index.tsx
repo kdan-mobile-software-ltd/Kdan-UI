@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from "react";
-import MenuBtn from "../component/MenuBtn";
+import React, { useState, useEffect } from 'react';
+import MenuBtn from '../component/MenuBtn';
 
-import {
-  Container,
-  Wrapper,
-  Menu,
-  MenuWrapper,
-  MenuBtnWrapper,
-} from "./styled";
+import { Container, Wrapper, Menu, MenuWrapper, MenuBtnWrapper } from './styled';
 
 export type NavbarProps = {
   isFixed?: boolean;
@@ -15,11 +9,7 @@ export type NavbarProps = {
   children?: React.ReactNode;
 };
 
-const Navbar: React.FC<NavbarProps> = ({
-  isFixed = false,
-  brand,
-  children,
-}: NavbarProps) => {
+const Navbar: React.FC<NavbarProps> = ({ isFixed = false, brand, children }: NavbarProps) => {
   const [isCollapse, setCollapse] = useState(true);
   const [positionY, setPosition] = useState(0);
 
@@ -33,21 +23,21 @@ const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     if (isFixed) {
-      document.addEventListener("scroll", handleScroll);
+      document.addEventListener('scroll', handleScroll);
     }
 
     return () => {
       if (isFixed) {
-        document.removeEventListener("scroll", handleScroll);
+        document.removeEventListener('scroll', handleScroll);
       }
     };
   }, []);
 
   useEffect(() => {
     if (!isCollapse) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "scroll";
+      document.body.style.overflow = 'scroll';
     }
   }, [isCollapse]);
 
@@ -55,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({
     <Container isFixed={positionY >= 70}>
       <Wrapper>
         {brand}
-        <Menu isCollapse={isCollapse}>
+        <Menu isCollapse={isCollapse} isFixed={positionY >= 70}>
           <MenuWrapper>{children}</MenuWrapper>
         </Menu>
         <MenuBtnWrapper>

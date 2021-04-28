@@ -1,44 +1,33 @@
-import React from "react";
+import React from 'react';
 
-import Button from "../Button";
-import Dropdown, { DropdownProps } from ".";
-import { Container } from "../component/Decorator";
+import Button from '../Button';
+import Dropdown, { DropdownProps } from '.';
+import { Container } from '../component/Decorator';
 
 export default {
-  title: "Dropdown",
+  title: 'Dropdown',
   component: Dropdown,
-  decorators: [
-    (story: () => React.ReactNode): React.ReactNode => (
-      <Container padding>{story()}</Container>
-    ),
-  ],
+  decorators: [(story: () => React.ReactNode): React.ReactNode => <Container padding>{story()}</Container>],
   parameters: {
     docs: {
       description: {
-        component: "下拉選單",
+        component: '下拉選單',
       },
     },
   },
 };
 
-export const Basic = ({
-  position,
-  fullWidth,
-  defaultOpen,
-}: DropdownProps): React.ReactNode => (
+export const Basic = ({ position, fullWidth, defaultOpen }: DropdownProps): React.ReactNode => (
   <>
-    <Dropdown
-      trigger={<Button>Click</Button>}
-      position={position}
-      fullWidth={fullWidth}
-      defaultOpen={defaultOpen}>
+    <Dropdown trigger={<Button>Click</Button>} position={position} fullWidth={fullWidth} defaultOpen={defaultOpen}>
       <p
         style={{
-          width: "400px",
-          height: "300px",
-          backgroundColor: "gray",
+          width: '400px',
+          height: '300px',
+          backgroundColor: 'gray',
           margin: 0,
-        }}>
+        }}
+      >
         inside content
       </p>
     </Dropdown>
@@ -47,37 +36,33 @@ export const Basic = ({
 );
 
 Basic.args = {
-  position: "bottom left",
+  position: 'bottom left',
   fullWidth: false,
   defaultOpen: false,
 } as DropdownProps;
 
-export const PassFunctionToTrigger = ({
-  position,
-  fullWidth,
-  defaultOpen,
-}: DropdownProps): React.ReactNode => (
+export const PassFunctionToTrigger = ({ position, fullWidth, defaultOpen }: DropdownProps): React.ReactNode => (
   <Dropdown
-    trigger={(open: boolean) => (
-      <Button>Click {open ? "open" : "close"}</Button>
-    )}
+    trigger={(open: boolean) => <Button>Click {open ? 'open' : 'close'}</Button>}
     position={position}
     fullWidth={fullWidth}
-    defaultOpen={defaultOpen}>
+    defaultOpen={defaultOpen}
+  >
     <p
       style={{
-        width: "200px",
-        height: "100px",
-        backgroundColor: "gray",
+        width: '200px',
+        height: '100px',
+        backgroundColor: 'gray',
         margin: 0,
-      }}>
+      }}
+    >
       inside content
     </p>
   </Dropdown>
 );
 
 PassFunctionToTrigger.args = {
-  position: "bottom right",
+  position: 'bottom right',
   fullWidth: false,
   defaultOpen: false,
 } as DropdownProps;
