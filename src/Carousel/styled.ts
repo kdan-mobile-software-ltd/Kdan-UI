@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { hexToRGBA } from "../helpers/utility";
-import colors from "../themes/colors";
-import breakpoints from "../themes/breakpoints";
-import zIndex from "../themes/zIndex";
+import { hexToRGBA } from '../helpers/utility';
+import colors from '../themes/colors';
+import breakpoints from '../themes/breakpoints';
+import zIndex from '../themes/zIndex';
 
 export const Wrapper = styled.div`
   margin: auto;
@@ -14,10 +14,10 @@ export const Wrapper = styled.div`
   padding: 36px;
   display: inline-block;
 
-  @media ${breakpoints.down("lg")} {
+  @media ${breakpoints.down('lg')} {
     padding: 0 0 36px;
   }
-  @media ${breakpoints.down("md")} {
+  @media ${breakpoints.down('md')} {
     padding: 0 0 32px;
   }
 `;
@@ -28,7 +28,7 @@ export const ArrowBtn = styled.span`
   cursor: pointer;
   margin: 0 14px;
 
-  @media ${breakpoints.down("lg")} {
+  @media ${breakpoints.down('lg')} {
     display: inline-flex;
   }
 `;
@@ -39,8 +39,8 @@ export const IconButton = styled.button`
   width: 72px;
   height: 72px;
   border-radius: 36px;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.13),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.1), 0px 1px 5px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.13), 0px 2px 2px 0px rgba(0, 0, 0, 0.1),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.05);
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   position: absolute;
   top: calc(50% - 36px);
@@ -56,19 +56,15 @@ export const IconButton = styled.button`
       cursor: default;
     `
       : `
-      background-color: ${mode === "dark" ? colors.N100 : colors.P50};
+      background-color: ${mode === 'dark' ? colors.N100 : colors.P50};
       cursor: pointer;
 
       :hover {
-        background-color: ${
-          mode === "dark"
-            ? hexToRGBA(colors.N100, 0.8)
-            : hexToRGBA(colors.P50, 0.8)
-        };
+        background-color: ${mode === 'dark' ? hexToRGBA(colors.N100, 0.8) : hexToRGBA(colors.P50, 0.8)};
       }
     `}
 
-  @media ${breakpoints.down("lg")} {
+  @media ${breakpoints.down('lg')} {
     display: none;
   }
 `;
@@ -89,11 +85,9 @@ export const ElementsContainer = styled.div<{
   width: 100%;
   height: 100%;
   margin: auto;
-  border: ${({ showBorder }) =>
-    showBorder ? `1px solid ${colors.N15}` : "none"};
+  border: ${({ showBorder }) => (showBorder ? `1px solid ${colors.N15}` : 'none')};
   border-radius: 4px;
-  box-shadow: ${({ showShadow }) =>
-    showShadow ? "0 0 20px 0 rgba(130, 130, 130, 0.25)" : ""};
+  box-shadow: ${({ showShadow }) => (showShadow ? '0 0 20px 0 rgba(130, 130, 130, 0.25)' : '')};
 `;
 
 export const ElementsOuter = styled.div<{
@@ -103,8 +97,7 @@ export const ElementsOuter = styled.div<{
 }>`
   display: flex;
   transform: ${({ move }) => `translateX(${move}px)`};
-  transition: ${({ playing }) =>
-    playing ? "transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms" : "unset"};
+  transition: ${({ playing }) => (playing ? 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms' : 'unset')};
   width: ${({ width }) => width};
 `;
 
@@ -130,6 +123,5 @@ export const Dot = styled.span`
   cursor: pointer;
   margin: 6px;
 
-  background-color: ${({ isActive }: { isActive?: boolean }) =>
-    isActive ? colors.N100 : colors.N15};
+  background-color: ${({ isActive }: { isActive?: boolean }) => (isActive ? colors.N100 : colors.N15)};
 `;

@@ -1,12 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import colors from "../themes/colors";
-import breakpoints from "../themes/breakpoints";
-import zIndex from "../themes/zIndex";
+import colors from '../themes/colors';
+import breakpoints from '../themes/breakpoints';
+import zIndex from '../themes/zIndex';
 
 export const Container = styled.nav`
   background: ${colors.N0};
   width: 100%;
+  position: relative;
 
   ${({ isFixed }: { isFixed: boolean }) =>
     isFixed
@@ -18,7 +19,7 @@ export const Container = styled.nav`
         z-index: ${zIndex[5]};
         box-shadow:         
         0px 5px 7px 0px rgba(0, 0, 0, 0.15);      `
-      : ""}
+      : ''}
 `;
 
 export const Wrapper = styled.div`
@@ -32,15 +33,15 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   margin: auto;
 
-  @media ${breakpoints.down("lg")} {
+  @media ${breakpoints.down('lg')} {
     height: 70px;
   }
-  @media ${breakpoints.down("md")} {
+  @media ${breakpoints.down('md')} {
     padding: 0 16px;
   }
 `;
 
-export const Menu = styled.div`
+export const Menu = styled.div<{ isCollapse: boolean; isFixed: boolean }>`
   display: inline-flex;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -53,18 +54,10 @@ export const Menu = styled.div`
   transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   z-index: ${zIndex[5]};
 
-  @media ${breakpoints.down("lg")} {
-    ${({ isCollapse }: { isCollapse: boolean }) =>
-      isCollapse
-        ? `
-      height: 0;
-    `
-        : `
-      height: calc(100vh - 70px);
-    `}
-
-    position: fixed;
-    top: 69px;
+  @media ${breakpoints.down('lg')} {
+    height: ${({ isCollapse }) => (isCollapse ? 0 : 'calc(100vh - 70px)')};
+    position: absolute;
+    top: 70px;
   }
 `;
 
@@ -72,10 +65,10 @@ export const MenuWrapper = styled.div`
   width: 100%;
   margin: 0;
 
-  @media ${breakpoints.down("lg")} {
+  @media ${breakpoints.down('lg')} {
     margin: 40px;
   }
-  @media ${breakpoints.down("md")} {
+  @media ${breakpoints.down('md')} {
     margin: 16px;
   }
 `;
@@ -83,7 +76,7 @@ export const MenuWrapper = styled.div`
 export const MenuBtnWrapper = styled.span`
   display: none;
 
-  @media ${breakpoints.down("lg")} {
+  @media ${breakpoints.down('lg')} {
     display: inline-flex;
   }
 `;

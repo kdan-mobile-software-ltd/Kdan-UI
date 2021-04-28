@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { TextfieldProps } from "./index";
-import colors from "../themes/colors";
+import { TextfieldProps } from './index';
+import colors from '../themes/colors';
 
 export const FormControl = styled.div`
   display: inline-block;
   position: relative;
 
   ${({ fullWidth, error }: TextfieldProps) => `
-    width: ${fullWidth ? "100%" : "auto"};
+    width: ${fullWidth ? '100%' : 'auto'};
     color: ${error ? colors.error : colors.N100};
   `};
 `;

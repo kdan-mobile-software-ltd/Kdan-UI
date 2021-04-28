@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   background: #ecf0f1;
@@ -6,8 +6,7 @@ export const Container = styled.div`
   min-height: 50vh;
   height: 100%;
 
-  ${({ padding }: { padding?: boolean }) =>
-    padding ? "padding: 3rem;" : "margin: -1rem;"};
+  ${({ padding }: { padding?: boolean }) => (padding ? 'padding: 3rem;' : 'margin: -1rem;')};
 `;
 
 export const Paper = styled.div`

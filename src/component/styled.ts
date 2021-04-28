@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import colors from "../themes/colors";
-import font from "../themes/fonts";
+import colors from '../themes/colors';
+import font from '../themes/fonts';
 
 export const InputLabel = styled.label`
   font-size: 14px;
@@ -10,8 +10,7 @@ export const InputLabel = styled.label`
   margin-bottom: 6px;
   display: inherit;
 
-  color: ${({ error }: { error: boolean }) =>
-    error ? colors.error : colors.N100};
+  color: ${({ error }: { error: boolean }) => (error ? colors.error : colors.N100)};
 `;
 
 export const HelpText = styled.span<{ error: boolean }>`

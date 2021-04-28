@@ -1,4 +1,4 @@
-type BreakpointsType = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+type BreakpointsType = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export const BREAKPOINTS = {
   xs: 0,
@@ -9,11 +9,9 @@ export const BREAKPOINTS = {
   xxl: 1440,
 };
 
-const down = (key: BreakpointsType): string =>
-  `(max-width: ${BREAKPOINTS[key] - 0.5}px)`;
+const down = (key: BreakpointsType): string => `(max-width: ${BREAKPOINTS[key] - 0.5}px)`;
 
-const up = (key: BreakpointsType): string =>
-  `(min-width: ${BREAKPOINTS[key]}px)`;
+const up = (key: BreakpointsType): string => `(min-width: ${BREAKPOINTS[key]}px)`;
 
 const only = (key: BreakpointsType): string =>
   `(min-width: ${BREAKPOINTS[key]}px) and (max-width: ${BREAKPOINTS[key]}px)`;

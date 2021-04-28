@@ -1,14 +1,14 @@
-declare module "@rollup/plugin-image";
-declare module "rollup-plugin-uglify";
+declare module '@rollup/plugin-image';
+declare module 'rollup-plugin-uglify';
 
-declare module "*.svg" {
-  import React = require("react");
+declare module '*.svg' {
+  import React = require('react');
   export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
   const src: string;
   export default src;
 }
 
-declare module "*.png" {
+declare module '*.png' {
   const src: string;
   export default src;
 }
@@ -20,6 +20,6 @@ type CoordinatesType = {
   right?: number;
 };
 
-type CoordNameType = "left" | "right" | "top" | "bottom";
+type CoordNameType = 'left' | 'right' | 'top' | 'bottom';
 
-type PositionType = "bottom left" | "bottom right" | "bottom center";
+type PositionType = 'bottom left' | 'bottom right' | 'bottom center';

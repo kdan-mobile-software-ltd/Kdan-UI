@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Textfield from "../Textfield";
-import ClickAwayListener from "../ClickAwayListener";
-import { delay } from "../helpers/utility";
+import Textfield from '../Textfield';
+import ClickAwayListener from '../ClickAwayListener';
+import { delay } from '../helpers/utility';
 
-import {
-  Wrapper,
-  SelectController,
-  MenuList,
-  MenuItem,
-  Triangle,
-  Block,
-  Selected,
-} from "./styled";
+import { Wrapper, SelectController, MenuList, MenuItem, Triangle, Block, Selected } from './styled';
 
-import { InputLabel, HelpText, Required } from "../component/styled";
+import { InputLabel, HelpText, Required } from '../component/styled';
 
 export type ItemType = {
   key: string | number;
@@ -24,7 +16,7 @@ export type ItemType = {
 export type SelectProps = {
   options: ItemType[];
   onChange?: (select: ItemType) => void;
-  position?: "top" | "bottom";
+  position?: 'top' | 'bottom';
   enabledInput?: boolean;
   defaultValue?: string;
   fullWidth?: boolean;
@@ -47,7 +39,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
       fullWidth = false,
       disabled = false,
       onChange,
-      position = "bottom",
+      position = 'bottom',
       className,
       enabledInput = false,
       placeholder,
@@ -57,16 +49,16 @@ const Select = React.forwardRef<RefType, SelectProps>(
       required,
       ...rest
     }: SelectProps,
-    ref
+    ref,
   ) => {
     const [open, setOpen] = useState(false);
-    const [selectValue, setSelectValue] = useState("");
-    const [inputValue, setInputValue] = useState("");
+    const [selectValue, setSelectValue] = useState('');
+    const [inputValue, setInputValue] = useState('');
 
     const handleClick = async () => {
       await delay(10);
       setOpen((current) => !current);
-      setInputValue("");
+      setInputValue('');
     };
 
     const handleSelect = (select: ItemType) => {
@@ -94,17 +86,18 @@ const Select = React.forwardRef<RefType, SelectProps>(
         {label && (
           <InputLabel error={!!error}>
             {label}
-            {required ? <Required>*</Required> : ""}
+            {required ? <Required>*</Required> : ''}
           </InputLabel>
         )}
         <SelectController>
           {!open || !enabledInput ? (
             <Selected
-              data-testid="selected"
+              data-testid='selected'
               isActive={open}
               onClick={!open ? handleClick : undefined}
               error={!!error}
-              disabled={!!disabled}>
+              disabled={!!disabled}
+            >
               {selectValue || <span>{placeholder}</span>}
             </Selected>
           ) : null}
@@ -124,15 +117,11 @@ const Select = React.forwardRef<RefType, SelectProps>(
 
           <ClickAwayListener onClick={open ? handleBlur : undefined}>
             {open && !disabled && (
-              <MenuList data-testid="menu-list" position={position}>
+              <MenuList data-testid='menu-list' position={position}>
                 {options &&
                   options
                     .filter((item: ItemType) =>
-                      inputValue
-                        ? item.value
-                            .toLocaleLowerCase()
-                            .includes(inputValue.toLocaleLowerCase())
-                        : true
+                      inputValue ? item.value.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase()) : true,
                     )
                     .map((item: ItemType) => (
                       <MenuItem
@@ -140,7 +129,8 @@ const Select = React.forwardRef<RefType, SelectProps>(
                         isSelected={selectValue === item.value}
                         onClick={() => {
                           handleSelect(item);
-                        }}>
+                        }}
+                      >
                         {item.value}
                       </MenuItem>
                     ))}
@@ -152,7 +142,9 @@ const Select = React.forwardRef<RefType, SelectProps>(
         {disabled && <Block />}
       </Wrapper>
     );
-  }
+  },
 );
+
+Select.displayName = 'Select';
 
 export default Select;

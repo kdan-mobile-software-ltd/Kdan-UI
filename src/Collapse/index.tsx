@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from 'react';
 
-import { ContentWrapper, Inner } from "./styled";
+import { ContentWrapper, Inner } from './styled';
 
 export type CollapseProps = {
   defaultOpen?: boolean;
@@ -8,11 +8,7 @@ export type CollapseProps = {
   children: React.ReactNode;
 };
 
-const Collapse: React.FC<CollapseProps> = ({
-  defaultOpen = false,
-  trigger,
-  children,
-}: CollapseProps) => {
+const Collapse: React.FC<CollapseProps> = ({ defaultOpen = false, trigger, children }: CollapseProps) => {
   const innerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -26,11 +22,8 @@ const Collapse: React.FC<CollapseProps> = ({
 
   return (
     <div>
-      <div onClick={handleClick}>
-        {typeof trigger === "function" ? trigger(open) : trigger}
-      </div>
-      <ContentWrapper
-        style={{ height: open ? `${innerRef.current?.clientHeight}px` : 0 }}>
+      <div onClick={handleClick}>{typeof trigger === 'function' ? trigger(open) : trigger}</div>
+      <ContentWrapper style={{ height: open ? `${innerRef.current?.clientHeight}px` : 0 }}>
         <Inner ref={innerRef}>{children}</Inner>
       </ContentWrapper>
     </div>

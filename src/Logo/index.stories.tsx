@@ -1,20 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import Logo from ".";
-import { Container } from "../component/Decorator";
+import Logo from '.';
+import { Container } from '../component/Decorator';
 
 export default {
-  title: "Logo",
+  title: 'Logo',
   component: Logo,
-  decorators: [
-    (story: () => React.ReactNode): React.ReactNode => (
-      <Container padding>{story()}</Container>
-    ),
-  ],
+  decorators: [(story: () => React.ReactNode): React.ReactNode => <Container padding>{story()}</Container>],
   parameters: {
     docs: {
       description: {
-        component: "Logo樣式",
+        component: 'Logo樣式',
       },
     },
   },
@@ -22,23 +18,23 @@ export default {
 
 export const Basic = (): React.ReactNode => (
   <>
-    <Logo variant="logomark" />
+    <Logo variant='logomark' />
     <hr />
-    <Logo variant="wordmark" />
+    <Logo variant='wordmark' />
     <hr />
-    <Logo variant="combine" />
+    <Logo variant='combine' />
     <hr />
-    <Logo variant="kc-logomark" />
+    <Logo variant='kc-logomark' />
     <hr />
-    <Logo variant="kc-combine" />
+    <Logo variant='kc-combine' />
     <hr />
-    <Logo variant="pdf-reader" />
-    <Logo variant="animation-desk" />
-    <Logo variant="noteledge" />
-    <Logo variant="writeon-video" />
-    <Logo variant="markup" />
-    <Logo variant="pocket-scanner" />
-    <Logo variant="kdan-cloud" />
-    <Logo variant="dottedsign" />
+    <Logo variant='pdf-reader' />
+    <Logo variant='animation-desk' />
+    <Logo variant='noteledge' />
+    <Logo variant='writeon-video' />
+    <Logo variant='markup' />
+    <Logo variant='pocket-scanner' />
+    <Logo variant='kdan-cloud' />
+    <Logo variant='dottedsign' />
   </>
 );

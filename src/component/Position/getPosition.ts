@@ -8,10 +8,7 @@ const getViewportWidth = () => {
   return (docEl && docEl.clientWidth) || window.innerWidth || 0;
 };
 
-const getViewportBounds = (
-  { top, right, bottom, left }: DOMRect,
-  gutter: number
-) => {
+const getViewportBounds = ({ top, right, bottom, left }: DOMRect, gutter: number) => {
   return {
     top: top >= 0 + gutter,
     left: left >= 0 + gutter,
@@ -23,13 +20,13 @@ const getViewportBounds = (
 const shiftCoord = (coordName: string, coords: DOMRect, gutter: number) => {
   let shiftedCoord = {};
 
-  if (coordName === "left") {
+  if (coordName === 'left') {
     shiftedCoord = {
       ...coords,
       left: 0 + gutter,
     };
   }
-  if (coordName === "right") {
+  if (coordName === 'right') {
     const amountClipped = coords.right - getViewportWidth();
     const shiftedLeft = coords.left - amountClipped - gutter;
 
@@ -46,22 +43,22 @@ const getCoords = (
   position: PositionType,
   targetRect: DOMRect,
   dropdownRect: DOMRect,
-  gutter: number
+  gutter: number,
 ): CoordinatesType => {
   const coords = {
-    "bottom left": {
+    'bottom left': {
       top: targetRect.bottom + gutter / 2,
       right: targetRect.left + dropdownRect.width,
       bottom: targetRect.bottom + gutter + dropdownRect.height,
       left: targetRect.left,
     },
-    "bottom center": {
+    'bottom center': {
       top: targetRect.bottom + gutter / 2,
       right: targetRect.right - (targetRect.width - dropdownRect.width) / 2,
       bottom: targetRect.bottom + gutter + dropdownRect.height,
       left: targetRect.left + (targetRect.width - dropdownRect.width) / 2,
     },
-    "bottom right": {
+    'bottom right': {
       top: targetRect.bottom + gutter / 2,
       right: targetRect.right,
       bottom: targetRect.bottom + gutter + dropdownRect.height,
@@ -72,15 +69,9 @@ const getCoords = (
   return coords[position];
 };
 
-const adjustPosition = (
-  position: PositionType,
-  coords: DOMRect,
-  gutter: number
-) => {
+const adjustPosition = (position: PositionType, coords: DOMRect, gutter: number) => {
   const viewportBounds = getViewportBounds(coords, gutter);
-  const shouldMove = Object.keys(viewportBounds).some(
-    (key) => !viewportBounds[key as CoordNameType]
-  );
+  const shouldMove = Object.keys(viewportBounds).some((key) => !viewportBounds[key as CoordNameType]);
   const shiftedCoords = coords;
 
   if (shouldMove) {

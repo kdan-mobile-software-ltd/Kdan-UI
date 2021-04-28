@@ -1,21 +1,21 @@
-import React from "react";
-import { render, cleanup, fireEvent } from "@testing-library/react";
-import "jest-styled-components";
-import "@testing-library/jest-dom";
+import React from 'react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
+import 'jest-styled-components';
+import '@testing-library/jest-dom';
 
-import Collapse from "./";
+import Collapse from './';
 
-describe("Collapse", () => {
+describe('Collapse', () => {
   afterEach(cleanup);
 
-  test("open collapse", () => {
+  test('open collapse', () => {
     const { container, getByText } = render(
       <Collapse trigger={<button>click</button>} defaultOpen>
         content
-      </Collapse>
+      </Collapse>,
     );
 
-    fireEvent.click(getByText("click"));
+    fireEvent.click(getByText('click'));
 
     expect(container).toMatchSnapshot();
   });

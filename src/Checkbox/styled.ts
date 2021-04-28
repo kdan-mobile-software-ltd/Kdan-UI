@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import colors from "../themes/colors";
+import colors from '../themes/colors';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -24,12 +24,10 @@ export const Box = styled.div<{
   position: relative;
   display: flex;
 
-  background-color: ${({ isDisabled }) =>
-    isDisabled ? colors.N15 : "inherit"};
+  background-color: ${({ isDisabled }) => (isDisabled ? colors.N15 : 'inherit')};
 
   :hover {
-    background-color: ${({ isDisabled }) =>
-      isDisabled ? colors.N15 : colors.N10};
+    background-color: ${({ isDisabled }) => (isDisabled ? colors.N15 : colors.N10)};
   }
 `;
 

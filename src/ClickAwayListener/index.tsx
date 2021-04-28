@@ -1,16 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from 'react';
 
 export type ClickAwayListenerProps = {
   onClick?: (event: MouseEvent | TouchEvent) => void;
-  mouseEvent?: "click" | "mousedown" | "mouseup" | false;
-  touchEvent?: "touchend" | "touchstart" | false;
+  mouseEvent?: 'click' | 'mousedown' | 'mouseup' | false;
+  touchEvent?: 'touchend' | 'touchstart' | false;
   children: React.ReactNode;
 };
 
 const ClickAwayListener: React.FC<ClickAwayListenerProps> = ({
   onClick,
-  mouseEvent = "click",
-  touchEvent = "touchend",
+  mouseEvent = 'click',
+  touchEvent = 'touchend',
   children,
   ...props
 }: ClickAwayListenerProps) => {

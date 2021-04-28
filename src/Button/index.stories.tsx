@@ -1,21 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import { Container } from "../component/Decorator";
-import Button, { ButtonProps } from ".";
-import { LinkArrowIcon, TriangleDownIcon } from "../Icon";
+import { Container } from '../component/Decorator';
+import Button, { ButtonProps } from '.';
+import { LinkArrowIcon, TriangleDownIcon } from '../Icon';
 
 export default {
-  title: "Button",
+  title: 'Button',
   component: Button,
-  decorators: [
-    (story: () => React.ReactNode): React.ReactNode => (
-      <Container padding>{story()}</Container>
-    ),
-  ],
+  decorators: [(story: () => React.ReactNode): React.ReactNode => <Container padding>{story()}</Container>],
   parameters: {
     docs: {
       description: {
-        component: "按鈕樣式",
+        component: '按鈕樣式',
       },
     },
   },
@@ -23,39 +19,39 @@ export default {
 
 export const Basic = (): React.ReactNode => (
   <>
-    <Button id="test" size="small">
+    <Button id='test' size='small'>
       Click
     </Button>
     &nbsp;
-    <Button size="medium" color="light">
+    <Button size='medium' color='light'>
       Click
     </Button>
     &nbsp;
-    <Button size="large" color="cheese">
+    <Button size='large' color='cheese'>
       Click
     </Button>
     <hr />
-    <Button variant="outlined" size="small">
+    <Button variant='outlined' size='small'>
       Click
     </Button>
     &nbsp;
-    <Button size="medium" variant="outlined">
+    <Button size='medium' variant='outlined'>
       Click
     </Button>
     &nbsp;
-    <Button variant="outlined" size="large">
+    <Button variant='outlined' size='large'>
       Click
     </Button>
     <hr />
-    <Button variant="text" size="small">
+    <Button variant='text' size='small'>
       Click
     </Button>
     &nbsp;
-    <Button variant="text" color="brand" size="medium">
+    <Button variant='text' color='brand' size='medium'>
       Click
     </Button>
     &nbsp;
-    <Button variant="text" size="large">
+    <Button variant='text' size='large'>
       Click
     </Button>
   </>
@@ -63,71 +59,61 @@ export const Basic = (): React.ReactNode => (
 
 Basic.args = {} as ButtonProps;
 
-export const CustomContent = (args: ButtonProps): React.ReactNode => (
-  <Button {...args} />
-);
+export const CustomContent = (args: ButtonProps): React.ReactNode => <Button {...args} />;
 
 CustomContent.args = {
-  variant: "contained",
-  children: "Button Content",
-  size: "large",
+  variant: 'contained',
+  children: 'Button Content',
+  size: 'large',
 } as ButtonProps;
 
 export const AnchorLink = (args: ButtonProps): React.ReactNode => (
-  <div style={{ marginLeft: "10px" }}>
+  <div style={{ marginLeft: '10px' }}>
     <Button {...args} />
   </div>
 );
 
 AnchorLink.args = {
-  variant: "text",
-  children: "Link",
+  variant: 'text',
+  children: 'Link',
   isAnchor: true,
-  href: "https://github.com/",
-  target: "_blank",
-  color: "brand",
+  href: 'https://github.com/',
+  target: '_blank',
+  color: 'brand',
   endIcon: <LinkArrowIcon />,
 } as ButtonProps;
 
-export const ButtonLink = (args: ButtonProps): React.ReactNode => (
-  <Button {...args} />
-);
+export const ButtonLink = (args: ButtonProps): React.ReactNode => <Button {...args} />;
 
 ButtonLink.args = {
-  variant: "contained",
-  children: "Link",
+  variant: 'contained',
+  children: 'Link',
   isAnchor: true,
-  href: "https://github.com/",
-  target: "_blank",
-  color: "default",
+  href: 'https://github.com/',
+  target: '_blank',
+  color: 'default',
   endIcon: <LinkArrowIcon />,
 } as ButtonProps;
 
-export const Disabled = (args: ButtonProps): React.ReactNode => (
-  <Button {...args} />
-);
+export const Disabled = (args: ButtonProps): React.ReactNode => <Button {...args} />;
 
 Disabled.args = {
-  children: "Disabled",
+  children: 'Disabled',
   disabled: true,
-  onClick: () => alert("123"),
+  onClick: () => alert('123'),
 } as ButtonProps;
 
-export const FullWidth = (args: ButtonProps): React.ReactNode => (
-  <Button {...args} />
-);
+export const FullWidth = (args: ButtonProps): React.ReactNode => <Button {...args} />;
 
 FullWidth.args = {
-  children: "Full Width",
+  children: 'Full Width',
   fullWidth: true,
 } as ButtonProps;
 
-export const ButtonWithIcon = (args: ButtonProps): React.ReactNode => (
-  <Button {...args} />
-);
+export const ButtonWithIcon = (args: ButtonProps): React.ReactNode => <Button {...args} />;
 
 ButtonWithIcon.args = {
-  variant: "text",
-  children: "Products",
+  variant: 'text',
+  children: 'Products',
   endIcon: <TriangleDownIcon />,
 } as ButtonProps;

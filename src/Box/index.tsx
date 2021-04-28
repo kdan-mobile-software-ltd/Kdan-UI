@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
   typography,
   space,
@@ -20,7 +20,7 @@ import {
   GridProps,
   FlexboxProps,
   SpaceProps,
-} from "styled-system";
+} from 'styled-system';
 
 const Box = styled.div<
   TypographyProps &
@@ -33,17 +33,6 @@ const Box = styled.div<
     FlexboxProps &
     SpaceProps &
     ShadowProps
->(
-  typography,
-  layout,
-  space,
-  color,
-  flexbox,
-  grid,
-  background,
-  border,
-  position,
-  shadow
-);
+>(typography, layout, space, color, flexbox, grid, background, border, position, shadow);
 
 export default Box;

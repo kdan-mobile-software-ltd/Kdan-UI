@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import colors from "../../themes/colors";
+import styled, { css } from 'styled-components';
+import colors from '../../themes/colors';
 
 export const Wrapper = styled.div`
   display: inline-block;
@@ -21,20 +21,20 @@ export const Bun = styled.span`
   transform: scale(0.8);
 
   ${({ sequence, isActive }: { sequence: string; isActive: boolean }) => {
-    if (sequence === "top") {
+    if (sequence === 'top') {
       return css`
-        transform: ${isActive ? "rotate(45deg)" : ""};
-        top: ${isActive ? "16px" : "8px"};
+        transform: ${isActive ? 'rotate(45deg)' : ''};
+        top: ${isActive ? '16px' : '8px'};
       `;
-    } else if (sequence === "middle") {
+    } else if (sequence === 'middle') {
       return css`
         top: 13px;
         opacity: ${isActive ? 0 : 1};
       `;
     } else {
       return css`
-        top: ${isActive ? "8px" : "19px"};
-        transform: ${isActive ? "rotate(-45deg)" : ""};
+        top: ${isActive ? '8px' : '19px'};
+        transform: ${isActive ? 'rotate(-45deg)' : ''};
       `;
     }
   }}

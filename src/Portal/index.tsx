@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import * as ReactDom from "react-dom";
+import React, { useEffect, useState } from 'react';
+import * as ReactDom from 'react-dom';
 
 export type PortalProps = {
   children: React.ReactNode;
@@ -8,14 +8,10 @@ export type PortalProps = {
 };
 
 const getContainer = (container: HTMLElement | React.ReactNode) => {
-  return typeof container === "function" ? container() : container;
+  return typeof container === 'function' ? container() : container;
 };
 
-const Portal: React.FC<PortalProps> = ({
-  children,
-  container,
-  disablePortal = false,
-}: PortalProps) => {
+const Portal: React.FC<PortalProps> = ({ children, container, disablePortal = false }: PortalProps) => {
   const [mountNode, setMountNode] = useState<Element | null>(null);
 
   useEffect(() => {

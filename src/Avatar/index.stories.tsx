@@ -1,22 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import Avatar, { AvatarProps } from "./";
-import { Container, Paper } from "../component/Decorator";
-
-import Joly from "../assets/icons/icon-144x144.png";
+import Avatar, { AvatarProps } from './';
+import { Container, Paper } from '../component/Decorator';
 
 export default {
-  title: "Avatar",
+  title: 'Avatar',
   component: Avatar,
-  decorators: [
-    (story: () => React.ReactNode): React.ReactNode => (
-      <Container padding>{story()}</Container>
-    ),
-  ],
+  decorators: [(story: () => React.ReactNode): React.ReactNode => <Container padding>{story()}</Container>],
   parameters: {
     docs: {
       description: {
-        component: "頭像",
+        component: '頭像',
       },
     },
   },
@@ -24,10 +18,22 @@ export default {
 
 export const Basic = (): React.ReactNode => (
   <Paper>
-    <Avatar size="small" alt="Joly" src={Joly} />
-    <Avatar alt="Joly" src={Joly} />
-    <Avatar size="large" alt="Joly" src={Joly} />
-    <Avatar size="xl" alt="Joly" src={Joly} />
+    <Avatar
+      size='small'
+      alt='Jolly'
+      src='https://i0.wp.com/tw-blog.kdanmobile.com/wp-content/uploads/2019/04/Kdan-Jolly-02.jpg'
+    />
+    <Avatar alt='Jolly' src='https://i0.wp.com/tw-blog.kdanmobile.com/wp-content/uploads/2019/04/Kdan-Jolly-02.jpg' />
+    <Avatar
+      size='large'
+      alt='Jolly'
+      src='https://i0.wp.com/tw-blog.kdanmobile.com/wp-content/uploads/2019/04/Kdan-Jolly-02.jpg'
+    />
+    <Avatar
+      size='xl'
+      alt='Jolly'
+      src='https://i0.wp.com/tw-blog.kdanmobile.com/wp-content/uploads/2019/04/Kdan-Jolly-02.jpg'
+    />
   </Paper>
 );
 
@@ -35,9 +41,9 @@ Basic.args = {} as AvatarProps;
 
 export const Letter = (): React.ReactNode => (
   <Paper>
-    <Avatar size="small">R</Avatar>
+    <Avatar size='small'>R</Avatar>
     <Avatar>R</Avatar>
-    <Avatar size="large">R</Avatar>
-    <Avatar size="xl">R</Avatar>
+    <Avatar size='large'>R</Avatar>
+    <Avatar size='xl'>R</Avatar>
   </Paper>
 );

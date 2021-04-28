@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Wrapper, MediaWrapper, ContentWrapper, ActionWrapper } from "./styled";
+import { Wrapper, MediaWrapper, ContentWrapper, ActionWrapper } from './styled';
 
 export type CardProps = {
   media?: React.ReactNode;
@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({
   media,
   children,
   actions,
-  bgColor = "inherit",
+  bgColor = 'inherit',
   hideBorder = false,
 }: CardProps) => {
   return (

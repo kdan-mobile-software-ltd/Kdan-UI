@@ -1,22 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import { Wrapper, Img } from "./styled";
+import { Wrapper, Img } from './styled';
 
 export type AvatarProps = {
   alt?: string;
   src?: string;
-  size?: "small" | "medium" | "large" | "xl";
+  size?: 'small' | 'medium' | 'large' | 'xl';
   children?: string;
   className?: string;
 };
 
-const Avatar: React.FC<AvatarProps> = ({
-  alt,
-  src,
-  size = "medium",
-  children,
-  className,
-}: AvatarProps) => {
+const Avatar: React.FC<AvatarProps> = ({ alt, src, size = 'medium', children, className }: AvatarProps) => {
   return (
     <Wrapper size={size} className={className}>
       {src ? <Img alt={alt} src={src} /> : children}

@@ -1,7 +1,7 @@
-import React from "react";
-import hexRgb from "hex-rgb";
+import React from 'react';
+import hexRgb from 'hex-rgb';
 
-import { Wrapper, Color, Intro, Group, Subtitle, Content } from "./styled";
+import { Wrapper, Color, Intro, Group, Subtitle, Content } from './styled';
 
 type Props = {
   name: string;
@@ -9,7 +9,7 @@ type Props = {
 };
 
 const index: React.FC<Props> = ({ name, hex }: Props) => {
-  const rgbaArr = hexRgb(hex, { format: "array" });
+  const rgbaArr = hexRgb(hex, { format: 'array' });
 
   return (
     <Wrapper>

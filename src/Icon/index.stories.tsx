@@ -1,24 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import {
-  LinkArrowIcon,
-  TriangleUpIcon,
-  TriangleDownIcon,
-  CheckedIcon,
-} from "./index";
-import { Container } from "../component/Decorator";
+import { LinkArrowIcon, TriangleUpIcon, TriangleDownIcon, CheckedIcon } from './index';
+import { Container } from '../component/Decorator';
 
 export default {
-  title: "Icon",
-  decorators: [
-    (story: () => React.ReactNode): React.ReactNode => (
-      <Container padding>{story()}</Container>
-    ),
-  ],
+  title: 'Icon',
+  decorators: [(story: () => React.ReactNode): React.ReactNode => <Container padding>{story()}</Container>],
   parameters: {
     docs: {
       description: {
-        component: "Icon",
+        component: 'Icon',
       },
     },
   },
