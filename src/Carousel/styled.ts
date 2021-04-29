@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   position: relative;
   width: 100%;
   min-width: 275px;
-  max-width: 1080px;
+  max-width: 1152px;
   padding: 36px;
   display: inline-block;
 
