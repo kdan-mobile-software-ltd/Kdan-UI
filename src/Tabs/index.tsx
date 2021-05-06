@@ -11,9 +11,11 @@ export type TabsProps = {
   tabs: Tab[];
   onChange?: (index: number) => void;
   defaultIndex?: number;
+  decoration?: boolean;
+  color?: string;
 };
 
-const Tabs: React.FC<TabsProps> = ({ tabs, onChange, defaultIndex = 0 }: TabsProps) => {
+const Tabs: React.FC<TabsProps> = ({ tabs, onChange, defaultIndex = 0, decoration = true, color }: TabsProps) => {
   const [selected, onSelect] = useState(0);
 
   const handleClick = (index: number) => {
@@ -35,6 +37,8 @@ const Tabs: React.FC<TabsProps> = ({ tabs, onChange, defaultIndex = 0 }: TabsPro
           {tabs.map((tab, index) => (
             <Label
               key={`label_${index}`}
+              decoration={decoration}
+              color={color}
               isActive={selected === index}
               onClick={() => {
                 handleClick(index);

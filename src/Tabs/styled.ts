@@ -1,35 +1,43 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import colors from '../themes/colors';
+import { TabsProps } from './index';
 
 export const Wrapper = styled.div``;
 
-export const Label = styled.span<{ isActive: boolean }>`
+type LabelProps = {
+  isActive: boolean;
+} & Pick<TabsProps, 'color' | 'decoration'>;
+
+export const Label = styled.span<LabelProps>`
   position: relative;
   min-width: 150px;
   width: 100%;
   text-align: center;
-  color: ${colors.N35};
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   padding: 0 8px 20px;
   margin-bottom: 16px;
-  border-bottom: 4px solid ${colors.N35};
   cursor: pointer;
 
-  :hover {
-    color: ${colors.Y50};
-  }
+  ${({ isActive, color = colors.Y50 }) => css`
+    color: ${isActive ? color : colors.N35};
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: ${isActive ? color : colors.N35};
 
-  ${({ isActive }) =>
+    :hover {
+      color: ${color};
+    }
+  `}
+
+  ${({ isActive, decoration }) =>
+    decoration &&
     isActive &&
-    `
-      color: ${colors.Y50};
-      border-bottom: 4px solid ${colors.Y50};
-
+    css`
       :after {
-        content: "";
+        content: '';
         position: absolute;
-        width: 0; 
-        height: 0; 
+        width: 0;
+        height: 0;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
         border-top: 8px solid ${colors.Y50};
