@@ -1,7 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Tabs, { TabsProps } from './';
 import { Container } from '../component/Decorator';
+import colors from '../themes/colors';
 
 export default {
   title: 'Tabs',
@@ -16,21 +18,56 @@ export default {
   },
 };
 
+const tabs = [
+  {
+    label: 'Simple Integration Process',
+    content: 'content 1',
+  },
+  {
+    label: 'Smooth and Secure Delivery Flow',
+    content: 'content 2',
+  },
+  {
+    label: 'Real-Time Tracking and Management',
+    content: 'content 3',
+  },
+];
+
 export const Basic = (props: TabsProps): React.ReactNode => <Tabs {...props} />;
 
 Basic.args = {
-  tabs: [
-    {
-      label: 'Simple Integration Process',
-      content: 'content 1',
-    },
-    {
-      label: 'Smooth and Secure Delivery Flow',
-      content: 'content 2',
-    },
-    {
-      label: 'Real-Time Tracking and Management',
-      content: 'content 3',
-    },
-  ],
+  tabs,
+} as TabsProps;
+
+export const NoDecoration = (props: TabsProps): React.ReactNode => <Tabs {...props} />;
+
+NoDecoration.args = {
+  tabs,
+  decoration: false,
+} as TabsProps;
+
+const TabsStyleWrap = styled.div`
+  .ku-tabs-label {
+    color: #b6b6b6;
+    border-bottom-color: #b6b6b6;
+
+    &-active {
+      color: ${colors.WO};
+      border-bottom-color: ${colors.WO};
+
+      &:after {
+        border-top-color: ${colors.WO};
+      }
+    }
+  }
+`;
+
+export const WithCustomStyle = (props: TabsProps): React.ReactNode => (
+  <TabsStyleWrap>
+    <Tabs {...props} />
+  </TabsStyleWrap>
+);
+
+WithCustomStyle.args = {
+  tabs,
 } as TabsProps;
