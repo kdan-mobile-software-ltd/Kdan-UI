@@ -13,7 +13,6 @@ export type TabsProps = {
   onChange?: (index: number) => void;
   defaultIndex?: number;
   decoration?: boolean;
-  color?: string;
   labelClassName?: string;
 };
 
