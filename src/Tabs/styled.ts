@@ -6,7 +6,7 @@ export const Wrapper = styled.div``;
 
 type LabelProps = {
   isActive: boolean;
-} & Pick<TabsProps, 'color' | 'decoration'>;
+} & Pick<TabsProps, 'decoration' | 'labelClassName'>;
 
 export const Label = styled.span<LabelProps>`
   position: relative;
@@ -17,21 +17,21 @@ export const Label = styled.span<LabelProps>`
   padding: 0 8px 20px;
   margin-bottom: 16px;
   cursor: pointer;
+  color: ${colors.N35};
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  border-bottom-color: ${colors.N35};
 
-  ${({ isActive, color = colors.Y50 }) => css`
-    color: ${isActive ? color : colors.N35};
-    border-bottom-style: solid;
-    border-bottom-width: 4px;
-    border-bottom-color: ${isActive ? color : colors.N35};
-
-    :hover {
-      color: ${color};
-    }
-
-    :after {
-      border-top-color: ${isActive ? color : colors.Y50};
+  ${({ labelClassName }) => css`
+    &.${labelClassName}-active {
+      color: ${colors.Y50};
+      border-bottom-color: ${colors.Y50};
     }
   `}
+
+  :hover {
+    color: ${colors.Y50};
+  }
 
   ${({ isActive, decoration }) =>
     decoration &&
@@ -42,10 +42,9 @@ export const Label = styled.span<LabelProps>`
         position: absolute;
         width: 0;
         height: 0;
-        border-style: solid;
-        border-width: 8px 7px 0 7px;
-        border-left-color: transparent;
-        border-right-color: transparent;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 8px solid ${colors.Y50};
         left: 0;
         right: 0;
         bottom: -18px;
