@@ -27,6 +27,10 @@ export const Label = styled.span<LabelProps>`
     :hover {
       color: ${color};
     }
+
+    :after {
+      border-top-color: ${isActive ? color : colors.Y50};
+    }
   `}
 
   ${({ isActive, decoration }) =>
@@ -38,9 +42,10 @@ export const Label = styled.span<LabelProps>`
         position: absolute;
         width: 0;
         height: 0;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-top: 8px solid ${colors.Y50};
+        border-style: solid;
+        border-width: 8px 7px 0 7px;
+        border-left-color: transparent;
+        border-right-color: transparent;
         left: 0;
         right: 0;
         bottom: -18px;

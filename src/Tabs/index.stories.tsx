@@ -49,6 +49,5 @@ export const WithCustomColor = (props: TabsProps): React.ReactNode => <Tabs {...
 
 WithCustomColor.args = {
   tabs,
-  decoration: false,
   color: colors.WO,
 } as TabsProps;
