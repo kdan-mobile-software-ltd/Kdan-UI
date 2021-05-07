@@ -20,7 +20,7 @@ Kdan mobile UI Storybook with ReactJS and TypeScript.
 
 ## Installation
 
-```
+```bash
 npm install @kdanmobile/kdan-ui styled-components
 or
 yarn add @kdanmobile/kdan-ui styled-components
@@ -32,19 +32,19 @@ yarn add @kdanmobile/kdan-ui styled-components
 
 Watch
 
-```
+```bash
 yarn storybook
 ```
 
 Build
 
-```
+```bash
 yarn build
 ```
 
 Test
 
-```
+```bash
 yarn test
 ```
 
@@ -56,21 +56,43 @@ yarn test
 
 in pages/\_app.js
 
-```
+```js
 <!-- import fonts css -->
 import '@kdanmobile/kdan-ui/dist/fonts/clear-sans.css';
 ```
 
 ### import component
 
-```
+```js
 <!-- Normal -->
 import { Example } from '@kdanmobile/kdan-ui';
 ```
 
-```
+```js
 <!-- Code splitting -->
 import Example from '@kdanmobile/kdan-ui/dist/Example';
+```
+
+### Override the component style
+
+Because of the special needs of the project, we need to cover the component style, here is a simple example.
+
+```js
+import styled from 'styled-components';
+
+const TabsStyleWrap = styled.div`
+  .ku-tabs-label {
+    color: #b6b6b6;
+    border-bottom-color: #b6b6b6;
+  }
+`;
+
+ReactDOM.render(
+  <TabsStyleWrap>
+    <Tabs {...props} />
+  </TabsStyleWrap>
+  mountNode,
+);
 ```
 
 ---
@@ -81,15 +103,15 @@ Uses Chromatic, a free publishing service made by the Storybook maintainers. It 
 
 Now that our project is hosted in a GitHub repository, we can use a continuous integration(CI) service to deploy our Storybook automatically.
 
-```
+```bash
 git add .
 ```
 
-```
+```bash
 git commit -m "GitHub action setup"
 ```
 
-```
+```bash
 git push origin master
 ```
 
