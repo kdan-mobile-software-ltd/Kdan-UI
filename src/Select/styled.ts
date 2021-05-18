@@ -95,7 +95,7 @@ export const Selected = styled.div`
   font-size: 14px;
   color: ${colors.N100};
   min-height: 38px;
-  padding: 8px;
+  padding: 10px 8px;
   border-radius: 2px;
   width: 100%;
   min-width: 164px;

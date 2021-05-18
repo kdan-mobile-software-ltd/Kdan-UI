@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormControl, InputElement } from './styled';
 
-import { InputLabel, HelpText, Required } from '../component/styled';
+import { InputLabel, HelperText, Required } from '../component/styled';
 
 export type TextfieldProps = {
   autoComplete?: 'on' | 'off';
@@ -22,6 +22,7 @@ export type TextfieldProps = {
   value?: string | number;
   placeholder?: string;
   autoFocus?: boolean;
+  prefixClassName?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
@@ -50,6 +51,8 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
       onBlur,
       placeholder,
       autoFocus,
+      prefixClassName = 'ku-textfield',
+      ...rest
     }: TextfieldProps,
     ref,
   ) => {
@@ -67,25 +70,29 @@ const Textfield = React.forwardRef<RefType, TextfieldProps>(
       error,
       required,
       autoFocus,
+      color,
+      ...rest,
     };
 
     return (
-      <FormControl
-        ref={ref}
-        className={className}
-        fullWidth={fullWidth}
-        disabled={disabled}
-        error={error}
-        color={color}
-      >
+      <FormControl ref={ref} className={className} fullWidth={fullWidth} disabled={disabled} error={error}>
         {label && (
-          <InputLabel error={!!error} htmlFor={id}>
+          <InputLabel className={`${prefixClassName}-label`} error={!!error} htmlFor={id}>
             {label}
-            {required ? <Required>*</Required> : ''}
+            {required ? <Required className={`${prefixClassName}-required-icon`}>*</Required> : ''}
           </InputLabel>
         )}
-        <InputElement as={multiline ? 'textarea' : 'input'} aria-label='input' {...InputProps} />
-        {helperText && <HelpText error={!!error}>{helperText}</HelpText>}
+        <InputElement
+          className={`${prefixClassName}-input`}
+          as={multiline ? 'textarea' : 'input'}
+          aria-label='input'
+          {...InputProps}
+        />
+        {helperText && (
+          <HelperText className={`${prefixClassName}-helper-text`} error={!!error}>
+            {helperText}
+          </HelperText>
+        )}
       </FormControl>
     );
   },

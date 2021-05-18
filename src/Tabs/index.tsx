@@ -13,7 +13,7 @@ export type TabsProps = {
   onChange?: (index: number) => void;
   defaultIndex?: number;
   decoration?: boolean;
-  labelClassName?: string;
+  prefixClassName?: string;
 };
 
 const Tabs: React.FC<TabsProps> = ({
@@ -21,7 +21,7 @@ const Tabs: React.FC<TabsProps> = ({
   onChange,
   defaultIndex = 0,
   decoration = true,
-  labelClassName = 'ku-tabs-label',
+  prefixClassName = 'ku-tabs',
 }: TabsProps) => {
   const [selected, onSelect] = useState(0);
 
@@ -45,10 +45,10 @@ const Tabs: React.FC<TabsProps> = ({
             <Label
               key={`label_${index}`}
               className={classNames({
-                [labelClassName]: selected !== index,
-                [labelClassName + '-active']: selected === index,
+                [prefixClassName + 'label']: selected !== index,
+                [prefixClassName + 'label-active']: selected === index,
               })}
-              labelClassName={labelClassName}
+              prefixClassName={prefixClassName}
               decoration={decoration}
               isActive={selected === index}
               onClick={() => {
