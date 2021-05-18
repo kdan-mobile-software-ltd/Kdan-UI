@@ -10,10 +10,10 @@ export const InputLabel = styled.label`
   margin-bottom: 6px;
   display: inherit;
 
-  color: ${({ error }: { error: boolean }) => (error ? colors.error : colors.N100)};
+  color: ${({ error }: { error: boolean }) => (error ? `${colors.error} !important` : colors.N100)};
 `;
 
-export const HelpText = styled.span<{ error: boolean }>`
+export const HelperText = styled.span<{ error: boolean }>`
   font-size: 12px;
   color: ${({ error }) => (error ? colors.error : colors.N40)};
 `;

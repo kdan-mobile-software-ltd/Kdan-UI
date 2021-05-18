@@ -6,7 +6,7 @@ export const Wrapper = styled.div``;
 
 type LabelProps = {
   isActive: boolean;
-} & Pick<TabsProps, 'decoration' | 'labelClassName'>;
+} & Pick<TabsProps, 'decoration' | 'prefixClassName'>;
 
 export const Label = styled.span<LabelProps>`
   position: relative;
@@ -22,8 +22,8 @@ export const Label = styled.span<LabelProps>`
   border-bottom-width: 4px;
   border-bottom-color: ${colors.N35};
 
-  ${({ labelClassName }) => css`
-    &.${labelClassName}-active {
+  ${({ prefixClassName }) => css`
+    &.${prefixClassName}label-active {
       color: ${colors.Y50};
       border-bottom-color: ${colors.Y50};
     }

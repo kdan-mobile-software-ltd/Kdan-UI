@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Select, { SelectProps } from './';
 import Textfield from '../Textfield';
@@ -73,4 +74,42 @@ Group.args = {
     { value: '中文（简体）', key: 'zh-cn' },
     { value: 'Español', key: 'es' },
   ],
+} as SelectProps;
+
+const CustomWrapper = styled.div`
+  .ku-select-label {
+    color: brown;
+  }
+  .ku-select-required-icon {
+    color: red;
+  }
+  .ku-select-selected {
+    color: blue;
+  }
+  .ku-select-arrow {
+    border-top-color: blue;
+  }
+  .ku-select-helper-text {
+    color: red;
+  }
+`;
+
+export const CustomStyle = (props: SelectProps): React.ReactNode => (
+  <CustomWrapper>
+    <Select {...props} />
+  </CustomWrapper>
+);
+
+CustomStyle.args = {
+  label: 'Language',
+  required: true,
+  defaultValue: 'English',
+  options: [
+    { value: 'English', key: 'en' },
+    { value: '日本語', key: 'ja' },
+    { value: '中文（繁體）', key: 'zh-tw' },
+    { value: '中文（简体）', key: 'zh-cn' },
+    { value: 'Español', key: 'es' },
+  ],
+  helperText: 'helper text',
 } as SelectProps;

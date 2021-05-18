@@ -6,7 +6,7 @@ import { delay } from '../helpers/utility';
 
 import { Wrapper, SelectController, MenuList, MenuItem, Triangle, Block, Selected } from './styled';
 
-import { InputLabel, HelpText, Required } from '../component/styled';
+import { InputLabel, HelperText, Required } from '../component/styled';
 
 export type ItemType = {
   key: string | number;
@@ -27,6 +27,7 @@ export type SelectProps = {
   helperText?: string;
   error?: boolean;
   required?: boolean;
+  prefixClassName?: string;
 };
 
 export type RefType = HTMLInputElement;
@@ -47,6 +48,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
       helperText,
       error,
       required,
+      prefixClassName = 'ku-select',
       ...rest
     }: SelectProps,
     ref,
@@ -84,15 +86,16 @@ const Select = React.forwardRef<RefType, SelectProps>(
     return (
       <Wrapper className={className} fullWidth={!!fullWidth}>
         {label && (
-          <InputLabel error={!!error}>
+          <InputLabel className={`${prefixClassName}-label`} error={!!error}>
             {label}
-            {required ? <Required>*</Required> : ''}
+            {required ? <Required className={`${prefixClassName}-required-icon`}>*</Required> : ''}
           </InputLabel>
         )}
         <SelectController>
           {!open || !enabledInput ? (
             <Selected
               data-testid='selected'
+              className={`${prefixClassName}-selected`}
               isActive={open}
               onClick={!open ? handleClick : undefined}
               error={!!error}
@@ -113,7 +116,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
               {...rest}
             />
           ) : null}
-          <Triangle position={position} onClick={handleClick} />
+          <Triangle className={`${prefixClassName}-arrow`} position={position} onClick={handleClick} />
 
           <ClickAwayListener onClick={open ? handleBlur : undefined}>
             {open && !disabled && (
@@ -138,7 +141,11 @@ const Select = React.forwardRef<RefType, SelectProps>(
             )}
           </ClickAwayListener>
         </SelectController>
-        {helperText && <HelpText error={!!error}>{helperText}</HelpText>}
+        {helperText && (
+          <HelperText className={`${prefixClassName}-helper-text`} error={!!error}>
+            {helperText}
+          </HelperText>
+        )}
         {disabled && <Block />}
       </Wrapper>
     );
