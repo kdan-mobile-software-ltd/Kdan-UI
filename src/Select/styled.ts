@@ -6,8 +6,7 @@ import { hexToRGBA } from '../helpers/utility';
 
 export const Wrapper = styled.div`
   position: relative;
-  display: inline-block;
-  width: ${({ fullWidth }: { fullWidth: boolean }) => (fullWidth ? '100%' : 'auto')};
+  width: ${({ fullWidth }: { fullWidth: boolean }) => (fullWidth ? '100%' : 'fit-content')};
 `;
 
 export const SelectController = styled.div`
@@ -44,12 +43,12 @@ export const MenuList = styled.div<{ position: string }>`
     `}
 `;
 
-export const MenuItem = styled.div`
+export const MenuItem = styled.div<{ isSelected: boolean; isFocus: boolean }>`
   padding: 8px;
   font-size: 14px;
   color: ${colors.N100};
 
-  ${({ isSelected }: { isSelected: boolean }) =>
+  ${({ isSelected }) =>
     isSelected
       ? `
       background-color: ${hexToRGBA(colors.N30, 0.6)};
@@ -59,6 +58,11 @@ export const MenuItem = styled.div`
         background-color: ${hexToRGBA(colors.N10, 0.5)};
       }
     `}
+  ${({ isFocus }) =>
+    isFocus &&
+    `
+    background-color: ${hexToRGBA(colors.N10, 0.5)};  
+  `}
 `;
 
 export const Triangle = styled.span`
@@ -66,7 +70,7 @@ export const Triangle = styled.span`
   height: 0;
   position: absolute;
   right: 12px;
-  top: 14px;
+  top: 16px;
   cursor: pointer;
 
   ${({ position }: { position: string }) =>
@@ -124,4 +128,12 @@ export const Selected = styled.div`
   :hover {
     background-color: ${colors.N10};
   }
+`;
+
+export const NativeInput = styled.input`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
 `;
