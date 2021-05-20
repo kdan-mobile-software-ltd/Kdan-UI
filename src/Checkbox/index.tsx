@@ -16,6 +16,7 @@ export type CheckboxProps = {
   name?: string;
   className?: string;
   error?: boolean;
+  value?: string;
 };
 
 const Checkbox: React.FC<CheckboxProps> = ({
@@ -27,6 +28,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   id,
   name = '',
   className,
+  value,
   error = false,
 }: CheckboxProps) => {
   const defaultId = `checkbox_${getRandomInt(10000)}`;
@@ -54,6 +56,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
           onChange={handleChange}
           disabled={disabled}
           data-testid='checkbox'
+          value={value}
         />
         {isChecked && CheckedIcon && <CheckedIcon />}
       </Box>
