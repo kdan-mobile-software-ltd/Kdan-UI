@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
 
 import { Wrapper, Label, LabelGroup, LabelWrapper, Panel, PanelGroup } from './styled';
 
@@ -13,7 +12,8 @@ export type TabsProps = {
   onChange?: (index: number) => void;
   defaultIndex?: number;
   decoration?: boolean;
-  prefixClassName?: string;
+  activeColor?: string;
+  borderColor?: string;
 };
 
 const Tabs: React.FC<TabsProps> = ({
@@ -21,7 +21,8 @@ const Tabs: React.FC<TabsProps> = ({
   onChange,
   defaultIndex = 0,
   decoration = true,
-  prefixClassName = 'ku-tabs',
+  activeColor,
+  borderColor,
 }: TabsProps) => {
   const [selected, onSelect] = useState(0);
 
@@ -44,11 +45,8 @@ const Tabs: React.FC<TabsProps> = ({
           {tabs.map((tab, index) => (
             <Label
               key={`label_${index}`}
-              className={classNames({
-                [prefixClassName + 'label']: selected !== index,
-                [prefixClassName + 'label-active']: selected === index,
-              })}
-              prefixClassName={prefixClassName}
+              activeColor={activeColor}
+              borderColor={borderColor}
               decoration={decoration}
               isActive={selected === index}
               onClick={() => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Tabs, { TabsProps } from './';
 import { Container } from '../component/Decorator';
@@ -46,28 +45,10 @@ NoDecoration.args = {
   decoration: false,
 } as TabsProps;
 
-const TabsStyleWrap = styled.div`
-  .ku-tabs-label {
-    color: #b6b6b6;
-    border-bottom-color: #b6b6b6;
+export const CustomStyle = (props: TabsProps): React.ReactNode => <Tabs {...props} />;
 
-    &-active {
-      color: ${colors.WO};
-      border-bottom-color: ${colors.WO};
-
-      &:after {
-        border-top-color: ${colors.WO};
-      }
-    }
-  }
-`;
-
-export const WithCustomStyle = (props: TabsProps): React.ReactNode => (
-  <TabsStyleWrap>
-    <Tabs {...props} />
-  </TabsStyleWrap>
-);
-
-WithCustomStyle.args = {
+CustomStyle.args = {
   tabs,
+  activeColor: colors.WO,
+  borderColor: colors.secondary,
 } as TabsProps;
