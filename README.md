@@ -75,25 +75,7 @@ import Example from '@kdanmobile/kdan-ui/dist/Example';
 
 ### Override the component style
 
-Because of the special needs of the project, we need to cover the component style, here is a simple example.
-
-```js
-import styled from 'styled-components';
-
-const TabsStyleWrap = styled.div`
-  .ku-tabs-label {
-    color: #b6b6b6;
-    border-bottom-color: #b6b6b6;
-  }
-`;
-
-ReactDOM.render(
-  <TabsStyleWrap>
-    <Tabs {...props} />
-  </TabsStyleWrap>
-  mountNode,
-);
-```
+Because of the special needs of the project, we need to cover the component style.
 
 ---
 

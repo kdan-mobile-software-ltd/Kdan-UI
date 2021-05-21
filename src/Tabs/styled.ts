@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { color } from 'styled-system';
 import colors from '../themes/colors';
 import { TabsProps } from './index';
 
@@ -6,7 +7,7 @@ export const Wrapper = styled.div``;
 
 type LabelProps = {
   isActive: boolean;
-} & Pick<TabsProps, 'decoration' | 'prefixClassName'>;
+} & Pick<TabsProps, 'activeColor' | 'borderColor' | 'decoration'>;
 
 export const Label = styled.span<LabelProps>`
   position: relative;
@@ -17,21 +18,21 @@ export const Label = styled.span<LabelProps>`
   padding: 0 8px 20px;
   margin-bottom: 16px;
   cursor: pointer;
-  color: ${colors.N35};
-  border-bottom-style: solid;
-  border-bottom-width: 4px;
-  border-bottom-color: ${colors.N35};
 
-  ${({ prefixClassName }) => css`
-    &.${prefixClassName}label-active {
-      color: ${colors.Y50};
-      border-bottom-color: ${colors.Y50};
+  ${({ isActive, activeColor = colors.Y50, borderColor = colors.N35 }) => css`
+    color: ${isActive ? activeColor : borderColor};
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: ${isActive ? activeColor : borderColor};
+
+    :hover {
+      color: ${activeColor};
+    }
+
+    :after {
+      border-top-color: ${isActive ? activeColor : colors.Y50};
     }
   `}
-
-  :hover {
-    color: ${colors.Y50};
-  }
 
   ${({ isActive, decoration }) =>
     decoration &&
@@ -42,9 +43,10 @@ export const Label = styled.span<LabelProps>`
         position: absolute;
         width: 0;
         height: 0;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-top: 8px solid ${colors.Y50};
+        border-style: solid;
+        border-width: 8px 7px 0 7px;
+        border-left-color: transparent;
+        border-right-color: transparent;
         left: 0;
         right: 0;
         bottom: -18px;
