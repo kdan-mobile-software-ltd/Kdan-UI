@@ -48,21 +48,21 @@ const Logo: React.FC<LogoProps> = ({ variant = 'combine', href, width, height }:
     } else if (variant === 'kc-combine') {
       return <KCLockup />;
     } else if (variant === 'pdf-reader') {
-      return <img src={pdfreader} alt='pdf-reader-logo' />;
+      return <img src={pdfreader} alt="pdf-reader-logo" />;
     } else if (variant === 'noteledge') {
-      return <img src={noteledge} alt='noteledge-logo' />;
+      return <img src={noteledge} alt="noteledge-logo" />;
     } else if (variant === 'animation-desk') {
-      return <img src={animation} alt='animation-desk-logo' />;
+      return <img src={animation} alt="animation-desk-logo" />;
     } else if (variant === 'writeon-video') {
-      return <img src={wo} alt='writeon-video-logo' />;
+      return <img src={wo} alt="writeon-video-logo" />;
     } else if (variant === 'markup') {
-      return <img src={markup} alt='markup-logo' />;
+      return <img src={markup} alt="markup-logo" />;
     } else if (variant === 'pocket-scanner') {
-      return <img src={sc} alt='pocket-scanner-logo' />;
+      return <img src={sc} alt="pocket-scanner-logo" />;
     } else if (variant === 'kdan-cloud') {
-      return <img src={kdancloud} alt='kdan-cloud-logo' />;
+      return <img src={kdancloud} alt="kdan-cloud-logo" />;
     } else if (variant === 'dottedsign') {
-      return <img src={dottedsign} alt='dottedsign-logo' />;
+      return <img src={dottedsign} alt="dottedsign-logo" />;
     }
   };
 

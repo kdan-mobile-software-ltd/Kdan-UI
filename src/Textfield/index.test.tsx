@@ -9,7 +9,7 @@ describe('Textfield', () => {
   afterEach(cleanup);
 
   test('set default value', () => {
-    const { container } = render(<Textfield defaultValue='123' />);
+    const { container } = render(<Textfield defaultValue="123" />);
 
     expect(container.querySelector('input')).toHaveValue('123');
   });

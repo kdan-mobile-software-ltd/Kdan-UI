@@ -20,7 +20,7 @@ export default {
 
 export const Basic = (): React.ReactNode => (
   <Select
-    placeholder='Test'
+    placeholder="Test"
     options={[
       { value: '12', key: 12 },
       { value: '23', key: 23 },

@@ -36,7 +36,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
   (
     {
       options,
-      defaultValue,
+      defaultValue = '',
       fullWidth = false,
       disabled = false,
       onChange,
@@ -109,7 +109,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
         <SelectController>
           {!open || !enabledInput ? (
             <Selected
-              data-testid='selected'
+              data-testid="selected"
               className={`${prefixClassName}-selected`}
               isActive={open}
               onClick={!open ? handleClick : undefined}
@@ -132,8 +132,8 @@ const Select = React.forwardRef<RefType, SelectProps>(
           ) : null}
           <NativeInput
             ref={ref}
-            aria-hidden='true'
-            type='text'
+            aria-hidden="true"
+            type="text"
             className={`${prefixClassName}-nativeInput`}
             value={selectValue}
             onChange={handleInputChange}
@@ -144,7 +144,7 @@ const Select = React.forwardRef<RefType, SelectProps>(
 
           <ClickAwayListener onClick={open ? handleBlur : undefined}>
             {open && !disabled && (
-              <MenuList data-testid='menu-list' position={position}>
+              <MenuList data-testid="menu-list" position={position}>
                 {options &&
                   options
                     .filter((item: ItemType) =>

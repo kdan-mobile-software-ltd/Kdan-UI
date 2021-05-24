@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Checkbox, { CheckboxProps } from '.';
 import { Container } from '../component/Decorator';
@@ -16,7 +16,18 @@ export default {
   },
 };
 
-export const Basic = (props: CheckboxProps): React.ReactNode => <Checkbox {...props} />;
+export const Basic = (props: CheckboxProps): React.ReactNode => {
+  const [isChecked, setChecked] = useState(false);
+  return (
+    <Checkbox
+      {...props}
+      onChange={() => {
+        setChecked((current) => !current);
+      }}
+      checked={isChecked}
+    />
+  );
+};
 
 Basic.args = {
   label: 'test 123',

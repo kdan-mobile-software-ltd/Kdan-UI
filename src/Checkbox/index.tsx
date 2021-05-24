@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { CheckedIcon } from '../Icon';
 import { getRandomInt } from '../helpers/utility';
@@ -32,18 +32,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
   error = false,
 }: CheckboxProps) => {
   const defaultId = `checkbox_${getRandomInt(10000)}`;
-  const [isChecked, setChecked] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked((current) => {
-      onChange && onChange(e);
-      return !current;
-    });
-  };
-
-  useEffect(() => {
-    setChecked(checked);
-  }, [checked]);
 
   return (
     <Wrapper className={className}>
@@ -51,14 +39,14 @@ const Checkbox: React.FC<CheckboxProps> = ({
         <Input
           id={id || defaultId}
           name={name}
-          type='checkbox'
-          checked={isChecked}
-          onChange={handleChange}
+          type="checkbox"
+          checked={checked}
+          onChange={onChange}
           disabled={disabled}
-          data-testid='checkbox'
+          data-testid="checkbox"
           value={value}
         />
-        {isChecked && CheckedIcon && <CheckedIcon />}
+        {checked && CheckedIcon && <CheckedIcon />}
       </Box>
       {label && <Label htmlFor={id || defaultId} dangerouslySetInnerHTML={{ __html: label }} />}
       {required && <Required>*</Required>}
