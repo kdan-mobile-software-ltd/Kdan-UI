@@ -19,39 +19,39 @@ export default {
 
 export const Basic = (): React.ReactNode => (
   <>
-    <Button id='test' size='small'>
+    <Button id="test" size="small">
       Click
     </Button>
     &nbsp;
-    <Button size='medium' color='light'>
+    <Button size="medium" color="light">
       Click
     </Button>
     &nbsp;
-    <Button size='large' color='cheese'>
+    <Button size="large" color="cheese">
       Click
     </Button>
     <hr />
-    <Button variant='outlined' size='small'>
+    <Button variant="outlined" size="small">
       Click
     </Button>
     &nbsp;
-    <Button size='medium' variant='outlined'>
+    <Button size="medium" variant="outlined">
       Click
     </Button>
     &nbsp;
-    <Button variant='outlined' size='large'>
+    <Button variant="outlined" size="large">
       Click
     </Button>
     <hr />
-    <Button variant='text' size='small'>
+    <Button variant="text" size="small">
       Click
     </Button>
     &nbsp;
-    <Button variant='text' color='brand' size='medium'>
+    <Button variant="text" color="brand" size="medium">
       Click
     </Button>
     &nbsp;
-    <Button variant='text' size='large'>
+    <Button variant="text" size="large">
       Click
     </Button>
   </>

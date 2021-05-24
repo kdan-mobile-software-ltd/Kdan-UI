@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import Typography from "@kdanmobile/kdan-ui/dist/Typography";
-import Button from "@kdanmobile/kdan-ui/dist/Button";
-import Navbar from "@kdanmobile/kdan-ui/dist/Navbar";
-import Logo from "@kdanmobile/kdan-ui/dist/Logo";
-import Carousel from "@kdanmobile/kdan-ui/dist/Carousel";
-import Box from "@kdanmobile/kdan-ui/dist/Box";
+import Typography from '@kdanmobile/kdan-ui/dist/Typography';
+import Button from '@kdanmobile/kdan-ui/dist/Button';
+import Navbar from '@kdanmobile/kdan-ui/dist/Navbar';
+import Logo from '@kdanmobile/kdan-ui/dist/Logo';
+import Checkbox from '@kdanmobile/kdan-ui/dist/Checkbox';
+import Box from '@kdanmobile/kdan-ui/dist/Box';
 
-import "./App.css";
+import './App.css';
 
 const App = () => {
   return (
@@ -19,16 +19,7 @@ const App = () => {
         <Logo variant="pdf-reader" />
         <Typography variant="h1">123</Typography>
         <Box m={2}>
-          <Carousel>
-            {[
-              <p key="1" style={{ width: "100px" }}>
-                123
-              </p>,
-              <p key="2" style={{ width: "100px" }}>
-                456
-              </p>,
-            ]}
-          </Carousel>
+          <Checkbox label="text" value="123" />
         </Box>
       </header>
     </div>

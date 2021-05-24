@@ -173,7 +173,7 @@ const Carousel: React.FC<CarouselProps> = ({
     <Wrapper>
       {children.length > 1 && (
         <LeftBtn
-          data-testid='prev-btn'
+          data-testid="prev-btn"
           mode={mode}
           isDisabled={loop ? false : currentIndex === 0}
           onMouseDown={handlePrevDown}
@@ -196,7 +196,7 @@ const Carousel: React.FC<CarouselProps> = ({
       </ElementsContainer>
       {children.length > 1 && (
         <RightBtn
-          data-testid='next-btn'
+          data-testid="next-btn"
           mode={mode}
           isDisabled={loop ? false : currentIndex === children.length - 1}
           onMouseDown={handleNextDown}
@@ -206,7 +206,7 @@ const Carousel: React.FC<CarouselProps> = ({
         </RightBtn>
       )}
       {children.length > 1 && (
-        <DotWrapper data-testid='dots'>
+        <DotWrapper data-testid="dots">
           <ArrowBtn onMouseDown={handlePrevDown} onMouseUp={handlePrevUp}>
             {LeftArrow768 && <LeftArrow768 />}
           </ArrowBtn>

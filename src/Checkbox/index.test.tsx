@@ -14,17 +14,25 @@ describe('Checkbox', () => {
     expect((getByTestId('checkbox') as HTMLInputElement).checked).toEqual(false);
   });
 
-  test('checked', () => {
-    const { getByTestId } = render(<Checkbox checked />);
+  test('should checked', () => {
+    const { getByTestId } = render(
+      <Checkbox
+        checked
+        onChange={() => {
+          // do something
+        }}
+      />,
+    );
 
     expect((getByTestId('checkbox') as HTMLInputElement).checked).toEqual(true);
   });
 
   test('click checkbox', () => {
-    const { getByTestId } = render(<Checkbox />);
+    const onClick = jest.fn();
+    const { getByTestId } = render(<Checkbox checked onChange={onClick} />);
 
     fireEvent.click(getByTestId('checkbox'));
 
-    expect((getByTestId('checkbox') as HTMLInputElement).checked).toEqual(true);
+    expect(onClick).toHaveBeenCalled();
   });
 });

@@ -83,7 +83,7 @@ export const OnlyOne = (props: CarouselProps): React.ReactNode => (
   <Carousel {...props}>
     {[
       <p
-        key='one'
+        key="one"
         style={{
           minWidth: '275px',
           width: '100%',

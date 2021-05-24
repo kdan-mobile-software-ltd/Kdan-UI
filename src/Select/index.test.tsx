@@ -16,7 +16,7 @@ describe('Select', () => {
   afterEach(cleanup);
 
   test('set default value', () => {
-    const { getByTestId } = render(<Select options={options} defaultValue='1' />);
+    const { getByTestId } = render(<Select options={options} defaultValue="1" />);
 
     expect(getByTestId('selected').innerHTML).toBe('1');
   });

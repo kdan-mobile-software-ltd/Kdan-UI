@@ -17,7 +17,7 @@ describe('Button', () => {
 
   test('is anchor', () => {
     const { container } = render(
-      <Button href='http://github.com' isAnchor>
+      <Button href="http://github.com" isAnchor>
         Link
       </Button>,
     );

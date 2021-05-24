@@ -20,7 +20,7 @@ export default {
 
 export const Basic = (): React.ReactNode => {
   return (
-    <Box maxWidth='200px'>
+    <Box maxWidth="200px">
       <Collapse trigger={<Button>Click</Button>}>
         <p style={{ backgroundColor: 'white', height: '200px' }}>inside content</p>
       </Collapse>
@@ -32,7 +32,7 @@ export const Basic = (): React.ReactNode => {
 Basic.args = {} as CollapseProps;
 
 export const PassFunctionToTrigger = (): React.ReactNode => (
-  <Box maxWidth='200px'>
+  <Box maxWidth="200px">
     <Collapse trigger={(open: boolean) => <Button>Click {open ? 'open' : 'close'}</Button>}>
       <p style={{ backgroundColor: 'white', height: '200px' }}>content</p>
     </Collapse>

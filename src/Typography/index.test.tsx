@@ -9,13 +9,13 @@ describe('Typography', () => {
   afterEach(cleanup);
 
   test('set content', () => {
-    const { container } = render(<Typography variant='h1'>H1 Title</Typography>);
+    const { container } = render(<Typography variant="h1">H1 Title</Typography>);
 
     expect(container.textContent).toBe('H1 Title');
   });
 
   test('default h1 style', () => {
-    const { container } = render(<Typography variant='h1'>H1 style</Typography>);
+    const { container } = render(<Typography variant="h1">H1 style</Typography>);
 
     expect(container.querySelector('h1')).toHaveStyleRule('text-align', 'inherit');
     expect(container.querySelector('h1')).toHaveStyleRule('font-weight', '700');
@@ -23,7 +23,7 @@ describe('Typography', () => {
 
   test('set color and align, display', () => {
     const { container } = render(
-      <Typography variant='b1' display='block' align='center' color='brand'>
+      <Typography variant="b1" display="block" align="center" color="brand">
         body1
       </Typography>,
     );

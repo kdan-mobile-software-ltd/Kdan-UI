@@ -17,7 +17,7 @@ export default {
   },
 };
 
-export const Basic = (): React.ReactNode => <Textfield label='Basic' required />;
+export const Basic = (): React.ReactNode => <Textfield label="Basic" required />;
 
 Basic.args = {} as TextfieldProps;
 
