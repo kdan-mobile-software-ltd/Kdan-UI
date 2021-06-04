@@ -37,6 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({
   const [moveDistance, setMoveDistance] = useState(0);
   const [slides, setSlides] = useState<React.ReactNode[]>([]);
   const [transitionEnabled, setTransitionEnabled] = useState(false);
+  const [isSpecific, setIsSpecific] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const tempIndex = useRef(0);
 
@@ -63,17 +64,17 @@ const Carousel: React.FC<CarouselProps> = ({
     const eleWidth = getEleWidth();
     setMoveDistance((current) => current + -1 * step * eleWidth);
   };
-
   const handleNextDown = () => {
     if (slides.length > displayCount) return;
-
+    setIsSpecific(false);
     setCurrentIndex((current) => {
-      slideGenerator(current, current + displayCount);
       if (loop && current === children.length - 1) {
+        slideGenerator(currentIndex, currentIndex + displayCount);
         tempIndex.current = 0;
         return 0;
       }
       if (current < children.length - 1) {
+        slideGenerator(currentIndex, currentIndex + displayCount);
         tempIndex.current = current + 1;
         return current + 1;
       }
@@ -83,26 +84,19 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   const handleNextUp = () => {
-    if (transitionEnabled) return;
-
+    if (transitionEnabled || slides.length === displayCount) return;
     setTransitionEnabled(true);
     handleMove(1);
-
-    setTimeout(() => {
-      slideGenerator(tempIndex.current, tempIndex.current + displayCount - 1);
-      setMoveDistance(0);
-      setTransitionEnabled(false);
-    }, 310);
   };
 
   const handlePrevDown = () => {
     if (slides.length > displayCount) return;
-
-    handleMove(1);
+    setIsSpecific(false);
 
     setCurrentIndex((current) => {
       if (loop && current === 0) {
         const targetIndex = children.length - 1;
+        handleMove(1);
         slideGenerator(targetIndex, targetIndex + displayCount);
         tempIndex.current = targetIndex;
         return targetIndex;
@@ -110,6 +104,7 @@ const Carousel: React.FC<CarouselProps> = ({
       if (current > 0) {
         const targetIndex = current - 1;
         tempIndex.current = targetIndex;
+        handleMove(1);
         slideGenerator(targetIndex, targetIndex + displayCount);
         return targetIndex;
       }
@@ -117,22 +112,15 @@ const Carousel: React.FC<CarouselProps> = ({
       return 0;
     });
   };
-
   const handlePrevUp = () => {
-    if (transitionEnabled) return;
-
+    if (transitionEnabled || slides.length === displayCount) return;
     setTransitionEnabled(true);
-    handleMove(-1);
-
-    setTimeout(() => {
-      slideGenerator(tempIndex.current, tempIndex.current + displayCount - 1);
-      setTransitionEnabled(false);
-    }, 310);
+    setMoveDistance(0);
   };
 
   const handleDotDown = (targetIndex: number) => {
     if (slides.length > displayCount) return;
-
+    setIsSpecific(true);
     tempIndex.current = currentIndex;
 
     if (currentIndex > targetIndex) {
@@ -148,8 +136,7 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   const handleDotUp = (targetIndex: number) => {
-    if (transitionEnabled) return;
-
+    if (transitionEnabled || slides.length === displayCount) return;
     setTransitionEnabled(true);
 
     if (targetIndex > tempIndex.current) {
@@ -157,18 +144,21 @@ const Carousel: React.FC<CarouselProps> = ({
     } else {
       setMoveDistance(0);
     }
+  };
 
-    setTimeout(() => {
-      slideGenerator(targetIndex, targetIndex + displayCount - 1);
-      setMoveDistance(0);
-      setTransitionEnabled(false);
-    }, 310);
+  const handleTransitionEnd = () => {
+    if (!isSpecific) {
+      slideGenerator(tempIndex.current, tempIndex.current + displayCount - 1);
+    } else {
+      slideGenerator(currentIndex, currentIndex + displayCount - 1);
+    }
+    setMoveDistance(0);
+    setTransitionEnabled(false);
   };
 
   useEffect(() => {
     slideGenerator(currentIndex, currentIndex + displayCount - 1);
   }, [children]);
-
   return (
     <Wrapper>
       {children.length > 1 && (
@@ -187,6 +177,7 @@ const Carousel: React.FC<CarouselProps> = ({
           playing={transitionEnabled}
           width={`${(100 * slides.length) / displayCount}%`}
           move={moveDistance}
+          onTransitionEnd={handleTransitionEnd}
         >
           {Array.isArray(slides) &&
             slides.map((item: React.ReactNode, index: number) => (
