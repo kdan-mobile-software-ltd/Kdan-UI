@@ -1,223 +1,86 @@
-import React, { useEffect, useState, useRef } from 'react';
-
-import { LeftArrow, RightArrow, LeftArrow768, RightArrow768 } from '../Icon';
-
+import React, { Children } from 'react';
 import {
-  Wrapper,
-  LeftBtn,
-  RightBtn,
-  ArrowBtn,
-  ElementsContainer,
-  ElementsOuter,
-  ElementWrapper,
-  Dot,
-  DotWrapper,
+  CarouselContainer,
+  OverFlow,
+  Carousel,
+  CarouselItem,
+  Button,
+  ArrowButton,
+  DotButton,
+  SmallController,
+  DotGroup,
 } from './styled';
+import { useCarousel } from './hooks';
+import { LeftArrow, RightArrow, ButtonLeft, ButtonRight } from '../Icon';
 
-export type CarouselProps = {
-  children: React.ReactNode[];
-  mode?: 'dark' | 'light';
-  showDot?: boolean;
-  showBorder?: boolean;
-  showShadow?: boolean;
-  displayCount?: number;
-  loop?: boolean;
+const generateItems = (slides: React.ReactNode[], type: string, displayCount = 1) => {
+  if (type === 'before') return <CarouselItem displayCount={displayCount}>{slides[slides.length - 1]}</CarouselItem>;
+  if (type === 'actual') {
+    return [...slides, ...slides.slice(0, displayCount - 1)].map((slide, index) => (
+      <CarouselItem key={index} displayCount={displayCount}>
+        {slide}
+      </CarouselItem>
+    ));
+  }
+  if (type === 'after') {
+    return <CarouselItem displayCount={displayCount}>{slides[displayCount - 1]}</CarouselItem>;
+  }
 };
 
-const Carousel: React.FC<CarouselProps> = ({
+export type CarouselProps = {
+  children: React.ReactNode;
+  loop?: boolean;
+  displayCount?: number;
+  showIndicators?: boolean;
+};
+
+const CarouselComp: React.FC<CarouselProps> = ({
   children,
-  mode = 'dark',
-  showBorder = false,
-  showDot = false,
-  showShadow = false,
-  displayCount = 1,
   loop = false,
+  displayCount = 1,
+  showIndicators = false,
 }: CarouselProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [moveDistance, setMoveDistance] = useState(0);
-  const [slides, setSlides] = useState<React.ReactNode[]>([]);
-  const [transitionEnabled, setTransitionEnabled] = useState(false);
-  const [isSpecific, setIsSpecific] = useState(false);
-  const elementRef = useRef<HTMLDivElement>(null);
-  const tempIndex = useRef(0);
+  const slides = Children.toArray(children);
+  // The pseudo last item before the first item
+  const beforeItems = generateItems(slides, 'before', displayCount);
+  // The actual carousel items
+  const actualItems = generateItems(slides, 'actual', displayCount);
+  // The pseudo first item after the last item
+  const afterItems = generateItems(slides, 'after', displayCount);
+  const { getCarouselProps, getPrevBtnProps, getNextBtnProps, getSpecificBtnProps } = useCarousel({
+    loop,
+    length: Array.isArray(actualItems) ? (displayCount > 1 ? actualItems.length - 1 : actualItems.length) : 0,
+    displayCount,
+  });
 
-  const getEleWidth = () => {
-    if (elementRef.current) {
-      return elementRef.current.clientWidth / displayCount;
-    }
-    return 0;
-  };
-
-  const slideGenerator = (start: number, end: number) => {
-    const arr = [];
-    for (let i = start; i <= end; i++) {
-      if (i >= children.length) {
-        arr.push(children[i - children.length]);
-      } else {
-        arr.push(children[i]);
-      }
-    }
-    setSlides(arr);
-  };
-
-  const handleMove = (step: number) => {
-    const eleWidth = getEleWidth();
-    setMoveDistance((current) => current + -1 * step * eleWidth);
-  };
-  const handleNextDown = () => {
-    if (slides.length > displayCount) return;
-    setIsSpecific(false);
-    setCurrentIndex((current) => {
-      if (loop && current === children.length - 1) {
-        slideGenerator(currentIndex, currentIndex + displayCount);
-        tempIndex.current = 0;
-        return 0;
-      }
-      if (current < children.length - 1) {
-        slideGenerator(currentIndex, currentIndex + displayCount);
-        tempIndex.current = current + 1;
-        return current + 1;
-      }
-      tempIndex.current = current;
-      return current;
-    });
-  };
-
-  const handleNextUp = () => {
-    if (transitionEnabled || slides.length === displayCount) return;
-    setTransitionEnabled(true);
-    handleMove(1);
-  };
-
-  const handlePrevDown = () => {
-    if (slides.length > displayCount) return;
-    setIsSpecific(false);
-
-    setCurrentIndex((current) => {
-      if (loop && current === 0) {
-        const targetIndex = children.length - 1;
-        handleMove(1);
-        slideGenerator(targetIndex, targetIndex + displayCount);
-        tempIndex.current = targetIndex;
-        return targetIndex;
-      }
-      if (current > 0) {
-        const targetIndex = current - 1;
-        tempIndex.current = targetIndex;
-        handleMove(1);
-        slideGenerator(targetIndex, targetIndex + displayCount);
-        return targetIndex;
-      }
-      tempIndex.current = 0;
-      return 0;
-    });
-  };
-  const handlePrevUp = () => {
-    if (transitionEnabled || slides.length === displayCount) return;
-    setTransitionEnabled(true);
-    setMoveDistance(0);
-  };
-
-  const handleDotDown = (targetIndex: number) => {
-    if (slides.length > displayCount) return;
-    setIsSpecific(true);
-    tempIndex.current = currentIndex;
-
-    if (currentIndex > targetIndex) {
-      slideGenerator(targetIndex, currentIndex + displayCount - 1);
-      handleMove(currentIndex - targetIndex);
-    }
-    if (currentIndex < targetIndex) {
-      slideGenerator(currentIndex, targetIndex + displayCount - 1);
-      setMoveDistance(0);
-    }
-
-    setCurrentIndex(targetIndex);
-  };
-
-  const handleDotUp = (targetIndex: number) => {
-    if (transitionEnabled || slides.length === displayCount) return;
-    setTransitionEnabled(true);
-
-    if (targetIndex > tempIndex.current) {
-      handleMove(targetIndex - tempIndex.current);
-    } else {
-      setMoveDistance(0);
-    }
-  };
-
-  const handleTransitionEnd = () => {
-    if (!isSpecific) {
-      slideGenerator(tempIndex.current, tempIndex.current + displayCount - 1);
-    } else {
-      slideGenerator(currentIndex, currentIndex + displayCount - 1);
-    }
-    setMoveDistance(0);
-    setTransitionEnabled(false);
-  };
-
-  useEffect(() => {
-    slideGenerator(currentIndex, currentIndex + displayCount - 1);
-  }, [children]);
   return (
-    <Wrapper>
-      {children.length > 1 && (
-        <LeftBtn
-          data-testid="prev-btn"
-          mode={mode}
-          isDisabled={loop ? false : currentIndex === 0}
-          onMouseDown={handlePrevDown}
-          onMouseUp={handlePrevUp}
-        >
-          {LeftArrow && <LeftArrow />}
-        </LeftBtn>
-      )}
-      <ElementsContainer ref={elementRef} showBorder={showBorder} showShadow={showShadow}>
-        <ElementsOuter
-          playing={transitionEnabled}
-          width={`${(100 * slides.length) / displayCount}%`}
-          move={moveDistance}
-          onTransitionEnd={handleTransitionEnd}
-        >
-          {Array.isArray(slides) &&
-            slides.map((item: React.ReactNode, index: number) => (
-              <ElementWrapper key={`element_${index}`}>{item}</ElementWrapper>
-            ))}
-        </ElementsOuter>
-      </ElementsContainer>
-      {children.length > 1 && (
-        <RightBtn
-          data-testid="next-btn"
-          mode={mode}
-          isDisabled={loop ? false : currentIndex === children.length - 1}
-          onMouseDown={handleNextDown}
-          onMouseUp={handleNextUp}
-        >
-          {RightArrow && <RightArrow />}
-        </RightBtn>
-      )}
-      {children.length > 1 && (
-        <DotWrapper data-testid="dots">
-          <ArrowBtn onMouseDown={handlePrevDown} onMouseUp={handlePrevUp}>
-            {LeftArrow768 && <LeftArrow768 />}
-          </ArrowBtn>
-          {showDot &&
-            Array.isArray(children) &&
-            children.map((_, index) => (
-              <Dot
-                isActive={currentIndex === index}
-                key={`dot_${index}`}
-                onMouseDown={() => handleDotDown(index)}
-                onMouseUp={() => handleDotUp(index)}
-              />
-            ))}
-          <ArrowBtn onMouseDown={handleNextDown} onMouseUp={handleNextUp}>
-            {RightArrow768 && <RightArrow768 />}
-          </ArrowBtn>
-        </DotWrapper>
-      )}
-    </Wrapper>
+    <CarouselContainer>
+      <Button type="button" {...getPrevBtnProps()} data-testid="prev-btn">
+        {ButtonLeft && <ButtonLeft />}
+      </Button>
+      <OverFlow>
+        <Carousel {...getCarouselProps()} data-testid="carousel">
+          {beforeItems}
+          {actualItems}
+          {afterItems}
+        </Carousel>
+      </OverFlow>
+      <Button type="button" {...getNextBtnProps()} data-testid="next-btn">
+        {ButtonRight && <ButtonRight />}
+      </Button>
+      <SmallController data-testid="dots" visible={showIndicators}>
+        <ArrowButton {...getPrevBtnProps()}>{LeftArrow && <LeftArrow />}</ArrowButton>
+        <DotGroup>
+          {slides.map((el, i) => (
+            <DotButton key={i} {...getSpecificBtnProps({ index: i })}>
+              &nbsp;
+            </DotButton>
+          ))}
+        </DotGroup>
+        <ArrowButton {...getNextBtnProps()}>{RightArrow && <RightArrow />}</ArrowButton>
+      </SmallController>
+    </CarouselContainer>
   );
 };
 
-export default Carousel;
+export default CarouselComp;

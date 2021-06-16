@@ -2,7 +2,9 @@
     <g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
         <g stroke="#000" stroke-width="2">
             <g>
-                <path d="M10.122 2L2.122 9 10.122 16" transform="translate(-370 -499) translate(370 499) matrix(-1 0 0 1 12.245 0)"/>
+                <g>
+                    <path d="M10.122 2L2.122 9 10.122 16" transform="translate(-227 -3594) translate(81 3594) translate(146) matrix(-1 0 0 1 12.245 0)"/>
+                </g>
             </g>
         </g>
     </g>
