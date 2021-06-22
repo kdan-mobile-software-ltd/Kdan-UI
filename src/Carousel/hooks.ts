@@ -54,14 +54,14 @@ const combineReducers = (
 };
 
 const loopReducer = (state: State, action: Action) => {
-  if (action.type === 'PREV' && state.active - 1 < 0) {
+  if (action.type === ActionTypes.PREV && state.active - 1 < 0) {
     return {
       ...state,
       desired: action.payload.length - 1,
       transitionEnabled: true,
     };
   }
-  if (action.type === 'NEXT' && state.active + 1 > action.payload.length - 1) {
+  if (action.type === ActionTypes.NEXT && state.active + 1 > action.payload.length - 1) {
     return {
       ...state,
       desired: 0,
@@ -94,7 +94,7 @@ const carouselReducer = (state: State, action: Action) => {
       desired: action.payload.desired,
       transitionEnabled: true,
     };
-  if (action.type === 'DONE') {
+  if (action.type === ActionTypes.DONE) {
     return {
       ...state,
       active: state.desired,
@@ -151,7 +151,7 @@ interface CarouselProps {
   displayCount: number;
 }
 
-const useCarousel = ({ loop = false, length, displayCount = 1 }: CarouselProps) => {
+const useCarousel = ({ loop, length, displayCount }: CarouselProps) => {
   const reducer = loop ? combineReducers(carouselReducer, loopReducer) : carouselReducer;
   const [state, dispatch] = useReducer(reducer, {
     desired: 0,
