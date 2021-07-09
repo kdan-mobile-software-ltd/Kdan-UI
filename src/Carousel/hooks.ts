@@ -165,13 +165,18 @@ const useCarousel = ({ loop, length, displayCount }: CarouselProps) => {
   const onNextClick = (length: number) => () => dispatch({ type: ActionTypes.NEXT, payload: { length } });
   const onSpecificClick = (index: number) => () =>
     dispatch({ type: ActionTypes.SPECIFIC, payload: { desired: index } });
-  const getPrevBtnProps = () => ({ onClick: onPrevClick(length), prev: true });
-  const getNextBtnProps = () => ({ onClick: onNextClick(length), next: true });
+  const getPrevBtnProps = () => ({ onClick: onPrevClick(length), prev: true, disabled: !loop && state.active === 0 });
+  const getNextBtnProps = () => ({
+    onClick: onNextClick(length),
+    next: true,
+    disabled: !loop && state.active >= length - 1,
+  });
   const getSpecificBtnProps = ({ index }: { index: number }) => ({
     active: index === state.active ? true : false,
     onClick: onSpecificClick(index),
   });
   return {
+    activeIndex: state.active,
     getCarouselProps,
     getPrevBtnProps,
     getNextBtnProps,

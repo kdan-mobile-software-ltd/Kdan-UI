@@ -9,6 +9,8 @@ import {
   DotButton,
   SmallController,
   DotGroup,
+  LeftBtn,
+  RightBtn,
 } from './styled';
 import { useCarousel } from './hooks';
 import { LeftArrow, RightArrow, ButtonLeft, ButtonRight } from '../Icon';
@@ -32,6 +34,7 @@ export type CarouselProps = {
   loop?: boolean;
   displayCount?: number;
   showIndicators?: boolean;
+  mode?: string;
 };
 
 const CarouselComp: React.FC<CarouselProps> = ({
@@ -39,6 +42,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
   loop = false,
   displayCount = 1,
   showIndicators = false,
+  mode = 'dark',
 }: CarouselProps) => {
   const slides = Children.toArray(children);
   // The pseudo last item before the first item
@@ -47,7 +51,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
   const actualItems = generateItems(slides, 'actual', displayCount);
   // The pseudo first item after the last item
   const afterItems = generateItems(slides, 'after', displayCount);
-  const { getCarouselProps, getPrevBtnProps, getNextBtnProps, getSpecificBtnProps } = useCarousel({
+  const { activeIndex, getCarouselProps, getPrevBtnProps, getNextBtnProps, getSpecificBtnProps } = useCarousel({
     loop,
     length: Array.isArray(actualItems) ? (displayCount > 1 ? actualItems.length - 1 : actualItems.length) : 0,
     displayCount,
@@ -55,9 +59,15 @@ const CarouselComp: React.FC<CarouselProps> = ({
 
   return (
     <CarouselContainer>
-      <Button type="button" {...getPrevBtnProps()} data-testid="prev-btn">
+      <LeftBtn
+        type="button"
+        {...getPrevBtnProps()}
+        data-testid="prev-btn"
+        mode={mode}
+        isDisabled={!loop && activeIndex === 0}
+      >
         {ButtonLeft && <ButtonLeft />}
-      </Button>
+      </LeftBtn>
       <OverFlow>
         <Carousel {...getCarouselProps()} data-testid="carousel">
           {beforeItems}
@@ -65,9 +75,15 @@ const CarouselComp: React.FC<CarouselProps> = ({
           {afterItems}
         </Carousel>
       </OverFlow>
-      <Button type="button" {...getNextBtnProps()} data-testid="next-btn">
+      <RightBtn
+        type="button"
+        {...getNextBtnProps()}
+        data-testid="next-btn"
+        mode={mode}
+        isDisabled={!loop && activeIndex >= slides.length - 1}
+      >
         {ButtonRight && <ButtonRight />}
-      </Button>
+      </RightBtn>
       <SmallController data-testid="dots" visible={showIndicators}>
         <ArrowButton {...getPrevBtnProps()}>{LeftArrow && <LeftArrow />}</ArrowButton>
         <DotGroup>

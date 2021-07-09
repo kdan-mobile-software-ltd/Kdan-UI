@@ -53,7 +53,6 @@ export const Basic = (props: CarouselProps): React.ReactNode => (
 Basic.args = {
   mode: 'light',
   showIndicators: true,
-  showBorder: true,
   displayCount: 2,
   loop: true,
 } as CarouselProps;

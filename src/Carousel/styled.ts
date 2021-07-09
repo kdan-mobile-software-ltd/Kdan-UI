@@ -1,4 +1,51 @@
 import styled from 'styled-components';
+import { hexToRGBA } from '../helpers/utility';
+import colors from '../themes/colors';
+import breakpoints from '../themes/breakpoints';
+import zIndex from '../themes/zIndex';
+
+export const IconButton = styled.button`
+  outline: none;
+  border: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.13), 0px 2px 2px 0px rgba(0, 0, 0, 0.1),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.05);
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  position: absolute;
+  top: calc(50% - 36px);
+  z-index: ${zIndex[2]};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${({ isDisabled, mode }: { isDisabled?: boolean; mode: string }) =>
+    isDisabled
+      ? `
+      background-color: ${colors.N15};
+      cursor: default;
+    `
+      : `
+      background-color: ${mode === 'dark' ? colors.N100 : colors.P50};
+      cursor: pointer;
+
+      :hover {
+        background-color: ${mode === 'dark' ? hexToRGBA(colors.N100, 0.8) : hexToRGBA(colors.P50, 0.8)};
+      }
+    `}
+  @media ${breakpoints.down('lg')} {
+    display: none;
+  }
+`;
+
+export const LeftBtn = styled(IconButton)`
+  left: -36px;
+`;
+
+export const RightBtn = styled(IconButton)`
+  right: -36px;
+`;
 
 export const Button = styled.button<{ prev?: boolean; next?: boolean }>`
   width: 72px;
