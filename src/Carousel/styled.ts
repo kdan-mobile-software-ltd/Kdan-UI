@@ -1,37 +1,8 @@
 import styled from 'styled-components';
-
 import { hexToRGBA } from '../helpers/utility';
 import colors from '../themes/colors';
 import breakpoints from '../themes/breakpoints';
 import zIndex from '../themes/zIndex';
-
-export const Wrapper = styled.div`
-  margin: auto;
-  position: relative;
-  width: 100%;
-  min-width: 275px;
-  max-width: 1152px;
-  padding: 36px;
-  display: inline-block;
-
-  @media ${breakpoints.down('lg')} {
-    padding: 0 0 36px;
-  }
-  @media ${breakpoints.down('md')} {
-    padding: 0 0 32px;
-  }
-`;
-
-export const ArrowBtn = styled.span`
-  padding: 0 6px;
-  display: none;
-  cursor: pointer;
-  margin: 0 14px;
-
-  @media ${breakpoints.down('lg')} {
-    display: inline-flex;
-  }
-`;
 
 export const IconButton = styled.button`
   outline: none;
@@ -63,65 +34,122 @@ export const IconButton = styled.button`
         background-color: ${mode === 'dark' ? hexToRGBA(colors.N100, 0.8) : hexToRGBA(colors.P50, 0.8)};
       }
     `}
-
   @media ${breakpoints.down('lg')} {
     display: none;
   }
 `;
 
 export const LeftBtn = styled(IconButton)`
-  left: 0;
+  left: -36px;
 `;
 
 export const RightBtn = styled(IconButton)`
-  right: 0;
+  right: -36px;
 `;
 
-export const ElementsContainer = styled.div<{
-  showBorder: boolean;
-  showShadow: boolean;
-}>`
+export const Button = styled.button<{ prev?: boolean; next?: boolean }>`
+  width: 72px;
+  height: 72px;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+  transition: opacity 0.25s;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  @media screen and (max-width: 1023px) {
+    margin: 0;
+    top: auto;
+    bottom: 118px;
+  }
+  @media screen and (max-width: 767px) {
+    visibility: hidden;
+  }
+  ${({ prev }) => prev && 'left:-36px;'}
+  ${({ next }) => next && 'right:-36px;'}
+`;
+
+export const CarouselContainer = styled.div`
+  position: relative;
+`;
+
+export const OverFlow = styled.div`
   overflow: hidden;
+`;
+export const Carousel = styled.div`
+  display: flex;
+  position: relative;
+`;
+
+export const CarouselItem = styled.div<{ displayCount: number }>`
+  flex: 0 0 ${({ displayCount }) => 100 / displayCount}%;
+`;
+
+export const Img = styled.img`
   width: 100%;
   height: 100%;
-  margin: auto;
-  border: ${({ showBorder }) => (showBorder ? `1px solid ${colors.N15}` : 'none')};
-  border-radius: 4px;
-  box-shadow: ${({ showShadow }) => (showShadow ? '0 0 20px 0 rgba(130, 130, 130, 0.25)' : '')};
 `;
 
-export const ElementsOuter = styled.div<{
-  width: string;
-  move: number;
-  playing: boolean;
-}>`
-  display: flex;
-  transform: ${({ move }) => `translateX(${move}px)`};
-  transition: ${({ playing }) => (playing ? 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms' : 'unset')};
-  width: ${({ width }) => width};
-`;
-
-export const ElementWrapper = styled.div`
-  width: 100%;
-`;
-
-export const DotWrapper = styled.div`
-  display: inline-flex;
+export const SmallController = styled.div<{ visible?: boolean }>`
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -20px;
+  width: 100%;
+  bottom: -32px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  ${({ visible }) => !visible && 'display:none'};
 `;
 
-export const Dot = styled.span`
+export const ArrowButton = styled.button`
+  width: 12px;
+  height: 18px;
+  background: none;
+  border: none;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const DotGroup = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 32px;
+  & > button:not(:last-of-type) {
+    margin-right: 10px;
+  }
+`;
+
+export const DotButton = styled.button<{
+  active?: boolean;
+}>`
+  background: none;
+  border: none;
   width: 14px;
   height: 14px;
-  border-radius: 7px;
-  display: block;
-  cursor: pointer;
-  margin: 6px;
-
-  background-color: ${({ isActive }: { isActive?: boolean }) => (isActive ? colors.N100 : colors.N15)};
+  position: relative;
+  padding: 0;
+  &:hover {
+    cursor: pointer;
+  }
+  &:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    background: ${({ active }) => (active ? '#000' : '#ddd')};
+  }
+  @media screen and (max-width: 1023px) {
+    width: 10px;
+    height: 10px;
+  }
 `;

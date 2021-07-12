@@ -23,83 +23,97 @@ const data = [
 ];
 
 export const Basic = (props: CarouselProps): React.ReactNode => (
-  <Carousel {...props}>
-    {data.map((item) => (
-      <p
-        key={item.key}
-        style={{
-          minWidth: '275px',
-          width: '100%',
-          height: '250px',
-          backgroundColor: 'gray',
-          fontSize: '72px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          margin: 0,
-        }}
-      >
-        {item.content}
-      </p>
-    ))}
-  </Carousel>
+  <div
+    style={{
+      width: '650px',
+      margin: 'auto',
+    }}
+  >
+    <Carousel {...props}>
+      {data.map((item) => (
+        <p
+          key={item.key}
+          style={{
+            height: '250px',
+            backgroundColor: 'gray',
+            fontSize: '72px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: 0,
+          }}
+        >
+          {item.content}
+        </p>
+      ))}
+    </Carousel>
+  </div>
 );
 
 Basic.args = {
   mode: 'light',
-  showDot: true,
-  showBorder: true,
+  showIndicators: true,
   displayCount: 2,
   loop: true,
 } as CarouselProps;
 
 export const ShowTwoItems = (props: CarouselProps): React.ReactNode => (
-  <Carousel {...props}>
-    {data.map((item) => (
-      <p
-        key={item.key}
-        style={{
-          minWidth: '275px',
-          width: '100%',
-          height: '250px',
-          textAlign: 'center',
-          backgroundColor: 'gray',
-          margin: 0,
-        }}
-      >
-        {item.content}
-      </p>
-    ))}
-  </Carousel>
+  <div
+    style={{
+      width: '650px',
+      margin: 'auto',
+    }}
+  >
+    <Carousel {...props}>
+      {data.map((item) => (
+        <p
+          key={item.key}
+          style={{
+            height: '250px',
+            textAlign: 'center',
+            backgroundColor: 'gray',
+            margin: 0,
+          }}
+        >
+          {item.content}
+        </p>
+      ))}
+    </Carousel>
+  </div>
 );
 
 ShowTwoItems.args = {
   mode: 'light',
-  showDot: true,
+  showIndicators: true,
   displayCount: 2,
 } as CarouselProps;
 
 export const OnlyOne = (props: CarouselProps): React.ReactNode => (
-  <Carousel {...props}>
-    {[
-      <p
-        key="one"
-        style={{
-          minWidth: '275px',
-          width: '100%',
-          height: '250px',
-          textAlign: 'center',
-          backgroundColor: 'gray',
-          margin: 0,
-        }}
-      >
-        only one
-      </p>,
-    ]}
-  </Carousel>
+  <div
+    style={{
+      width: '650px',
+      margin: 'auto',
+    }}
+  >
+    <Carousel {...props}>
+      {[
+        <p
+          key="one"
+          style={{
+            height: '250px',
+            textAlign: 'center',
+            backgroundColor: 'gray',
+            margin: 0,
+          }}
+        >
+          only one
+        </p>,
+      ]}
+    </Carousel>
+  </div>
 );
 
 OnlyOne.args = {
   mode: 'light',
-  showDot: true,
+  showIndicators: true,
 } as CarouselProps;
