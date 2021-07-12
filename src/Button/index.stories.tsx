@@ -3,6 +3,7 @@ import React from 'react';
 import { Container } from '../component/Decorator';
 import Button, { ButtonProps } from '.';
 import { LinkArrowIcon, TriangleDownIcon } from '../Icon';
+import Box from '../Box';
 
 export default {
   title: 'Button',
@@ -117,3 +118,10 @@ ButtonWithIcon.args = {
   children: 'Products',
   endIcon: <TriangleDownIcon />,
 } as ButtonProps;
+
+export const ButtonGroup = (): React.ReactNode => (
+  <Box display="flex" width="162px" justifyContent="space-around">
+    <Button>Btn 1</Button>
+    <Button variant="outlined">Btn 2</Button>
+  </Box>
+);
