@@ -146,17 +146,17 @@ const buildVariant = (size = 'medium', variant = 'contained') => {
   } else if (size === 'medium' && variant === 'outlined') {
     return `
       border: 2px solid;
-      padding: 5px 16px;
+      padding: 6px 16px;
     `;
   } else if (size === 'large' && variant === 'contained') {
     return `
       box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.13), 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 1px 5px 0px rgba(0,0,0,0.05);
-      padding: 9px 22px;
+      padding: 10px 22px;
     `;
   } else if (size === 'large' && variant === 'outlined') {
     return `
       border: 2px solid;
-      padding: 7px 20px;
+      padding: 8px 20px;
     `;
   } else if (variant === 'text') {
     return `
@@ -205,7 +205,6 @@ export const ButtonRoot = styled.div`
   overflow: hidden;
   display: inline-block;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
-  height: fit-content;
 
   ${({ size, variant, color, disabled, isAnchor }: ButtonProps) =>
     `
