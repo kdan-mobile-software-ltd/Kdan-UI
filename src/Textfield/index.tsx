@@ -7,6 +7,7 @@ import { InputLabel, HelperText, Required } from '../component/styled';
 export type TextfieldProps = {
   autoComplete?: 'on' | 'off';
   id?: string;
+  name?: string;
   label?: string;
   required?: boolean;
   disabled?: boolean;
