@@ -4,7 +4,6 @@ import {
   OverFlow,
   Carousel,
   CarouselItem,
-  Button,
   ArrowButton,
   DotButton,
   SmallController,
@@ -16,16 +15,32 @@ import { useCarousel } from './hooks';
 import { LeftArrow, RightArrow, ButtonLeft, ButtonRight } from '../Icon';
 
 const generateItems = (slides: React.ReactNode[], type: string, displayCount = 1) => {
-  if (type === 'before') return <CarouselItem displayCount={displayCount}>{slides[slides.length - 1]}</CarouselItem>;
+  if (type === 'before') {
+    const remainder = slides.length % displayCount;
+    const insufficientAmount = remainder ? displayCount - (slides.length % displayCount) : 0;
+    const composeArray = [...slides, ...Array(insufficientAmount)];
+
+    return [...composeArray.slice(composeArray.length - displayCount, composeArray.length)].map((slide, index) => (
+      <CarouselItem key={`before_${index}`} displayCount={displayCount}>
+        {slide}
+      </CarouselItem>
+    ));
+  }
   if (type === 'actual') {
-    return [...slides, ...slides.slice(0, displayCount - 1)].map((slide, index) => (
+    const insufficientAmount = slides.length % displayCount ? displayCount - (slides.length % displayCount) : 0;
+
+    return [...slides, ...Array(insufficientAmount)].map((slide, index) => (
       <CarouselItem key={index} displayCount={displayCount}>
         {slide}
       </CarouselItem>
     ));
   }
   if (type === 'after') {
-    return <CarouselItem displayCount={displayCount}>{slides[displayCount - 1]}</CarouselItem>;
+    return [...slides.slice(0, displayCount)].map((slide, index) => (
+      <CarouselItem key={`after_${index}`} displayCount={displayCount}>
+        {slide}
+      </CarouselItem>
+    ));
   }
 };
 
@@ -59,15 +74,17 @@ const CarouselComp: React.FC<CarouselProps> = ({
 
   return (
     <CarouselContainer>
-      <LeftBtn
-        type="button"
-        {...getPrevBtnProps()}
-        data-testid="prev-btn"
-        mode={mode}
-        isDisabled={!loop && activeIndex === 0}
-      >
-        {ButtonLeft && <ButtonLeft />}
-      </LeftBtn>
+      {slides.length > displayCount && (
+        <LeftBtn
+          type="button"
+          {...getPrevBtnProps()}
+          data-testid="prev-btn"
+          mode={mode}
+          isDisabled={!loop && activeIndex === 0}
+        >
+          <ButtonLeft />
+        </LeftBtn>
+      )}
       <OverFlow>
         <Carousel {...getCarouselProps()} data-testid="carousel">
           {beforeItems}
@@ -75,26 +92,30 @@ const CarouselComp: React.FC<CarouselProps> = ({
           {afterItems}
         </Carousel>
       </OverFlow>
-      <RightBtn
-        type="button"
-        {...getNextBtnProps()}
-        data-testid="next-btn"
-        mode={mode}
-        isDisabled={!loop && activeIndex >= slides.length - 1}
-      >
-        {ButtonRight && <ButtonRight />}
-      </RightBtn>
-      <SmallController data-testid="dots" visible={showIndicators}>
-        <ArrowButton {...getPrevBtnProps()}>{LeftArrow && <LeftArrow />}</ArrowButton>
-        <DotGroup>
-          {slides.map((el, i) => (
-            <DotButton key={i} {...getSpecificBtnProps({ index: i })}>
-              &nbsp;
-            </DotButton>
-          ))}
-        </DotGroup>
-        <ArrowButton {...getNextBtnProps()}>{RightArrow && <RightArrow />}</ArrowButton>
-      </SmallController>
+      {slides.length > displayCount && (
+        <RightBtn
+          type="button"
+          {...getNextBtnProps()}
+          data-testid="next-btn"
+          mode={mode}
+          isDisabled={!loop && activeIndex >= slides.length - 1}
+        >
+          <ButtonRight />
+        </RightBtn>
+      )}
+      {slides.length > displayCount && (
+        <SmallController data-testid="dots" visible={showIndicators}>
+          <ArrowButton {...getPrevBtnProps()}>{LeftArrow && <LeftArrow />}</ArrowButton>
+          <DotGroup>
+            {[...Array(Math.ceil(slides.length / displayCount))].map((el, i) => (
+              <DotButton key={i} {...getSpecificBtnProps({ index: i })}>
+                &nbsp;
+              </DotButton>
+            ))}
+          </DotGroup>
+          <ArrowButton {...getNextBtnProps()}>{RightArrow && <RightArrow />}</ArrowButton>
+        </SmallController>
+      )}
     </CarouselContainer>
   );
 };

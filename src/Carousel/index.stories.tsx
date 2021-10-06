@@ -20,6 +20,8 @@ const data = [
   { key: 1, content: '1' },
   { key: 2, content: '2' },
   { key: 3, content: '3' },
+  { key: 4, content: '4' },
+  { key: 5, content: '5' },
 ];
 
 export const Basic = (props: CarouselProps): React.ReactNode => (
@@ -57,7 +59,7 @@ Basic.args = {
   loop: true,
 } as CarouselProps;
 
-export const ShowTwoItems = (props: CarouselProps): React.ReactNode => (
+export const ShowThreeItems = (props: CarouselProps): React.ReactNode => (
   <div
     style={{
       width: '650px',
@@ -70,8 +72,11 @@ export const ShowTwoItems = (props: CarouselProps): React.ReactNode => (
           key={item.key}
           style={{
             height: '250px',
-            textAlign: 'center',
             backgroundColor: 'gray',
+            fontSize: '72px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
             margin: 0,
           }}
         >
@@ -82,10 +87,11 @@ export const ShowTwoItems = (props: CarouselProps): React.ReactNode => (
   </div>
 );
 
-ShowTwoItems.args = {
+ShowThreeItems.args = {
   mode: 'light',
   showIndicators: true,
-  displayCount: 2,
+  loop: true,
+  displayCount: 3,
 } as CarouselProps;
 
 export const OnlyOne = (props: CarouselProps): React.ReactNode => (

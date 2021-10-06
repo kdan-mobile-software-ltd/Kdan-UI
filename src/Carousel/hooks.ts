@@ -37,6 +37,7 @@ type Action = PrevAction | NextAction | SpecificAction | DONEAction;
 type State = {
   desired: number;
   active: number;
+  displayCount: number;
   transitionEnabled: boolean;
 };
 
@@ -54,14 +55,14 @@ const combineReducers = (
 };
 
 const loopReducer = (state: State, action: Action) => {
-  if (action.type === ActionTypes.PREV && state.active - 1 < 0) {
+  if (action.type === ActionTypes.PREV && state.active - state.displayCount < 0) {
     return {
       ...state,
-      desired: action.payload.length - 1,
+      desired: action.payload.length - state.displayCount + 1,
       transitionEnabled: true,
     };
   }
-  if (action.type === ActionTypes.NEXT && state.active + 1 > action.payload.length - 1) {
+  if (action.type === ActionTypes.NEXT && state.active + state.displayCount > action.payload.length - 1) {
     return {
       ...state,
       desired: 0,
@@ -74,16 +75,16 @@ const carouselReducer = (state: State, action: Action) => {
   if (action.type === ActionTypes.PREV) {
     return {
       ...state,
-      active: state.active - 1,
-      desired: state.active - 1,
+      active: state.active - state.displayCount,
+      desired: state.active - state.displayCount,
       transitionEnabled: true,
     };
   }
   if (action.type === ActionTypes.NEXT) {
     return {
       ...state,
-      active: state.active + 1,
-      desired: state.active + 1,
+      active: state.active + state.displayCount,
+      desired: state.active + state.displayCount,
       transitionEnabled: true,
     };
   }
@@ -107,7 +108,6 @@ const carouselReducer = (state: State, action: Action) => {
 const calcTranslate = ({
   state,
   transitionTime = 400,
-  displayCount,
 }: {
   state: State;
   transitionTime: number;
@@ -116,12 +116,10 @@ const calcTranslate = ({
   const smooth = `transform ${transitionTime}ms ease`;
   // The value determine the direction of translate
   const direction = Math.sign(state.desired - state.active);
-  // The translate distance
-  const shift = (100 / displayCount) * direction;
 
   return {
     transition: smooth,
-    transform: `translateX(${shift}%)`,
+    transform: `translateX(${direction >= 1 ? 100 : -100}%)`,
   };
 };
 
@@ -137,7 +135,7 @@ const calcStyle = ({
   return {
     transform: 'translateX(0)',
     // The actual moving style of item.
-    left: `-${(state.active + 1) * (100 / displayCount)}%`,
+    left: `${-1 * (state.active + displayCount) * (100 / displayCount)}%`,
     ...(state.transitionEnabled && state.active === state.desired && { transition: `left ${transitionTime}ms` }),
     ...(state.transitionEnabled &&
       state.active !== state.desired &&
@@ -156,6 +154,7 @@ const useCarousel = ({ loop, length, displayCount }: CarouselProps) => {
   const [state, dispatch] = useReducer(reducer, {
     desired: 0,
     active: 0,
+    displayCount,
     transitionEnabled: false,
   });
   // The derived state define the transition style of carousel.
@@ -172,9 +171,10 @@ const useCarousel = ({ loop, length, displayCount }: CarouselProps) => {
     disabled: !loop && state.active >= length - 1,
   });
   const getSpecificBtnProps = ({ index }: { index: number }) => ({
-    active: index === state.active ? true : false,
-    onClick: onSpecificClick(index),
+    active: index === Math.ceil(state.active / displayCount) ? true : false,
+    onClick: onSpecificClick(index * displayCount),
   });
+
   return {
     activeIndex: state.active,
     getCarouselProps,

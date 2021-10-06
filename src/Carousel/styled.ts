@@ -98,6 +98,8 @@ export const Img = styled.img`
 
 export const SmallController = styled.div<{ visible?: boolean }>`
   position: absolute;
+  left: 0;
+  right: 0;
   width: 100%;
   bottom: -32px;
   display: flex;
@@ -114,6 +116,11 @@ export const ArrowButton = styled.button`
   padding: 0;
   &:hover {
     cursor: pointer;
+  }
+  display: none;
+
+  @media ${breakpoints.down('lg')} {
+    display: block;
   }
 `;
 
