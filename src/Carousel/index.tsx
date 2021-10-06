@@ -82,7 +82,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
           mode={mode}
           isDisabled={!loop && activeIndex === 0}
         >
-          <ButtonLeft />
+          {ButtonLeft && <ButtonLeft />}
         </LeftBtn>
       )}
       <OverFlow>
@@ -100,7 +100,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
           mode={mode}
           isDisabled={!loop && activeIndex >= slides.length - 1}
         >
-          <ButtonRight />
+          {ButtonRight && <ButtonRight />}
         </RightBtn>
       )}
       {slides.length > displayCount && (
