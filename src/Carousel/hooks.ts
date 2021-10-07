@@ -54,7 +54,7 @@ const combineReducers = (
   };
 };
 
-const loopReducer = (state: State, action: Action) => {
+const loopReducer = (state: State, action: Action): State | undefined => {
   if (action.type === ActionTypes.PREV && state.active - state.displayCount < 0) {
     return {
       ...state,
@@ -71,7 +71,7 @@ const loopReducer = (state: State, action: Action) => {
   }
 };
 
-const carouselReducer = (state: State, action: Action) => {
+const carouselReducer = (state: State, action: Action): State => {
   if (action.type === ActionTypes.PREV) {
     return {
       ...state,
@@ -149,7 +149,25 @@ interface CarouselProps {
   displayCount: number;
 }
 
-const useCarousel = ({ loop, length, displayCount }: CarouselProps) => {
+type ReturnProps = {
+  onClick: () => void;
+  next?: boolean;
+  prev?: boolean;
+  active?: boolean;
+  disabled?: boolean;
+};
+
+const useCarousel = ({
+  loop,
+  length,
+  displayCount,
+}: CarouselProps): {
+  activeIndex: number;
+  getCarouselProps: () => { style: any; onTransitionEnd: () => void };
+  getPrevBtnProps: () => ReturnProps;
+  getNextBtnProps: () => ReturnProps;
+  getSpecificBtnProps: ({ index }: { index: number }) => ReturnProps;
+} => {
   const reducer = loop ? combineReducers(carouselReducer, loopReducer) : carouselReducer;
   const [state, dispatch] = useReducer(reducer, {
     desired: 0,
@@ -171,7 +189,7 @@ const useCarousel = ({ loop, length, displayCount }: CarouselProps) => {
     disabled: !loop && state.active >= length - 1,
   });
   const getSpecificBtnProps = ({ index }: { index: number }) => ({
-    active: index === Math.ceil(state.active / displayCount) ? true : false,
+    active: index === Math.ceil(state.active / displayCount),
     onClick: onSpecificClick(index * displayCount),
   });
 
