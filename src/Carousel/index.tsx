@@ -68,7 +68,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
   const afterItems = generateItems(slides, 'after', displayCount);
   const { activeIndex, getCarouselProps, getPrevBtnProps, getNextBtnProps, getSpecificBtnProps } = useCarousel({
     loop,
-    length: Array.isArray(actualItems) ? (displayCount > 1 ? actualItems.length - 1 : actualItems.length) : 0,
+    length: Array.isArray(actualItems) ? actualItems.length : 0,
     displayCount,
   });
 
@@ -98,7 +98,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
           {...getNextBtnProps()}
           data-testid="next-btn"
           mode={mode}
-          isDisabled={!loop && activeIndex >= slides.length - 1}
+          isDisabled={!loop && activeIndex >= slides.length - displayCount}
         >
           {ButtonRight && <ButtonRight />}
         </RightBtn>
