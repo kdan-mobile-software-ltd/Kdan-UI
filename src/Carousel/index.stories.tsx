@@ -55,11 +55,10 @@ export const Basic = (props: CarouselProps): React.ReactNode => (
 Basic.args = {
   mode: 'light',
   showIndicators: true,
-  displayCount: 2,
   loop: true,
 } as CarouselProps;
 
-export const ShowThreeItems = (props: CarouselProps): React.ReactNode => (
+export const LoopTwoItems = (props: CarouselProps): React.ReactNode => (
   <div
     style={{
       width: '650px',
@@ -87,10 +86,44 @@ export const ShowThreeItems = (props: CarouselProps): React.ReactNode => (
   </div>
 );
 
-ShowThreeItems.args = {
+LoopTwoItems.args = {
   mode: 'light',
   showIndicators: true,
   loop: true,
+  displayCount: 2,
+} as CarouselProps;
+
+export const ThreeItems = (props: CarouselProps): React.ReactNode => (
+  <div
+    style={{
+      width: '650px',
+      margin: 'auto',
+    }}
+  >
+    <Carousel {...props}>
+      {data.map((item) => (
+        <p
+          key={item.key}
+          style={{
+            height: '250px',
+            backgroundColor: 'gray',
+            fontSize: '72px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: 0,
+          }}
+        >
+          {item.content}
+        </p>
+      ))}
+    </Carousel>
+  </div>
+);
+
+ThreeItems.args = {
+  mode: 'light',
+  showIndicators: true,
   displayCount: 3,
 } as CarouselProps;
 

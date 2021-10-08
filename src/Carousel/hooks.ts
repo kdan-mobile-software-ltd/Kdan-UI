@@ -58,7 +58,7 @@ const loopReducer = (state: State, action: Action): State | undefined => {
   if (action.type === ActionTypes.PREV && state.active - state.displayCount < 0) {
     return {
       ...state,
-      desired: action.payload.length - state.displayCount + 1,
+      desired: action.payload.length - state.displayCount,
       transitionEnabled: true,
     };
   }

@@ -4,7 +4,7 @@ import colors from '../themes/colors';
 import breakpoints from '../themes/breakpoints';
 import zIndex from '../themes/zIndex';
 
-export const IconButton = styled.button`
+export const IconButton = styled.button<{ isDisabled?: boolean; mode: string }>`
   outline: none;
   border: 0;
   width: 72px;
@@ -20,15 +20,17 @@ export const IconButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  ${({ isDisabled, mode }: { isDisabled?: boolean; mode: string }) =>
+  ${({ isDisabled, mode }) =>
     isDisabled
       ? `
       background-color: ${colors.N15};
       cursor: default;
+      pointer-events: none;
     `
       : `
       background-color: ${mode === 'dark' ? colors.N100 : colors.P50};
       cursor: pointer;
+      pointer-events: inherit;
 
       :hover {
         background-color: ${mode === 'dark' ? hexToRGBA(colors.N100, 0.8) : hexToRGBA(colors.P50, 0.8)};
