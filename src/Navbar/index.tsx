@@ -48,9 +48,11 @@ const Navbar: React.FC<NavbarProps> = ({ isFixed = false, brand, children }: Nav
         <Menu isCollapse={isCollapse} isFixed={positionY >= 70}>
           <MenuWrapper>{children}</MenuWrapper>
         </Menu>
-        <MenuBtnWrapper>
-          <MenuBtn onClick={handleClick} isActive={!isCollapse} />
-        </MenuBtnWrapper>
+        {children && (
+          <MenuBtnWrapper>
+            <MenuBtn onClick={handleClick} isActive={!isCollapse} />
+          </MenuBtnWrapper>
+        )}
       </Wrapper>
     </Container>
   );
