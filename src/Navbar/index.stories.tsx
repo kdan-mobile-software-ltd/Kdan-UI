@@ -37,3 +37,7 @@ export const WithHintBar = (): React.ReactNode => (
     </Navbar>
   </>
 );
+
+export const WithoutChildren = (): React.ReactNode => (
+  <Navbar isFixed brand={<Logo variant="combine" href="https://kdanmobile.com" />} />
+);
