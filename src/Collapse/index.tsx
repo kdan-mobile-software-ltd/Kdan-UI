@@ -11,6 +11,7 @@ export type CollapseProps = {
 const Collapse: React.FC<CollapseProps> = ({ defaultOpen = false, trigger, children }: CollapseProps) => {
   const innerRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+  const maxHeight = innerRef.current?.clientHeight || 0;
 
   const handleClick = () => {
     setOpen((current) => !current);
@@ -23,7 +24,7 @@ const Collapse: React.FC<CollapseProps> = ({ defaultOpen = false, trigger, child
   return (
     <div>
       <div onClick={handleClick}>{typeof trigger === 'function' ? trigger(open) : trigger}</div>
-      <ContentWrapper style={{ height: open ? `${innerRef.current?.clientHeight}px` : 0 }}>
+      <ContentWrapper style={{ maxHeight: open ? `${maxHeight + 100}px` : 0 }}>
         <Inner ref={innerRef}>{children}</Inner>
       </ContentWrapper>
     </div>
