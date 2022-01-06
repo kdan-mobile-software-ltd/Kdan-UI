@@ -4,9 +4,9 @@ exports[`Collapse open collapse 1`] = `
 .c0 {
   color: inherit;
   overflow: hidden;
-  -webkit-transition: height 300ms cubic-bezier(0.4,0,0.2,1) 0ms;
-  transition: height 300ms cubic-bezier(0.4,0,0.2,1) 0ms;
-  height: 0;
+  -webkit-transition: max-height 300ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  transition: max-height 300ms cubic-bezier(0.4,0,0.2,1) 0ms;
+  max-height: 0;
 }
 
 <div>
@@ -18,7 +18,7 @@ exports[`Collapse open collapse 1`] = `
     </div>
     <div
       class="c0"
-      style="height: 0px;"
+      style="max-height: 0;"
     >
       <div
         class=""
