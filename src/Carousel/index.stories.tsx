@@ -56,6 +56,7 @@ Basic.args = {
   mode: 'light',
   showIndicators: true,
   loop: true,
+  indicatorMode: 'dark',
 } as CarouselProps;
 
 export const LoopTwoItems = (props: CarouselProps): React.ReactNode => (

@@ -137,6 +137,7 @@ export const DotGroup = styled.div`
 
 export const DotButton = styled.button<{
   active?: boolean;
+  indicatorMode: string;
 }>`
   background: none;
   border: none;
@@ -155,7 +156,14 @@ export const DotButton = styled.button<{
     border-radius: 50%;
     top: 0;
     left: 0;
-    background: ${({ active }) => (active ? '#000' : '#ddd')};
+    background: ${({ indicatorMode, active }) => {
+      if (indicatorMode === 'dark') {
+        return active ? '#000' : '#ddd';
+      }
+      if (indicatorMode === 'light') {
+        return active ? '#fff' : '#727272';
+      }
+    }};
   }
   @media screen and (max-width: 1023px) {
     width: 10px;
