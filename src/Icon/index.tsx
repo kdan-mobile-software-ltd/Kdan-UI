@@ -4,5 +4,7 @@ export { ReactComponent as LinkArrowIcon } from '../assets/icons/link-arrow.svg'
 export { ReactComponent as CheckedIcon } from '../assets/icons/checked.svg';
 export { ReactComponent as LeftArrow } from '../assets/icons/arrow-left.svg';
 export { ReactComponent as RightArrow } from '../assets/icons/arrow-right.svg';
+export { ReactComponent as LeftArrowWhite } from '../assets/icons/arrow-left--white.svg';
+export { ReactComponent as RightArrowWhite } from '../assets/icons/arrow-right--white.svg';
 export { ReactComponent as ButtonLeft } from '../assets/icons/left-arrow.svg';
 export { ReactComponent as ButtonRight } from '../assets/icons/right-arrow.svg';

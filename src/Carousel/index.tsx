@@ -12,7 +12,7 @@ import {
   RightBtn,
 } from './styled';
 import { useCarousel } from './hooks';
-import { LeftArrow, RightArrow, ButtonLeft, ButtonRight } from '../Icon';
+import { LeftArrow, RightArrow, LeftArrowWhite, RightArrowWhite, ButtonLeft, ButtonRight } from '../Icon';
 
 const generateItems = (slides: React.ReactNode[], type: string, displayCount = 1) => {
   if (type === 'before') {
@@ -50,6 +50,7 @@ export type CarouselProps = {
   displayCount?: number;
   showIndicators?: boolean;
   mode?: string;
+  indicatorMode?: string;
 };
 
 const CarouselComp: React.FC<CarouselProps> = ({
@@ -58,6 +59,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
   displayCount = 1,
   showIndicators = false,
   mode = 'dark',
+  indicatorMode = 'dark',
 }: CarouselProps) => {
   const slides = Children.toArray(children);
   // The pseudo last item before the first item
@@ -105,15 +107,21 @@ const CarouselComp: React.FC<CarouselProps> = ({
       )}
       {slides.length > displayCount && (
         <SmallController data-testid="dots" visible={showIndicators}>
-          <ArrowButton {...getPrevBtnProps()}>{LeftArrow && <LeftArrow />}</ArrowButton>
+          <ArrowButton {...getPrevBtnProps()}>
+            {indicatorMode === 'dark' && LeftArrow && <LeftArrow />}
+            {indicatorMode === 'light' && LeftArrowWhite && <LeftArrowWhite />}
+          </ArrowButton>
           <DotGroup>
             {[...Array(Math.ceil(slides.length / displayCount))].map((el, i) => (
-              <DotButton key={i} {...getSpecificBtnProps({ index: i })}>
+              <DotButton key={i} {...getSpecificBtnProps({ index: i })} indicatorMode={indicatorMode}>
                 &nbsp;
               </DotButton>
             ))}
           </DotGroup>
-          <ArrowButton {...getNextBtnProps()}>{RightArrow && <RightArrow />}</ArrowButton>
+          <ArrowButton {...getNextBtnProps()}>
+            {indicatorMode === 'dark' && RightArrow && <RightArrow />}
+            {indicatorMode === 'light' && RightArrowWhite && <RightArrowWhite />}
+          </ArrowButton>
         </SmallController>
       )}
     </CarouselContainer>
