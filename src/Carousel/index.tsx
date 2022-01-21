@@ -48,7 +48,7 @@ export type CarouselProps = {
   displayCount?: number;
   showIndicators?: boolean;
   mode?: string;
-  indicatorMode?: string;
+  indicatorMode?: 'dark' | 'light' | 'sky';
   autoplay?: boolean;
 };
 

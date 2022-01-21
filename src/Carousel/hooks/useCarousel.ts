@@ -214,7 +214,7 @@ const useCarousel = ({
       rightCallback: callAll(onPrevClick(length), onPause),
     }),
   });
-  useInterval(onNextClick(length), play ? 3000 : null);
+  useInterval(onNextClick(length), play ? 3000 : 0);
 
   return {
     activeIndex: state.active,
