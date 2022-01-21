@@ -11,15 +11,14 @@ import {
   LeftBtn,
   RightBtn,
 } from './styled';
-import { useCarousel } from './hooks';
-import { LeftArrow, RightArrow, LeftArrowWhite, RightArrowWhite, ButtonLeft, ButtonRight } from '../Icon';
+import useCarousel from './hooks/useCarousel';
+import data from './data';
 
 const generateItems = (slides: React.ReactNode[], type: string, displayCount = 1) => {
   if (type === 'before') {
     const remainder = slides.length % displayCount;
     const insufficientAmount = remainder ? displayCount - (slides.length % displayCount) : 0;
     const composeArray = [...slides, ...Array(insufficientAmount)];
-
     return [...composeArray.slice(composeArray.length - displayCount, composeArray.length)].map((slide, index) => (
       <CarouselItem key={`before_${index}`} displayCount={displayCount}>
         {slide}
@@ -28,7 +27,6 @@ const generateItems = (slides: React.ReactNode[], type: string, displayCount = 1
   }
   if (type === 'actual') {
     const insufficientAmount = slides.length % displayCount ? displayCount - (slides.length % displayCount) : 0;
-
     return [...slides, ...Array(insufficientAmount)].map((slide, index) => (
       <CarouselItem key={index} displayCount={displayCount}>
         {slide}
@@ -51,6 +49,7 @@ export type CarouselProps = {
   showIndicators?: boolean;
   mode?: string;
   indicatorMode?: string;
+  autoplay?: boolean;
 };
 
 const CarouselComp: React.FC<CarouselProps> = ({
@@ -60,6 +59,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
   showIndicators = false,
   mode = 'dark',
   indicatorMode = 'dark',
+  autoplay = false,
 }: CarouselProps) => {
   const slides = Children.toArray(children);
   // The pseudo last item before the first item
@@ -68,11 +68,21 @@ const CarouselComp: React.FC<CarouselProps> = ({
   const actualItems = generateItems(slides, 'actual', displayCount);
   // The pseudo first item after the last item
   const afterItems = generateItems(slides, 'after', displayCount);
-  const { activeIndex, getCarouselProps, getPrevBtnProps, getNextBtnProps, getSpecificBtnProps } = useCarousel({
+  const {
+    activeIndex,
+    getCarouselProps,
+    getPrevBtnProps,
+    getNextBtnProps,
+    getSpecificBtnProps,
+    getSwipeProps,
+  } = useCarousel({
     loop,
     length: Array.isArray(actualItems) ? actualItems.length : 0,
     displayCount,
+    autoplay,
   });
+  const LeftIndicator = data.indicator[indicatorMode].left;
+  const RightIndicator = data.indicator[indicatorMode].right;
 
   return (
     <CarouselContainer>
@@ -84,11 +94,11 @@ const CarouselComp: React.FC<CarouselProps> = ({
           mode={mode}
           isDisabled={!loop && activeIndex === 0}
         >
-          {ButtonLeft && <ButtonLeft />}
+          {data.btn.left && <data.btn.left />}
         </LeftBtn>
       )}
       <OverFlow>
-        <Carousel {...getCarouselProps()} data-testid="carousel">
+        <Carousel {...getCarouselProps()} {...getSwipeProps()} data-testid="carousel">
           {beforeItems}
           {actualItems}
           {afterItems}
@@ -102,15 +112,12 @@ const CarouselComp: React.FC<CarouselProps> = ({
           mode={mode}
           isDisabled={!loop && activeIndex >= slides.length - displayCount}
         >
-          {ButtonRight && <ButtonRight />}
+          {data.btn.right && <data.btn.right />}
         </RightBtn>
       )}
       {slides.length > displayCount && (
         <SmallController data-testid="dots" visible={showIndicators}>
-          <ArrowButton {...getPrevBtnProps()}>
-            {indicatorMode === 'dark' && LeftArrow && <LeftArrow />}
-            {indicatorMode === 'light' && LeftArrowWhite && <LeftArrowWhite />}
-          </ArrowButton>
+          <ArrowButton {...getPrevBtnProps()}>{LeftIndicator && <LeftIndicator />}</ArrowButton>
           <DotGroup>
             {[...Array(Math.ceil(slides.length / displayCount))].map((el, i) => (
               <DotButton key={i} {...getSpecificBtnProps({ index: i })} indicatorMode={indicatorMode}>
@@ -118,10 +125,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
               </DotButton>
             ))}
           </DotGroup>
-          <ArrowButton {...getNextBtnProps()}>
-            {indicatorMode === 'dark' && RightArrow && <RightArrow />}
-            {indicatorMode === 'light' && RightArrowWhite && <RightArrowWhite />}
-          </ArrowButton>
+          <ArrowButton {...getNextBtnProps()}>{RightIndicator && <RightIndicator />}</ArrowButton>
         </SmallController>
       )}
     </CarouselContainer>

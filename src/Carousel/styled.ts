@@ -163,6 +163,9 @@ export const DotButton = styled.button<{
       if (indicatorMode === 'light') {
         return active ? '#fff' : '#727272';
       }
+      if (indicatorMode === 'sky') {
+        return active ? '#007aff' : '#d0d0d0';
+      }
     }};
   }
   @media screen and (max-width: 1023px) {

@@ -1,4 +1,7 @@
-import { useReducer } from 'react';
+import { useState, useReducer } from 'react';
+import useSwipe from './useSwipe';
+import useInterval from './useInterval';
+import callAll from '../utils/callAll';
 
 enum ActionTypes {
   PREV = 'PREV',
@@ -147,6 +150,7 @@ interface CarouselProps {
   loop: boolean;
   length: number;
   displayCount: number;
+  autoplay: boolean;
 }
 
 type ReturnProps = {
@@ -161,12 +165,18 @@ const useCarousel = ({
   loop,
   length,
   displayCount,
+  autoplay,
 }: CarouselProps): {
   activeIndex: number;
   getCarouselProps: () => { style: any; onTransitionEnd: () => void };
   getPrevBtnProps: () => ReturnProps;
   getNextBtnProps: () => ReturnProps;
   getSpecificBtnProps: ({ index }: { index: number }) => ReturnProps;
+  getSwipeProps: () => {
+    onTouchStart: React.TouchEventHandler<HTMLDivElement>;
+    onTouchMove: React.TouchEventHandler<HTMLDivElement>;
+    onTouchEnd: React.TouchEventHandler<HTMLDivElement>;
+  };
 } => {
   const reducer = loop ? combineReducers(carouselReducer, loopReducer) : carouselReducer;
   const [state, dispatch] = useReducer(reducer, {
@@ -175,6 +185,7 @@ const useCarousel = ({
     displayCount,
     transitionEnabled: false,
   });
+  const [play, setPlay] = useState(autoplay);
   // The derived state define the transition style of carousel.
   const style = calcStyle({ state, displayCount, transitionTime: 400 });
   const getCarouselProps = () => ({ style, onTransitionEnd: () => dispatch({ type: ActionTypes.DONE }) });
@@ -182,16 +193,28 @@ const useCarousel = ({
   const onNextClick = (length: number) => () => dispatch({ type: ActionTypes.NEXT, payload: { length } });
   const onSpecificClick = (index: number) => () =>
     dispatch({ type: ActionTypes.SPECIFIC, payload: { desired: index } });
-  const getPrevBtnProps = () => ({ onClick: onPrevClick(length), prev: true, disabled: !loop && state.active === 0 });
+  const onPause = () => setPlay(false);
+  const getPrevBtnProps = () => ({
+    onClick: callAll(onPrevClick(length), onPause),
+    prev: true,
+    disabled: !loop && state.active === 0,
+  });
   const getNextBtnProps = () => ({
-    onClick: onNextClick(length),
+    onClick: callAll(onNextClick(length), onPause),
     next: true,
     disabled: !loop && state.active >= length - 1,
   });
   const getSpecificBtnProps = ({ index }: { index: number }) => ({
     active: index === Math.ceil(state.active / displayCount),
-    onClick: onSpecificClick(index * displayCount),
+    onClick: callAll(onSpecificClick(index * displayCount), onPause),
   });
+  const getSwipeProps = () => ({
+    ...useSwipe({
+      leftCallback: callAll(onNextClick(length), onPause),
+      rightCallback: callAll(onPrevClick(length), onPause),
+    }),
+  });
+  useInterval(onNextClick(length), play ? 3000 : null);
 
   return {
     activeIndex: state.active,
@@ -199,7 +222,8 @@ const useCarousel = ({
     getPrevBtnProps,
     getNextBtnProps,
     getSpecificBtnProps,
+    getSwipeProps,
   };
 };
 
-export { useCarousel, loopReducer, carouselReducer };
+export default useCarousel;
