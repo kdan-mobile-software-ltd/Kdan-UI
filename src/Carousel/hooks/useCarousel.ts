@@ -1,7 +1,7 @@
 import { useState, useReducer } from 'react';
 import useSwipe from './useSwipe';
 import useInterval from './useInterval';
-import callAll from '../../helpers/callAll';
+import callAll from '../../helpers/callAllFunction';
 
 enum ActionTypes {
   PREV = 'PREV',
