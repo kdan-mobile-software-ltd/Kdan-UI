@@ -57,7 +57,7 @@ Basic.args = {
   showIndicators: true,
   loop: true,
   indicatorMode: 'sky',
-  autoplay: true,
+  autoplay: 3000,
 } as CarouselProps;
 
 export const LoopTwoItems = (props: CarouselProps): React.ReactNode => (
