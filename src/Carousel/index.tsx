@@ -49,7 +49,7 @@ export type CarouselProps = {
   showIndicators?: boolean;
   mode?: string;
   indicatorMode?: 'dark' | 'light' | 'sky';
-  autoplay?: boolean;
+  autoplay?: number;
 };
 
 const CarouselComp: React.FC<CarouselProps> = ({
@@ -59,7 +59,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
   showIndicators = false,
   mode = 'dark',
   indicatorMode = 'dark',
-  autoplay = false,
+  autoplay = 0,
 }: CarouselProps) => {
   const slides = Children.toArray(children);
   // The pseudo last item before the first item
@@ -79,7 +79,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
     loop,
     length: Array.isArray(actualItems) ? actualItems.length : 0,
     displayCount,
-    autoplay,
+    autoplay: autoplay > 0 ? autoplay : 0,
   });
   const LeftIndicator = data.indicator[indicatorMode].left;
   const RightIndicator = data.indicator[indicatorMode].right;

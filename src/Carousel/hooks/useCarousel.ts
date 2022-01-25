@@ -1,7 +1,7 @@
 import { useState, useReducer } from 'react';
 import useSwipe from './useSwipe';
 import useInterval from './useInterval';
-import callAll from '../../helpers/callAllFunction';
+import callAllFunction from '../../helpers/callAllFunction';
 
 enum ActionTypes {
   PREV = 'PREV',
@@ -150,7 +150,7 @@ interface CarouselProps {
   loop: boolean;
   length: number;
   displayCount: number;
-  autoplay: boolean;
+  autoplay: number;
 }
 
 type ReturnProps = {
@@ -185,7 +185,7 @@ const useCarousel = ({
     displayCount,
     transitionEnabled: false,
   });
-  const [play, setPlay] = useState(autoplay);
+  const [play, setPlay] = useState(autoplay > 0);
   // The derived state define the transition style of carousel.
   const style = calcStyle({ state, displayCount, transitionTime: 400 });
   const getCarouselProps = () => ({ style, onTransitionEnd: () => dispatch({ type: ActionTypes.DONE }) });
@@ -195,26 +195,26 @@ const useCarousel = ({
     dispatch({ type: ActionTypes.SPECIFIC, payload: { desired: index } });
   const onPause = () => setPlay(false);
   const getPrevBtnProps = () => ({
-    onClick: callAll(onPrevClick(length), onPause),
+    onClick: callAllFunction(onPrevClick(length), onPause),
     prev: true,
     disabled: !loop && state.active === 0,
   });
   const getNextBtnProps = () => ({
-    onClick: callAll(onNextClick(length), onPause),
+    onClick: callAllFunction(onNextClick(length), onPause),
     next: true,
     disabled: !loop && state.active >= length - 1,
   });
   const getSpecificBtnProps = ({ index }: { index: number }) => ({
     active: index === Math.ceil(state.active / displayCount),
-    onClick: callAll(onSpecificClick(index * displayCount), onPause),
+    onClick: callAllFunction(onSpecificClick(index * displayCount), onPause),
   });
   const getSwipeProps = () => ({
     ...useSwipe({
-      leftCallback: callAll(onNextClick(length), onPause),
-      rightCallback: callAll(onPrevClick(length), onPause),
+      leftCallback: callAllFunction(onNextClick(length), onPause),
+      rightCallback: callAllFunction(onPrevClick(length), onPause),
     }),
   });
-  useInterval(onNextClick(length), play ? 3000 : 0);
+  useInterval(onNextClick(length), play ? autoplay : 0);
 
   return {
     activeIndex: state.active,
