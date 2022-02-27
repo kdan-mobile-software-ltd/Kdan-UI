@@ -12,7 +12,9 @@ import {
   RightBtn,
 } from './styled';
 import useCarousel from './hooks/useCarousel';
-import data from './data';
+import useHover from './hooks/useHover';
+import getArrowIcon from './utils/getArrowIcon';
+import getIndicator from './utils/getIndicator';
 
 const generateItems = (slides: React.ReactNode[], type: string, displayCount = 1) => {
   if (type === 'before') {
@@ -47,7 +49,7 @@ export type CarouselProps = {
   loop?: boolean;
   displayCount?: number;
   showIndicators?: boolean;
-  mode?: string;
+  mode?: 'dark' | 'light' | 'campaign';
   indicatorMode?: 'dark' | 'light' | 'sky';
   autoplay?: number;
 };
@@ -81,20 +83,25 @@ const CarouselComp: React.FC<CarouselProps> = ({
     displayCount,
     autoplay: autoplay > 0 ? autoplay : 0,
   });
-  const LeftIndicator = data.indicator[indicatorMode].left;
-  const RightIndicator = data.indicator[indicatorMode].right;
+  const { hover, getHoverBtnProps } = useHover();
+  const indicator = getIndicator({ indicatorMode });
+  const leftArrowIcon = getArrowIcon({ mode, direction: 'left' });
+  const rightArrowIcon = getArrowIcon({ mode, direction: 'right' });
 
   return (
     <CarouselContainer>
       {slides.length > displayCount && (
         <LeftBtn
           type="button"
-          {...getPrevBtnProps()}
           data-testid="prev-btn"
           mode={mode}
           isDisabled={!loop && activeIndex === 0}
+          isHover={hover[0]}
+          {...getPrevBtnProps()}
+          {...getHoverBtnProps(0)}
         >
-          {data.btn.left && <data.btn.left />}
+          {leftArrowIcon.hover && <leftArrowIcon.hover />}
+          {leftArrowIcon.normal && <leftArrowIcon.normal />}
         </LeftBtn>
       )}
       <OverFlow>
@@ -107,17 +114,20 @@ const CarouselComp: React.FC<CarouselProps> = ({
       {slides.length > displayCount && (
         <RightBtn
           type="button"
-          {...getNextBtnProps()}
           data-testid="next-btn"
           mode={mode}
           isDisabled={!loop && activeIndex >= slides.length - displayCount}
+          isHover={hover[1]}
+          {...getNextBtnProps()}
+          {...getHoverBtnProps(1)}
         >
-          {data.btn.right && <data.btn.right />}
+          {rightArrowIcon.hover && <rightArrowIcon.hover />}
+          {rightArrowIcon.normal && <rightArrowIcon.normal />}
         </RightBtn>
       )}
       {slides.length > displayCount && (
         <SmallController data-testid="dots" visible={showIndicators}>
-          <ArrowButton {...getPrevBtnProps()}>{LeftIndicator && <LeftIndicator />}</ArrowButton>
+          <ArrowButton {...getPrevBtnProps()}>{indicator.left && <indicator.left />}</ArrowButton>
           <DotGroup>
             {[...Array(Math.ceil(slides.length / displayCount))].map((el, i) => (
               <DotButton key={i} {...getSpecificBtnProps({ index: i })} indicatorMode={indicatorMode}>
@@ -125,7 +135,7 @@ const CarouselComp: React.FC<CarouselProps> = ({
               </DotButton>
             ))}
           </DotGroup>
-          <ArrowButton {...getNextBtnProps()}>{RightIndicator && <RightIndicator />}</ArrowButton>
+          <ArrowButton {...getNextBtnProps()}>{indicator.right && <indicator.right />}</ArrowButton>
         </SmallController>
       )}
     </CarouselContainer>
