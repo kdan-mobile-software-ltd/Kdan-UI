@@ -83,7 +83,8 @@ const CarouselComp: React.FC<CarouselProps> = ({
     displayCount,
     autoplay: autoplay > 0 ? autoplay : 0,
   });
-  const { hover, getHoverBtnProps } = useHover();
+  const { hover: leftHover, getHoverBtnProps: getHoverLeftBtnProps } = useHover();
+  const { hover: rightHover, getHoverBtnProps: getHoverRightBtnProps } = useHover();
   const indicator = getIndicator({ indicatorMode });
   const leftArrowIcon = getArrowIcon({ mode, direction: 'left' });
   const rightArrowIcon = getArrowIcon({ mode, direction: 'right' });
@@ -96,9 +97,9 @@ const CarouselComp: React.FC<CarouselProps> = ({
           data-testid="prev-btn"
           mode={mode}
           isDisabled={!loop && activeIndex === 0}
-          isHover={hover[0]}
+          isHover={leftHover}
           {...getPrevBtnProps()}
-          {...getHoverBtnProps(0)}
+          {...getHoverLeftBtnProps()}
         >
           {leftArrowIcon.hover && <leftArrowIcon.hover />}
           {leftArrowIcon.normal && <leftArrowIcon.normal />}
@@ -117,9 +118,9 @@ const CarouselComp: React.FC<CarouselProps> = ({
           data-testid="next-btn"
           mode={mode}
           isDisabled={!loop && activeIndex >= slides.length - displayCount}
-          isHover={hover[1]}
+          isHover={rightHover}
           {...getNextBtnProps()}
-          {...getHoverBtnProps(1)}
+          {...getHoverRightBtnProps()}
         >
           {rightArrowIcon.hover && <rightArrowIcon.hover />}
           {rightArrowIcon.normal && <rightArrowIcon.normal />}
