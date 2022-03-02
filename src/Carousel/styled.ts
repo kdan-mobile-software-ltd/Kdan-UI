@@ -4,7 +4,7 @@ import colors from '../themes/colors';
 import breakpoints from '../themes/breakpoints';
 import zIndex from '../themes/zIndex';
 
-export const IconButton = styled.button<{ isDisabled?: boolean; mode: string }>`
+export const IconButton = styled.button<{ isDisabled?: boolean; mode: string; isHover: boolean }>`
   outline: none;
   border: 0;
   width: 72px;
@@ -20,22 +20,75 @@ export const IconButton = styled.button<{ isDisabled?: boolean; mode: string }>`
   justify-content: center;
   align-items: center;
 
-  ${({ isDisabled, mode }) =>
-    isDisabled
-      ? `
-      background-color: ${colors.N15};
+  svg {
+    position: absolute;
+    width: 29px;
+    height: 26px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: opacity 0.3s;
+  }
+
+  ${({ isDisabled, mode }) => {
+    const bgColors = {
+      dark: {
+        normal: colors.N100,
+        hover: hexToRGBA(colors.N100, 0.8),
+      },
+      light: {
+        normal: colors.P50,
+        hover: hexToRGBA(colors.P50, 0.8),
+      },
+      disabled: {
+        normal: colors.N15,
+      },
+      campaign: {
+        normal: colors.N0,
+        hover: colors.N0,
+      },
+    } as {
+      [key: string]: { normal: string; hover?: string };
+    };
+    if (isDisabled)
+      return `
+      background-color: ${bgColors.disabled.normal};
       cursor: default;
       pointer-events: none;
-    `
-      : `
-      background-color: ${mode === 'dark' ? colors.N100 : colors.P50};
+    `;
+    return `
+    background-color: ${bgColors[mode] ? bgColors[mode].normal : bgColors.dark.normal};
       cursor: pointer;
       pointer-events: inherit;
 
       :hover {
-        background-color: ${mode === 'dark' ? hexToRGBA(colors.N100, 0.8) : hexToRGBA(colors.P50, 0.8)};
+        background-color: ${bgColors[mode] ? bgColors[mode].hover : bgColors.dark.hover};
       }
-    `}
+    `;
+  }}
+
+  ${({ isHover }) => {
+    if (isHover)
+      return `
+    svg:first-child{
+      opacity:1;
+    }
+    svg:last-child{
+      opacity:0;
+    }
+    `;
+
+    return `
+    svg:first-child{
+      opacity:0;
+    }
+    svg:last-child{
+      opacity:1;
+    }
+    `;
+  }}
   @media ${breakpoints.down('lg')} {
     display: none;
   }
@@ -166,6 +219,7 @@ export const DotButton = styled.button<{
       if (indicatorMode === 'sky') {
         return active ? '#007aff' : '#d0d0d0';
       }
+      return active ? '#000' : '#ddd';
     }};
   }
   @media screen and (max-width: 1023px) {

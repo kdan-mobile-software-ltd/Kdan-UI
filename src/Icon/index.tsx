@@ -8,5 +8,11 @@ export { ReactComponent as LeftArrowWhite } from '../assets/icons/arrow-left--wh
 export { ReactComponent as RightArrowWhite } from '../assets/icons/arrow-right--white.svg';
 export { ReactComponent as LeftArrowSky } from '../assets/icons/arrow-left--sky.svg';
 export { ReactComponent as RightArrowSky } from '../assets/icons/arrow-right--sky.svg';
+export { ReactComponent as LeftArrowCampaign } from '../assets/icons/arrow-left--campaign.svg';
+export { ReactComponent as RightArrowCampaign } from '../assets/icons/arrow-right--campaign.svg';
 export { ReactComponent as ButtonLeft } from '../assets/icons/left-arrow.svg';
 export { ReactComponent as ButtonRight } from '../assets/icons/right-arrow.svg';
+export { ReactComponent as ButtonLeftBlack } from '../assets/icons/left-arrow--black.svg';
+export { ReactComponent as ButtonRightBlack } from '../assets/icons/right-arrow--black.svg';
+export { ReactComponent as ButtonLeftCampaign } from '../assets/icons/left-arrow--campaign.svg';
+export { ReactComponent as ButtonRightCampaign } from '../assets/icons/right-arrow--campaign.svg';
