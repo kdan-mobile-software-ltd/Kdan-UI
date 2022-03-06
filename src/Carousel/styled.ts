@@ -52,14 +52,27 @@ export const IconButton = styled.button<{ isDisabled?: boolean; mode: string; is
     } as {
       [key: string]: { normal: string; hover?: string };
     };
+    const boxShadows = {
+      dark:
+        '0px 3px 1px -2px rgba(0, 0, 0, 0.13), 0px 2px 2px 0px rgba(0, 0, 0, 0.1), 0px 1px 5px 0px rgba(0, 0, 0, 0.05)',
+      light:
+        '0px 3px 1px -2px rgba(0, 0, 0, 0.13), 0px 2px 2px 0px rgba(0, 0, 0, 0.1), 0px 1px 5px 0px rgba(0, 0, 0, 0.05)',
+      disabled:
+        '0px 3px 1px -2px rgba(0, 0, 0, 0.13), 0px 2px 2px 0px rgba(0, 0, 0, 0.1), 0px 1px 5px 0px rgba(0, 0, 0, 0.05)',
+      campaign: 'none',
+    } as {
+      [key: string]: string;
+    };
     if (isDisabled)
       return `
       background-color: ${bgColors.disabled.normal};
+      box-shadow:${boxShadows.disabled};
       cursor: default;
       pointer-events: none;
     `;
     return `
     background-color: ${bgColors[mode] ? bgColors[mode].normal : bgColors.dark.normal};
+    box-shadow:${boxShadows[mode] ? boxShadows[mode] : boxShadows.dark};  
       cursor: pointer;
       pointer-events: inherit;
 
