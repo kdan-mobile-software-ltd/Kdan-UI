@@ -7,6 +7,8 @@ import {
   RightArrowSky,
   LeftArrowCampaign,
   RightArrowCampaign,
+  LeftArrowViolet,
+  RightArrowViolet,
   ButtonLeft,
   ButtonRight,
   ButtonLeftBlack,
@@ -81,6 +83,10 @@ const data: Props = {
     campaign: {
       left: LeftArrowCampaign,
       right: RightArrowCampaign,
+    },
+    violet: {
+      left: LeftArrowViolet,
+      right: RightArrowViolet,
     },
   },
 };
