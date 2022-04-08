@@ -233,7 +233,7 @@ export const DotButton = styled.button<{
         return active ? '#007aff' : '#d0d0d0';
       }
       if (indicatorMode === 'violet') {
-        return active ? '#c8c8dd' : '#fff';
+        return active ? '#fff' : '#644487';
       }
       return active ? '#000' : '#ddd';
     }};
