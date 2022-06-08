@@ -176,16 +176,20 @@ export const SmallController = styled.div<{ visible?: boolean }>`
   ${({ visible }) => !visible && 'display:none'};
 `;
 
-export const ArrowButton = styled.button`
+export const ArrowButton = styled.button<{ indicatorColor: string }>`
   width: 12px;
   height: 18px;
   background: none;
   border: none;
   padding: 0;
+  display: none;
   &:hover {
     cursor: pointer;
   }
-  display: none;
+
+  svg {
+    color: ${({ indicatorColor }) => indicatorColor};
+  }
 
   @media ${breakpoints.down('lg')} {
     display: block;
@@ -203,7 +207,7 @@ export const DotGroup = styled.div`
 
 export const DotButton = styled.button<{
   active?: boolean;
-  indicatorMode: string;
+  indicatorColor: string;
 }>`
   background: none;
   border: none;
@@ -222,20 +226,9 @@ export const DotButton = styled.button<{
     border-radius: 50%;
     top: 0;
     left: 0;
-    background: ${({ indicatorMode, active }) => {
-      if (indicatorMode === 'dark') {
-        return active ? '#000' : '#ddd';
-      }
-      if (indicatorMode === 'light') {
-        return active ? '#fff' : '#727272';
-      }
-      if (indicatorMode === 'sky') {
-        return active ? '#007aff' : '#d0d0d0';
-      }
-      if (indicatorMode === 'violet') {
-        return active ? '#fff' : '#644487';
-      }
-      return active ? '#000' : '#ddd';
+    background: ${({ indicatorColor, active }) => {
+      if (active) return indicatorColor;
+      return '#ddd';
     }};
   }
   @media screen and (max-width: 1023px) {
