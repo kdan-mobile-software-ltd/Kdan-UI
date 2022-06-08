@@ -66,6 +66,7 @@ CustomContent.args = {
   variant: 'contained',
   children: 'Button Content',
   size: 'large',
+  color: 'default',
 } as ButtonProps;
 
 export const AnchorLink = (args: ButtonProps): React.ReactNode => (

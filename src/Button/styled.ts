@@ -6,17 +6,18 @@ import colors from '../themes/colors';
 import zIndex from '../themes/zIndex';
 import breakpoints from '../themes/breakpoints';
 
-import { pxToRem, hexToRGBA } from '../helpers/utility';
+import { pxToRem } from '../helpers/utility';
 
-const buildTheme = (color = 'default', variant = 'contained') => {
+type buildThemeType = (color?: string, variant?: string, backgroundColor?: string) => string;
+
+const buildTheme: buildThemeType = (color, variant, backgroundColor) => {
   if (color === 'default' && variant === 'contained') {
     return `
       color: ${colors.N0};
       background-color: ${colors.N100};
 
       :hover {
-        color: ${colors.N0};
-        background-color: ${colors.N70};
+        opacity:0.7;
       }
     `;
   } else if (color === 'light' && variant === 'contained') {
@@ -25,8 +26,7 @@ const buildTheme = (color = 'default', variant = 'contained') => {
       background-color: ${colors.N0};
 
       :hover {
-        color: ${colors.N100};
-        background-color: ${colors.N10};
+        opacity:0.7;
       }
     `;
   } else if (color === 'default' && variant === 'outlined') {
@@ -36,8 +36,7 @@ const buildTheme = (color = 'default', variant = 'contained') => {
       background-color: inherit;
 
       :hover {
-        color: ${colors.N0};
-        background-color: ${colors.N100};
+        opacity:0.7;
       }
     `;
   } else if (color === 'default' && variant === 'text') {
@@ -46,7 +45,7 @@ const buildTheme = (color = 'default', variant = 'contained') => {
       background-color: inherit;
 
       :hover {
-        color: ${colors.N70};
+        opacity:0.7;
       }
     `;
   } else if (color === 'brand' && variant === 'text') {
@@ -55,7 +54,7 @@ const buildTheme = (color = 'default', variant = 'contained') => {
       background-color: inherit;
 
       :hover {
-        color: ${hexToRGBA(colors.brand, 0.7)};
+        opacity:0.7;
       }
     `;
   } else if (color === 'cheese' && variant === 'contained') {
@@ -64,27 +63,24 @@ const buildTheme = (color = 'default', variant = 'contained') => {
       background-color: ${colors.Y50};
       
       :hover {
-        background-color: ${hexToRGBA(colors.Y50, 0.7)};
+        opacity:0.7;
       }
     `;
-  } else if (color && colors[color]) {
+  } else if (variant === 'outlined' || variant === 'text') {
     return `
-      color: ${colors[color]};
-      background-color: ${colors.N0};
+      color: ${(color && colors[color]) || color};
 
       :hover {
-        color: ${colors.N0};
-        background-color: ${colors[color]};
+        opacity:0.7;
       }
     `;
   } else {
     return `
-      color: ${color};
-      background-color: ${colors.N0};
+      color: ${(color && colors[color]) || color};
+      background-color: ${backgroundColor || colors.N100};
 
       :hover {
-        color: ${colors.N0};
-        background-color: ${color};
+        opacity:0.7;
       }
     `;
   }
@@ -199,35 +195,23 @@ export const ButtonRoot = styled.div`
   font-weight: 500;
   line-height: 1.5;
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   display: inline-block;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
 
-  ${({ size, variant, color, disabled, isAnchor }: ButtonProps) =>
+  ${({ size, variant, color, backgroundColor, disabled, isAnchor }: ButtonProps) =>
     `
     ${buildSize(size, isAnchor)}
     ${buildVariant(size, variant)}
-    ${!disabled ? buildTheme(color, variant) : ''}
+    ${!disabled ? buildTheme(color, variant, backgroundColor) : ''}
     ${buildDisabled(disabled)}
     ${
       isAnchor
         ? `
         text-decoration: none;
-
-        &:hover {
-          :after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background-color: ${(color && colors[color]) || color};
-          }
-        }
         &:visited {
           color: none;
         }
