@@ -4,6 +4,8 @@ import colors from '../themes/colors';
 import breakpoints from '../themes/breakpoints';
 import zIndex from '../themes/zIndex';
 
+import type { CssColor } from './utils/isCssColor';
+
 export const IconButton = styled.button<{ isDisabled?: boolean; mode: string; isHover: boolean }>`
   outline: none;
   border: 0;
@@ -72,7 +74,7 @@ export const IconButton = styled.button<{ isDisabled?: boolean; mode: string; is
     `;
     return `
     background-color: ${bgColors[mode] ? bgColors[mode].normal : bgColors.dark.normal};
-    box-shadow:${boxShadows[mode] ? boxShadows[mode] : boxShadows.dark};  
+    box-shadow:${boxShadows[mode] ? boxShadows[mode] : boxShadows.dark};
       cursor: pointer;
       pointer-events: inherit;
 
@@ -176,7 +178,7 @@ export const SmallController = styled.div<{ visible?: boolean }>`
   ${({ visible }) => !visible && 'display:none'};
 `;
 
-export const ArrowButton = styled.button<{ indicatorColor: string }>`
+export const ArrowButton = styled.button<{ indicatorColor: CssColor }>`
   width: 12px;
   height: 18px;
   background: none;
@@ -207,7 +209,7 @@ export const DotGroup = styled.div`
 
 export const DotButton = styled.button<{
   active?: boolean;
-  indicatorColor: string;
+  indicatorColor: CssColor;
 }>`
   background: none;
   border: none;

@@ -14,6 +14,7 @@ import {
 import useCarousel from './hooks/useCarousel';
 import useHover from './hooks/useHover';
 import getArrowIcon from './utils/getArrowIcon';
+import isCssColor from './utils/isCssColor';
 import data from './data';
 
 const generateItems = (slides: React.ReactNode[], type: string, displayCount = 1) => {
@@ -63,6 +64,10 @@ const CarouselComp: React.FC<CarouselProps> = ({
   indicatorColor = '#000',
   autoplay = 0,
 }: CarouselProps) => {
+  if (!isCssColor(indicatorColor)) {
+    throw new Error('The value of indicatorColor is not CSS color.');
+  }
+
   const slides = Children.toArray(children);
   // The pseudo last item before the first item
   const beforeItems = generateItems(slides, 'before', displayCount);
