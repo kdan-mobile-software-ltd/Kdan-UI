@@ -1,14 +1,6 @@
 import {
   LeftArrow,
   RightArrow,
-  LeftArrowWhite,
-  RightArrowWhite,
-  LeftArrowSky,
-  RightArrowSky,
-  LeftArrowCampaign,
-  RightArrowCampaign,
-  LeftArrowViolet,
-  RightArrowViolet,
   ButtonLeft,
   ButtonRight,
   ButtonLeftBlack,
@@ -19,19 +11,9 @@ import {
 
 type Props = {
   btn: {
-    [mode: string]: {
-      [state: string]: {
-        left: React.FC<React.SVGProps<SVGSVGElement>>;
-        right: React.FC<React.SVGProps<SVGSVGElement>>;
-      };
-    };
+    [mode: string]: Record<'normal' | 'hover', Record<'left' | 'right', React.FC<React.SVGProps<SVGSVGElement>>>>;
   };
-  indicator: {
-    [indicatorMode: string]: {
-      left: React.FC<React.SVGProps<SVGSVGElement>>;
-      right: React.FC<React.SVGProps<SVGSVGElement>>;
-    };
-  };
+  indicator: Record<'left' | 'right', React.FC<React.SVGProps<SVGSVGElement>>>;
 };
 
 const data: Props = {
@@ -68,26 +50,8 @@ const data: Props = {
     },
   },
   indicator: {
-    dark: {
-      left: LeftArrow,
-      right: RightArrow,
-    },
-    light: {
-      left: LeftArrowWhite,
-      right: RightArrowWhite,
-    },
-    sky: {
-      left: LeftArrowSky,
-      right: RightArrowSky,
-    },
-    campaign: {
-      left: LeftArrowCampaign,
-      right: RightArrowCampaign,
-    },
-    violet: {
-      left: LeftArrowViolet,
-      right: RightArrowViolet,
-    },
+    left: LeftArrow,
+    right: RightArrow,
   },
 };
 

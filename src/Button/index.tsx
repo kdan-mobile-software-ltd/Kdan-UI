@@ -12,6 +12,7 @@ export type ButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   isAnchor?: boolean;
   href?: string;
   color?: 'inherit' | 'default' | 'brand' | 'primary' | 'secondary' | 'light' | 'cheese' | string;
+  backgroundColor?: string;
   fullWidth?: boolean;
   variant?: 'contained' | 'outlined' | 'text';
   onClick?: (e: React.MouseEvent | React.TouchEvent) => void;
@@ -24,6 +25,7 @@ const Button = React.forwardRef<RefType, ButtonProps>(
     {
       className,
       color = 'default',
+      backgroundColor,
       children,
       disabled = false,
       fullWidth = false,
@@ -41,6 +43,7 @@ const Button = React.forwardRef<RefType, ButtonProps>(
 
     const styleProps = {
       color,
+      backgroundColor,
       variant,
       disabled,
       fullWidth,

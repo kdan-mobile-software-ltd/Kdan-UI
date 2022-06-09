@@ -4,6 +4,8 @@ import colors from '../themes/colors';
 import breakpoints from '../themes/breakpoints';
 import zIndex from '../themes/zIndex';
 
+import type { CssColor } from './utils/isCssColor';
+
 export const IconButton = styled.button<{ isDisabled?: boolean; mode: string; isHover: boolean }>`
   outline: none;
   border: 0;
@@ -72,7 +74,7 @@ export const IconButton = styled.button<{ isDisabled?: boolean; mode: string; is
     `;
     return `
     background-color: ${bgColors[mode] ? bgColors[mode].normal : bgColors.dark.normal};
-    box-shadow:${boxShadows[mode] ? boxShadows[mode] : boxShadows.dark};  
+    box-shadow:${boxShadows[mode] ? boxShadows[mode] : boxShadows.dark};
       cursor: pointer;
       pointer-events: inherit;
 
@@ -176,16 +178,20 @@ export const SmallController = styled.div<{ visible?: boolean }>`
   ${({ visible }) => !visible && 'display:none'};
 `;
 
-export const ArrowButton = styled.button`
+export const ArrowButton = styled.button<{ indicatorColor: CssColor }>`
   width: 12px;
   height: 18px;
   background: none;
   border: none;
   padding: 0;
+  display: none;
   &:hover {
     cursor: pointer;
   }
-  display: none;
+
+  svg {
+    color: ${({ indicatorColor }) => indicatorColor};
+  }
 
   @media ${breakpoints.down('lg')} {
     display: block;
@@ -203,7 +209,7 @@ export const DotGroup = styled.div`
 
 export const DotButton = styled.button<{
   active?: boolean;
-  indicatorMode: string;
+  indicatorColor: CssColor;
 }>`
   background: none;
   border: none;
@@ -222,20 +228,9 @@ export const DotButton = styled.button<{
     border-radius: 50%;
     top: 0;
     left: 0;
-    background: ${({ indicatorMode, active }) => {
-      if (indicatorMode === 'dark') {
-        return active ? '#000' : '#ddd';
-      }
-      if (indicatorMode === 'light') {
-        return active ? '#fff' : '#727272';
-      }
-      if (indicatorMode === 'sky') {
-        return active ? '#007aff' : '#d0d0d0';
-      }
-      if (indicatorMode === 'violet') {
-        return active ? '#fff' : '#644487';
-      }
-      return active ? '#000' : '#ddd';
+    background: ${({ indicatorColor, active }) => {
+      if (active) return indicatorColor;
+      return '#ddd';
     }};
   }
   @media screen and (max-width: 1023px) {

@@ -56,7 +56,7 @@ Basic.args = {
   mode: 'light',
   showIndicators: true,
   loop: true,
-  indicatorMode: 'sky',
+  indicatorColor: '#000000',
   autoplay: 3000,
 } as CarouselProps;
 
@@ -90,6 +90,7 @@ export const LoopTwoItems = (props: CarouselProps): React.ReactNode => (
 
 LoopTwoItems.args = {
   mode: 'light',
+  indicatorColor: '#000',
   showIndicators: true,
   loop: true,
   displayCount: 2,
@@ -125,6 +126,7 @@ export const ThreeItems = (props: CarouselProps): React.ReactNode => (
 
 ThreeItems.args = {
   mode: 'light',
+  indicatorColor: 'rgb(0, 0, 0)',
   showIndicators: true,
   displayCount: 3,
 } as CarouselProps;
@@ -156,5 +158,6 @@ export const OnlyOne = (props: CarouselProps): React.ReactNode => (
 
 OnlyOne.args = {
   mode: 'light',
+  indicatorColor: 'rgba(0, 0, 0, 1)',
   showIndicators: true,
 } as CarouselProps;

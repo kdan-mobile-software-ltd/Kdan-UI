@@ -14,7 +14,8 @@ import {
 import useCarousel from './hooks/useCarousel';
 import useHover from './hooks/useHover';
 import getArrowIcon from './utils/getArrowIcon';
-import getIndicator from './utils/getIndicator';
+import isCssColor from './utils/isCssColor';
+import data from './data';
 
 const generateItems = (slides: React.ReactNode[], type: string, displayCount = 1) => {
   if (type === 'before') {
@@ -50,7 +51,7 @@ export type CarouselProps = {
   displayCount?: number;
   showIndicators?: boolean;
   mode?: 'dark' | 'light' | 'campaign';
-  indicatorMode?: 'dark' | 'light' | 'sky';
+  indicatorColor?: string;
   autoplay?: number;
 };
 
@@ -60,9 +61,13 @@ const CarouselComp: React.FC<CarouselProps> = ({
   displayCount = 1,
   showIndicators = false,
   mode = 'dark',
-  indicatorMode = 'dark',
+  indicatorColor = '#000',
   autoplay = 0,
 }: CarouselProps) => {
+  if (!isCssColor(indicatorColor)) {
+    throw new Error('The value of indicatorColor is not CSS color.');
+  }
+
   const slides = Children.toArray(children);
   // The pseudo last item before the first item
   const beforeItems = generateItems(slides, 'before', displayCount);
@@ -85,7 +90,6 @@ const CarouselComp: React.FC<CarouselProps> = ({
   });
   const { hover: leftHover, getHoverBtnProps: getHoverLeftBtnProps } = useHover();
   const { hover: rightHover, getHoverBtnProps: getHoverRightBtnProps } = useHover();
-  const indicator = getIndicator({ indicatorMode });
   const leftArrowIcon = getArrowIcon({ mode, direction: 'left' });
   const rightArrowIcon = getArrowIcon({ mode, direction: 'right' });
 
@@ -128,15 +132,19 @@ const CarouselComp: React.FC<CarouselProps> = ({
       )}
       {slides.length > displayCount && (
         <SmallController data-testid="dots" visible={showIndicators}>
-          <ArrowButton {...getPrevBtnProps()}>{indicator.left && <indicator.left />}</ArrowButton>
+          <ArrowButton {...getPrevBtnProps()} indicatorColor={indicatorColor}>
+            {data.indicator.left && <data.indicator.left />}
+          </ArrowButton>
           <DotGroup>
             {[...Array(Math.ceil(slides.length / displayCount))].map((el, i) => (
-              <DotButton key={i} {...getSpecificBtnProps({ index: i })} indicatorMode={indicatorMode}>
+              <DotButton key={i} {...getSpecificBtnProps({ index: i })} indicatorColor={indicatorColor}>
                 &nbsp;
               </DotButton>
             ))}
           </DotGroup>
-          <ArrowButton {...getNextBtnProps()}>{indicator.right && <indicator.right />}</ArrowButton>
+          <ArrowButton {...getNextBtnProps()} indicatorColor={indicatorColor}>
+            {data.indicator.right && <data.indicator.right />}
+          </ArrowButton>
         </SmallController>
       )}
     </CarouselContainer>
