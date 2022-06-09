@@ -12,7 +12,7 @@ export type ButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   isAnchor?: boolean;
   href?: string;
   color?: 'inherit' | 'default' | 'brand' | 'primary' | 'secondary' | 'light' | 'cheese' | string;
-  backgroundColor: string;
+  backgroundColor?: string;
   fullWidth?: boolean;
   variant?: 'contained' | 'outlined' | 'text';
   onClick?: (e: React.MouseEvent | React.TouchEvent) => void;

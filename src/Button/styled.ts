@@ -15,73 +15,41 @@ const buildTheme: buildThemeType = (color, variant, backgroundColor) => {
     return `
       color: ${colors.N0};
       background-color: ${colors.N100};
-
-      :hover {
-        opacity:0.7;
-      }
     `;
   } else if (color === 'light' && variant === 'contained') {
     return `
       color: ${colors.N100};
       background-color: ${colors.N0};
-
-      :hover {
-        opacity:0.7;
-      }
     `;
   } else if (color === 'default' && variant === 'outlined') {
     return `
       color: ${colors.N100};
       border-color: ${colors.N100};
       background-color: inherit;
-
-      :hover {
-        opacity:0.7;
-      }
     `;
   } else if (color === 'default' && variant === 'text') {
     return `
       color: ${colors.N100};
       background-color: inherit;
-
-      :hover {
-        opacity:0.7;
-      }
     `;
   } else if (color === 'brand' && variant === 'text') {
     return `
       color: ${colors.brand};
       background-color: inherit;
-
-      :hover {
-        opacity:0.7;
-      }
     `;
   } else if (color === 'cheese' && variant === 'contained') {
     return `
       color: ${colors.N100};
       background-color: ${colors.Y50};
-      
-      :hover {
-        opacity:0.7;
-      }
     `;
   } else if (variant === 'outlined' || variant === 'text') {
     return `
       color: ${(color && colors[color]) || color};
-
-      :hover {
-        opacity:0.7;
-      }
     `;
   } else {
     return `
       color: ${(color && colors[color]) || color};
       background-color: ${backgroundColor || colors.N100};
-
-      :hover {
-        opacity:0.7;
-      }
     `;
   }
 };
@@ -201,6 +169,9 @@ export const ButtonRoot = styled.div`
   overflow: hidden;
   display: inline-block;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
+  :hover {
+    opacity: 0.7;
+  }
 
   ${({ size, variant, color, backgroundColor, disabled, isAnchor }: ButtonProps) =>
     `
