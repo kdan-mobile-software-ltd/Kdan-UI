@@ -13,7 +13,7 @@ const isCssColor = (value: IndicatorColor): value is CssColor => {
 
   if (value.charAt(0) === '#') {
     const hexColor = value.substring(1);
-    return [3, 4, 6, 8].indexOf(hexColor.length) > -1 && !isNaN(parseInt(hexColor, 16));
+    return [3, 4, 6, 8].indexOf(hexColor.length) > -1 && !Number.isNaN(parseInt(hexColor, 16));
   } else {
     return colorRegex.test(value);
   }
