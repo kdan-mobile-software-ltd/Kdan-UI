@@ -6,50 +6,96 @@ import colors from '../themes/colors';
 import zIndex from '../themes/zIndex';
 import breakpoints from '../themes/breakpoints';
 
-import { pxToRem } from '../helpers/utility';
+import { pxToRem, hexToRGBA } from '../helpers/utility';
 
 type buildThemeType = (color?: string, variant?: string, backgroundColor?: string) => string;
 
-const buildTheme: buildThemeType = (color, variant, backgroundColor) => {
+const buildTheme: buildThemeType = (color = 'default', variant, backgroundColor) => {
   if (color === 'default' && variant === 'contained') {
     return `
       color: ${colors.N0};
       background-color: ${colors.N100};
+
+      :hover {
+        color: ${colors.N0};
+        background-color: ${colors.N70};
+      }
     `;
   } else if (color === 'light' && variant === 'contained') {
     return `
       color: ${colors.N100};
       background-color: ${colors.N0};
+
+      :hover {
+        color: ${colors.N100};
+        background-color: ${colors.N10};
+      }
     `;
   } else if (color === 'default' && variant === 'outlined') {
     return `
       color: ${colors.N100};
       border-color: ${colors.N100};
-      background-color: inherit;
+      
+      :hover {
+        color: ${colors.N0};
+        background-color: ${colors.N100};
+      }
     `;
   } else if (color === 'default' && variant === 'text') {
     return `
       color: ${colors.N100};
       background-color: inherit;
+
+      :hover {
+        color: ${colors.N70};
+      }
     `;
   } else if (color === 'brand' && variant === 'text') {
     return `
       color: ${colors.brand};
       background-color: inherit;
+
+      :hover {
+        opacity:0.7;
+      }
     `;
   } else if (color === 'cheese' && variant === 'contained') {
     return `
       color: ${colors.N100};
       background-color: ${colors.Y50};
+
+      :hover {
+        background-color: ${hexToRGBA(colors.Y50, 0.7)};
+      }
     `;
-  } else if (variant === 'outlined' || variant === 'text') {
+  } else if (variant === 'outlined') {
     return `
       color: ${(color && colors[color]) || color};
+      border-color: ${(color && colors[color]) || color};
+      background-color: inherit;
+
+      :hover {
+        color: ${colors.N0};
+        background-color: ${(color && colors[color]) || color};
+      }
+    `;
+  } else if (variant === 'text') {
+    return `
+      color: ${(color && colors[color]) || color};
+
+      :hover {
+        color: ${hexToRGBA((color && colors[color]) || color, 0.7)};
+      }
     `;
   } else {
     return `
-      color: ${(color && colors[color]) || color};
-      background-color: ${backgroundColor || colors.N100};
+      color: ${color};
+      background-color: ${backgroundColor || colors.N0};
+
+      :hover {
+        color: ${backgroundColor || colors.N0};
+        background-color: ${color};
+      }
     `;
   }
 };
@@ -169,9 +215,6 @@ export const ButtonRoot = styled.div`
   overflow: hidden;
   display: inline-block;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
-  :hover {
-    opacity: 0.7;
-  }
 
   ${({ size, variant, color, backgroundColor, disabled, isAnchor }: ButtonProps) =>
     `

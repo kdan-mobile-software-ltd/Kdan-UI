@@ -31,8 +31,12 @@ export const Basic = (): React.ReactNode => (
     <Button size="large" color="cheese">
       Click
     </Button>
+    &nbsp;
+    <Button size="large" color="#002080" backgroundColor="#ea560c">
+      Click
+    </Button>
     <hr />
-    <Button variant="outlined" size="small">
+    <Button variant="outlined" color="brand" size="small">
       Click
     </Button>
     &nbsp;
@@ -40,7 +44,7 @@ export const Basic = (): React.ReactNode => (
       Click
     </Button>
     &nbsp;
-    <Button variant="outlined" size="large">
+    <Button variant="outlined" color="red" size="large">
       Click
     </Button>
     <hr />
@@ -52,7 +56,7 @@ export const Basic = (): React.ReactNode => (
       Click
     </Button>
     &nbsp;
-    <Button variant="text" size="large">
+    <Button variant="text" color="rgb(0, 32, 128)" size="large">
       Click
     </Button>
   </>
