@@ -93,8 +93,7 @@ const buildTheme: buildThemeType = (color = 'default', variant, backgroundColor)
       background-color: ${backgroundColor || colors.N0};
 
       :hover {
-        color: ${backgroundColor || colors.N0};
-        background-color: ${color};
+        opacity: 0.75;
       }
     `;
   }

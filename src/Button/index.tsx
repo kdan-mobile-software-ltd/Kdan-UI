@@ -25,7 +25,7 @@ const Button = React.forwardRef<RefType, ButtonProps>(
     {
       className,
       color = 'default',
-      backgroundColor,
+      backgroundColor = '#000000',
       children,
       disabled = false,
       fullWidth = false,
